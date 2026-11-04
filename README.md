@@ -10,6 +10,13 @@ A cosy reading game. Pick a place to read, go through its ritual, and read real 
 | **The Commons Library** (8 AM to 10 PM) | Check in for 30 min to 3 hours, borrow books, buy a membership with points | Ring counts down to check-out; the library closes at closing time | Stretch, water fountain, canteen meal (every 25 min) |
 | **Bun & Chapter** (burger joint, 24 hours) | Order a meal: fries, nuggets, burger combo, big feast | Each bite on your tray is a slice of time | Free refill, wash your hands, tray-and-book photo |
 
+Feels like a real place:
+
+- **Walk-in scenes**: each venue is drawn as a room (café window and chalkboard, library shelves with a real-time clock, diner neon and menu screen) and gets darker at night.
+- **Staff who talk to you**: Aina the barista, Encik Hafiz the librarian and Jay at the diner greet you by name, react to your order and book, call your breaks, and say goodbye. Turn on **Voice** to hear them through your browser's built-in speech.
+- **Sound**: register ka-ching, coffee pour and steam, library stamp and scanner beep, fryer sizzle and order bell, page flips, plus quiet background sound for each venue. All generated in the browser, no audio files.
+- **A real book**: pull books off wooden shelves by their spines, watch the cover open, and turn pages with a 3D flip (swipe, tap the page edges, or use arrow keys). Text is laid out to fit each page, with chapter openings, drop caps, running heads and page numbers. Two-page spread on wide screens, one page on phones.
+
 Game layer:
 
 - **Points**: 1 per focused minute, break bonuses, finish bonus, last-page bonus. Library members earn 1.25× (Silver) or 1.5× (Gold).
@@ -20,7 +27,7 @@ Game layer:
 - **Library card**: Visitor borrows 1 book, Silver (150 pts) 3, Gold (400 pts) 6 with 24-hour access. Books are due in 7 days; returning on time pays 15 points.
 - The timer pauses when you switch tabs, so points mean real reading.
 
-Books come from **Project Gutenberg** through the free **Gutendex** API, browsable by 12 categories or by search. A small offline "Pocket Poems" book always works.
+Books come from **Project Gutenberg**. Each of the 12 categories opens with hand-picked classics that show instantly, then more books load from the free **Gutendex** API, and you can search any title or author. Lists and the book you are reading are cached on your device. A small offline "Pocket Poems" book always works.
 
 ## Free stack
 
