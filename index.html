@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="BOOKOUT: a cosy reading game. Pick a café, library or burger joint and read free books.">
+<title>BOOKOUT</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap">
+<style>
+/* Layout: mint canvas, floating white cards, one ink "member card". Single light look by design (design.md defines no dark mode). */
+:root{
+  --primary:#6BE683; --on-primary:#003503; --primary-hover:#55D86C; --accent:#1CBB6C;
+  --surface:#FFFFFF; --surface-muted:#F6FEF6; --surface-tint:#E3F8E6;
+  --ink:#262828; --on-ink:#FFFFFF; --border:#DDEBDF;
+  --text:#0F1A12; --text-muted:#4E544F; --text-subtle:#5F655F;
+  --success:#1A7F55; --warning:#9A6A00; --danger:#C42A36; --on-danger:#FFFFFF;
+  --paper:#FFFDF7;
+  --font:"Gilroy","Outfit",ui-sans-serif,system-ui,sans-serif;
+  --e1:0 4px 16px rgba(16,40,20,.06); --e2:0 12px 32px rgba(16,40,20,.08); --e3:0 24px 60px rgba(16,40,20,.14);
+  --r-sm:8px; --r-md:12px; --r-lg:24px; --r-xl:40px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{min-height:100%}
+body{margin:0;background:var(--surface-muted);color:var(--text);font:400 16px/1.5 var(--font);-webkit-font-smoothing:antialiased}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--text);outline-offset:2px;border-radius:6px}
+h1,h2,h3,h4{margin:0;font-weight:600;text-wrap:balance}
+p{margin:0}
+.tab{font-variant-numeric:tabular-nums}
+
+.wrap{max-width:1200px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+/* glows */
+.glow{position:fixed;pointer-events:none;border-radius:50%;filter:blur(90px);background:var(--surface-tint);opacity:.9;z-index:-1}
+
+/* nav */
+nav.top{display:flex;align-items:center;gap:16px;padding-block:18px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0}
+.logo .dots{position:relative;width:34px;height:22px}
+.logo .dots i{position:absolute;top:0;width:22px;height:22px;border-radius:50%}
+.logo .dots i:first-child{left:0;background:var(--primary)}
+.logo .dots i:last-child{left:12px;background:var(--ink);mix-blend-mode:multiply}
+.wordmark{font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+.wordmark .b{color:var(--accent)} .wordmark .o{color:var(--ink)}
+.navlinks{display:flex;gap:24px;margin-left:24px}
+.navlinks button{background:none;border:0;padding:8px 0;color:var(--text-muted);font-weight:500;font-size:15px}
+.navlinks button[aria-current="page"]{color:var(--text);font-weight:600}
+.chips{display:flex;gap:8px;margin-left:auto;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:6px;background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:8px 12px;font-weight:600;font-size:14px}
+.chip small{font-weight:400;color:var(--text-subtle);font-size:12px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:10px 24px;border-radius:var(--r-sm);border:0;font-weight:500;font-size:15px;transition:transform .1s,background .1s,box-shadow .18s}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--primary);color:var(--on-primary);font-weight:600}
+.btn-primary:hover{background:var(--primary-hover)}
+.btn-ghost{background:var(--surface);color:var(--text);box-shadow:inset 0 0 0 1px var(--border)}
+.btn-ghost:hover{box-shadow:inset 0 0 0 1px var(--text-subtle)}
+.btn-ink{background:var(--ink);color:var(--on-ink)}
+.btn-danger{background:var(--danger);color:var(--on-danger)}
+.btn-sm{min-height:36px;padding:6px 14px;font-size:14px}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+.link{background:none;border:0;padding:0;color:var(--success);font-weight:600;font-size:14px}
+
+.card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);padding:24px}
+.muted{color:var(--text-muted)} .subtle{color:var(--text-subtle);font-size:13px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;color:var(--text-subtle)}
+.bar{height:6px;border-radius:99px;background:var(--surface-tint);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .45s var(--ease)}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:4px 10px;border-radius:99px;background:var(--surface-tint);color:var(--text)}
+.pill.open::before,.pill.closed::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--success)}
+.pill.closed{background:#FBEDEE}.pill.closed::before{background:var(--danger)}
+
+main{padding-block:8px 64px}
+.view{animation:rise .45s var(--ease)}
+@keyframes rise{from{opacity:.001;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* home hero */
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:32px;align-items:center;padding-block:24px 48px}
+.hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.08;letter-spacing:-.03em}
+.hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:16px}
+.hero p.lede{font-size:18px;color:var(--text-muted);max-width:480px;margin-top:20px}
+.stickers{display:flex;gap:10px;margin-bottom:24px;flex-wrap:wrap}
+.sticker{background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:10px 16px;display:flex;align-items:baseline;gap:8px}
+.sticker b{font-size:22px;font-weight:600}
+.sticker span{font-size:14px;color:var(--text-muted)}
+.sticker:nth-child(1){transform:rotate(-4deg)}.sticker:nth-child(2){transform:rotate(2deg)}.sticker:nth-child(3){transform:rotate(-2deg)}
+.today{display:grid;gap:16px}
+.member{background:var(--ink);color:var(--on-ink);border-radius:var(--r-md);padding:22px;box-shadow:var(--e3);position:relative;overflow:hidden;min-height:200px;display:flex;flex-direction:column;justify-content:space-between}
+.member::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:var(--primary);opacity:.9}
+.member::before{content:"";position:absolute;right:30px;top:-30px;width:120px;height:120px;border-radius:50%;border:2px solid rgba(255,255,255,.25);z-index:1}
+.member .tier{font-size:12px;letter-spacing:.12em;text-transform:uppercase;opacity:.8}
+.member .nm{font-size:22px;font-weight:600;position:relative;z-index:2}
+.member .row{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;font-size:13px;position:relative;z-index:2}
+.member .lv{font-size:13px;opacity:.85}
+.member .bar{background:rgba(255,255,255,.15);margin-top:8px}
+.member .bar>i{background:var(--primary)}
+
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+.section-head h2{font-size:clamp(28px,3.4vw,40px);letter-spacing:-.02em;line-height:1.15}
+.venues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.venue{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);overflow:hidden;display:flex;flex-direction:column;transition:transform .28s var(--ease),box-shadow .28s var(--ease);border:0;padding:0;text-align:left}
+.venue:hover{transform:translateY(-3px);box-shadow:var(--e3)}
+.venue .art{height:150px;display:grid;place-items:center;font-size:64px;position:relative}
+.venue .art .sign{position:absolute;left:16px;top:16px}
+.venue .body{padding:20px 24px 24px;display:grid;gap:8px;flex:1}
+.venue h3{font-size:22px}
+.venue .kind{font-size:13px;color:var(--text-subtle);font-weight:500}
+.venue .rit{font-size:14px;color:var(--text-muted)}
+.venue .foot{display:flex;justify-content:space-between;align-items:center;margin-top:8px;font-size:13px;color:var(--text-subtle)}
+.art.cafe{background:linear-gradient(160deg,#F3E6D8,#E9D3BC)}
+.art.library{background:linear-gradient(160deg,#E3F8E6,#CBEFD2)}
+.art.diner{background:linear-gradient(160deg,#FFF1C9,#FFDFA0)}
+
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;margin-top:48px}
+.cont{display:flex;gap:16px;align-items:center}
+.cover{width:64px;height:92px;border-radius:6px;object-fit:cover;background:var(--surface-tint);flex:none;box-shadow:var(--e1);display:grid;place-items:center;font-size:26px;overflow:hidden}
+.quests{display:grid;gap:12px;margin-top:12px}
+.quest{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:var(--r-md);background:var(--surface-muted)}
+.quest .ck{width:24px;height:24px;border-radius:50%;flex:none;display:grid;place-items:center;box-shadow:inset 0 0 0 1.5px var(--border);font-size:13px;color:var(--on-primary)}
+.quest.done .ck{background:var(--primary);box-shadow:none}
+.quest div{flex:1;min-width:0}
+.quest b{font-weight:600;font-size:15px}
+.quest .pts{font-size:13px;font-weight:600;color:var(--success)}
+
+/* setup */
+.back{background:none;border:0;padding:6px 0;color:var(--text-muted);font-weight:500;display:inline-flex;gap:6px;align-items:center}
+.setup-head{display:flex;gap:20px;align-items:center;margin-block:12px 28px;flex-wrap:wrap}
+.setup-head .badge-art{width:80px;height:80px;border-radius:var(--r-lg);display:grid;place-items:center;font-size:42px;flex:none}
+.setup-head h1{font-size:clamp(32px,4.2vw,48px);letter-spacing:-.02em;line-height:1.1}
+.setup-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:24px;align-items:start}
+.step-title{display:flex;align-items:center;gap:10px;font-size:18px;font-weight:600;margin-bottom:16px}
+.step-title .n{width:28px;height:28px;border-radius:50%;background:var(--ink);color:var(--on-ink);display:grid;place-items:center;font-size:14px;flex:none}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.item{border:0;background:var(--surface-muted);border-radius:var(--r-md);padding:16px;text-align:left;display:grid;gap:4px;box-shadow:inset 0 0 0 1px var(--border);transition:box-shadow .18s,transform .18s}
+.item:hover{transform:translateY(-2px)}
+.item[aria-pressed="true"]{box-shadow:inset 0 0 0 2px var(--accent);background:var(--surface)}
+.item .em{font-size:30px}
+.item b{font-weight:600}
+.item .t{font-size:13px;color:var(--text-subtle)}
+.picked{display:flex;gap:14px;align-items:center;padding:14px;border-radius:var(--r-md);background:var(--surface-muted);margin-bottom:14px}
+.picked div{min-width:0}
+.picked b{display:block;font-weight:600;overflow:hidden;text-overflow:ellipsis}
+.desk{margin-top:24px}
+.tiers{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.tierc{border-radius:var(--r-md);padding:14px;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);display:grid;gap:6px;align-content:start;font-size:13px}
+.tierc.on{box-shadow:inset 0 0 0 2px var(--accent);background:var(--surface)}
+.tierc b{font-size:15px}
+.borrow-list{display:grid;gap:8px;margin-top:10px}
+.borrow-row{display:flex;align-items:center;gap:10px;font-size:14px;background:var(--surface-muted);border-radius:var(--r-sm);padding:8px 10px}
+.borrow-row span{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.start-bar{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-top:24px;flex-wrap:wrap}
+.notice{background:var(--surface-tint);border-radius:var(--r-md);padding:14px 16px;font-size:14px;color:var(--text-muted)}
+.notice.warn{background:#FFF6DF;color:#5c4300}
+
+/* session */
+.session{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}
+.sbar{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+.sbar h2{font-size:20px}
+.sbar .sp{flex:1}
+.reader{background:var(--paper);border-radius:var(--r-lg);box-shadow:var(--e2);padding:32px clamp(20px,5vw,56px) 24px;min-height:60vh;display:flex;flex-direction:column}
+.reader header{display:flex;justify-content:space-between;align-items:start;gap:12px;border-bottom:1px solid var(--border);padding-bottom:14px;margin-bottom:20px}
+.reader header div{min-width:0}
+.reader h3{font-size:20px}
+.page{flex:1;font-family:Georgia,"Iowan Old Style","Palatino Linotype",serif;font-size:var(--fs,19px);line-height:1.7;color:#1d241f;max-width:66ch;margin:0 auto;width:100%;overflow-wrap:break-word}
+.page p{margin-bottom:1em}
+.page.poem p{white-space:pre-line;margin-bottom:1.4em}
+.page h4{font-family:var(--font);font-size:15px;color:var(--text-subtle);margin-bottom:12px}
+.pager{display:flex;align-items:center;gap:12px;justify-content:space-between;border-top:1px solid var(--border);padding-top:14px;margin-top:12px}
+.pager .bar{flex:1}
+.tools{display:flex;gap:6px}
+.icon-btn{min-width:36px;height:36px;border-radius:var(--r-sm);border:0;background:var(--surface);box-shadow:inset 0 0 0 1px var(--border);font-weight:600;padding:0 8px}
+.side{display:grid;gap:16px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 16px)}
+.vizcard{text-align:center}
+.vizcard .big{font-size:40px;font-weight:600;letter-spacing:-.02em;line-height:1}
+.statgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:var(--surface-muted);border-radius:var(--r-md);padding:12px}
+.stat b{display:block;font-size:20px;font-weight:600}
+.stat span{font-size:12px;color:var(--text-subtle)}
+.paused-veil{position:absolute;inset:0;background:rgba(246,254,246,.85);backdrop-filter:blur(6px);display:grid;place-items:center;border-radius:var(--r-lg);z-index:3;text-align:center;padding:24px}
+.tray{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;font-size:30px;margin:12px 0;min-height:44px}
+.tray span{transition:opacity .45s,transform .45s}
+.tray span.gone{opacity:.12;transform:scale(.7);filter:grayscale(1)}
+
+/* modal */
+.scrim{position:fixed;inset:0;background:rgba(15,26,18,.4);display:grid;place-items:center;padding:16px;z-index:50;animation:fade .18s}
+@keyframes fade{from{opacity:0}}
+.modal{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e3);width:min(560px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:28px;animation:rise .28s var(--ease)}
+.modal.wide{width:min(960px,100%)}
+.modal h2{font-size:26px;letter-spacing:-.01em;line-height:1.2}
+.modal .em{font-size:52px;line-height:1;margin-bottom:12px}
+.modal .acts{display:flex;gap:10px;justify-content:flex-end;margin-top:24px;flex-wrap:wrap}
+.countdown{font-size:56px;font-weight:600;letter-spacing:-.02em;margin:16px 0 4px}
+
+/* picker */
+.cats{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.cat{border:0;border-radius:99px;padding:8px 14px;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);font-size:14px;font-weight:500}
+.cat[aria-pressed="true"]{background:var(--ink);color:var(--on-ink);box-shadow:none}
+.search{display:flex;gap:8px}
+.search input{flex:1;min-width:0;height:44px;border-radius:var(--r-sm);border:1px solid var(--border);padding:0 14px;background:var(--surface)}
+.results{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;margin-top:16px}
+.book{border:0;background:none;padding:0;text-align:left;display:grid;gap:8px;align-content:start}
+.book .cv{aspect-ratio:2/3;width:100%;max-width:100%;border-radius:8px;background:var(--surface-tint);box-shadow:var(--e1);overflow:hidden;display:grid;place-items:center;font-size:38px;transition:transform .18s}
+.book:hover .cv{transform:translateY(-3px)}
+.book .cv img{width:100%;height:100%;object-fit:cover}
+.book b{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.book span{font-size:12px;color:var(--text-subtle)}
+.skeleton{aspect-ratio:2/3;border-radius:8px;background:linear-gradient(90deg,var(--surface-tint),var(--surface-muted),var(--surface-tint));background-size:200% 100%;animation:sh 1.2s infinite}
+@keyframes sh{to{background-position:-200% 0}}
+
+/* passport */
+.pp-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:24px;align-items:start}
+.badges{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.bdg{background:var(--surface-muted);border-radius:var(--r-md);padding:14px;text-align:center;display:grid;gap:4px;font-size:12px;color:var(--text-subtle)}
+.bdg .e{font-size:32px}
+.bdg b{font-size:14px;color:var(--text)}
+.bdg.locked .e{filter:grayscale(1);opacity:.35}
+.bdg.got{background:var(--surface);box-shadow:inset 0 0 0 2px var(--primary)}
+.stamps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.stamp{aspect-ratio:1;max-width:100%;border-radius:50%;border:2px dashed var(--border);display:grid;place-items:center;text-align:center;font-size:12px;color:var(--text-subtle);padding:8px}
+.stamp.got{border:2px solid var(--accent);color:var(--text);transform:rotate(-6deg);background:var(--surface)}
+.stamp .e{font-size:28px;display:block}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+.gallery img{width:100%;border-radius:8px;box-shadow:var(--e1)}
+.field{display:grid;gap:6px;font-size:14px;font-weight:500}
+.field input{height:44px;border-radius:var(--r-sm);border:1px solid var(--border);padding:0 12px}
+.toggle{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:14px}
+.toggle input{width:20px;height:20px;accent-color:var(--success)}
+
+/* toasts */
+.toasts{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));display:grid;gap:8px;z-index:60;width:min(340px,calc(100vw - 32px))}
+.toast{background:var(--ink);color:var(--on-ink);border-radius:var(--r-md);padding:12px 16px;box-shadow:var(--e3);display:flex;gap:10px;align-items:center;font-size:14px;animation:rise .28s var(--ease)}
+.toast b{color:var(--primary)}
+
+@media (max-width:1023px){
+  .hero,.setup-grid,.row2,.pp-grid{grid-template-columns:1fr}
+  .venues{grid-template-columns:1fr 1fr}
+  .session{grid-template-columns:1fr}
+  .side{position:static;grid-template-columns:1fr 1fr}
+}
+@media (max-width:639px){
+  .venues,.side{grid-template-columns:1fr}
+  .navlinks{margin-left:0;order:3;width:100%}
+  .chips{margin-left:auto}
+  .tiers{grid-template-columns:1fr}
+  .reader{padding:24px 18px 18px}
+  .modal{padding:22px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="glow" style="width:520px;height:520px;left:-160px;top:-120px" aria-hidden="true"></div>
+<div class="glow" style="width:420px;height:420px;right:-120px;top:420px" aria-hidden="true"></div>
+
+<div class="wrap">
+  <nav class="top" aria-label="Main">
+    <button class="logo" data-go="home" aria-label="BOOKOUT home">
+      <span class="dots" aria-hidden="true"><i></i><i></i></span>
+      <span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span>
+    </button>
+    <div class="navlinks">
+      <button data-go="home" id="nav-home">Venues</button>
+      <button data-go="passport" id="nav-passport">Passport</button>
+    </div>
+    <div class="chips" id="chips"></div>
+  </nav>
+  <main id="app"></main>
+</div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="modal-root"></div>
+
+<script>
+(() => {
+'use strict';
+/* ---------- helpers ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad = n => String(n).padStart(2, '0');
+const fmt = sec => { sec = Math.max(0, Math.round(sec)); const h = Math.floor(sec/3600), m = Math.floor(sec%3600/60), s = sec%60; return h ? `${h}:${pad(m)}:${pad(s)}` : `${m}:${pad(s)}`; };
+const dayKey = (d = new Date()) => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const hourLabel = h => { const hh = ((h + 11) % 12) + 1; return `${hh}:00 ${h < 12 || h === 24 ? 'AM' : 'PM'}`; };
+const pick = a => a[Math.floor(Math.random() * a.length)];
+function store(k, v) { try { if (v === undefined) return JSON.parse(localStorage.getItem(k)); localStorage.setItem(k, JSON.stringify(v)); } catch (e) { return null; } }
+
+/* ---------- data ---------- */
+const VENUES = {
+  cafe: {
+    id: 'cafe', name: 'Kopi & Pages', kind: 'Coffee shop', emoji: '☕', open: 7, close: 23,
+    ritual: 'Order a drink. Your cup is the timer: when it is empty, the session is done.',
+    step: 'Order at the counter', timer: 'cup',
+    menu: [
+      { id: 'espresso', name: 'Espresso', emoji: '☕', min: 10, note: 'Short and strong' },
+      { id: 'latte', name: 'Iced latte', emoji: '🧋', min: 20, note: 'The classic' },
+      { id: 'matcha', name: 'Matcha latte', emoji: '🍵', min: 25, note: 'Calm focus' },
+      { id: 'teh', name: 'Teh tarik', emoji: '🥛', min: 30, note: 'Pulled, frothy' },
+      { id: 'frappe', name: 'Mocha frappé', emoji: '🥤', min: 40, note: 'Long sipper' },
+      { id: 'pot', name: 'Pot of tea', emoji: '🫖', min: 60, note: 'Deep reading' }
+    ],
+    breaks: [
+      { id: 'water', emoji: '💧', title: 'Sip some mineral water', body: 'That coffee is strong. A few sips of water keep you sharp.', min: 1, pts: 3 },
+      { id: 'washroom', emoji: '🚻', title: 'Washroom break?', body: 'All that coffee adds up. Stretch your legs and come back fresh.', min: 3, pts: 3 },
+      { id: 'photo', emoji: '📸', title: 'The light is perfect right now', body: 'Snap an aesthetic shot of your book and drink for your gallery.', min: 1, pts: 5 }
+    ]
+  },
+  library: {
+    id: 'library', name: 'The Commons Library', kind: 'Public library', emoji: '🏛️', open: 8, close: 22,
+    ritual: 'Check in for a set number of hours. Borrow books, earn member points, and take canteen and stretch breaks.',
+    step: 'Check in at the front desk', timer: 'clock',
+    lengths: [30, 60, 90, 120, 180],
+    breaks: [
+      { id: 'exercise', emoji: '🤸', title: 'Stretch break', body: 'You have been sitting a while. Roll your shoulders, stand up, touch your toes.', min: 3, pts: 4 },
+      { id: 'water', emoji: '💧', title: 'Water fountain', body: 'Walk to the fountain and refill your bottle.', min: 1, pts: 3 },
+      { id: 'canteen', emoji: '🍜', title: 'The canteen is serving nasi lemak', body: 'Take a proper meal break. Your book will keep your page.', min: 15, pts: 6 }
+    ]
+  },
+  diner: {
+    id: 'diner', name: 'Bun & Chapter', kind: 'Burger joint', emoji: '🍔', open: 0, close: 24,
+    ritual: 'Order a meal. Each bite is a slice of reading time. Open 24 hours for late-night readers.',
+    step: 'Order your meal', timer: 'tray',
+    menu: [
+      { id: 'fries', name: 'Fries & cola', emoji: '🍟', min: 15, note: '6 bites', bites: ['🍟','🍟','🍟','🍟','🥤','🥤'] },
+      { id: 'nuggets', name: 'Nugget box', emoji: '🍗', min: 20, note: '8 bites', bites: ['🍗','🍗','🍗','🍗','🍗','🍗','🥤','🥤'] },
+      { id: 'combo', name: 'Burger combo', emoji: '🍔', min: 30, note: '9 bites', bites: ['🍔','🍔','🍔','🍔','🍟','🍟','🍟','🥤','🥤'] },
+      { id: 'feast', name: 'Big feast', emoji: '🍱', min: 45, note: '12 bites', bites: ['🍔','🍔','🍔','🍔','🍗','🍗','🍟','🍟','🍟','🥤','🥤','🍦'] }
+    ],
+    breaks: [
+      { id: 'refill', emoji: '🥤', title: 'Free refill', body: 'Your cup is empty. Grab a refill at the drinks station.', min: 1, pts: 2 },
+      { id: 'wash', emoji: '🧼', title: 'Greasy fingers', body: 'Wash your hands before you touch the pages again.', min: 2, pts: 3 },
+      { id: 'photo', emoji: '📸', title: 'Tray-and-book shot', body: 'Your tray and book look great together. Take a photo.', min: 1, pts: 5 }
+    ]
+  }
+};
+const CATS = [
+  { id: 'adventure', label: 'Adventure', topic: 'adventure', em: '🧭' },
+  { id: 'mystery', label: 'Mystery', topic: 'detective', em: '🕵️' },
+  { id: 'romance', label: 'Romance', topic: 'love stories', em: '💌' },
+  { id: 'scifi', label: 'Sci-fi', topic: 'science fiction', em: '🚀' },
+  { id: 'fantasy', label: 'Fantasy', topic: 'fantasy', em: '🐉' },
+  { id: 'horror', label: 'Horror', topic: 'horror', em: '🕯️' },
+  { id: 'poetry', label: 'Poetry', topic: 'poetry', em: '🪶' },
+  { id: 'philosophy', label: 'Philosophy', topic: 'philosophy', em: '🦉' },
+  { id: 'history', label: 'History', topic: 'history', em: '🏺' },
+  { id: 'children', label: 'Kids & YA', topic: 'children', em: '🧸' },
+  { id: 'humor', label: 'Humor', topic: 'humor', em: '😂' },
+  { id: 'growth', label: 'Self-growth', topic: 'conduct of life', em: '🌱' }
+];
+const TIERS = {
+  none: { name: 'Visitor', cost: 0, limit: 1, mult: 1, perk: 'Borrow 1 book' },
+  silver: { name: 'Silver', cost: 150, limit: 3, mult: 1.25, perk: 'Borrow 3 · 1.25× library points' },
+  gold: { name: 'Gold', cost: 400, limit: 6, mult: 1.5, perk: 'Borrow 6 · 1.5× points · 24h access' }
+};
+const LEVELS = ['Curious Browser', 'Page Turner', 'Café Regular', 'Bookworm', 'Chapter Chaser', 'Library Legend', 'Literary Royalty'];
+const BADGES = [
+  { id: 'first', e: '🌱', name: 'First Chapter', d: 'Finish your first session', test: s => s.sessions >= 1 },
+  { id: 'sip', e: '☕', name: 'Last Sip', d: 'Finish a café drink', test: s => (s.finished.cafe || 0) >= 1 },
+  { id: 'combo', e: '🍔', name: 'Clean Tray', d: 'Finish a full meal at the diner', test: s => (s.finished.diner || 0) >= 1 },
+  { id: 'card', e: '🪪', name: 'Card Holder', d: 'Get a library membership', test: s => s.member !== 'none' },
+  { id: 'tourist', e: '🗺️', name: 'Venue Hopper', d: 'Read at all 3 venues', test: s => Object.keys(VENUES).every(v => s.visits[v]) },
+  { id: 'explorer', e: '🧭', name: 'Genre Explorer', d: 'Read 3 different categories', test: s => s.genres.length >= 3 },
+  { id: 'hour', e: '⏳', name: 'Bookworm', d: 'Read 60 minutes in total', test: s => s.minutes >= 60 },
+  { id: 'marathon', e: '🏃', name: 'Marathoner', d: 'Read 300 minutes in total', test: s => s.minutes >= 300 },
+  { id: 'streak3', e: '🔥', name: 'On Fire', d: '3-day reading streak', test: s => s.best >= 3 },
+  { id: 'streak7', e: '🌟', name: 'Week Warrior', d: '7-day reading streak', test: s => s.best >= 7 },
+  { id: 'hydro', e: '💧', name: 'Hydrated', d: 'Take 5 water breaks', test: s => (s.brk.water || 0) >= 5 },
+  { id: 'shutter', e: '📸', name: 'Aesthetic', d: 'Take 3 venue photos', test: s => (s.brk.photo || 0) >= 3 },
+  { id: 'fit', e: '🤸', name: 'Fit Reader', d: 'Take 3 stretch breaks', test: s => (s.brk.exercise || 0) >= 3 },
+  { id: 'pages', e: '📖', name: 'Page Turner', d: 'Turn 50 pages', test: s => s.pages >= 50 },
+  { id: 'owl', e: '🦉', name: 'Night Owl', d: 'Read after 10 PM', test: s => s.flags.owl },
+  { id: 'early', e: '🐦', name: 'Early Bird', d: 'Read before 8 AM', test: s => s.flags.early }
+];
+const POEMS = {
+  key: 'local:poems', src: 'local', id: 'poems', title: 'Pocket Poems', author: 'Frost, Shakespeare, Shelley, Henley, Dickinson', cat: 'poetry', em: '🪶',
+  pages: [
+    ['The Road Not Taken · Robert Frost (1916)', `Two roads diverged in a yellow wood,\nAnd sorry I could not travel both\nAnd be one traveler, long I stood\nAnd looked down one as far as I could\nTo where it bent in the undergrowth;`, `Then took the other, as just as fair,\nAnd having perhaps the better claim,\nBecause it was grassy and wanted wear;\nThough as for that the passing there\nHad worn them really about the same,`, `And both that morning equally lay\nIn leaves no step had trodden black.\nOh, I kept the first for another day!\nYet knowing how way leads on to way,\nI doubted if I should ever come back.`, `I shall be telling this with a sigh\nSomewhere ages and ages hence:\nTwo roads diverged in a wood, and I—\nI took the one less traveled by,\nAnd that has made all the difference.`],
+    ['Sonnet 18 · William Shakespeare (1609)', `Shall I compare thee to a summer's day?\nThou art more lovely and more temperate:\nRough winds do shake the darling buds of May,\nAnd summer's lease hath all too short a date;`, `Sometime too hot the eye of heaven shines,\nAnd often is his gold complexion dimm'd;\nAnd every fair from fair sometime declines,\nBy chance or nature's changing course untrimm'd;`, `But thy eternal summer shall not fade,\nNor lose possession of that fair thou ow'st;\nNor shall Death brag thou wander'st in his shade,\nWhen in eternal lines to time thou grow'st:`, `So long as men can breathe or eyes can see,\nSo long lives this, and this gives life to thee.`],
+    ['Ozymandias · Percy Bysshe Shelley (1818)', `I met a traveller from an antique land,\nWho said—"Two vast and trunkless legs of stone\nStand in the desert. . . . Near them, on the sand,\nHalf sunk a shattered visage lies, whose frown,\nAnd wrinkled lip, and sneer of cold command,\nTell that its sculptor well those passions read\nWhich yet survive, stamped on these lifeless things,\nThe hand that mocked them, and the heart that fed;`, `And on the pedestal, these words appear:\nMy name is Ozymandias, King of Kings;\nLook on my Works, ye Mighty, and despair!\nNothing beside remains. Round the decay\nOf that colossal Wreck, boundless and bare\nThe lone and level sands stretch far away."`],
+    ['Invictus · William Ernest Henley (1888)', `Out of the night that covers me,\nBlack as the pit from pole to pole,\nI thank whatever gods may be\nFor my unconquerable soul.`, `In the fell clutch of circumstance\nI have not winced nor cried aloud.\nUnder the bludgeonings of chance\nMy head is bloody, but unbowed.`, `Beyond this place of wrath and tears\nLooms but the Horror of the shade,\nAnd yet the menace of the years\nFinds and shall find me unafraid.`, `It matters not how strait the gate,\nHow charged with punishments the scroll,\nI am the master of my fate,\nI am the captain of my soul.`],
+    ['"Hope" is the thing with feathers · Emily Dickinson', `"Hope" is the thing with feathers -\nThat perches in the soul -\nAnd sings the tune without the words -\nAnd never stops - at all -`, `And sweetest - in the Gale - is heard -\nAnd sore must be the storm -\nThat could abash the little Bird\nThat kept so many warm -`, `I've heard it in the chillest land -\nAnd on the strangest Sea -\nYet - never - in Extremity,\nIt asked a crumb - of me.`]
+  ]
+};
+
+/* ---------- state ---------- */
+const KEY = 'bookout:v1';
+const fresh = () => ({ name: 'Reader', since: dayKey(), points: 0, xp: 0, streak: 0, best: 0, lastDay: null, minutes: 0, today: dayKey(), todayMin: 0,
+  sessions: 0, pages: 0, visits: {}, finished: {}, genres: [], brk: {}, flags: {}, badges: {}, member: 'none', borrowed: [], progress: {}, recent: [],
+  quests: {}, settings: { speed: 1, hours: true, sound: true } });
+let S = Object.assign(fresh(), store(KEY) || {});
+S.settings = Object.assign(fresh().settings, S.settings);
+const save = () => store(KEY, S);
+let photos = store('bookout:photos') || [];
+
+function rollDay() {
+  const t = dayKey();
+  if (S.today !== t) { S.today = t; S.todayMin = 0; S.quests = {}; }
+}
+rollDay();
+
+function levelInfo(xp) { let lvl = 1, need = 100, acc = 0; while (xp >= acc + need) { acc += need; lvl++; need = Math.round(need * 1.35); } return { lvl, into: xp - acc, need, title: LEVELS[Math.min(lvl - 1, LEVELS.length - 1)] }; }
+
+/* ---------- feedback ---------- */
+let actx;
+function chime(kind = 'soft') {
+  if (!S.settings.sound) return;
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    const notes = kind === 'win' ? [523, 659, 784, 1047] : [660, 880];
+    notes.forEach((f, i) => { const o = actx.createOscillator(), g = actx.createGain(); o.type = 'sine'; o.frequency.value = f; o.connect(g); g.connect(actx.destination); const t = actx.currentTime + i * .12; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(.12, t + .02); g.gain.exponentialRampToValueAtTime(.001, t + .4); o.start(t); o.stop(t + .45); });
+  } catch (e) {}
+}
+function toast(html, ms = 3200) {
+  const el = document.createElement('div'); el.className = 'toast'; el.innerHTML = html;
+  $('#toasts').append(el); setTimeout(() => el.remove(), ms);
+}
+function earn(pts, reason, quiet) {
+  pts = Math.round(pts); if (!pts) return 0;
+  S.points += pts; S.xp += pts;
+  const before = levelInfo(S.xp - pts).lvl, after = levelInfo(S.xp).lvl;
+  if (sess) sess.earned += pts;
+  if (!quiet) toast(`<b>+${pts}</b> ${esc(reason)}`);
+  if (after > before) { chime('win'); toast(`🎉 Level ${after}: <b>${esc(levelInfo(S.xp).title)}</b>`, 4500); }
+  save(); renderChips(); return pts;
+}
+function checkBadges() {
+  const got = [];
+  BADGES.forEach(b => { if (!S.badges[b.id] && b.test(S)) { S.badges[b.id] = dayKey(); got.push(b); } });
+  got.forEach(b => { toast(`${b.e} Badge unlocked: <b>${esc(b.name)}</b>`, 5000); earn(20, 'badge bonus', true); });
+  if (got.length) { chime('win'); save(); }
+  return got;
+}
+function minuteRead(venueId) {
+  rollDay();
+  const t = dayKey();
+  if (S.lastDay !== t) {
+    const y = new Date(); y.setDate(y.getDate() - 1);
+    S.streak = S.lastDay === dayKey(y) ? S.streak + 1 : 1;
+    S.best = Math.max(S.best, S.streak); S.lastDay = t;
+    earn(Math.min(5 * S.streak, 50), `day ${S.streak} streak bonus`);
+  }
+  S.minutes++; S.todayMin++;
+  const h = new Date().getHours(); if (h >= 22) S.flags.owl = true; if (h < 8) S.flags.early = true;
+  const mult = venueId === 'library' ? TIERS[S.member].mult : 1;
+  earn(1 * mult, 'minute read', true);
+  questCheck(); checkBadges(); save();
+}
+function quests() {
+  return [
+    { id: 'm20', label: 'Read 20 minutes today', pts: 20, prog: Math.min(S.todayMin / 20, 1), done: S.todayMin >= 20 },
+    { id: 'brk', label: 'Take a break when a venue asks', pts: 10, prog: S.quests.brk ? 1 : 0, done: !!S.quests.brk },
+    { id: 'fin', label: 'Finish one order or check-in', pts: 15, prog: S.quests.fin ? 1 : 0, done: !!S.quests.fin }
+  ];
+}
+function questCheck() {
+  quests().forEach(q => { if (q.done && !S.quests['paid_' + q.id]) { S.quests['paid_' + q.id] = 1; earn(q.pts, `daily quest: ${q.label.toLowerCase()}`); } });
+}
+
+/* ---------- opening hours ---------- */
+function venueStatus(v) {
+  const now = new Date(), h = now.getHours() + now.getMinutes() / 60;
+  if (!S.settings.hours || (v.id === 'library' && S.member === 'gold')) return { open: true, label: v.close - v.open >= 24 ? 'Open 24 hours' : 'Open now', minsLeft: Infinity };
+  if (v.close - v.open >= 24) return { open: true, label: 'Open 24 hours', minsLeft: Infinity };
+  const open = h >= v.open && h < v.close;
+  return open ? { open, label: `Open · closes ${hourLabel(v.close)}`, minsLeft: Math.floor((v.close - h) * 60) }
+              : { open, label: `Closed · opens ${hourLabel(v.open)}`, minsLeft: 0 };
+}
+
+/* ---------- books ---------- */
+const GUTENDEX = 'https://gutendex.com/books/';
+const PROXIES = [u => u, u => 'https://api.allorigins.win/raw?url=' + encodeURIComponent(u), u => 'https://corsproxy.io/?url=' + encodeURIComponent(u)];
+async function fetchT(url, ms = 15000) {
+  const c = new AbortController(); const t = setTimeout(() => c.abort(), ms);
+  try { return await fetch(url, { signal: c.signal }); } finally { clearTimeout(t); }
+}
+async function viaProxies(url, as = 'text', ms) {
+  let last;
+  for (const p of PROXIES) {
+    try { const r = await fetchT(p(url), ms); if (r.ok) { const body = as === 'json' ? await r.json() : await r.text(); if (as === 'json' || body.length > 500) return body; } last = new Error('HTTP ' + r.status); }
+    catch (e) { last = e; }
+  }
+  throw last || new Error('failed');
+}
+function toBook(b, cat) {
+  const f = b.formats || {};
+  const txtKey = Object.keys(f).find(k => k.startsWith('text/plain') && !f[k].endsWith('.zip'));
+  return { key: 'g:' + b.id, src: 'gutenberg', id: b.id, title: b.title, author: (b.authors || []).map(a => a.name.split(', ').reverse().join(' ')).join(', ') || 'Unknown',
+    cover: f['image/jpeg'] || '', txt: txtKey ? f[txtKey].replace(/^http:/, 'https:') : '', html: `https://www.gutenberg.org/ebooks/${b.id}`, cat, downloads: b.download_count };
+}
+async function searchBooks({ cat, q }) {
+  const p = new URLSearchParams({ languages: 'en', mime_type: 'text/plain' });
+  if (q) p.set('search', q); else p.set('topic', CATS.find(c => c.id === cat).topic);
+  const data = await viaProxies(GUTENDEX + '?' + p, 'json', 20000);
+  return (data.results || []).map(b => toBook(b, cat || 'search')).filter(b => b.txt);
+}
+function cleanText(t) {
+  t = t.replace(/\r/g, '');
+  const s = t.search(/\*\*\*\s*START OF (THE|THIS) PROJECT GUTENBERG[^\n]*/i);
+  if (s >= 0) t = t.slice(t.indexOf('\n', s) + 1);
+  const e = t.search(/\*\*\*\s*END OF (THE|THIS) PROJECT GUTENBERG/i);
+  if (e >= 0) t = t.slice(0, e);
+  return t.trim();
+}
+function paginate(t) {
+  const paras = t.split(/\n\s*\n/).map(p => p.replace(/\s*\n\s*/g, ' ').trim()).filter(Boolean);
+  const pages = []; let cur = [], len = 0;
+  for (const p of paras) { if (len + p.length > 1700 && cur.length) { pages.push(cur); cur = []; len = 0; } cur.push(p); len += p.length; }
+  if (cur.length) pages.push(cur);
+  return pages;
+}
+async function loadPages(book) {
+  if (book.src === 'local') return POEMS.pages;
+  const ck = 'bookout:text:' + book.key;
+  let text = null;
+  try { text = localStorage.getItem(ck); } catch (e) {}
+  if (!text) {
+    text = cleanText(await viaProxies(book.txt, 'text', 30000));
+    try { Object.keys(localStorage).filter(k => k.startsWith('bookout:text:')).forEach(k => localStorage.removeItem(k)); localStorage.setItem(ck, text); } catch (e) {}
+  }
+  return paginate(text);
+}
+function rememberBook(b) {
+  S.recent = [b, ...S.recent.filter(x => x.key !== b.key)].slice(0, 8);
+  if (b.cat && b.cat !== 'search' && !S.genres.includes(b.cat)) S.genres.push(b.cat);
+  save();
+}
+const coverHTML = (b, cls = 'cover') => b.cover ? `<img class="${cls}" src="${esc(b.cover)}" alt="" loading="lazy">` : `<span class="${cls}" aria-hidden="true">${b.em || '📘'}</span>`;
+
+/* ---------- router ---------- */
+let view = 'home', setup = null, sess = null;
+function go(v, arg) {
+  if (sess && v !== 'session') { confirmLeave(() => { endSession(false); go(v, arg); }); return; }
+  view = v;
+  if (v === 'setup') setup = { venue: arg, item: null, length: null, book: null };
+  render(); window.scrollTo({ top: 0 });
+}
+document.addEventListener('click', e => { const g = e.target.closest('[data-go]'); if (g) go(g.dataset.go); });
+function render() {
+  rollDay(); renderChips();
+  $('#nav-home').setAttribute('aria-current', view === 'home' || view === 'setup' ? 'page' : 'false');
+  $('#nav-passport').setAttribute('aria-current', view === 'passport' ? 'page' : 'false');
+  const app = $('#app');
+  app.innerHTML = '';
+  const el = document.createElement('div'); el.className = 'view';
+  app.append(el);
+  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport })[view](el);
+}
+function renderChips() {
+  const L = levelInfo(S.xp);
+  $('#chips').innerHTML = `<span class="chip" title="Reading streak">🔥 <span class="tab">${S.streak}</span> <small>day streak</small></span>
+    <span class="chip" title="Points to spend">🪙 <span class="tab">${S.points}</span> <small>pts</small></span>
+    <span class="chip" title="${esc(L.title)}">⭐ <small>Lv</small> ${L.lvl}</span>`;
+}
+
+/* ---------- home ---------- */
+function renderHome(el) {
+  const L = levelInfo(S.xp), last = S.recent[0], prog = last && S.progress[last.key];
+  const q = quests();
+  el.innerHTML = `
+  <section class="hero">
+    <div>
+      <div class="stickers" aria-label="Today">
+        <div class="sticker"><b class="tab">${S.todayMin}</b><span>min today</span></div>
+        <div class="sticker"><b class="tab">${S.streak}</b><span>day streak</span></div>
+        <div class="sticker"><b class="tab">${Object.keys(S.badges).length}/${BADGES.length}</b><span>badges</span></div>
+      </div>
+      <h1>Where are you <em>reading<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C40 3, 80 14, 120 7 S180 4, 197 9" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round"/></svg></em> today?</h1>
+      <p class="lede">Pick a spot, order your drink or check in, then read real free books while the place runs its day around you.</p>
+    </div>
+    <div class="today">
+      <div class="member">
+        <div><div class="tier">${esc(TIERS[S.member].name)} member · since ${esc(S.since)}</div></div>
+        <div class="nm">${esc(S.name)}</div>
+        <div>
+          <div class="row"><span class="lv">Level ${L.lvl} · ${esc(L.title)}</span><span class="tab">${L.into}/${L.need} XP</span></div>
+          <div class="bar" role="progressbar" aria-valuenow="${L.into}" aria-valuemax="${L.need}" aria-label="Level progress"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="section-head"><h2>Choose your venue</h2><span class="subtle">Hours follow your local time</span></div>
+    <div class="venues">${Object.values(VENUES).map(v => { const st = venueStatus(v); return `
+      <button class="venue" data-venue="${v.id}" aria-label="${esc(v.name)}, ${esc(st.label)}">
+        <div class="art ${v.id}"><span class="sign pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><span aria-hidden="true">${v.emoji}</span></div>
+        <div class="body"><span class="kind">${esc(v.kind)}</span><h3>${esc(v.name)}</h3><p class="rit">${esc(v.ritual)}</p>
+          <div class="foot"><span>${S.visits[v.id] || 0} visit${S.visits[v.id] === 1 ? "" : "s"}</span><span class="link">${st.open ? 'Go in →' : 'Peek inside →'}</span></div></div>
+      </button>`; }).join('')}</div>
+  </section>
+  <section class="row2">
+    <div class="card">
+      <div class="section-head" style="margin-bottom:12px"><h3 style="font-size:22px">Continue reading</h3></div>
+      ${last ? `<div class="cont">${coverHTML(last)}<div style="min-width:0;flex:1"><b style="font-weight:600">${esc(last.title)}</b><div class="subtle">${esc(last.author)}</div>
+        ${prog ? `<div class="bar" style="margin-top:10px"><i style="width:${((prog.page + 1) / prog.total * 100).toFixed(1)}%"></i></div><div class="subtle" style="margin-top:6px">Page ${prog.page + 1} of ${prog.total}</div>` : ''}</div></div>
+        <p class="subtle" style="margin-top:14px">Pick a venue above to keep going. Your page is saved.</p>`
+      : `<p class="muted">No books yet. Choose a venue and browse the shelves; everything comes from Project Gutenberg's free library.</p>`}
+    </div>
+    <div class="card">
+      <div class="section-head" style="margin-bottom:0"><h3 style="font-size:22px">Daily quests</h3><span class="subtle">Resets at midnight</span></div>
+      <div class="quests">${q.map(x => `<div class="quest ${x.done ? 'done' : ''}"><span class="ck" aria-hidden="true">${x.done ? '✓' : ''}</span><div><b>${esc(x.label)}</b>${x.id === 'm20' && !x.done ? `<div class="bar" style="margin-top:6px"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
+    </div>
+  </section>`;
+  $$('[data-venue]', el).forEach(b => b.onclick = () => go('setup', b.dataset.venue));
+}
+
+/* ---------- setup ---------- */
+function renderSetup(el) {
+  const v = VENUES[setup.venue], st = venueStatus(v), tier = TIERS[S.member];
+  const isLib = v.id === 'library';
+  const ready = st.open && (isLib ? setup.length : setup.item) && setup.book;
+  const lengths = isLib ? v.lengths.map(m => ({ m, ok: m <= st.minsLeft })) : [];
+  el.innerHTML = `
+  <button class="back" data-go="home">← All venues</button>
+  <div class="setup-head">
+    <div class="badge-art art ${v.id}" aria-hidden="true">${v.emoji}</div>
+    <div><span class="pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><h1 style="margin-top:8px">${esc(v.name)}</h1><p class="muted" style="margin-top:4px;max-width:60ch">${esc(v.ritual)}</p></div>
+  </div>
+  ${!st.open ? `<div class="notice warn" style="margin-bottom:20px"><b>${esc(v.name)} is closed right now.</b> It opens at ${hourLabel(v.open)}. ${isLib ? 'Gold members get 24-hour access. ' : ''}Bun & Chapter is open 24 hours, or you can turn off realistic hours in your Passport settings.</div>` : ''}
+  <div class="setup-grid">
+    <div class="card">
+      <div class="step-title"><span class="n">1</span>${esc(v.step)}</div>
+      ${isLib ? `
+        <p class="muted" style="margin-bottom:14px">How long are you staying? ${st.minsLeft < Infinity && st.open ? `The library closes in ${Math.floor(st.minsLeft / 60)}h ${st.minsLeft % 60}m.` : ''}</p>
+        <div class="menu">${lengths.map(({ m, ok }) => `<button class="item" data-len="${m}" aria-pressed="${setup.length === m}" ${ok ? '' : 'disabled style="opacity:.4"'}><span class="em">${m < 60 ? '⏱️' : '🕰️'}</span><b>${m < 60 ? m + ' min' : m / 60 + (m === 60 ? ' hour' : ' hours')}</b><span class="t">${ok ? `Breaks every 25 min` : 'Past closing time'}</span></button>`).join('')}</div>
+        <div class="desk">
+          <div class="step-title" style="font-size:16px;margin-bottom:4px">Membership desk</div>
+          <p class="subtle">You have <b class="tab">${S.points}</b> points. Membership is permanent.</p>
+          <div class="tiers">${Object.entries(TIERS).map(([k, t]) => `<div class="tierc ${S.member === k ? 'on' : ''}"><b>${t.name}</b><span>${esc(t.perk)}</span>
+            ${S.member === k ? '<span class="pill">Current</span>' : (t.cost > TIERS[S.member].cost ? `<button class="btn btn-ghost btn-sm" data-tier="${k}" ${S.points < t.cost ? 'disabled' : ''}>${t.cost} pts</button>` : '')}</div>`).join('')}</div>
+          <div class="step-title" style="font-size:16px;margin:20px 0 0">Borrowed books <span class="subtle" style="font-weight:400">(${S.borrowed.length}/${tier.limit})</span></div>
+          <div class="borrow-list">${S.borrowed.length ? S.borrowed.map(b => `<div class="borrow-row"><span>${esc(b.title)}</span><span class="subtle" style="flex:none">due ${esc(b.due)}</span><button class="btn btn-ghost btn-sm" data-return="${esc(b.key)}">Return</button></div>`).join('') : '<p class="subtle">Nothing borrowed yet. Returning a book on time earns 15 points.</p>'}</div>
+        </div>`
+      : `<div class="menu">${v.menu.map(it => `<button class="item" data-item="${it.id}" aria-pressed="${setup.item === it.id}"><span class="em">${it.emoji}</span><b>${esc(it.name)}</b><span class="t">${it.min} min · ${esc(it.note)}</span></button>`).join('')}</div>`}
+    </div>
+    <div class="card">
+      <div class="step-title"><span class="n">2</span>${isLib ? 'Borrow a book' : 'Pick your book'}</div>
+      ${setup.book ? `<div class="picked">${coverHTML(setup.book)}<div><b>${esc(setup.book.title)}</b><span class="subtle">${esc(setup.book.author)}</span>${S.progress[setup.book.key] ? `<div class="subtle">Saved at page ${S.progress[setup.book.key].page + 1}</div>` : ''}</div></div>` : '<p class="muted" style="margin-bottom:14px">Browse by category. Every book is free and public domain.</p>'}
+      <button class="btn ${setup.book ? 'btn-ghost' : 'btn-ink'}" id="browse" style="width:100%">${setup.book ? 'Change book' : 'Browse the shelves'}</button>
+      ${S.recent.length ? `<p class="eyebrow" style="margin:18px 0 8px">${isLib ? 'Your borrowed and recent books' : 'Your bag'}</p><div class="borrow-list">${(isLib ? dedupe([...S.borrowed, ...S.recent]) : S.recent).slice(0, 4).map(b => `<button class="borrow-row" style="border:0;text-align:left" data-recent="${esc(b.key)}"><span>${esc(b.title)}</span><span class="link">Use</span></button>`).join('')}</div>` : ''}
+    </div>
+  </div>
+  <div class="start-bar">
+    <p class="muted">${ready ? `Ready. ${isLib ? `${setup.length} minutes at the library` : `One ${esc(v.menu.find(i => i.id === setup.item).name.toLowerCase())}`} with <b>${esc(setup.book.title)}</b>.` : st.open ? `Complete ${isLib ? 'check-in' : 'your order'} and pick a book to start.` : 'Come back when it opens.'}</p>
+    <button class="btn btn-primary" id="start" ${ready ? '' : 'disabled'}>${isLib ? 'Find a seat and start' : 'Take a seat and start'}</button>
+  </div>`;
+  $$('[data-item]', el).forEach(b => b.onclick = () => { setup.item = b.dataset.item; render(); });
+  $$('[data-len]', el).forEach(b => b.onclick = () => { setup.length = +b.dataset.len; render(); });
+  $$('[data-tier]', el).forEach(b => b.onclick = () => buyTier(b.dataset.tier));
+  $$('[data-return]', el).forEach(b => b.onclick = () => returnBook(b.dataset.return));
+  $$('[data-recent]', el).forEach(b => b.onclick = () => { const bk = [...S.borrowed, ...S.recent].find(x => x.key === b.dataset.recent); chooseBook(bk); });
+  $('#browse', el).onclick = openPicker;
+  $('#start', el).onclick = startSession;
+}
+const dedupe = arr => arr.filter((b, i) => arr.findIndex(x => x.key === b.key) === i);
+function buyTier(k) {
+  const t = TIERS[k];
+  modal(`<div class="em">🪪</div><h2>Upgrade to ${t.name}?</h2><p class="muted" style="margin-top:8px">${esc(t.perk)}. This costs ${t.cost} points; you have ${S.points}.</p>
+    <div class="acts"><button class="btn btn-ghost" data-close>Not now</button><button class="btn btn-primary" id="ok">Pay ${t.cost} pts</button></div>`, m => {
+    $('#ok', m).onclick = () => { S.points -= t.cost; S.member = k; save(); closeModal(); chime('win'); toast(`🪪 Welcome, <b>${t.name}</b> member`); checkBadges(); render(); };
+  });
+}
+function returnBook(key) {
+  const b = S.borrowed.find(x => x.key === key); if (!b) return;
+  S.borrowed = S.borrowed.filter(x => x.key !== key);
+  if (dayKey() <= b.due) earn(15, 'returned on time');
+  if (setup && setup.book && setup.book.key === key && setup.venue === 'library') setup.book = null;
+  save(); render();
+}
+function chooseBook(b) {
+  if (setup.venue === 'library' && !S.borrowed.find(x => x.key === b.key)) {
+    const lim = TIERS[S.member].limit;
+    if (S.borrowed.length >= lim) { toast(`Your ${TIERS[S.member].name} card holds ${lim} book${lim > 1 ? 's' : ''}. Return one or upgrade at the desk.`, 5000); return false; }
+    const d = new Date(); d.setDate(d.getDate() + 7);
+    S.borrowed.push({ ...b, due: dayKey(d) }); toast(`📚 Borrowed <b>${esc(b.title)}</b> · due in 7 days`);
+  }
+  setup.book = b; rememberBook(b); render(); return true;
+}
+
+/* ---------- picker ---------- */
+function openPicker() {
+  let cat = 'adventure', q = '';
+  modal(`<div class="section-head" style="margin:0"><h2>The shelves</h2><button class="btn btn-ghost btn-sm" data-close>Close</button></div>
+    <p class="subtle" style="margin-top:4px">Free public-domain books from Project Gutenberg, via the Gutendex API.</p>
+    <div class="cats" role="group" aria-label="Categories">${CATS.map(c => `<button class="cat" data-cat="${c.id}" aria-pressed="${c.id === cat}">${c.em} ${c.label}</button>`).join('')}</div>
+    <form class="search" id="sf"><input id="pick-q" type="search" placeholder="Search a title or author, e.g. Austen" aria-label="Search books"><button class="btn btn-ink">Search</button></form>
+    <div id="res"></div>`, m => {
+    const res = $('#res', m);
+    const show = async () => {
+      res.innerHTML = `<div class="results">${[POEMS].map(bookCard).join('')}${Array.from({ length: 7 }, () => '<div class="skeleton"></div>').join('')}</div>`;
+      bindCards();
+      try {
+        const books = await searchBooks({ cat: q ? null : cat, q });
+        res.innerHTML = `<div class="results">${q ? '' : bookCard(POEMS)}${books.map(bookCard).join('') || '<p class="muted">No books found. Try another search.</p>'}</div>`;
+        res._books = books; bindCards();
+      } catch (e) {
+        res.innerHTML = `<div class="notice warn" style="margin-top:16px">Could not reach the free book catalogue (${esc(e.message || 'network error')}). Check your connection and try again. Pocket Poems works offline.</div><div class="results">${bookCard(POEMS)}</div>`; bindCards();
+      }
+    };
+    const bindCards = () => $$('[data-book]', res).forEach(b => b.onclick = () => {
+      const bk = b.dataset.book === POEMS.key ? POEMS : (res._books || []).find(x => x.key === b.dataset.book);
+      if (bk && chooseBook(bk) !== false) closeModal();
+    });
+    $$('[data-cat]', m).forEach(b => b.onclick = () => { cat = b.dataset.cat; q = ''; $('#pick-q', m).value = ''; $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', x === b)); show(); });
+    $('#sf', m).onsubmit = e => { e.preventDefault(); q = $('#pick-q', m).value.trim(); if (q) { $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', 'false')); show(); } };
+    show();
+  }, 'wide');
+}
+const bookCard = b => `<button class="book" data-book="${esc(b.key)}"><div class="cv">${b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy">` : (b.em || '📘')}</div><b>${esc(b.title)}</b><span>${esc(b.author)}${b.src === 'local' ? ' · offline' : ''}</span></button>`;
+
+/* ---------- modal ---------- */
+let onModalClose = null;
+function modal(html, bind, size = '') {
+  closeModal(true);
+  const root = $('#modal-root');
+  root.innerHTML = `<div class="scrim"><div class="modal ${size}" role="dialog" aria-modal="true">${html}</div></div>`;
+  const m = $('.modal', root);
+  $$('[data-close]', m).forEach(b => b.onclick = () => closeModal());
+  bind && bind(m);
+  const f = m.querySelector('button.btn-primary, button, input'); f && f.focus();
+  return m;
+}
+function closeModal(silent) { $('#modal-root').innerHTML = ''; if (!silent && onModalClose) { const f = onModalClose; onModalClose = null; f(); } }
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && $('#modal-root').innerHTML && !(sess && (sess.prompt || sess.onBreak))) closeModal();
+  if (view === 'session' && !$('#modal-root').innerHTML) { if (e.key === 'ArrowRight') turn(1); if (e.key === 'ArrowLeft') turn(-1); }
+});
+function confirmLeave(yes) {
+  modal(`<div class="em">🚪</div><h2>Leave ${esc(VENUES[sess.venue].name)} now?</h2><p class="muted" style="margin-top:8px">You keep the points for the minutes you read, but you miss the finish bonus.</p>
+    <div class="acts"><button class="btn btn-ghost" data-close>Keep reading</button><button class="btn btn-danger" id="ok">Leave early</button></div>`, m => { $('#ok', m).onclick = () => { closeModal(true); yes(); }; });
+}
+
+/* ---------- session ---------- */
+async function startSession() {
+  const v = VENUES[setup.venue], book = setup.book;
+  const btn = $('#start'); btn.disabled = true; btn.textContent = 'Opening your book…';
+  let pages;
+  try { pages = await loadPages(book); }
+  catch (e) {
+    btn.disabled = false; btn.textContent = 'Try again';
+    modal(`<div class="em">📭</div><h2>That book would not open</h2><p class="muted" style="margin-top:8px">The text could not be downloaded (${esc(e.message || 'network error')}). Try again, pick another book, or read it on <a href="${esc(book.html)}" target="_blank" rel="noopener">Project Gutenberg</a>.</p><div class="acts"><button class="btn btn-primary" data-close>OK</button></div>`);
+    return;
+  }
+  const item = v.menu ? v.menu.find(i => i.id === setup.item) : null;
+  const total = (item ? item.min : setup.length) * 60;
+  const every = v.id === 'library' ? 25 * 60 : Math.max(5 * 60, Math.round(total / 3));
+  const prog = S.progress[book.key];
+  sess = { venue: v.id, item, total, elapsed: 0, every, nextBreak: every, breakIdx: 0, earned: 0, pagesRead: 0, breaks: 0, photos: 0, minuteAcc: 0,
+    book, pages, page: prog ? Math.min(prog.page, pages.length - 1) : 0, maxPage: prog ? prog.page : 0, paused: false, hidden: false, onBreak: null, prompt: null, last: performance.now(), fs: store('bookout:fs') || 19 };
+  S.visits[v.id] = (S.visits[v.id] || 0) + 1; save();
+  view = 'session'; render(); window.scrollTo({ top: 0 });
+  chime();
+  toast(item ? `${item.emoji} Your ${esc(item.name.toLowerCase())} is ready. Enjoy.` : `🏛️ Checked in for ${setup.length} minutes. Find a quiet seat.`);
+  tickTimer = setInterval(tick, 1000);
+}
+let tickTimer = null;
+function tick() {
+  if (!sess) return;
+  const now = performance.now(), dt = (now - sess.last) / 1000 * S.settings.speed; sess.last = now;
+  if (sess.onBreak) { sess.onBreak.left -= dt; updBreak(); if (sess.onBreak.left <= 0) backFromBreak(); return; }
+  if (sess.paused || sess.hidden || sess.prompt) return;
+  sess.elapsed = Math.min(sess.total, sess.elapsed + dt);
+  sess.minuteAcc += dt;
+  while (sess.minuteAcc >= 60) { sess.minuteAcc -= 60; minuteRead(sess.venue); }
+  const v = VENUES[sess.venue];
+  if (v.id === 'library' && S.settings.hours && S.member !== 'gold') { const st = venueStatus(v); if (!st.open) { finish(true, 'closing'); return; } }
+  if (sess.elapsed >= sess.total) { finish(true); return; }
+  if (sess.elapsed >= sess.nextBreak && sess.total - sess.elapsed > 60) { sess.nextBreak += sess.every; promptBreak(); }
+  updViz();
+}
+document.addEventListener('visibilitychange', () => {
+  if (!sess) return;
+  sess.last = performance.now();
+  if (document.hidden) { sess.hidden = true; }
+  else if (sess.hidden) { sess.hidden = false; if (!sess.onBreak && !sess.prompt) toast('⏸️ The timer paused while you were away. Welcome back.'); }
+});
+function promptBreak() {
+  const v = VENUES[sess.venue];
+  let list = v.breaks;
+  if (v.id === 'library') { list = [v.breaks[sess.breakIdx % 3]]; }
+  else if (sess.photos > 0) list = list.filter(b => b.id !== 'photo');
+  const b = v.id === 'library' ? list[0] : list[sess.breakIdx % list.length];
+  sess.breakIdx++; sess.prompt = b;
+  chime(); document.title = `${b.emoji} Break time · BOOKOUT`;
+  modal(`<div class="em">${b.emoji}</div><h2>${esc(b.title)}</h2><p class="muted" style="margin-top:8px">${esc(b.body)}</p>
+    <p class="subtle" style="margin-top:12px">${b.min} minute${b.min > 1 ? 's' : ''} · +${b.pts} points</p>
+    <div class="acts"><button class="btn btn-ghost" id="skip">Skip, keep reading</button><button class="btn btn-primary" id="take">${b.id === 'photo' ? 'Take the photo' : 'Take the break'}</button></div>`, m => {
+    $('#skip', m).onclick = () => { sess.prompt = null; sess.last = performance.now(); document.title = 'BOOKOUT'; closeModal(true); };
+    $('#take', m).onclick = () => { sess.prompt = null; document.title = 'BOOKOUT'; closeModal(true); b.id === 'photo' ? openPhoto(true) : startBreak(b); };
+  });
+}
+function startBreak(b) {
+  sess.onBreak = { b, left: b.min * 60 }; sess.last = performance.now();
+  modal(`<div class="em">${b.emoji}</div><h2>On break: ${esc(b.title.toLowerCase())}</h2><p class="muted" style="margin-top:8px">Your page and timer are saved.</p>
+    <div class="countdown tab" id="bcd">${fmt(b.min * 60)}</div><div class="bar"><i id="bbar" style="width:0%"></i></div>
+    <div class="acts"><button class="btn btn-primary" id="back">I'm back</button></div>`, m => { $('#back', m).onclick = backFromBreak; });
+}
+function updBreak() {
+  const o = sess.onBreak, t = o.b.min * 60;
+  const c = $('#bcd'), bb = $('#bbar'); if (c) c.textContent = fmt(o.left); if (bb) bb.style.width = ((1 - o.left / t) * 100) + '%';
+}
+function backFromBreak() {
+  const b = sess.onBreak.b; sess.onBreak = null; sess.last = performance.now(); closeModal(true);
+  S.brk[b.id] = (S.brk[b.id] || 0) + 1; sess.breaks++; S.quests.brk = 1;
+  earn(b.pts, `${b.title.toLowerCase()}`); questCheck(); checkBadges(); save(); chime(); updViz();
+}
+function finish(complete, why) {
+  if (!sess) return;
+  clearInterval(tickTimer);
+  const s = sess, v = VENUES[s.venue];
+  if (s.minuteAcc >= 30) minuteRead(s.venue);
+  if (complete) {
+    S.sessions++; S.finished[v.id] = (S.finished[v.id] || 0) + 1; S.quests.fin = 1;
+    const bonus = Math.round(s.total / 60 / 2) + 10;
+    earn(bonus, why === 'closing' ? 'stayed until closing' : v.id === 'library' ? 'full check-in completed' : `finished your ${s.item.name.toLowerCase()}`);
+    questCheck();
+  }
+  const badges = checkBadges(); save();
+  sess = null; document.title = 'BOOKOUT';
+  const headline = !complete ? 'You left early' : why === 'closing' ? 'The library is closing' : v.id === 'cafe' ? 'Last sip!' : v.id === 'diner' ? 'Clean tray!' : 'Check-out time';
+  const sub = !complete ? 'Points for the minutes you read are yours to keep.' : why === 'closing' ? 'The lights are dimming. Your books are checked out with you.' : v.id === 'cafe' ? `Your ${s.item.name.toLowerCase()} is finished, and so is this session.` : v.id === 'diner' ? 'Every bite done. Nice focus.' : 'Your session at the library is over.';
+  chime(complete ? 'win' : 'soft');
+  modal(`<div class="em">${complete ? '🏆' : '👋'}</div><h2>${headline}</h2><p class="muted" style="margin-top:8px">${sub}</p>
+    <div class="statgrid" style="margin-top:20px">
+      <div class="stat"><b class="tab">${Math.round(s.elapsed / 60)}</b><span>minutes read</span></div>
+      <div class="stat"><b class="tab">+${s.earned}</b><span>points earned</span></div>
+      <div class="stat"><b class="tab">${s.pagesRead}</b><span>pages turned</span></div>
+      <div class="stat"><b class="tab">${S.streak}</b><span>day streak</span></div>
+    </div>
+    ${badges.length ? `<p class="eyebrow" style="margin-top:20px">New badges</p><div class="badges" style="margin-top:8px">${badges.map(b => `<div class="bdg got"><span class="e">${b.e}</span><b>${esc(b.name)}</b></div>`).join('')}</div>` : ''}
+    <div class="acts"><button class="btn btn-ghost" id="home">Back to venues</button><button class="btn btn-primary" id="again">${v.id === 'library' ? 'Check in again' : 'Order another'}</button></div>`, m => {
+    $('#home', m).onclick = () => { closeModal(true); go('home'); };
+    $('#again', m).onclick = () => { closeModal(true); const bk = s.book; go('setup', v.id); setup.book = bk; render(); };
+  });
+}
+function endSession() { finish(false); }
+function turn(d) {
+  if (!sess) return;
+  const n = sess.page + d; if (n < 0 || n >= sess.pages.length) return;
+  sess.page = n;
+  if (n > sess.maxPage) { sess.maxPage = n; sess.pagesRead++; S.pages++; checkBadges(); }
+  S.progress[sess.book.key] = { page: n, total: sess.pages.length }; save();
+  renderPage(); window.scrollTo({ top: $('.reader').offsetTop - 16, behavior: 'smooth' });
+  if (n === sess.pages.length - 1) { earn(30, 'reached the last page'); }
+}
+
+function renderSession(el) {
+  const s = sess, v = VENUES[s.venue];
+  el.innerHTML = `
+  <div class="sbar">
+    <span class="pill">${v.emoji} ${esc(v.name)}</span><h2>${s.item ? `${s.item.emoji} ${esc(s.item.name)}` : `🕰️ ${s.total / 60} minutes`}</h2><span class="sp"></span>
+    <button class="btn btn-ghost btn-sm" id="pause">Pause</button><button class="btn btn-ghost btn-sm" id="snap">📸 Snap</button><button class="btn btn-ghost btn-sm" id="leave">Leave</button>
+  </div>
+  <div class="session">
+    <article class="reader" style="position:relative">
+      <header><div><h3>${esc(s.book.title)}</h3><span class="subtle">${esc(s.book.author)}</span></div>
+        <div class="tools"><button class="icon-btn" id="fsdown" aria-label="Smaller text">A−</button><button class="icon-btn" id="fsup" aria-label="Larger text">A+</button></div></header>
+      <div class="page ${s.book.src === 'local' ? 'poem' : ''}" id="page"></div>
+      <div class="pager"><button class="btn btn-ghost btn-sm" id="prev">← Prev</button><div class="bar"><i id="pbar"></i></div><span class="subtle tab" id="pnum"></span><button class="btn btn-ink btn-sm" id="next">Next →</button></div>
+      <div class="paused-veil" id="veil" hidden><div><div style="font-size:44px">⏸️</div><h3 style="margin:8px 0">Paused</h3><p class="muted" style="margin-bottom:16px">Your ${s.item ? 'drink is waiting' : 'seat is saved'}.</p><button class="btn btn-primary" id="resume">Resume reading</button></div></div>
+    </article>
+    <aside class="side">
+      <div class="card vizcard"><div id="viz"></div><div class="big tab" id="left" style="margin-top:10px"></div><div class="subtle" id="leftlbl">left</div></div>
+      <div class="card">
+        <div class="statgrid">
+          <div class="stat"><b class="tab" id="st-pts">+0</b><span>this session</span></div>
+          <div class="stat"><b class="tab" id="st-brk">--</b><span>next break</span></div>
+          <div class="stat"><b class="tab" id="st-pg">0</b><span>pages turned</span></div>
+          <div class="stat"><b class="tab" id="st-today">${S.todayMin}</b><span>min today</span></div>
+        </div>
+        ${S.settings.speed > 1 ? `<p class="notice" style="margin-top:12px">Demo speed is on (${S.settings.speed}×). Turn it off in your Passport.</p>` : ''}
+      </div>
+    </aside>
+  </div>`;
+  $('#prev', el).onclick = () => turn(-1); $('#next', el).onclick = () => turn(1);
+  $('#pause', el).onclick = () => setPaused(!sess.paused);
+  $('#resume', el).onclick = () => setPaused(false);
+  $('#leave', el).onclick = () => confirmLeave(endSession);
+  $('#snap', el).onclick = () => openPhoto(false);
+  $("#fsdown", el).onclick = () => setFs(-1); $("#fsup", el).onclick = () => setFs(1);
+  renderPage(); updViz();
+}
+function setFs(d) { sess.fs = Math.max(15, Math.min(26, sess.fs + d)); store('bookout:fs', sess.fs); $('#page').style.setProperty('--fs', sess.fs + 'px'); }
+function setPaused(p) { sess.paused = p; sess.last = performance.now(); $('#veil').hidden = !p; $('#pause').textContent = p ? 'Resume' : 'Pause'; }
+function renderPage() {
+  const s = sess, pg = s.pages[s.page], poem = s.book.src === 'local';
+  const el = $('#page'); el.style.setProperty('--fs', s.fs + 'px');
+  el.innerHTML = poem ? `<h4>${esc(pg[0])}</h4>${pg.slice(1).map(p => `<p>${esc(p)}</p>`).join('')}` : pg.map(p => `<p>${esc(p)}</p>`).join('');
+  $('#pnum').textContent = `${s.page + 1} / ${s.pages.length}`;
+  $('#pbar').style.width = ((s.page + 1) / s.pages.length * 100) + '%';
+  $('#prev').disabled = s.page === 0; $('#next').disabled = s.page === s.pages.length - 1;
+}
+function updViz() {
+  const s = sess; if (!s || !$('#viz')) return;
+  const v = VENUES[s.venue], frac = 1 - s.elapsed / s.total;
+  const left = s.total - s.elapsed;
+  $('#left').textContent = fmt(left);
+  $('#st-pts').textContent = '+' + s.earned;
+  $('#st-brk').textContent = s.nextBreak < s.total - 60 ? fmt(s.nextBreak - s.elapsed) : 'none';
+  $('#st-pg').textContent = s.pagesRead;
+  $('#st-today').textContent = S.todayMin;
+  const viz = $('#viz');
+  if (v.timer === 'cup') {
+    const fillH = 120 * frac, y = 40 + (120 - fillH);
+    if (!viz.firstChild) viz.innerHTML = cupSVG(s.item);
+    const r = $('#liq', viz); r.setAttribute('y', y); r.setAttribute('height', fillH);
+    $('#leftlbl').textContent = `of your ${s.item.name.toLowerCase()} left`;
+  } else if (v.timer === 'tray') {
+    const bites = s.item.bites, eaten = Math.floor((1 - frac) * bites.length);
+    if (!viz.firstChild) viz.innerHTML = `<div class="eyebrow">Your tray</div><div class="tray">${bites.map(b => `<span>${b}</span>`).join('')}</div>`;
+    $$('.tray span', viz).forEach((sp, i) => sp.classList.toggle('gone', i < eaten));
+    $('#leftlbl').textContent = `${bites.length - eaten} of ${bites.length} bites left`;
+  } else {
+    const C = 2 * Math.PI * 70;
+    if (!viz.firstChild) viz.innerHTML = `<svg viewBox="0 0 180 180" width="170" height="170" role="img" aria-label="Time remaining at the library"><circle cx="90" cy="90" r="70" fill="none" stroke="var(--surface-tint)" stroke-width="12"/><circle id="ring" cx="90" cy="90" r="70" fill="none" stroke="var(--accent)" stroke-width="12" stroke-linecap="round" stroke-dasharray="${C}" transform="rotate(-90 90 90)"/><text x="90" y="86" text-anchor="middle" font-size="34" fill="var(--text)">🏛️</text><text x="90" y="116" text-anchor="middle" font-size="12" fill="var(--text-subtle)" font-family="Outfit, sans-serif">${S.settings.hours && S.member !== 'gold' ? 'closes ' + hourLabel(v.close) : 'open 24h for you'}</text></svg>`;
+    $('#ring', viz).setAttribute('stroke-dashoffset', C * (1 - frac));
+    $('#leftlbl').textContent = 'until check-out';
+  }
+}
+function cupSVG(item) {
+  const color = { espresso: '#4B2E1E', latte: '#C79A6B', matcha: '#8DBF5A', teh: '#D2A26C', frappe: '#8A5A3C', pot: '#B5712B' }[item.id] || '#8A5A3C';
+  return `<svg viewBox="0 0 200 190" width="180" height="171" role="img" aria-label="Your ${esc(item.name)} draining as you read">
+    <defs><clipPath id="cupclip"><path d="M40 40 L160 40 L148 160 Q146 170 136 170 L64 170 Q54 170 52 160 Z"/></clipPath></defs>
+    <path d="M160 70 q32 0 30 30 q-2 28 -36 28" fill="none" stroke="var(--border)" stroke-width="10" stroke-linecap="round"/>
+    <path d="M40 40 L160 40 L148 160 Q146 170 136 170 L64 170 Q54 170 52 160 Z" fill="var(--surface-muted)"/>
+    <rect id="liq" x="30" y="40" width="140" height="130" fill="${color}" clip-path="url(#cupclip)" style="transition:y 1s linear,height 1s linear"/>
+    <path d="M40 40 L160 40 L148 160 Q146 170 136 170 L64 170 Q54 170 52 160 Z" fill="none" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M28 40 L172 40" stroke="var(--ink)" stroke-width="6" stroke-linecap="round"/>
+    <path d="M85 26 q-8 -10 0 -18 M110 26 q-8 -10 0 -18" fill="none" stroke="var(--primary)" stroke-width="3" stroke-linecap="round"/>
+  </svg>`;
+}
+
+/* ---------- aesthetic photo ---------- */
+function openPhoto(fromPrompt) {
+  const s = sess; if (!s) return;
+  const wasPaused = s.paused; s.paused = true;
+  modal(`<div class="section-head" style="margin:0"><h2>Aesthetic shot</h2><button class="btn btn-ghost btn-sm" data-close>Close</button></div>
+    <p class="muted" style="margin-top:6px">Add your own photo, or keep the illustrated card. Saved shots go to your Passport gallery.</p>
+    <canvas id="pc" width="600" height="760" style="width:100%;max-width:340px;display:block;margin:16px auto;border-radius:6px;box-shadow:var(--e2)"></canvas>
+    <div class="acts" style="justify-content:space-between"><label class="btn btn-ghost" for="pf">Use my photo<input id="pf" type="file" accept="image/*" hidden></label><button class="btn btn-primary" id="keep">Save to gallery</button></div>`, m => {
+    const cv = $('#pc', m); let img = null;
+    const draw = () => drawPolaroid(cv, s, img);
+    draw();
+    $('#pf', m).onchange = e => { const f = e.target.files[0]; if (!f) return; const r = new FileReader(); r.onload = () => { const i = new Image(); i.onload = () => { img = i; draw(); }; i.src = r.result; }; r.readAsDataURL(f); };
+    $('#keep', m).onclick = () => {
+      try { const small = document.createElement('canvas'); small.width = 300; small.height = 380; small.getContext('2d').drawImage(cv, 0, 0, 300, 380);
+        photos = [small.toDataURL('image/jpeg', .75), ...photos].slice(0, 9); store('bookout:photos', photos); } catch (e) {}
+      s.photos++; S.brk.photo = (S.brk.photo || 0) + 1;
+      if (fromPrompt) { S.quests.brk = 1; sess.breaks++; }
+      if (s.photos <= 3) earn(5, 'aesthetic photo');
+      questCheck(); checkBadges(); save(); closeModal();
+    };
+  });
+  onModalClose = () => { if (sess) { sess.paused = wasPaused; sess.last = performance.now(); } };
+}
+function drawPolaroid(cv, s, img) {
+  const c = cv.getContext('2d'), v = VENUES[s.venue];
+  const bg = { cafe: ['#F3E6D8', '#D9B999'], library: ['#E3F8E6', '#A9E3B6'], diner: ['#FFF1C9', '#FFC870'] }[v.id];
+  c.fillStyle = '#FFFFFF'; c.fillRect(0, 0, 600, 760);
+  const g = c.createLinearGradient(0, 30, 0, 600); g.addColorStop(0, bg[0]); g.addColorStop(1, bg[1]);
+  c.fillStyle = g; c.fillRect(30, 30, 540, 560);
+  if (img) { const r = Math.max(540 / img.width, 560 / img.height), w = img.width * r, h = img.height * r; c.save(); c.beginPath(); c.rect(30, 30, 540, 560); c.clip(); c.drawImage(img, 30 + (540 - w) / 2, 30 + (560 - h) / 2, w, h); c.restore(); }
+  else {
+    c.font = '150px serif'; c.textAlign = 'center'; c.fillText(s.item ? s.item.emoji : '📚', 220, 300);
+    c.save(); c.translate(390, 300); c.rotate(-0.12); c.fillStyle = '#262828'; c.fillRect(-80, -110, 160, 220); c.fillStyle = '#6BE683'; c.fillRect(-80, -110, 14, 220);
+    c.fillStyle = '#fff'; c.font = '600 18px Outfit, sans-serif'; wrap(c, s.book.title, 8, -60, 130, 22, 4); c.restore();
+    const pg = s.pages[s.page]; const line = (s.book.src === 'local' ? pg[1] : pg[0]).replace(/\s+/g, ' ').slice(0, 110);
+    c.fillStyle = 'rgba(15,26,18,.75)'; c.font = 'italic 21px Georgia, serif'; c.textAlign = 'center'; wrap(c, '“' + line + (line.length >= 110 ? '…' : '') + '”', 300, 470, 470, 28, 3);
+  }
+  c.textAlign = 'left'; c.fillStyle = '#0F1A12'; c.font = '600 26px Outfit, sans-serif'; c.fillText(v.name, 40, 650);
+  c.fillStyle = '#5F655F'; c.font = '400 18px Outfit, sans-serif'; c.fillText(`${s.book.title.slice(0, 40)} · ${new Date().toLocaleDateString()}`, 40, 684);
+  c.textAlign = 'right'; c.font = '800 22px Outfit, sans-serif'; c.fillStyle = '#1CBB6C'; const ow = c.measureText('OUT').width; c.fillText('BOOK', 560 - ow, 728); c.fillStyle = '#262828'; c.fillText('OUT', 560, 728);
+}
+function wrap(c, text, x, y, maxW, lh, maxLines) {
+  const words = text.split(' '); let line = '', n = 0;
+  for (const w of words) { const t = line ? line + ' ' + w : w; if (c.measureText(t).width > maxW && line) { c.fillText(line, x, y); y += lh; line = w; if (++n >= maxLines - 1) { } } else line = t; if (n >= maxLines) return; }
+  if (n < maxLines) c.fillText(line, x, y);
+}
+
+/* ---------- passport ---------- */
+function renderPassport(el) {
+  const L = levelInfo(S.xp);
+  el.innerHTML = `
+  <div class="setup-head"><div><span class="eyebrow">Your reading passport</span><h1 style="margin-top:6px">${esc(S.name)}</h1></div></div>
+  <div class="pp-grid">
+    <div style="display:grid;gap:24px">
+      <div class="member">
+        <div class="tier">${esc(TIERS[S.member].name)} member · ${esc(TIERS[S.member].perk)}</div>
+        <div class="nm">Level ${L.lvl} · ${esc(L.title)}</div>
+        <div><div class="row"><span class="lv">${S.points} points to spend</span><span class="tab">${L.into}/${L.need} XP</span></div><div class="bar"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div></div>
+      </div>
+      <div class="card"><div class="statgrid">
+        <div class="stat"><b class="tab">${S.minutes}</b><span>minutes read</span></div><div class="stat"><b class="tab">${S.pages}</b><span>pages turned</span></div>
+        <div class="stat"><b class="tab">${S.sessions}</b><span>sessions finished</span></div><div class="stat"><b class="tab">${S.best}</b><span>best streak</span></div>
+      </div></div>
+      <div class="card"><h3 style="font-size:20px;margin-bottom:16px">Venue stamps</h3><div class="stamps">${Object.values(VENUES).map(v => `<div class="stamp ${S.visits[v.id] ? 'got' : ''}"><div><span class="e">${S.visits[v.id] ? v.emoji : '·'}</span>${esc(v.name)}<br>${S.visits[v.id] ? `×${S.visits[v.id]}` : 'not yet'}</div></div>`).join('')}</div></div>
+      <div class="card">
+        <h3 style="font-size:20px;margin-bottom:8px">Settings</h3>
+        <form id="nf" class="field"><label for="nm">Display name</label><div class="search"><input id="nm" value="${esc(S.name)}" maxlength="24"><button class="btn btn-ghost">Save</button></div></form>
+        <label class="toggle" for="t-hours"><span>Realistic opening hours</span><input type="checkbox" id="t-hours" ${S.settings.hours ? 'checked' : ''}></label>
+        <label class="toggle" for="t-sound"><span>Sounds for breaks and wins</span><input type="checkbox" id="t-sound" ${S.settings.sound ? 'checked' : ''}></label>
+        <label class="toggle" for="t-demo"><span>Demo speed (time runs 30× faster)</span><input type="checkbox" id="t-demo" ${S.settings.speed > 1 ? 'checked' : ''}></label>
+        <div style="margin-top:16px"><button class="btn btn-ghost btn-sm" id="reset">Reset all progress</button></div>
+      </div>
+    </div>
+    <div style="display:grid;gap:24px">
+      <div class="card"><div class="section-head" style="margin-bottom:16px"><h3 style="font-size:20px">Badges</h3><span class="subtle">${Object.keys(S.badges).length} of ${BADGES.length}</span></div>
+        <div class="badges">${BADGES.map(b => `<div class="bdg ${S.badges[b.id] ? 'got' : 'locked'}"><span class="e">${b.e}</span><b>${esc(b.name)}</b><span>${esc(b.d)}</span></div>`).join('')}</div></div>
+      <div class="card"><h3 style="font-size:20px;margin-bottom:16px">Gallery</h3>${photos.length ? `<div class="gallery">${photos.map(p => `<img src="${p}" alt="Saved venue photo">`).join('')}</div>` : '<p class="subtle">No photos yet. Café and diner sessions will ask you to snap one when the light is right.</p>'}</div>
+      <div class="card"><h3 style="font-size:20px;margin-bottom:12px">Library card</h3>${S.borrowed.length ? `<div class="borrow-list">${S.borrowed.map(b => `<div class="borrow-row"><span>${esc(b.title)}</span><span class="subtle" style="flex:none">${dayKey() > b.due ? '<b style="color:var(--danger)">overdue</b>' : 'due ' + esc(b.due)}</span></div>`).join('')}</div>` : '<p class="subtle">No borrowed books. Visit The Commons Library to borrow.</p>'}</div>
+    </div>
+  </div>`;
+  $('#nf', el).onsubmit = e => { e.preventDefault(); S.name = $('#nm', el).value.trim() || 'Reader'; save(); toast('Name saved'); render(); };
+  $('#t-hours', el).onchange = e => { S.settings.hours = e.target.checked; save(); };
+  $('#t-sound', el).onchange = e => { S.settings.sound = e.target.checked; save(); };
+  $('#t-demo', el).onchange = e => { S.settings.speed = e.target.checked ? 30 : 1; save(); };
+  $('#reset', el).onclick = () => modal(`<div class="em">🧹</div><h2>Reset everything?</h2><p class="muted" style="margin-top:8px">Points, badges, streaks, borrowed books and photos on this device will be erased. This cannot be undone.</p><div class="acts"><button class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-danger" id="ok">Erase my progress</button></div>`,
+    m => { $('#ok', m).onclick = () => { S = fresh(); photos = []; save(); store('bookout:photos', []); closeModal(); render(); }; });
+}
+
+render();
+})();
+</script>
+</body>
+</html>
