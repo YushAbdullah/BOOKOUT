@@ -382,6 +382,102 @@ body.st-lock{overflow:hidden}
 .lk-tx{border:0;background:var(--surface-muted);font:600 13px var(--font);padding:6px 10px;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--border)}
 .lk-tx.on{background:var(--primary);box-shadow:none}
 @media (max-width:639px){.street{height:min(72vh,560px);border-width:4px;border-radius:20px;margin-inline:-4px}.st-hud{font-size:12px;padding:6px 10px}.st-btn span{display:none}.st-hint{white-space:normal;width:calc(100% - 28px);text-align:center}.lk{grid-template-columns:1fr}.lk canvas{margin:auto}}
+/* ---------- landing, places, info, footer ---------- */
+.ld-hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:32px 0 56px}
+.ld-hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.06;letter-spacing:-.03em;margin:14px 0 0}
+.ld-hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.ld-hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:16px;overflow:visible}
+.ld-hero h1 em path{fill:none;stroke:var(--primary);stroke-width:4;stroke-linecap:round;stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1s .7s var(--ease) forwards}
+.ld-cap{display:inline-block}
+.ld-hero .lede{font-size:18px;color:var(--text-muted);max-width:520px;margin-top:22px}
+.ld-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.ld-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.ld-stack{position:relative;height:540px}
+.ld-card{position:absolute;width:min(280px,62%);background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e3);padding:10px 10px 16px;display:grid;gap:4px;animation:fan .7s var(--ease) both}
+.ld-card .scene{height:150px;border-radius:16px;overflow:hidden;position:relative}
+.ld-card b{font-size:17px;margin:6px 6px 0}.ld-card span{font-size:13px;color:var(--text-subtle);margin:0 6px}
+.ld-card.c0{left:0;top:0;transform:rotate(-6deg);animation-delay:.15s}
+.ld-card.c1{right:0;top:100px;transform:rotate(5deg);animation-delay:.25s;z-index:1}
+.ld-card.c2{left:8%;top:300px;transform:rotate(-2deg);animation-delay:.35s;z-index:2}
+@keyframes fan{from{opacity:0;transform:translateY(60px) rotate(0) scale(.9)}}
+.ld-sticker{position:absolute;z-index:3;background:var(--surface);box-shadow:var(--e2);border-radius:var(--r-md);padding:10px 14px;font-weight:700;font-size:15px;animation:cas-drop .5s var(--ease) both}
+.ld-sticker.s1{right:0;bottom:30px;transform:rotate(-4deg);--rot:-4deg;animation-delay:.8s}.ld-sticker.s2{left:0;top:200px;transform:rotate(5deg);--rot:5deg;animation-delay:.9s}
+.ld-sec{margin-top:56px}
+.ld-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.ld-step{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);padding:24px;position:relative;display:grid;gap:8px;align-content:start}
+.ld-step .n{position:absolute;right:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--surface-tint);display:grid;place-items:center;font-weight:700;font-size:14px}
+.ld-step .e{font-size:34px}.ld-step h3{font-size:20px}.ld-step p{font-size:14px;color:var(--text-muted)}
+.ld-places{display:flex;flex-wrap:wrap;gap:14px}
+.ld-place{border:0;background:var(--surface);box-shadow:var(--e2);border-radius:var(--r-lg);padding:16px 20px;display:grid;gap:2px;text-align:left;transform:rotate(var(--rot));transition:transform .2s var(--ease),box-shadow .2s;min-width:180px}
+.ld-place:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--e3)}
+.ld-place span{font-size:30px}.ld-place b{font-size:16px}.ld-place small{font-size:12px;color:var(--text-subtle)}
+.ld-feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.ld-f{border:0;text-align:left;display:grid;gap:8px;align-content:start;transition:transform .2s var(--ease)}.ld-f:hover{transform:translateY(-4px)}
+.ld-f .e{font-size:30px}.ld-f h3{font-size:20px}.ld-f p{font-size:14px;color:var(--text-muted)}
+.ld-mission{margin-top:56px;position:relative;overflow:hidden;padding:48px;border-radius:40px}
+.ld-mission>div:last-child{position:relative;max-width:620px;display:grid;gap:12px;justify-items:start}
+.ld-mission h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1.12}
+.link-btn{background:none;border:0;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--primary);text-decoration-thickness:2px}
+/* places */
+.pg-hero{position:relative;overflow:hidden;background:var(--surface);border-radius:40px;box-shadow:var(--e2);padding:40px;margin:8px 0 24px}
+.pg-hero-in{position:relative;z-index:1;max-width:640px}
+.pg-hero h1,.info-hero h1{font-size:clamp(36px,5.6vw,60px);letter-spacing:-.03em;line-height:1.08;margin:10px 0 12px}
+.pg-hero .lede{color:var(--text-muted);font-size:17px}
+.pg-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.seg{display:inline-flex;gap:4px;background:var(--surface);padding:4px;border-radius:var(--r-md);box-shadow:var(--e1);margin-bottom:20px}
+.seg button{border:0;background:none;padding:8px 16px;border-radius:var(--r-sm);font-weight:600;font-size:14px;color:var(--text-muted)}
+.seg button[aria-selected=true]{background:var(--primary);color:var(--on-primary)}
+.place{position:relative;padding:0}
+.place-in{border:0;background:none;padding:0;text-align:left;display:flex;flex-direction:column;flex:1;width:100%}
+.place .fav{position:absolute;right:12px;top:12px;z-index:4;width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);box-shadow:var(--e2);font-size:20px;display:grid;place-items:center;transition:transform .2s var(--ease)}
+.place .fav:hover{transform:scale(1.1)}.place .fav.on{animation:favpop .4s var(--ease)}
+@keyframes favpop{50%{transform:scale(1.35) rotate(-10deg)}}
+.place-tags{display:flex;gap:6px;flex-wrap:wrap}
+.ptag{font-size:12px;font-weight:600;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:99px;padding:3px 10px;color:var(--text-muted)}
+.ptag.lv{background:var(--surface-tint);box-shadow:none;color:var(--on-primary)}
+.empty-c{text-align:center;display:grid;gap:6px;justify-items:center;padding:40px}.empty-c .em{font-size:40px}
+.tip-c{margin-top:24px}.tip-c h3{font-size:22px}.perks{margin:12px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--text-muted)}.perks b{color:var(--text)}
+/* info */
+.info{max-width:860px;margin:0 auto}
+.info-tabs{display:flex;gap:4px;flex-wrap:wrap;background:var(--surface);padding:4px;border-radius:var(--r-md);box-shadow:var(--e1);width:max-content;max-width:100%;margin:8px 0 20px}
+.info-tabs button{border:0;background:none;padding:8px 14px;border-radius:var(--r-sm);font-weight:600;font-size:14px;color:var(--text-muted)}
+.info-tabs button[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.info-hero{position:relative;overflow:hidden;background:var(--surface);border-radius:40px;box-shadow:var(--e2);padding:40px 40px 32px;margin-bottom:20px}
+.info-hero>*:not(.motif){position:relative;z-index:1}
+.info-body{padding:32px 40px;font-size:16px;line-height:1.65}
+.info-body h2{font-size:22px;margin:28px 0 8px}.info-body h2:first-child{margin-top:0}
+.info-body p+p{margin-top:12px}.info-body ul,.info-body ol{padding-left:22px;display:grid;gap:8px;margin:8px 0 0}
+.info-body a{color:var(--text);text-decoration-color:var(--primary);text-decoration-thickness:2px;text-underline-offset:3px}
+.info-body .upd{font-size:13px;color:var(--text-subtle)}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.vm-c{background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-lg);padding:24px}.vm-c:first-child{background:var(--surface-tint);box-shadow:none;transform:rotate(-1deg)}
+.vm-c .e{font-size:30px}.vm-c h2{margin:6px 0 6px!important}
+.obj{counter-reset:o;list-style:none;padding:0!important}
+.obj li{counter-increment:o;position:relative;padding:14px 16px 14px 60px;background:var(--surface-muted);border-radius:var(--r-md)}
+.obj li::before{content:counter(o);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-weight:700}
+/* footer */
+.foot-site{margin:72px 0 0;padding:40px 0 calc(32px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border)}
+.fs-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.fs-brand p{color:var(--text-muted);font-size:14px;margin-top:8px}
+.fs-col{display:grid;gap:6px;align-content:start}.fs-col b{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:4px}
+.fs-col button,.fs-col a{background:none;border:0;padding:4px 0;text-align:left;color:var(--text);font-size:15px;text-decoration:none}
+.fs-col button:hover,.fs-col a:hover{text-decoration:underline;text-decoration-color:var(--primary);text-decoration-thickness:2px}
+.fs-note{margin-top:28px;font-size:13px;color:var(--text-subtle)}
+/* venue trip steps */
+.trip-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.trip-row .back{margin:0}
+.trip{display:flex;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.trip li{display:flex;align-items:center;gap:8px;background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:6px 12px 6px 6px;font-weight:600;font-size:14px;color:var(--text-muted);animation:cas-drop .45s var(--ease) both}
+.trip li:nth-child(2){animation-delay:60ms}.trip li:nth-child(3){animation-delay:120ms}
+.trip li i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--surface-tint);font-size:13px}
+.trip li.done{color:var(--text)}.trip li.done i{background:var(--primary);color:var(--on-primary)}
+.trip li.now{color:var(--text);box-shadow:inset 0 0 0 2px var(--primary),var(--e1);transform:rotate(-2deg)}
+.fav-btn{border:0;background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:8px 14px;font-weight:600;font-size:14px}
+.fav-btn.on{background:var(--surface-tint)}
+@media (max-width:1023px){.ld-hero{grid-template-columns:1fr}.ld-stack{height:500px;max-width:480px;width:100%;margin:0 auto}.ld-steps,.ld-feat{grid-template-columns:1fr 1fr}.fs-in{grid-template-columns:1fr 1fr}}
+@media (max-width:639px){.ld-hero{padding-top:12px}.ld-stack{height:440px}.ld-card .scene{height:110px}.ld-card.c1{top:90px}.ld-card.c2{top:260px}.ld-steps,.ld-feat{grid-template-columns:1fr}.ld-place{min-width:calc(50% - 7px);flex:1}
+  .ld-mission,.pg-hero,.info-hero{padding:28px 20px;border-radius:var(--r-lg)}.ld-mission .motif i,.pg-hero .motif i,.info-hero .motif i{width:130px!important;height:130px!important;top:-50px!important}.ld-mission .motif i:nth-child(2),.pg-hero .motif i:nth-child(2),.info-hero .motif i:nth-child(2){right:50px!important}.info-body{padding:24px 20px}.vm{grid-template-columns:1fr}.ld-cta .sl-btn{flex:1}
+  .navlinks{overflow-x:auto;flex-wrap:nowrap;gap:18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks button{white-space:nowrap}}
 /* ---------- new places: bookstore, lounge, park ---------- */
 .sc-bookstore{background:linear-gradient(180deg,#F6E9F1 0 62%,#8A5A3C 62%)}
 .sc-bookstore .wall{position:absolute;left:4%;top:8%;width:56%;height:50%;border:6px solid #7A3E65;border-radius:6px;background:repeating-linear-gradient(180deg,transparent 0 30%,#7A3E65 30% 33%),repeating-linear-gradient(90deg,#e5534b 0 7%,#f6d27a 7% 12%,#5B8DEF 12% 19%,#6BE683 19% 24%,#9c6ade 24% 31%,#f2a33a 31% 36%)}
@@ -819,14 +915,17 @@ body.pov-on{overflow:hidden}
 <div class="glow" style="width:420px;height:420px;right:-120px;top:420px" aria-hidden="true"></div>
 <div class="wrap">
   <nav class="top" aria-label="Main">
-    <button class="logo" data-go="home" aria-label="BOOKOUT home">
+    <button class="logo" data-go="landing" aria-label="BOOKOUT home">
       <span class="dots" aria-hidden="true"><i></i><i></i></span>
       <span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span>
     </button>
     <div class="navlinks">
+      <button data-go="landing" id="nav-landing">Home</button>
       <button data-go="home" id="nav-home">Street</button>
+      <button data-go="places" id="nav-places">Places</button>
       <button data-go="season" id="nav-season">Season</button>
       <button data-go="passport" id="nav-passport">Passport</button>
+      <button data-go="about" id="nav-about">About</button>
     </div>
     <div class="chips" id="chips"></div>
   </nav>
@@ -1206,6 +1305,7 @@ const BADGES = [
   { id: 'memory', e: '🧩', name: 'Total Recall', d: 'Pass 5 recall checks', test: s => (s.flags.recalls || 0) >= 5 },
   { id: 'social', e: '🗣️', name: 'Book Buddy', d: 'Talk books with 5 people on the street', test: s => (s.flags.talks || 0) >= 5 },
   { id: 'debate', e: '⚖️', name: 'Fair Debater', d: 'See both sides in 3 book arguments', test: s => (s.flags.debates || 0) >= 3 },
+  { id: 'homebase', e: '💚', name: 'Home Away From Home', d: 'Read 5 times at a favourite place', test: s => (s.favs || []).some(id => (s.visits[id] || 0) >= 5) },
   { id: 'ownshelf', e: '📱', name: 'Own Shelf', d: 'Add your own EPUB book', test: s => (s.epubs || []).length >= 1 }
 ];
 const POEMS = {
@@ -1387,9 +1487,10 @@ function rememberBook(b) {
 const cover = (b, w = 120) => `<div class="cloth" style="--c:${clothOf(b)};--cw:${w}px"><div class="cl-in"><b>${esc(b.title)}</b><span>${esc(b.author)}</span></div>${b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</div>`;
 
 /* =============== router =============== */
-let view = 'home', setup = null, sess = null;
+let view = S.flags && S.flags.landed ? 'home' : 'landing', setup = null, sess = null, infoKey = 'about';
 function go(v, arg) {
   if (sess && v !== 'session') { confirmLeave(() => { finish(false); go(v, arg); }); return; }
+  if (['about', 'vision', 'privacy', 'terms'].includes(v)) { infoKey = v; v = 'info'; }
   view = v;
   if (v === 'setup') setup = { venue: arg, item: null, length: null, book: null, orderNo: null };
   if (v !== 'setup' && v !== 'session') stopAmbient();
@@ -1399,12 +1500,11 @@ document.addEventListener('click', e => { const g = e.target.closest('[data-go]'
 function render() {
   rollDay(); renderChips();
   document.body.classList.toggle('reading', view === 'session');
-  $('#nav-home').setAttribute('aria-current', view === 'home' || view === 'setup' ? 'page' : 'false');
-  $('#nav-passport').setAttribute('aria-current', view === 'passport' ? 'page' : 'false');
-  $('#nav-season').setAttribute('aria-current', view === 'season' ? 'page' : 'false');
+  [['landing', ['landing']], ['home', ['home', 'setup']], ['places', ['places']], ['season', ['season']], ['passport', ['passport']], ['about', ['info']]].forEach(([k, vs]) => $('#nav-' + k).setAttribute('aria-current', vs.includes(view) ? 'page' : 'false'));
   const app = $('#app'); app.innerHTML = '';
   const el = document.createElement('div'); el.className = 'view'; app.append(el);
-  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason })[view](el);
+  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, info: e => renderInfo(e, infoKey) })[view](el);
+  if (view !== 'session') app.insertAdjacentHTML('beforeend', footerHTML());
   const pp = $('#pp-pt'); if (pp) portrait(pp, S.avatar, 2.6, .9);
 }
 function renderChips() {
@@ -3051,6 +3151,126 @@ function openPOV(id) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && POV && !$('#modal-root').innerHTML) closePOV(); });
 
+/* =============== landing, places, info pages =============== */
+const isFav = id => (S.favs || []).includes(id);
+function toggleFav(id) {
+  S.favs = S.favs || []; const on = !isFav(id);
+  S.favs = on ? [...S.favs, id] : S.favs.filter(x => x !== id); save();
+  sfx(on ? 'coin' : 'tap'); if (on) { toast(`💚 ${VENUES[id].name} is now a favourite`); if (!S.flags.fav1) { S.flags.fav1 = 1; earn(5, 'picked a favourite reading spot'); } checkBadges(); }
+  return on;
+}
+const placeOrder = () => Object.values(VENUES).sort((a, b) => (isFav(b.id) - isFav(a.id)) || ((S.visits[b.id] || 0) - (S.visits[a.id] || 0)));
+const PLACE_TAG = { cafe: 'Inspiration · business', library: 'Leadership · history', diner: 'Adventure · late night', office: 'By department', bookstore: 'New arrivals · stories', lounge: 'Big ideas · calm', park: 'Fresh air · growth' };
+function placeCard(v, i = 0) {
+  const st = venueStatus(v), n = S.visits[v.id] || 0, lvl = n >= 10 ? 'Regular' : n >= 3 ? 'Familiar face' : n ? 'Visitor' : 'New';
+  return `<article class="venue place cas-fan" style="--d:${i}">
+    <button class="fav ${isFav(v.id) ? 'on' : ''}" data-fav="${v.id}" aria-pressed="${isFav(v.id)}" aria-label="${isFav(v.id) ? 'Remove from' : 'Add to'} favourites">${isFav(v.id) ? '💚' : '🤍'}</button>
+    <button class="place-in" data-venue="${v.id}" aria-label="${esc(v.name)}, ${esc(st.label)}">
+      <div class="art ${isNight() ? 'night' : ''}"><span class="sign pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><div class="scene mini">${sceneArt(v)}</div></div>
+      <div class="body"><span class="kind">${v.emoji} ${esc(v.kind)} · ${esc(v.staff.role)} ${esc(v.staff.name)}</span><h3>${esc(v.name)}</h3><p class="rit">${esc(v.ritual)}</p>
+        <div class="place-tags"><span class="ptag">${esc(PLACE_TAG[v.id] || '')}</span><span class="ptag lv">${lvl}</span></div>
+        <div class="foot"><span>${n} visit${n === 1 ? '' : 's'}</span><span class="link">${st.open ? 'Walk in →' : 'Peek inside →'}</span></div></div>
+    </button></article>`;
+}
+function bindPlaces(el) {
+  $$('[data-venue]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { sfx('door'); enterVenue(b.dataset.venue); }; });
+  $$('[data-fav]', el).forEach(b => b.onclick = e => { e.stopPropagation(); const on = toggleFav(b.dataset.fav); b.classList.toggle('on', on); b.textContent = on ? '💚' : '🤍'; b.setAttribute('aria-pressed', on); if (view === 'places') render(); });
+}
+let placeFilter = 'all';
+function renderPlaces(el) {
+  const all = placeOrder(), open = all.filter(v => venueStatus(v).open), favs = all.filter(v => isFav(v.id));
+  const list = placeFilter === 'fav' ? favs : placeFilter === 'open' ? open : all;
+  const visited = Object.keys(VENUES).filter(id => S.visits[id]).length, total = Object.keys(VENUES).length;
+  el.innerHTML = `<section class="pg-hero">${MOTIF}
+      <div class="pg-hero-in"><span class="cap cas">Jalan Buku · ${total} places</span><h1 class="cas" style="--d:1">Where do you love to read?</h1>
+      <p class="lede cas" style="--d:2">Every place has its own staff, shelves, timer and breaks. Tap the heart to make it a favourite, and it moves to the top of your street.</p>
+      <div class="pg-chips"><span class="chip-side a cas-drop">🗺️ ${visited}/${total} visited</span><span class="chip-side b cas-drop" style="--d:1">💚 ${favs.length} favourite${favs.length === 1 ? '' : 's'}</span><span class="chip-side n cas-drop" style="--d:2">🟢 ${open.length} open now</span></div></div></section>
+    <div class="seg cas" style="--d:3" role="tablist">${[['all', 'All places'], ['fav', 'Favourites'], ['open', 'Open now']].map(([k, l]) => `<button role="tab" aria-selected="${placeFilter === k}" data-pf="${k}">${l}</button>`).join('')}</div>
+    ${list.length ? `<div class="venues">${list.map(placeCard).join('')}</div>` : `<div class="card empty-c"><div class="em">🤍</div><h3>No favourites yet</h3><p class="muted">Tap the heart on any place to keep it here.</p></div>`}
+    <section class="card tip-c cas-fan"><h3>Favourite spot perks</h3><ul class="perks"><li><b>Top of the street.</b> Favourites show first on the street and here.</li><li><b>Familiar face.</b> Visit a place 3 times and the staff greet you as a regular. At 10 visits you are a Regular.</li><li><b>Badge.</b> Read 5 times at one favourite to earn the Home Away From Home badge.</li></ul></section>`;
+  $$('[data-pf]', el).forEach(b => b.onclick = () => { placeFilter = b.dataset.pf; render(); });
+  bindPlaces(el);
+}
+function renderLanding(el) {
+  S.flags.landed = 1; save();
+  const L = levelInfo(S.xp), vs = Object.values(VENUES);
+  el.innerHTML = `
+  <section class="ld-hero">
+    <div class="ld-txt">
+      <span class="cap ld-cap cas">A reading game for real life</span>
+      <h1 class="cas" style="--d:1">Walk in. Order. <em>Read for real.<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C40 3, 80 14, 120 7 S180 4, 197 9"/></svg></em></h1>
+      <p class="lede cas" style="--d:2">BOOKOUT turns daily reading into a walk through town. Pick a café, a library, a bookshop or a park, order at the counter, pull a free classic off the shelf and level up while you read.</p>
+      <div class="ld-cta cas" style="--d:3"><button class="sl-btn" data-go="home">Start walking</button><button class="sl-btn sec" data-go="places">See the places</button></div>
+      <div class="ld-chips"><span class="chip-side a cas-drop" style="--d:4">📚 ${vs.length} places</span><span class="chip-side b cas-drop" style="--d:5;--rot:3deg">🆓 Free forever</span><span class="chip-side n cas-drop" style="--d:6">⭐ You are level ${L.lvl}</span></div>
+    </div>
+    <div class="ld-stack" aria-hidden="true">${vs.slice(0, 3).map((v, i) => `<div class="ld-card c${i}"><div class="scene mini">${sceneArt(v)}</div><b>${v.emoji} ${esc(v.name)}</b><span>${esc(v.kind)}</span></div>`).join('')}
+      <span class="ld-sticker s1">🔥 ${S.streak} day streak</span><span class="ld-sticker s2">🪙 ${S.points} pts</span></div>
+  </section>
+  <section class="ld-sec"><div class="section-head"><h2 class="cas">How it plays</h2><span class="subtle">Four steps, every day</span></div>
+    <div class="ld-steps">${[['🚶', 'Walk the street', 'Move around Jalan Buku with the arrow keys or a tap. Shops follow real opening hours.'], ['💬', 'Meet readers', 'People recommend, argue about or share books. Talk to them, or walk on by.'], ['☕', 'Order at the counter', 'See it through your own hands: order, tap to pay, play a quick mini-game and grab a book.'], ['🏆', 'Read and level up', 'Your drink is the timer. Finish to score, climb the season and collect badges.']].map(([e, t, d], i) => `<div class="ld-step cas-fan" style="--d:${i}"><span class="n">${i + 1}</span><span class="e">${e}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></section>
+  <section class="ld-sec"><div class="section-head"><h2>Pick your spot</h2><button class="link-btn" data-go="places">All places →</button></div>
+    <div class="ld-places">${vs.map((v, i) => `<button class="ld-place cas-drop" style="--d:${i};--rot:${i % 2 ? 3 : -3}deg" data-venue="${v.id}"><span>${v.emoji}</span><b>${esc(v.name)}</b><small>${esc(PLACE_TAG[v.id] || v.kind)}</small></button>`).join('')}</div></section>
+  <section class="ld-sec ld-feat">${[['🏟️', 'Seasons', 'Qualifier, Swiss stage, Knockout and the Grand Final. Every session is a match.', 'season'], ['🎮', 'Mini-games', 'Pour the perfect latte, stack a burger, stamp your pass, stretch on breaks.', 'home'], ['🪪', 'Passport', 'Badges, venue stamps, reading photos and your player card.', 'passport'], ['📱', 'Your own books', 'Add any EPUB you own. It stays on your device.', 'places']].map(([e, t, d, g], i) => `<button class="card ld-f cas-fan" style="--d:${i}" data-go="${g}"><span class="e">${e}</span><h3>${t}</h3><p>${d}</p></button>`).join('')}</section>
+  <section class="ld-mission card cas-fan">${MOTIF}<div><span class="cap">Our mission</span><h2>Make reading every day as easy as grabbing a coffee.</h2><p class="muted">Free books, real places and game design that rewards the habit, not the scroll.</p><button class="sl-btn sec" data-go="vision">Vision, mission and objectives</button></div></section>`;
+  bindPlaces(el);
+}
+const PAGES = {
+  about: { cap: 'About', title: 'About BOOKOUT', body: `
+    <h2>What BOOKOUT is</h2><p>BOOKOUT is a free reading game. You walk down a little street called Jalan Buku, step into a café, library, bookshop, lounge, office or park, and read a real book while the place goes on around you. The drink you order is your timer, the staff suggest breaks, and every session counts towards your season.</p>
+    <h2>About me</h2><p>Hi, I'm Yusri, the person behind BOOKOUT. I wanted reading to feel like going out: a place to be, something to sip, people around you, and a reason to come back tomorrow. So I built the street I wish I could walk down every day.</p>
+    <p>BOOKOUT is a one-person project, built in the open and free for everyone. If you have an idea or found a bug, open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+    <h2>Where the books come from</h2><p>Every built-in book is a public domain classic from <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>. You can also add EPUB files you own.</p>` },
+  vision: { cap: 'Vision · Mission · Objectives', title: 'Why BOOKOUT exists', body: `
+    <div class="vm"><div class="vm-c cas-fan"><span class="e">🔭</span><h2>Vision</h2><p>A world where everyone reads a little every day, wherever they are.</p></div>
+    <div class="vm-c cas-fan" style="--d:1"><span class="e">🎯</span><h2>Mission</h2><p>Make daily reading as easy and rewarding as grabbing a coffee, using real places, free books and game design that rewards the habit.</p></div></div>
+    <h2>Objectives</h2><ol class="obj">
+      <li><b>20 minutes a day.</b> Help every reader build a steady habit of at least 20 minutes of reading a day.</li>
+      <li><b>Free, always.</b> Keep every book and every feature free, with no ads and no paywalls.</li>
+      <li><b>Books that lead.</b> Put inspiring, leadership, business and innovation classics on the shelf next to great stories, so readers grow at work and in life.</li>
+      <li><b>Reading is social.</b> Make it normal to recommend, debate and share books with the people around you.</li>
+      <li><b>Healthy reading.</b> Build breaks, water and stretching into every session.</li>
+      <li><b>Privacy first.</b> No accounts and no tracking. Your reading stays on your device.</li></ol>` },
+  privacy: { cap: 'Privacy policy', title: 'Privacy policy', body: `
+    <p class="upd">Last updated 4 November 2026</p>
+    <h2>The short version</h2><p>BOOKOUT has no accounts, no ads, no analytics and no server of its own. Your progress lives on your device.</p>
+    <h2>What is stored, and where</h2><ul><li><b>On your device only (browser storage):</b> your player name and look, points, XP, streaks, badges, season results, quests, bookmarks, favourite places, notes from book talks and settings.</li>
+      <li><b>EPUB files you add</b> are unpacked and stored in your browser's IndexedDB on this device. They are never uploaded.</li>
+      <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
+    <h2>Requests BOOKOUT makes</h2><ul><li>The app and most book texts load from GitHub Pages, which hosts BOOKOUT. GitHub may keep standard server logs such as your IP address.</li>
+      <li>Fonts load from Google Fonts, which can see your IP address.</li>
+      <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
+      <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
+    <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
+    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, because it does not collect personal information at all.</p>
+    <h2>Contact</h2><p>Questions about privacy: open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` },
+  terms: { cap: 'Terms and conditions', title: 'Terms and conditions', body: `
+    <p class="upd">Last updated 4 November 2026</p>
+    <h2>1. Using BOOKOUT</h2><p>BOOKOUT is free to use for personal reading. By using it you agree to these terms. If you do not agree, please do not use the app.</p>
+    <h2>2. Books</h2><p>Built-in books are public domain texts from Project Gutenberg, provided as is. "Project Gutenberg" is a trademark of the Project Gutenberg Literary Archive Foundation, and BOOKOUT is not affiliated with it. Public domain status can differ by country, so check the law where you live.</p>
+    <h2>3. Your EPUB files</h2><p>Only add EPUB files you have the right to read. They stay on your device. BOOKOUT does not check, copy or share them, and you are responsible for them.</p>
+    <h2>4. Points, badges and seasons</h2><p>Points, XP, ranks and badges are for fun. They have no cash value, cannot be bought or sold, and may change or reset as the game improves.</p>
+    <h2>5. Health</h2><p>Break suggestions such as water, stretching and walking are friendly reminders, not medical advice. Listen to your body.</p>
+    <h2>6. Fair use</h2><p>Please do not try to break, overload or misuse the app or the services it connects to.</p>
+    <h2>7. No warranty</h2><p>BOOKOUT is provided "as is" without warranties of any kind. To the extent the law allows, the maker is not liable for any loss arising from using it, including lost progress stored in your browser.</p>
+    <h2>8. Changes</h2><p>These terms may be updated. The date at the top shows the latest version. Continuing to use BOOKOUT means you accept the updated terms.</p>
+    <h2>9. Contact</h2><p>Open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` }
+};
+function renderInfo(el, key) {
+  const pg = PAGES[key] || PAGES.about;
+  el.innerHTML = `<article class="info">
+    <nav class="info-tabs" aria-label="About BOOKOUT">${[['about', 'About'], ['vision', 'Vision & mission'], ['privacy', 'Privacy'], ['terms', 'Terms']].map(([k, l]) => `<button data-go="${k}" aria-current="${k === key ? 'page' : 'false'}">${l}</button>`).join('')}</nav>
+    <header class="info-hero">${MOTIF}<span class="cap cas">${esc(pg.cap)}</span><h1 class="cas" style="--d:1">${esc(pg.title)}</h1></header>
+    <div class="info-body card cas-fan">${pg.body}</div></article>`;
+}
+function footerHTML() {
+  return `<footer class="foot-site"><div class="fs-in">
+    <div class="fs-brand"><button class="logo" data-go="landing" aria-label="BOOKOUT home"><span class="dots" aria-hidden="true"><i></i><i></i></span><span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span></button><p>Free reading, real places, real habits.</p></div>
+    <div class="fs-col"><b>Play</b><button data-go="home">Street</button><button data-go="places">Places</button><button data-go="season">Season</button><button data-go="passport">Passport</button></div>
+    <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
+    <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button></div>
+  </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No accounts, no tracking</p></footer>`;
+}
+
 /* =============== home =============== */
 function renderHome(el) {
   const L = levelInfo(S.xp), last = S.recent[0], prog = last && S.progress[last.key], q = quests();
@@ -3073,13 +3293,8 @@ function renderHome(el) {
     </div>
   </section>
   <section>
-    <div class="section-head"><h2>Or jump straight in</h2><span class="subtle">Hours follow your local time${isNight() ? ' · it is night outside' : ''}</span></div>
-    <div class="venues">${Object.values(VENUES).map(v => { const st = venueStatus(v); return `
-      <button class="venue" data-venue="${v.id}" aria-label="${esc(v.name)}, ${esc(st.label)}">
-        <div class="art ${isNight() ? 'night' : ''}"><span class="sign pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><div class="scene mini">${sceneArt(v)}</div></div>
-        <div class="body"><span class="kind">${esc(v.kind)} · ${esc(v.staff.role)} ${esc(v.staff.name)}</span><h3>${esc(v.name)}</h3><p class="rit">${esc(v.ritual)}</p>
-          <div class="foot"><span>${S.visits[v.id] || 0} visit${S.visits[v.id] === 1 ? '' : 's'}</span><span class="link">${st.open ? 'Walk in →' : 'Peek inside →'}</span></div></div>
-      </button>`; }).join('')}</div>
+    <div class="section-head"><h2>Or jump straight in</h2><span class="subtle">Hours follow your local time${isNight() ? ' · it is night outside' : ''} · <button class="link-btn" data-go="places">All ${Object.keys(VENUES).length} places →</button></span></div>
+    <div class="venues">${placeOrder().slice(0, 6).map(placeCard).join('')}</div>
   </section>
   <section class="row2">
     <div class="card">
@@ -3093,7 +3308,7 @@ function renderHome(el) {
       <div class="quests">${q.map(x => `<div class="quest ${x.done ? 'done' : ''}"><span class="ck" aria-hidden="true">${x.done ? '✓' : ''}</span><div><b>${esc(x.label)}</b>${(x.id === 'm20' || x.id === 'lp' || x.id === 'talk') && !x.done ? `<div class="bar" style="margin-top:6px"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
     </div>
   </section>`;
-  $$('[data-venue]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { sfx('door'); go('setup', b.dataset.venue); }; });
+  bindPlaces(el);
   mountStreet(el);
   if (!S.avatar.gender && !$('#modal-root').innerHTML) setTimeout(() => { if (view === 'home' && !S.avatar.gender) openPlayer('new'); }, 400);
 }
@@ -3102,8 +3317,12 @@ function renderHome(el) {
 function renderSetup(el) {
   const v = VENUES[setup.venue], st = venueStatus(v), isLib = v.id === 'library', desk = !!v.lengths;
   const ready = st.open && (desk ? setup.length : setup.item) && setup.book;
+  const hasOrder = desk ? setup.length : setup.item, tsteps = [[isLib ? 'Day pass' : desk ? v.passLabel : 'Order', hasOrder], ['Pick a book', setup.book], ['Sit and read', false]];
+  const nowI = tsteps.findIndex(t => !t[1]);
   el.innerHTML = `
-  <button class="back" data-go="home">← Leave ${esc(v.name)}</button>
+  <div class="trip-row"><button class="back" data-go="home">← Leave ${esc(v.name)}</button>
+    <ol class="trip" aria-label="Your visit">${tsteps.map(([l, d], i) => `<li class="${d ? 'done' : i === nowI ? 'now' : ''}"><i>${d ? '✓' : i + 1}</i>${esc(l)}</li>`).join('')}</ol>
+    <button class="fav-btn ${isFav(v.id) ? 'on' : ''}" id="fav-here" aria-pressed="${isFav(v.id)}">${isFav(v.id) ? '💚 Favourite' : '🤍 Add to favourites'}</button></div>
   <div class="scene ${isNight() ? 'night' : ''}" id="scene">
     ${sceneArt(v)}
     <div class="scene-top"><span class="pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span>
@@ -3141,6 +3360,7 @@ function renderSetup(el) {
   $$('[data-return]', el).forEach(b => b.onclick = () => returnBook(b.dataset.return));
   $$('[data-recent]', el).forEach(b => b.onclick = () => chooseBook([...S.borrowed, ...S.recent].find(x => x.key === b.dataset.recent)));
   $('#browse', el).onclick = openShelves;
+  $('#fav-here', el).onclick = () => { const on = toggleFav(v.id), b = $('#fav-here', el); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); b.textContent = on ? '💚 Favourite' : '🤍 Add to favourites'; };
   $('#start', el).onclick = prepAndStart;
 }
 function rerenderKeepTalk() { setup.spoke = 0; const y = window.scrollY; render(); window.scrollTo({ top: y }); }
@@ -3648,6 +3868,7 @@ function renderPassport(el) {
     m => { $('#ok', m).onclick = () => { S = fresh(); photos = []; save(); store('bookout:photos', []); store('bookout:spot', null); location.reload(); }; });
 }
 
+if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
 render();
 })();
 </script>
