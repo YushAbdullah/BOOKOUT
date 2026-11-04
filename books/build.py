@@ -18,16 +18,17 @@ TOPICS = {
 }
 PER_CAT = int(os.environ.get("BOOKS_PER_CATEGORY", "10"))  # shelf size per category
 MAX_BYTES = 2_600_000  # skip giant books to keep the site light
+DEADLINE = time.time() + int(os.environ.get("BOOKS_TIME_BUDGET", "1500"))  # stop early and save what we have; next run continues
 
 
-def get(url, tries=3):
+def get(url, tries=2, timeout=30):
     for i in range(tries):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=60) as r:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
                 return r.read()
         except Exception as e:  # noqa: BLE001
             print(f"  retry {i + 1} {url}: {e}", file=sys.stderr)
-            time.sleep(3 * (i + 1))
+            time.sleep(2)
     return None
 
 
@@ -49,11 +50,12 @@ def name(a):
 def main():
     picks = json.load(open(os.path.join(HERE, "picks.json")))
     catalog = {}
+    # hand-picked books first, so they are saved even if the catalogue server is slow
     for cat, topic in TOPICS.items():
         shelf = list(picks.get(cat, []))
         seen = {b["id"] for b in shelf}
         q = urllib.parse.urlencode({"topic": topic, "languages": "en", "mime_type": "text/plain"})
-        raw = get(f"https://gutendex.com/books/?{q}")
+        raw = get(f"https://gutendex.com/books/?{q}", tries=1, timeout=25) if time.time() < DEADLINE - 600 else None
         for b in (json.loads(raw).get("results", []) if raw else []):
             if len(shelf) >= PER_CAT:
                 break
@@ -66,11 +68,16 @@ def main():
         print(f"{cat}: {len(shelf)} books")
 
     ok = set()
-    for bid in sorted({b["id"] for s in catalog.values() for b in s}):
+    pick_ids = [b["id"] for s in picks.values() for b in s]
+    order = list(dict.fromkeys(pick_ids + [b["id"] for s in catalog.values() for b in s]))
+    for bid in order:
         path = os.path.join(HERE, f"{bid}.txt")
         if os.path.exists(path) and os.path.getsize(path) > 1000:
             ok.add(bid)
             continue
+        if time.time() > DEADLINE:
+            print("  time budget used up; the next run will fetch the rest")
+            break
         data = get(f"https://www.gutenberg.org/cache/epub/{bid}/pg{bid}.txt")
         time.sleep(1)  # be polite to Project Gutenberg
         if not data:
