@@ -37,4 +37,9 @@ jobs:
           git add books
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Update library books"
-          git push
+          # main may have moved while books were downloading (e.g. a PR merged), so catch up first
+          for i in 1 2 3 4; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            sleep $((i * 5))
+          done
+          exit 1
