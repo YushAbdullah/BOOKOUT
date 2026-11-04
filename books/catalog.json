@@ -1,0 +1,349 @@
+{
+ "generated": "2026-11-04",
+ "cats": {
+  "adventure": [
+   {
+    "id": 120,
+    "title": "Treasure Island",
+    "author": "Robert Louis Stevenson"
+   },
+   {
+    "id": 164,
+    "title": "Twenty Thousand Leagues under the Sea",
+    "author": "Jules Verne"
+   },
+   {
+    "id": 103,
+    "title": "Around the World in Eighty Days",
+    "author": "Jules Verne"
+   },
+   {
+    "id": 2701,
+    "title": "Moby Dick",
+    "author": "Herman Melville"
+   },
+   {
+    "id": 1257,
+    "title": "The Three Musketeers",
+    "author": "Alexandre Dumas"
+   }
+  ],
+  "mystery": [
+   {
+    "id": 1661,
+    "title": "The Adventures of Sherlock Holmes",
+    "author": "Arthur Conan Doyle"
+   },
+   {
+    "id": 2852,
+    "title": "The Hound of the Baskervilles",
+    "author": "Arthur Conan Doyle"
+   },
+   {
+    "id": 244,
+    "title": "A Study in Scarlet",
+    "author": "Arthur Conan Doyle"
+   },
+   {
+    "id": 155,
+    "title": "The Moonstone",
+    "author": "Wilkie Collins"
+   },
+   {
+    "id": 583,
+    "title": "The Woman in White",
+    "author": "Wilkie Collins"
+   },
+   {
+    "id": 863,
+    "title": "The Mysterious Affair at Styles",
+    "author": "Agatha Christie"
+   }
+  ],
+  "romance": [
+   {
+    "id": 1342,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen"
+   },
+   {
+    "id": 1260,
+    "title": "Jane Eyre",
+    "author": "Charlotte Brontë"
+   },
+   {
+    "id": 768,
+    "title": "Wuthering Heights",
+    "author": "Emily Brontë"
+   },
+   {
+    "id": 161,
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen"
+   },
+   {
+    "id": 158,
+    "title": "Emma",
+    "author": "Jane Austen"
+   },
+   {
+    "id": 105,
+    "title": "Persuasion",
+    "author": "Jane Austen"
+   }
+  ],
+  "scifi": [
+   {
+    "id": 84,
+    "title": "Frankenstein",
+    "author": "Mary Shelley"
+   },
+   {
+    "id": 36,
+    "title": "The War of the Worlds",
+    "author": "H. G. Wells"
+   },
+   {
+    "id": 35,
+    "title": "The Time Machine",
+    "author": "H. G. Wells"
+   },
+   {
+    "id": 5230,
+    "title": "The Invisible Man",
+    "author": "H. G. Wells"
+   },
+   {
+    "id": 83,
+    "title": "From the Earth to the Moon",
+    "author": "Jules Verne"
+   },
+   {
+    "id": 159,
+    "title": "The Island of Doctor Moreau",
+    "author": "H. G. Wells"
+   }
+  ],
+  "fantasy": [
+   {
+    "id": 11,
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll"
+   },
+   {
+    "id": 55,
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank Baum"
+   },
+   {
+    "id": 16,
+    "title": "Peter Pan",
+    "author": "J. M. Barrie"
+   },
+   {
+    "id": 12,
+    "title": "Through the Looking-Glass",
+    "author": "Lewis Carroll"
+   },
+   {
+    "id": 2591,
+    "title": "Grimms' Fairy Tales",
+    "author": "Jacob and Wilhelm Grimm"
+   },
+   {
+    "id": 1597,
+    "title": "Andersen's Fairy Tales",
+    "author": "Hans Christian Andersen"
+   }
+  ],
+  "horror": [
+   {
+    "id": 345,
+    "title": "Dracula",
+    "author": "Bram Stoker"
+   },
+   {
+    "id": 43,
+    "title": "The Strange Case of Dr Jekyll and Mr Hyde",
+    "author": "Robert Louis Stevenson"
+   },
+   {
+    "id": 209,
+    "title": "The Turn of the Screw",
+    "author": "Henry James"
+   },
+   {
+    "id": 174,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde"
+   },
+   {
+    "id": 932,
+    "title": "The Fall of the House of Usher",
+    "author": "Edgar Allan Poe"
+   }
+  ],
+  "poetry": [
+   {
+    "id": 1065,
+    "title": "The Raven",
+    "author": "Edgar Allan Poe"
+   },
+   {
+    "id": 1322,
+    "title": "Leaves of Grass",
+    "author": "Walt Whitman"
+   },
+   {
+    "id": 12242,
+    "title": "Poems by Emily Dickinson",
+    "author": "Emily Dickinson"
+   },
+   {
+    "id": 8800,
+    "title": "The Divine Comedy",
+    "author": "Dante Alighieri"
+   },
+   {
+    "id": 1041,
+    "title": "Shakespeare's Sonnets",
+    "author": "William Shakespeare"
+   }
+  ],
+  "philosophy": [
+   {
+    "id": 1497,
+    "title": "The Republic",
+    "author": "Plato"
+   },
+   {
+    "id": 2680,
+    "title": "Meditations",
+    "author": "Marcus Aurelius"
+   },
+   {
+    "id": 4363,
+    "title": "Beyond Good and Evil",
+    "author": "Friedrich Nietzsche"
+   },
+   {
+    "id": 5827,
+    "title": "The Problems of Philosophy",
+    "author": "Bertrand Russell"
+   }
+  ],
+  "history": [
+   {
+    "id": 1232,
+    "title": "The Prince",
+    "author": "Niccolò Machiavelli"
+   },
+   {
+    "id": 132,
+    "title": "The Art of War",
+    "author": "Sun Tzu"
+   },
+   {
+    "id": 2009,
+    "title": "On the Origin of Species",
+    "author": "Charles Darwin"
+   },
+   {
+    "id": 3300,
+    "title": "The Wealth of Nations",
+    "author": "Adam Smith"
+   },
+   {
+    "id": 147,
+    "title": "Common Sense",
+    "author": "Thomas Paine"
+   }
+  ],
+  "children": [
+   {
+    "id": 74,
+    "title": "The Adventures of Tom Sawyer",
+    "author": "Mark Twain"
+   },
+   {
+    "id": 113,
+    "title": "The Secret Garden",
+    "author": "Frances Hodgson Burnett"
+   },
+   {
+    "id": 236,
+    "title": "The Jungle Book",
+    "author": "Rudyard Kipling"
+   },
+   {
+    "id": 45,
+    "title": "Anne of Green Gables",
+    "author": "L. M. Montgomery"
+   },
+   {
+    "id": 514,
+    "title": "Little Women",
+    "author": "Louisa May Alcott"
+   },
+   {
+    "id": 146,
+    "title": "A Little Princess",
+    "author": "Frances Hodgson Burnett"
+   }
+  ],
+  "humor": [
+   {
+    "id": 76,
+    "title": "Adventures of Huckleberry Finn",
+    "author": "Mark Twain"
+   },
+   {
+    "id": 844,
+    "title": "The Importance of Being Earnest",
+    "author": "Oscar Wilde"
+   },
+   {
+    "id": 308,
+    "title": "Three Men in a Boat",
+    "author": "Jerome K. Jerome"
+   },
+   {
+    "id": 1080,
+    "title": "A Modest Proposal",
+    "author": "Jonathan Swift"
+   },
+   {
+    "id": 46,
+    "title": "A Christmas Carol",
+    "author": "Charles Dickens"
+   }
+  ],
+  "growth": [
+   {
+    "id": 2680,
+    "title": "Meditations",
+    "author": "Marcus Aurelius"
+   },
+   {
+    "id": 205,
+    "title": "Walden",
+    "author": "Henry David Thoreau"
+   },
+   {
+    "id": 2500,
+    "title": "Siddhartha",
+    "author": "Hermann Hesse"
+   },
+   {
+    "id": 132,
+    "title": "The Art of War",
+    "author": "Sun Tzu"
+   },
+   {
+    "id": 1497,
+    "title": "The Republic",
+    "author": "Plato"
+   }
+  ]
+ }
+}
