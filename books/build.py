@@ -15,6 +15,8 @@ TOPICS = {
     "scifi": "science fiction", "fantasy": "fantasy", "horror": "horror",
     "poetry": "poetry", "philosophy": "philosophy", "history": "history",
     "children": "children", "humor": "humor", "growth": "conduct of life",
+    "inspiration": "success", "business": "business", "innovation": "inventions", "leadership": "leadership",
+    "people": "conduct of life", "finance": "finance", "ops": "industrial management", "sales": "advertising",
 }
 PER_CAT = int(os.environ.get("BOOKS_PER_CATEGORY", "10"))  # shelf size per category
 MAX_BYTES = 2_600_000  # skip giant books to keep the site light
@@ -47,12 +49,57 @@ def name(a):
     return " ".join(reversed(a.get("name", "").split(", "))) if a else "Unknown"
 
 
+def norm(t):
+    return re.sub(r"[^a-z0-9 ]", "", (t or "").lower()).strip()
+
+
+def resolve(picks):
+    """Check hand-picked IDs against Gutendex and look up picks given only as "find": "Title|Author"."""
+    ids = sorted({b["id"] for s in picks.values() for b in s if b.get("id")})
+    known = {}
+    for i in range(0, len(ids), 30):
+        raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode({"ids": ",".join(map(str, ids[i:i + 30]))}), tries=1, timeout=25)
+        for b in (json.loads(raw).get("results", []) if raw else []):
+            known[b["id"]] = b
+
+    def search(title, author=""):
+        raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode({"search": f"{title} {author}".strip(), "languages": "en"}), tries=1, timeout=25)
+        for b in (json.loads(raw).get("results", []) if raw else []):
+            if not b.get("copyright") and norm(title)[:18] in norm(b["title"]):
+                return b
+        return None
+
+    out = {}
+    for cat, shelf in picks.items():
+        keep = []
+        for b in shelf:
+            if b.get("find"):
+                title, _, author = b["find"].partition("|")
+                hit = search(title, author)
+                if not hit:
+                    print(f"  could not find {b['find']}")
+                    continue
+                b = {"id": hit["id"], "title": title.strip(), "author": ", ".join(name(a) for a in hit.get("authors", [])) or author}
+            elif known and b["id"] in known and norm(b["title"]).replace(" ", "")[:8] not in norm(known[b["id"]]["title"]).replace(" ", ""):
+                hit = search(b["title"], b["author"])
+                print(f"  id {b['id']} is not {b['title']!r}; " + (f"using {hit['id']}" if hit else "dropping it"))
+                if not hit:
+                    continue
+                b = dict(b, id=hit["id"])
+            keep.append(b)
+        out[cat] = keep
+    return out
+
+
 def main():
-    picks = json.load(open(os.path.join(HERE, "picks.json")))
+    picks = resolve(json.load(open(os.path.join(HERE, "picks.json")))) if time.time() < DEADLINE - 900 else json.load(open(os.path.join(HERE, "picks.json")))
     catalog = {}
     # hand-picked books first, so they are saved even if the catalogue server is slow
     for cat, topic in TOPICS.items():
-        shelf = list(picks.get(cat, []))
+        shelf = []
+        for b in picks.get(cat, []):
+            if b.get("id") and b["id"] not in {x["id"] for x in shelf}:
+                shelf.append(b)
         seen = {b["id"] for b in shelf}
         q = urllib.parse.urlencode({"topic": topic, "languages": "en", "mime_type": "text/plain"})
         raw = get(f"https://gutendex.com/books/?{q}", tries=1, timeout=25) if time.time() < DEADLINE - 600 else None
@@ -68,7 +115,7 @@ def main():
         print(f"{cat}: {len(shelf)} books")
 
     ok = set()
-    pick_ids = [b["id"] for s in picks.values() for b in s]
+    pick_ids = [b["id"] for s in picks.values() for b in s if b.get("id")]
     order = list(dict.fromkeys(pick_ids + [b["id"] for s in catalog.values() for b in s]))
     for bid in order:
         path = os.path.join(HERE, f"{bid}.txt")

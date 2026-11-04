@@ -352,5 +352,202 @@
    "title": "The Republic",
    "author": "Plato"
   }
+ ],
+ "inspiration": [
+  {
+   "id": 4507,
+   "title": "As a Man Thinketh",
+   "author": "James Allen"
+  },
+  {
+   "id": 935,
+   "title": "Self-Help",
+   "author": "Samuel Smiles"
+  },
+  {
+   "id": 368,
+   "title": "Acres of Diamonds",
+   "author": "Russell H. Conwell"
+  },
+  {
+   "id": 2376,
+   "title": "Up from Slavery",
+   "author": "Booker T. Washington"
+  },
+  {
+   "id": 2274,
+   "title": "How to Live on 24 Hours a Day",
+   "author": "Arnold Bennett"
+  },
+  {
+   "find": "The Science of Getting Rich|Wattles"
+  },
+  {
+   "find": "Pushing to the Front|Marden"
+  },
+  {
+   "find": "The Strenuous Life|Roosevelt"
+  }
+ ],
+ "business": [
+  {
+   "id": 8581,
+   "title": "The Art of Money Getting",
+   "author": "P. T. Barnum"
+  },
+  {
+   "id": 20203,
+   "title": "Autobiography of Benjamin Franklin",
+   "author": "Benjamin Franklin"
+  },
+  {
+   "id": 24518,
+   "title": "Extraordinary Popular Delusions and the Madness of Crowds",
+   "author": "Charles Mackay"
+  },
+  {
+   "find": "Letters from a Self-Made Merchant to His Son|Lorimer"
+  },
+  {
+   "find": "The Gospel of Wealth|Carnegie"
+  },
+  {
+   "find": "Autobiography of Andrew Carnegie|Carnegie"
+  }
+ ],
+ "innovation": [
+  {
+   "id": 820,
+   "title": "Edison, His Life and Inventions",
+   "author": "Frank Lewis Dyer and T. C. Martin"
+  },
+  {
+   "id": 5001,
+   "title": "Relativity: The Special and General Theory",
+   "author": "Albert Einstein"
+  },
+  {
+   "find": "Passages from the Life of a Philosopher|Babbage"
+  },
+  {
+   "find": "The Early History of the Airplane|Wright"
+  },
+  {
+   "id": 2009,
+   "title": "On the Origin of Species",
+   "author": "Charles Darwin"
+  }
+ ],
+ "leadership": [
+  {
+   "id": 132,
+   "title": "The Art of War",
+   "author": "Sun Tzu"
+  },
+  {
+   "id": 1232,
+   "title": "The Prince",
+   "author": "Niccolò Machiavelli"
+  },
+  {
+   "id": 16317,
+   "title": "The Art of Public Speaking",
+   "author": "Dale Carnegie and J. Berg Esenwein"
+  },
+  {
+   "id": 2944,
+   "title": "Essays, First Series",
+   "author": "Ralph Waldo Emerson"
+  },
+  {
+   "id": 2680,
+   "title": "Meditations",
+   "author": "Marcus Aurelius"
+  },
+  {
+   "find": "Character|Smiles"
+  }
+ ],
+ "people": [
+  {
+   "id": 16317,
+   "title": "The Art of Public Speaking",
+   "author": "Dale Carnegie and J. Berg Esenwein"
+  },
+  {
+   "find": "The Psychology of Management|Gilbreth"
+  },
+  {
+   "id": 935,
+   "title": "Self-Help",
+   "author": "Samuel Smiles"
+  },
+  {
+   "find": "Duty|Smiles"
+  },
+  {
+   "id": 2274,
+   "title": "How to Live on 24 Hours a Day",
+   "author": "Arnold Bennett"
+  }
+ ],
+ "finance": [
+  {
+   "id": 8581,
+   "title": "The Art of Money Getting",
+   "author": "P. T. Barnum"
+  },
+  {
+   "id": 24518,
+   "title": "Extraordinary Popular Delusions and the Madness of Crowds",
+   "author": "Charles Mackay"
+  },
+  {
+   "find": "Thrift|Smiles"
+  },
+  {
+   "id": 3300,
+   "title": "The Wealth of Nations",
+   "author": "Adam Smith"
+  },
+  {
+   "find": "The Science of Getting Rich|Wattles"
+  }
+ ],
+ "ops": [
+  {
+   "id": 6435,
+   "title": "The Principles of Scientific Management",
+   "author": "Frederick Winslow Taylor"
+  },
+  {
+   "find": "Shop Management|Taylor"
+  },
+  {
+   "find": "Increasing Human Efficiency in Business|Scott"
+  },
+  {
+   "id": 132,
+   "title": "The Art of War",
+   "author": "Sun Tzu"
+  }
+ ],
+ "sales": [
+  {
+   "find": "The Psychology of Advertising|Scott"
+  },
+  {
+   "id": 8581,
+   "title": "The Art of Money Getting",
+   "author": "P. T. Barnum"
+  },
+  {
+   "id": 16317,
+   "title": "The Art of Public Speaking",
+   "author": "Dale Carnegie and J. Berg Esenwein"
+  },
+  {
+   "find": "Letters from a Self-Made Merchant to His Son|Lorimer"
+  }
  ]
 }

@@ -18,6 +18,15 @@ Feels like a real place:
 - **Sound**: register ka-ching, coffee pour and steam, library stamp and scanner beep, fryer sizzle and order bell, page flips, plus quiet background sound for each venue. All generated in the browser, no audio files.
 - **A real book**: pull books off wooden shelves by their spines, watch the cover open, and turn pages with a 3D flip (swipe, tap the page edges, or use arrow keys). Text is laid out to fit each page, with chapter openings, drop caps, running heads and page numbers. Two-page spread on wide screens, one page on phones.
 
+Life simulator:
+
+- **Five places on the street**: Kopi & Pages, The Commons Library, Bun & Chapter, the new **Menara Ilham** office tower (book a 25 to 120 minute focus room, department shelves, pantry and stretch breaks) and **Dataran Ilham**, a public square with benches and a kopi kiosk.
+- **People talk books with you**: readers and walkers recommend a book, want to argue about one, say they didn't like one, or want to share an idea. Walk up or tap them to **share thoughts**, or **ignore** them. Pick how you answer, write down your own thought or feeling, and their picks land on a **Recommended** shelf. Book talks give XP, a daily quest and badges (Book Buddy, Fair Debater).
+- **First person at the counter**: walking into a place switches to your own view with your hands on the counter. Tap the menu to order, tap your card on the reader to pay (reading is free, you pay with time), watch the staff make it, take your drink or pass, then reach for a spine on the shelf and sit down to read. "Menu view" keeps the old screen, and Settings can turn the first-person view off.
+- **Shelves by place**: the café leads with Inspiration, Business and Innovation; the office has Leadership, People & HR, Finance, Operations, Sales & marketing and Innovation; the library and diner have their own picks. Every other shelf is still one tap away.
+- **Better books**: new shelves of free public-domain classics on leadership, business and self-improvement (Franklin, Carnegie, Smiles, Barnum, Sun Tzu, Taylor, Edison and more). **Add your own EPUB**: any DRM-free EPUB you own opens in the reader and stays only on your device. Modern bestsellers are not free, so they are not built in.
+- **Bun & Chapter** uses the Ember & Steel style from design 2 (steel specials board, brick-red headline, one starburst offer). The offer is real: the finish bonus doubles after 10 PM.
+
 Game layer:
 
 - **Season mode** (from the Shardline gamification spec, mapped to reading): pick a male or female player (looks only, same stats), customise skin, hair, headwear (songkok, kopiah, three tudung styles, cap), outfit (casual, smart-casual, baju Melayu or baju kurung, team jersey) and extras, and name them.
