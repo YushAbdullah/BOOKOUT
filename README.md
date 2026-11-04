@@ -84,3 +84,10 @@ Alternatives, all free: Cloudflare Pages, Netlify (drag the folder onto app.netl
 - Seven reading places on Jalan Buku: Kopi & Pages, The Commons Library, Bun & Chapter, Menara Ilham, Pena Bookstore, The Loft Lounge and the Taman Bacaan park pavilion.
 - Landing page, Places directory with favourites, About me, Vision and mission, Privacy policy and Terms pages. Page text lives in `PAGES` in `index.html`.
 - Season screens use the mint design with cascade motion.
+
+## Game hub
+
+- Splash screen on launch (once per browser session) with a loading bar and a start button.
+- Hub: your player on a platform, swipe or use the arrows to pick a place, then one big button to read there. HUD with level, XP and points. Daily spin, shop (streak freeze, library cards, paid in points), mail, quests, friends, events and a daily chest for finishing every quest.
+- World map: the season as four islands with stars, locks and map progress.
+- Bottom tab bar on phones and tablets: Home, Street, Map, Passport, More.
