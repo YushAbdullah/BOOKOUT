@@ -382,6 +382,159 @@ body.st-lock{overflow:hidden}
 .lk-tx{border:0;background:var(--surface-muted);font:600 13px var(--font);padding:6px 10px;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--border)}
 .lk-tx.on{background:var(--primary);box-shadow:none}
 @media (max-width:639px){.street{height:min(72vh,560px);border-width:4px;border-radius:20px;margin-inline:-4px}.st-hud{font-size:12px;padding:6px 10px}.st-btn span{display:none}.st-hint{white-space:normal;width:calc(100% - 28px);text-align:center}.lk{grid-template-columns:1fr}.lk canvas{margin:auto}}
+/* ---------- game hub ---------- */
+.hub{position:relative;overflow:hidden;border-radius:32px;height:min(760px,calc(100svh - 150px));min-height:580px;box-shadow:var(--e3);margin-top:4px;isolation:isolate;color:#fff}
+.hub-bg{position:absolute;inset:0;z-index:-2}
+.hub-bg .scene{position:absolute;inset:0;border-radius:0;height:auto;min-height:0;transform:scale(1.08);filter:saturate(1.1) blur(1.5px)}
+.hub-bg .scene .layer{position:absolute;inset:0}
+.hub::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(15,26,18,.55) 0,rgba(15,26,18,0) 22%,rgba(15,26,18,0) 55%,rgba(15,26,18,.6) 100%)}
+.hub-hud{position:absolute;left:14px;right:14px;top:14px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px;z-index:3}
+.hud-me{display:flex;align-items:center;gap:10px;border:0;background:rgba(38,40,40,.72);backdrop-filter:blur(8px);color:#fff;border-radius:18px;padding:6px 14px 6px 6px;box-shadow:0 0 0 2px rgba(107,230,131,.6);text-align:left;animation:cas-drop .5s var(--ease) both}
+.hud-me canvas{width:52px;height:52px;border-radius:14px;background:var(--surface-tint)}
+.hud-id{display:grid;gap:2px;min-width:120px}.hud-id b{font-size:16px;line-height:1.1}.hud-id small{font-size:12px;opacity:.85}
+.hud-xp{position:relative;height:14px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden;margin-top:2px}
+.hud-xp i{position:absolute;inset:0 auto 0 0;background:var(--primary);border-radius:99px;animation:xpfill 1s .3s var(--ease) both}
+.hud-xp em{position:relative;display:block;text-align:center;font:700 10px/14px var(--font);font-style:normal;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.hud-cur{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+.cur{display:flex;align-items:center;gap:6px;background:rgba(38,40,40,.72);backdrop-filter:blur(8px);border-radius:99px;padding:6px 6px 6px 12px;font-size:15px;animation:cas-drop .5s .08s var(--ease) both}
+.cur:last-child{padding-right:12px;animation-delay:.14s}.cur b{font-weight:800}
+.cur button{width:28px;height:28px;border-radius:9px;border:0;background:var(--primary);color:var(--on-primary);font:800 18px/1 var(--font);box-shadow:0 3px 0 #3fb85a}
+.hub-spin{position:absolute;right:14px;top:86px;z-index:3;display:flex;align-items:center;gap:10px;border:0;background:rgba(38,40,40,.72);backdrop-filter:blur(8px);color:#fff;border-radius:18px;padding:8px 14px 8px 8px;text-align:left;animation:cas-drop .5s .2s var(--ease) both}
+.hub-spin .wh{width:40px;height:40px;border-radius:50%;background:conic-gradient(#6BE683 0 45deg,#fff 0 90deg,#1CBB6C 0 135deg,#E3F8E6 0 180deg,#6BE683 0 225deg,#fff 0 270deg,#262828 0 315deg,#E3F8E6 0);box-shadow:0 0 0 3px #fff}
+.hub-spin.ready .wh{animation:spinslow 6s linear infinite}
+@keyframes spinslow{to{transform:rotate(360deg)}}
+.hub-spin b{display:block;font-size:14px}.hub-spin em{display:inline-block;font:800 11px var(--font);font-style:normal;background:var(--primary);color:var(--on-primary);border-radius:6px;padding:2px 8px;margin-top:2px}
+.hub-spin:not(.ready) em{background:rgba(255,255,255,.2);color:#fff}
+.hub-side{position:absolute;top:150px;z-index:3;display:grid;gap:10px}
+.hub-side.l{left:14px}.hub-side.r{right:14px}
+.hb-ic{position:relative;width:66px;height:66px;border:0;border-radius:18px;background:rgba(38,40,40,.72);backdrop-filter:blur(8px);color:#fff;display:grid;place-items:center;align-content:center;gap:2px;box-shadow:inset 0 0 0 2px rgba(255,255,255,.12),0 4px 0 rgba(0,0,0,.25);transition:transform .15s var(--ease);animation:cas-drop .45s var(--ease) both}
+.hub-side .hb-ic:nth-child(2){animation-delay:.06s}.hub-side .hb-ic:nth-child(3){animation-delay:.12s}
+.hb-ic:hover{transform:translateY(-2px)}.hb-ic:active{transform:translateY(2px)}
+.hb-ic .e{font-size:26px;line-height:1}.hb-ic .l{font:700 11px var(--font);letter-spacing:.04em;text-transform:uppercase}
+.hb-ic .n{position:absolute;right:-6px;top:-6px;min-width:22px;height:22px;border-radius:99px;background:var(--danger);color:#fff;font:800 12px/22px var(--font);font-style:normal;padding:0 6px;box-shadow:0 0 0 2px #fff}
+.hub-place{position:absolute;left:50%;top:150px;transform:translateX(-50%);z-index:2;text-align:center;width:min(440px,calc(100% - 190px));animation:cas-up .55s .15s var(--ease) both}
+.hub-place h2{font-size:clamp(22px,3.2vw,32px);letter-spacing:-.02em;margin-top:8px;text-shadow:0 2px 12px rgba(0,0,0,.45)}
+.hub-place small{display:block;font-size:13px;opacity:.9;text-shadow:0 1px 6px rgba(0,0,0,.5)}
+.hub-place .pill{font-size:12px}
+.hub-hero{position:absolute;left:50%;bottom:118px;transform:translateX(-50%);width:300px;height:320px;z-index:2}
+.hub-hero canvas{position:relative;width:100%;height:100%;animation:cas-up .7s .2s var(--ease) both}
+.hub-hero .plat{position:absolute;left:50%;bottom:6px;transform:translateX(-50%);width:230px;height:62px;border-radius:50%;background:radial-gradient(ellipse at 50% 40%,#E3F8E6 0 40%,#6BE683 41% 62%,#1CBB6C 63%);box-shadow:0 14px 0 #158f52,0 26px 30px rgba(0,0,0,.35)}
+.hub-arrow{position:absolute;top:56%;z-index:3;width:56px;height:56px;border-radius:18px;border:0;background:var(--primary);color:var(--on-primary);font-size:22px;box-shadow:0 5px 0 #3fb85a;transition:transform .12s}
+.hub-arrow:active{transform:translateY(4px);box-shadow:0 1px 0 #3fb85a}
+.hub-arrow.l{left:calc(50% - 240px)}.hub-arrow.r{right:calc(50% - 240px)}
+.hub-chest{position:absolute;right:16px;bottom:130px;z-index:3;border:0;background:none;color:#fff;display:grid;justify-items:center;gap:2px}
+.hub-chest span{font-size:52px;line-height:1;filter:grayscale(.6) drop-shadow(0 6px 8px rgba(0,0,0,.35));transition:filter .2s}
+.hub-chest.ready span{filter:drop-shadow(0 0 16px #6BE683);animation:chestbob 1.2s ease-in-out infinite}
+@keyframes chestbob{50%{transform:translateY(-6px) rotate(-4deg)}}
+.hub-chest small{font:700 12px var(--font);background:rgba(38,40,40,.72);border-radius:8px;padding:2px 8px}
+.hub-foot{position:absolute;left:0;right:0;bottom:22px;z-index:3;display:grid;justify-items:center;gap:10px;padding:0 16px}
+.hub-claim{min-width:min(420px,100%);min-height:60px;border:0;border-radius:18px;background:linear-gradient(180deg,#8CF09F,#6BE683 55%,#55D86C);color:var(--on-primary);font:800 20px/1.1 var(--font);letter-spacing:.02em;padding:14px 28px;box-shadow:0 6px 0 #2f9d4a,0 14px 24px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.6);transition:transform .1s,box-shadow .1s;animation:cas-up .5s .3s var(--ease) both}
+.hub-claim:active{transform:translateY(5px);box-shadow:0 1px 0 #2f9d4a,0 6px 12px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.6)}
+.hub-claim:disabled{filter:grayscale(.5);opacity:.75}
+.hub-claim.ready{animation:claimpulse 1.6s ease-in-out infinite}
+@keyframes claimpulse{50%{transform:scale(1.03)}}
+.hub-dots{display:flex;gap:6px}.hub-dots i{width:8px;height:8px;border-radius:99px;background:rgba(255,255,255,.45);transition:width .2s}.hub-dots i.on{width:22px;background:#fff}
+/* hub modals */
+.hq{display:grid;gap:8px;margin-top:14px}
+.hq-r{display:grid;grid-template-columns:40px 1fr auto;gap:12px;align-items:center;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-md);padding:10px 12px;animation:cas-fan .5s var(--ease) calc(var(--d,0) * 60ms) both}
+.hq-r .ck{width:40px;height:40px;border-radius:12px;background:var(--surface);display:grid;place-items:center;font-size:20px;box-shadow:var(--e1)}
+.hq-r b{font-size:15px;display:block}.hq-r small{display:block;font-size:13px;color:var(--text-muted);margin-top:2px}
+.hq-r .pts{font:800 13px var(--font);background:var(--surface-tint);color:var(--on-primary);border-radius:8px;padding:4px 8px}
+.hq-r.done{opacity:.6}.hq-r.done .ck{background:var(--primary);color:var(--on-primary)}
+.hq-r.new{background:var(--surface);box-shadow:inset 0 0 0 2px var(--primary)}
+.sl-btn.sm{min-height:38px;padding:6px 12px;font-size:14px;box-shadow:0 3px 0 #3fb85a}
+.spin-wrap{position:relative;width:min(280px,80vw);margin:16px auto 8px}
+.spin-w{width:100%;height:auto;display:block;filter:drop-shadow(0 10px 20px rgba(16,40,20,.2))}
+.spin-ptr{position:absolute;left:50%;top:-14px;transform:translateX(-50%);z-index:2;font-size:30px;color:var(--ink);text-shadow:0 2px 0 #fff}
+.more-g{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.more-b{display:flex;align-items:center;gap:10px;border:0;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-md);padding:14px;font-weight:600;font-size:15px;text-align:left;animation:cas-drop .4s var(--ease) calc(var(--d) * 40ms) both}
+.more-b span{font-size:22px}
+/* splash */
+.splash{position:fixed;inset:0;z-index:500;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;background:linear-gradient(180deg,#9ED9F2 0,#CFF0DA 55%,#6BE683 55.2%,#4FBF66 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px))}
+.splash.out{animation:spout .45s cubic-bezier(.64,0,.78,0) forwards}
+@keyframes spout{to{opacity:0;transform:scale(1.04)}}
+body.splash-on{overflow:hidden}
+.sp-sky{position:absolute;inset:0;pointer-events:none}
+.sp-sky .sun{position:absolute;right:12%;top:8%;width:90px;height:90px;border-radius:50%;background:#FFE7A3;box-shadow:0 0 0 18px rgba(255,231,163,.35),0 0 80px 30px rgba(255,231,163,.5)}
+.sp-sky .cl{position:absolute;height:34px;border-radius:99px;background:#fff;opacity:.9;animation:cloud 30s linear infinite}
+.sp-sky .cl::before{content:"";position:absolute;left:22%;top:-18px;width:50px;height:44px;border-radius:50%;background:#fff}
+.sp-sky .c1{width:130px;left:6%;top:16%}.sp-sky .c2{width:90px;left:60%;top:26%;animation-duration:40s}
+@keyframes cloud{to{transform:translateX(40vw)}}
+.sp-town{position:absolute;left:0;right:0;top:34%;height:22%;display:flex;justify-content:center;align-items:flex-end;gap:2%;pointer-events:none}
+.sp-town .bd{position:relative;width:min(120px,20vw);border-radius:12px 12px 0 0;box-shadow:inset 0 -10px 0 rgba(0,0,0,.08);display:grid;place-items:center;font-size:clamp(24px,5vw,38px);animation:cas-up .6s var(--ease) both}
+.sp-town .b1{height:70%;background:#f3dcc0;animation-delay:.1s}.sp-town .b2{height:100%;background:#dfe9dc;animation-delay:.18s}.sp-town .b3{height:84%;background:#f6e9f1;animation-delay:.26s}.sp-town .b4{height:62%;background:#f8dcd2;animation-delay:.34s}
+.sp-town .road{position:absolute;left:0;right:0;bottom:-26px;height:26px;background:#6d727d;box-shadow:inset 0 -3px 0 #5f646e}
+.sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
+.sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
+.sp-badge .dots{position:relative;width:52px;height:34px}.sp-badge .dots i{position:absolute;top:0;width:34px;height:34px;border-radius:50%}.sp-badge .dots i:first-child{left:0;background:var(--primary)}.sp-badge .dots i:last-child{left:18px;background:var(--ink);mix-blend-mode:multiply}
+.sp-logo h1{font:900 clamp(52px,14vw,92px)/1 var(--font);letter-spacing:-.03em;background:#fff;padding:18px 26px 12px;border-radius:28px;box-shadow:0 8px 0 #DDEBDF,0 20px 40px rgba(16,40,20,.18);transform:rotate(-2deg)}
+.sp-logo h1 .b{color:#1CBB6C}.sp-logo h1 .o{color:var(--ink)}
+.sp-rib{margin-top:-10px;background:var(--ink);color:#fff;font:700 13px var(--font);letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:10px;transform:rotate(2deg);box-shadow:0 4px 0 #000}
+.sp-pl{position:relative;z-index:2;align-self:end;width:min(240px,56vw);height:auto;animation:cas-up .7s .4s var(--ease) both}
+.sp-bottom{position:relative;z-index:2;display:grid;justify-items:center;gap:10px;width:min(420px,100%)}
+.sp-bottom .hub-claim{width:100%;animation:none}
+.sp-sub{font:700 12px var(--font);letter-spacing:.2em;text-transform:uppercase;color:var(--on-primary)}
+.sp-bar{position:relative;width:100%;height:18px;border-radius:99px;background:rgba(0,53,3,.25);overflow:hidden;box-shadow:inset 0 2px 4px rgba(0,0,0,.2)}
+.sp-bar i{position:absolute;inset:0 auto 0 0;width:0;background:linear-gradient(180deg,#fff,#E3F8E6);border-radius:99px}
+.sp-bar b{position:relative;display:block;text-align:center;font:800 11px/18px var(--font);color:var(--on-primary)}
+.sp-tip{font-size:13px;color:var(--on-primary);text-align:center}
+/* world map */
+.wmap{position:relative;overflow:hidden;border-radius:32px;height:max(760px,calc(100svh - 150px));box-shadow:var(--e3);background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,.35),transparent 50%),repeating-radial-gradient(circle at 70% 60%,rgba(255,255,255,.07) 0 2px,transparent 2px 26px),linear-gradient(180deg,#7FCBEA,#4BA9D6 60%,#3A8FC0);color:#fff;isolation:isolate}
+.wm-top{position:absolute;left:14px;right:14px;top:14px;z-index:3;display:flex;justify-content:space-between;align-items:center}
+.wm-ic{width:46px;height:46px;border-radius:14px;border:0;background:var(--surface);color:var(--text);font:800 20px var(--font);box-shadow:0 4px 0 var(--border)}
+.wm-title{background:var(--ink);color:#fff;font:800 16px var(--font);letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:14px;box-shadow:0 4px 0 #000}
+.wm-hearts{position:absolute;left:14px;top:74px;z-index:3;display:flex;align-items:center;gap:6px;background:rgba(38,40,40,.72);border-radius:99px;padding:6px 14px}
+.wm-hearts b{font-size:16px}.wm-hearts small{font-size:12px;opacity:.8}
+.wm-path{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.wm-road{fill:none;stroke:rgba(255,255,255,.35);stroke-width:22;stroke-linecap:round}
+.wm-coins{fill:none;stroke:#FFE07A;stroke-width:7;stroke-linecap:round;stroke-dasharray:.1 18;animation:coins 2.5s linear infinite}
+@keyframes coins{to{stroke-dashoffset:-36}}
+.isle{position:absolute;transform:translate(-50%,-50%);z-index:1;border:0;background:none;padding:0;color:#fff;display:grid;justify-items:center;animation:islepop .6s cubic-bezier(.34,1.56,.64,1) calc(var(--d) * 120ms + 150ms) both}
+@keyframes islepop{from{transform:translate(-50%,-50%) scale(.3);opacity:0}}
+.isle-land{position:relative;width:150px;height:110px;border-radius:50% 50% 46% 54%/60% 60% 40% 40%;background:radial-gradient(ellipse at 50% 35%,#8CF09F 0 45%,#6BE683 46% 60%,#F2DEB0 61% 74%,rgba(242,222,176,0) 75%);filter:drop-shadow(0 10px 0 rgba(20,70,110,.35))}
+.isle-land span{position:absolute;line-height:1}
+.isle-land .a1{left:50%;top:26%;transform:translate(-50%,-50%);font-size:46px}.isle-land .a2{left:20%;top:44%;font-size:24px}.isle-land .a3{right:18%;top:40%;font-size:24px}
+.isle.locked .isle-land{filter:grayscale(.8) brightness(.8) drop-shadow(0 10px 0 rgba(20,70,110,.35))}
+.isle .lock{left:50%;top:30%;transform:translate(-50%,-50%);font-size:34px;background:rgba(38,40,40,.8);border-radius:50%;width:56px;height:56px;display:grid;place-items:center}
+.isle .you{left:50%;top:-20px;transform:translateX(-50%);animation:bob 1.6s ease-in-out infinite}
+.isle .you canvas{width:56px;height:56px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--primary),0 6px 12px rgba(0,0,0,.3)}
+.isle-tag{margin-top:-6px;background:rgba(38,40,40,.82);border-radius:12px;padding:6px 12px;display:grid;justify-items:center;box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.isle-tag b{font-size:14px;white-space:nowrap}.isle-tag small{font-size:12px;color:#FFE07A;font-weight:700}
+.isle.now .isle-tag{background:var(--primary);color:var(--on-primary);box-shadow:0 4px 0 #2f9d4a}.isle.now .isle-tag small{color:var(--on-primary)}
+.isle.locked .isle-tag small{color:#cfd6dc}
+.isle-big{font-size:56px;text-align:center;margin:8px 0}
+.wm-side{position:absolute;left:14px;bottom:110px;z-index:3;display:grid;gap:10px}
+.wm-prog{position:absolute;left:14px;right:14px;bottom:16px;z-index:3;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;background:rgba(38,40,40,.82);backdrop-filter:blur(8px);border-radius:20px;padding:12px 16px;animation:cas-up .5s .4s var(--ease) both}
+.wm-prog b{font-size:15px}.wm-prog .ch{font-size:34px}.wm-prog .ch.dim{filter:grayscale(1);opacity:.6}
+.wm-prog .xpbar{background:rgba(255,255,255,.18)}
+/* tab bar */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:150;display:none;justify-content:space-around;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(38,40,40,.94);backdrop-filter:blur(10px);border-radius:22px 22px 0 0;box-shadow:0 -8px 30px rgba(16,40,20,.18)}
+.tb{flex:1;max-width:90px;border:0;background:rgba(255,255,255,.06);color:#fff;border-radius:14px;padding:6px 4px;display:grid;justify-items:center;gap:2px;font:700 11px var(--font);letter-spacing:.03em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.tb .e{font-size:22px;line-height:1.1}
+.tb.on{background:var(--primary);color:var(--on-primary);box-shadow:0 3px 0 #2f9d4a;transform:translateY(-4px)}
+body.pov-on .tabbar,body.reading .tabbar,body.splash-on .tabbar,body:has(#modal-root .scrim) .tabbar,body:has(.stagecard) .tabbar{display:none!important}
+@media (max-width:1023px){.tabbar{display:flex}body{padding-bottom:calc(84px + env(safe-area-inset-bottom,0px))}.navlinks{display:none!important}}
+@media (max-width:639px){
+  .hub,.wmap{border-radius:24px;margin-inline:-6px}
+  body[data-view=hub] nav.top,body[data-view=map] nav.top{display:none}
+  body[data-view=hub] #app,body[data-view=map] #app{padding-top:10px}
+  .hub{height:calc(100svh - 110px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:540px}
+  .wmap{height:calc(100svh - 110px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px));min-height:760px}
+  .hud-id{min-width:0}.hud-id small{display:none}.hud-me canvas{width:44px;height:44px}
+  .cur{font-size:14px}.cur:last-child{display:none}
+  .hub-spin{top:76px;padding:6px 10px 6px 6px}.hub-spin .wh{width:32px;height:32px}
+  .hub-side{top:128px;gap:8px}.hb-ic{width:52px;height:52px;border-radius:15px}.hb-ic .e{font-size:20px}.hb-ic .l{font-size:9px}
+  .hub-place{top:128px;width:calc(100% - 140px)}.hub-place h2{font-size:20px}.hub-place small{display:none}
+  .hub-hero{width:190px;height:203px;bottom:96px}.hub-hero .plat{width:160px;height:42px}
+  .hub-arrow{width:44px;height:44px;top:auto;bottom:104px}.hub-arrow.l{left:10px}.hub-arrow.r{right:10px}
+  .hub-chest{bottom:160px;right:10px}.hub-chest span{font-size:34px}.hub-chest small{font-size:10px}
+  .hub-foot{bottom:14px;gap:6px}
+  .hub-claim{font-size:18px;min-height:56px}
+  .isle-land{width:120px;height:90px}.isle-land .a1{font-size:38px}.isle-tag b{font-size:13px}
+  .wm-title{font-size:13px;padding:8px 12px}
+  .wm-side{left:auto;right:14px;bottom:auto;top:70px;display:flex;gap:8px}.wm-side .hb-ic{width:48px;height:48px}.wm-side .hb-ic .e{font-size:18px}.wm-side .hb-ic .l{font-size:8px}
+}
 /* ---------- landing, places, info, footer ---------- */
 .ld-hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:32px 0 56px}
 .ld-hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.06;letter-spacing:-.03em;margin:14px 0 0}
@@ -915,15 +1068,15 @@ body.pov-on{overflow:hidden}
 <div class="glow" style="width:420px;height:420px;right:-120px;top:420px" aria-hidden="true"></div>
 <div class="wrap">
   <nav class="top" aria-label="Main">
-    <button class="logo" data-go="landing" aria-label="BOOKOUT home">
+    <button class="logo" data-go="hub" aria-label="BOOKOUT home">
       <span class="dots" aria-hidden="true"><i></i><i></i></span>
       <span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span>
     </button>
     <div class="navlinks">
-      <button data-go="landing" id="nav-landing">Home</button>
+      <button data-go="hub" id="nav-hub">Home</button>
       <button data-go="home" id="nav-home">Street</button>
       <button data-go="places" id="nav-places">Places</button>
-      <button data-go="season" id="nav-season">Season</button>
+      <button data-go="map" id="nav-map">Map</button>
       <button data-go="passport" id="nav-passport">Passport</button>
       <button data-go="about" id="nav-about">About</button>
     </div>
@@ -1487,7 +1640,7 @@ function rememberBook(b) {
 const cover = (b, w = 120) => `<div class="cloth" style="--c:${clothOf(b)};--cw:${w}px"><div class="cl-in"><b>${esc(b.title)}</b><span>${esc(b.author)}</span></div>${b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</div>`;
 
 /* =============== router =============== */
-let view = S.flags && S.flags.landed ? 'home' : 'landing', setup = null, sess = null, infoKey = 'about';
+let view = S.flags && S.flags.landed ? 'hub' : 'landing', setup = null, sess = null, infoKey = 'about';
 function go(v, arg) {
   if (sess && v !== 'session') { confirmLeave(() => { finish(false); go(v, arg); }); return; }
   if (['about', 'vision', 'privacy', 'terms'].includes(v)) { infoKey = v; v = 'info'; }
@@ -1500,11 +1653,12 @@ document.addEventListener('click', e => { const g = e.target.closest('[data-go]'
 function render() {
   rollDay(); renderChips();
   document.body.classList.toggle('reading', view === 'session');
-  [['landing', ['landing']], ['home', ['home', 'setup']], ['places', ['places']], ['season', ['season']], ['passport', ['passport']], ['about', ['info']]].forEach(([k, vs]) => $('#nav-' + k).setAttribute('aria-current', vs.includes(view) ? 'page' : 'false'));
+  [['hub', ['hub']], ['home', ['home', 'setup']], ['places', ['places']], ['map', ['map', 'season']], ['passport', ['passport']], ['about', ['info']]].forEach(([k, vs]) => $('#nav-' + k).setAttribute('aria-current', vs.includes(view) ? 'page' : 'false'));
   const app = $('#app'); app.innerHTML = '';
   const el = document.createElement('div'); el.className = 'view'; app.append(el);
-  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, info: e => renderInfo(e, infoKey) })[view](el);
+  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, hub: renderHub, map: renderMap, info: e => renderInfo(e, infoKey) })[view](el);
   if (view !== 'session') app.insertAdjacentHTML('beforeend', footerHTML());
+  document.body.dataset.view = view; renderTabbar();
   const pp = $('#pp-pt'); if (pp) portrait(pp, S.avatar, 2.6, .9);
 }
 function renderChips() {
@@ -3200,7 +3354,7 @@ function renderLanding(el) {
       <span class="cap ld-cap cas">A reading game for real life</span>
       <h1 class="cas" style="--d:1">Walk in. Order. <em>Read for real.<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C40 3, 80 14, 120 7 S180 4, 197 9"/></svg></em></h1>
       <p class="lede cas" style="--d:2">BOOKOUT turns daily reading into a walk through town. Pick a café, a library, a bookshop or a park, order at the counter, pull a free classic off the shelf and level up while you read.</p>
-      <div class="ld-cta cas" style="--d:3"><button class="sl-btn" data-go="home">Start walking</button><button class="sl-btn sec" data-go="places">See the places</button></div>
+      <div class="ld-cta cas" style="--d:3"><button class="sl-btn" data-go="hub">Start playing</button><button class="sl-btn sec" data-go="places">See the places</button></div>
       <div class="ld-chips"><span class="chip-side a cas-drop" style="--d:4">📚 ${vs.length} places</span><span class="chip-side b cas-drop" style="--d:5;--rot:3deg">🆓 Free forever</span><span class="chip-side n cas-drop" style="--d:6">⭐ You are level ${L.lvl}</span></div>
     </div>
     <div class="ld-stack" aria-hidden="true">${vs.slice(0, 3).map((v, i) => `<div class="ld-card c${i}"><div class="scene mini">${sceneArt(v)}</div><b>${v.emoji} ${esc(v.name)}</b><span>${esc(v.kind)}</span></div>`).join('')}
@@ -3269,6 +3423,179 @@ function footerHTML() {
     <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
     <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button></div>
   </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No accounts, no tracking</p></footer>`;
+}
+
+/* =============== game hub, splash, world map =============== */
+let hubIdx = 0;
+const MAIL_SYS = [
+  { id: 'welcome', from: 'BOOKOUT', em: '👋', t: 'Welcome to Jalan Buku', d: 'Walk the street, order at a counter and read. Every minute earns points and XP.' },
+  { id: 'places7', from: 'Kak Mira', em: '📚', t: 'Three new places opened', d: 'Pena Bookstore, The Loft Lounge and the Taman Bacaan park pavilion are open. Come say hi!' },
+  { id: 'spin', from: 'BOOKOUT', em: '🎡', t: 'Spin every day', d: 'Your daily spin is free. Points, XP or a streak freeze.' }
+];
+const mailList = () => [...(S.recs || []).map(r => ({ id: 'rec:' + r.key, from: r.by || 'A reader', em: '🤝', t: `Recommended: ${r.title}`, d: `${r.author || ''} · find it under Recommended on any shelf.` })), ...MAIL_SYS];
+const mailUnread = () => mailList().filter(m => !(S.flags.mailRead || []).includes(m.id)).length;
+const nightOwl = () => { const h = new Date().getHours(); return h >= 22 || h < 5; };
+const eventList = () => [
+  { em: '🦉', t: 'Night owl', d: '2× finish bonus at Bun & Chapter from 10 PM to 5 AM.', on: nightOwl() },
+  { em: '📄', t: 'Lost pages hunt', d: 'Three pages are hidden on the street every day. Find them all for +15.', on: !(S.flags.lp && S.flags.lp.day === dayKey() && S.flags.lp.got.length >= 3) },
+  { em: '🎁', t: 'Daily chest', d: 'Finish every daily quest, then open the chest on the hub for +25.', on: S.flags.chest !== dayKey() },
+  { em: '🏟️', t: `Season ${S.season.n}`, d: S.season.done ? 'Season complete. Start the next one on the map.' : `You are in the ${STAGES.find(x => x.id === S.season.stage).name}.`, on: !S.season.done }
+];
+const hubBtn = (k, em, label, n) => `<button class="hb-ic" data-hub="${k}"><span class="e">${em}</span><span class="l">${label}</span>${n ? `<i class="n">${n > 9 ? '9+' : n}</i>` : ''}</button>`;
+function renderHub(el) {
+  const L = levelInfo(S.xp), vs = placeOrder(); hubIdx = ((hubIdx % vs.length) + vs.length) % vs.length;
+  const v = vs[hubIdx], st = venueStatus(v), q = quests(), qLeft = q.filter(x => !x.done).length;
+  const chestReady = !qLeft && S.flags.chest !== dayKey(), spinReady = S.flags.spin !== dayKey(), evN = eventList().filter(e => e.on).length;
+  el.innerHTML = `<section class="hub ${isNight() ? 'night' : ''}">
+    <div class="hub-bg" aria-hidden="true"><div class="scene">${sceneArt(v)}</div></div>
+    <header class="hub-hud">
+      <button class="hud-me" data-player aria-label="Edit your player"><canvas id="hub-av" width="112" height="112"></canvas>
+        <span class="hud-id"><b>${esc(S.name)}</b><small>Level ${L.lvl} · ${esc(L.title)}</small><span class="hud-xp"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i><em>${L.into}/${L.need}</em></span></span></button>
+      <div class="hud-cur"><span class="cur">🪙 <b class="tab">${S.points}</b><button data-hub="shop" aria-label="Shop">+</button></span><span class="cur">🔥 <b class="tab">${S.streak}</b></span></div>
+    </header>
+    <button class="hub-spin ${spinReady ? 'ready' : ''}" data-hub="spin"><span class="wh" aria-hidden="true"></span><span><b>Daily spin</b><em>${spinReady ? 'FREE' : 'Tomorrow'}</em></span></button>
+    <div class="hub-side l">${hubBtn('event', '🎪', 'Event', evN)}${hubBtn('shop', '🛍️', 'Shop')}${hubBtn('pass', '🏟️', 'Pass')}</div>
+    <div class="hub-side r">${hubBtn('mail', '✉️', 'Mail', mailUnread())}${hubBtn('quest', '📜', 'Quest', qLeft)}${hubBtn('friend', '🤝', 'Friends')}</div>
+    <div class="hub-place"><span class="pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><h2>${v.emoji} ${esc(v.name)}</h2><small>${esc(v.kind)} · ${esc(PLACE_TAG[v.id] || '')}${isFav(v.id) ? ' · 💚' : ''}</small></div>
+    <button class="hub-arrow l" data-hub="prev" aria-label="Previous place">◀</button><button class="hub-arrow r" data-hub="next" aria-label="Next place">▶</button>
+    <div class="hub-hero"><div class="plat" aria-hidden="true"></div><canvas id="hub-pl" width="300" height="320" aria-label="${esc(S.name)}"></canvas></div>
+    <button class="hub-chest ${chestReady ? 'ready' : ''}" data-hub="chest" aria-label="Daily chest"><span>🎁</span><small>${chestReady ? 'Open!' : `${qLeft} quest${qLeft === 1 ? '' : 's'} left`}</small></button>
+    <div class="hub-foot"><button class="hub-claim" data-hub="go" data-sfx="1">${chestReady ? 'Claim daily chest' : st.open ? `Read at ${esc(v.name)}` : `Peek into ${esc(v.name)}`}</button>
+      <div class="hub-dots">${vs.map((x, i) => `<i class="${i === hubIdx ? 'on' : ''}"></i>`).join('')}</div></div>
+  </section>`;
+  const av = $('#hub-av', el), pl = $('#hub-pl', el);
+  const an = () => { if (!pl.isConnected) return; portrait(pl, S.avatar, 3.6, .92); requestAnimationFrame(an); }; an(); portrait(av, S.avatar, 1.4, .95);
+  let sx = null; const hub = $('.hub', el);
+  hub.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+  hub.addEventListener('touchend', e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 60 && !e.target.closest('button')) { hubIdx += dx < 0 ? 1 : -1; sfx('whoosh'); render(); } });
+  $$('[data-hub]', el).forEach(b => { b.dataset.sfx = b.dataset.sfx || 1; b.onclick = () => hubAct(b.dataset.hub, v, chestReady); });
+}
+function hubAct(k, v, chestReady) {
+  if (k === 'prev' || k === 'next') { hubIdx += k === 'next' ? 1 : -1; sfx('whoosh'); render(); return; }
+  if (k === 'go') { if (chestReady) return hubAct('chest', v, true); sfx('door'); enterVenue(v.id); return; }
+  if (k === 'pass') { sfx('tap'); go('season'); return; }
+  if (k === 'chest') {
+    if (!chestReady) { sfx('tap'); toast(S.flags.chest === dayKey() ? 'Chest already opened today. New one tomorrow!' : `Finish all daily quests to open the chest (${quests().filter(x => !x.done).length} left).`); return; }
+    S.flags.chest = dayKey(); save(); sfx('win'); stageCard('Chest opened!', 'Daily reward', { glitch: true, ms: 1500, done: () => { earn(25, 'daily chest'); render(); } }); return;
+  }
+  sfx('open');
+  if (k === 'spin') return openSpin();
+  if (k === 'quest') return modal(`<span class="cap">Daily quests · resets at midnight</span><h2 class="disp sl-h">Today's quests</h2>
+    <div class="hq">${quests().map((x, i) => `<div class="hq-r ${x.done ? 'done' : ''}" style="--d:${i}"><span class="ck">${x.done ? '✓' : '📜'}</span><div><b>${esc(x.label)}</b>${x.prog != null && !x.done ? `<div class="xpbar"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
+    <p class="sl-muted" style="margin-top:12px">Finish them all to unlock the daily chest on the hub.</p><div class="sl-acts"><span></span><button class="sl-btn" data-close>Let's go</button></div>`, null, 'sl');
+  if (k === 'mail') { const list = mailList(), read = S.flags.mailRead || []; S.flags.mailRead = list.map(m => m.id); save();
+    return modal(`<span class="cap">Inbox</span><h2 class="disp sl-h">Mail</h2><div class="hq">${list.map((m, i) => `<div class="hq-r ${read.includes(m.id) ? '' : 'new'}" style="--d:${i}"><span class="ck">${m.em}</span><div><b>${esc(m.t)}</b><small>${esc(m.from)} · ${esc(m.d)}</small></div>${read.includes(m.id) ? '' : '<span class="pts">New</span>'}</div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, () => render(), 'sl'); }
+  if (k === 'friend') { const t = S.talks || [];
+    return modal(`<span class="cap">Book buddies</span><h2 class="disp sl-h">People you talked to</h2>${t.length ? `<div class="hq">${t.slice(0, 12).map((x, i) => `<div class="hq-r" style="--d:${i}"><span class="ck">${(STANCES[x.stance] || {}).em || '💬'}</span><div><b>${esc(x.name)}</b><small>${esc(x.title)}${x.note ? ` · “${esc(x.note)}”` : ''}</small></div><span class="pts">${esc(x.day.slice(5))}</span></div>`).join('')}</div>` : '<p class="sl-muted" style="margin-top:8px">Nobody yet. Walk the street and tap a reader with a 💬 to talk books.</p>'}<div class="sl-acts"><span></span><button class="sl-btn" data-go="home">Walk the street</button></div>`, m => $$('[data-go]', m).forEach(b => b.addEventListener('click', () => closeModal(true))), 'sl'); }
+  if (k === 'event') return modal(`<span class="cap">Live now</span><h2 class="disp sl-h">Events</h2><div class="hq">${eventList().map((e, i) => `<div class="hq-r ${e.on ? 'new' : 'done'}" style="--d:${i}"><span class="ck">${e.em}</span><div><b>${esc(e.t)}</b><small>${esc(e.d)}</small></div><span class="pts">${e.on ? 'Live' : 'Done'}</span></div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, null, 'sl');
+  if (k === 'shop') return openShop();
+}
+function openShop() {
+  const items = [
+    { k: 'freeze', em: '🧊', t: 'Streak freeze', d: `Keeps your streak if you miss a day. You have ${freezeLeft()} this week.`, cost: 60 },
+    ...Object.entries(TIERS).filter(([k, t]) => t.cost > TIERS[S.member].cost).map(([k, t]) => ({ k: 'tier:' + k, em: k === 'gold' ? '🥇' : '🥈', t: `${t.name} library card`, d: t.perk, cost: t.cost }))
+  ];
+  modal(`<span class="cap">Spend points, not money</span><h2 class="disp sl-h">Shop</h2><p class="sl-muted">You have <b>${S.points}</b> points. Everything here is earned by reading.</p>
+    <div class="hq">${items.map((x, i) => `<div class="hq-r" style="--d:${i}"><span class="ck">${x.em}</span><div><b>${esc(x.t)}</b><small>${esc(x.d)}</small></div><button class="sl-btn sm" data-buy="${x.k}" ${S.points >= x.cost ? '' : 'disabled'}>🪙 ${x.cost}</button></div>`).join('')}</div>
+    <div class="sl-acts"><span></span><button class="sl-btn sec" data-close>Close</button></div>`, m => {
+    $$('[data-buy]', m).forEach(b => b.onclick = () => { const it = items.find(x => x.k === b.dataset.buy); if (S.points < it.cost) return;
+      S.points -= it.cost;
+      if (it.k === 'freeze') { freezeLeft(); S.freeze.left += 1; } else S.member = it.k.slice(5);
+      save(); renderChips(); closeModal(true); sfx('register'); setTimeout(() => sfx('win'), 300); toast(`${it.em} ${esc(it.t)} is yours`); render(); });
+  }, 'sl');
+}
+const SPIN = [[10, 'pts', '#6BE683'], [5, 'xp', '#E3F8E6'], [20, 'pts', '#1CBB6C'], [1, 'freeze', '#F6FEF6'], [15, 'pts', '#6BE683'], [25, 'xp', '#E3F8E6'], [50, 'pts', '#262828'], [10, 'xp', '#F6FEF6']];
+function openSpin() {
+  const ready = S.flags.spin !== dayKey(), n = SPIN.length, R = 120;
+  const slice = (i) => { const a0 = (i / n) * Math.PI * 2 - Math.PI / 2, a1 = ((i + 1) / n) * Math.PI * 2 - Math.PI / 2, am = (a0 + a1) / 2, [v, k, col] = SPIN[i];
+    return `<path d="M0 0 L${(R * Math.cos(a0)).toFixed(1)} ${(R * Math.sin(a0)).toFixed(1)} A${R} ${R} 0 0 1 ${(R * Math.cos(a1)).toFixed(1)} ${(R * Math.sin(a1)).toFixed(1)} Z" fill="${col}" stroke="#262828" stroke-width="3"/>
+      <text x="${(R * .64 * Math.cos(am)).toFixed(1)}" y="${(R * .64 * Math.sin(am)).toFixed(1)}" transform="rotate(${(am * 180 / Math.PI + 90).toFixed(1)} ${(R * .64 * Math.cos(am)).toFixed(1)} ${(R * .64 * Math.sin(am)).toFixed(1)})" text-anchor="middle" dominant-baseline="middle" fill="${col === '#262828' || col === '#1CBB6C' ? '#fff' : '#0F1A12'}" font-weight="800" font-size="15" font-family="Outfit, sans-serif">${k === 'freeze' ? '🧊' : (k === 'xp' ? v + ' XP' : '🪙' + v)}</text>`; };
+  modal(`<span class="cap">Once a day · free</span><h2 class="disp sl-h">Daily spin</h2>
+    <div class="spin-wrap"><div class="spin-ptr" aria-hidden="true">▼</div><svg class="spin-w" id="spw" viewBox="-130 -130 260 260" aria-hidden="true">${SPIN.map((_, i) => slice(i)).join('')}<circle r="22" fill="#fff" stroke="#262828" stroke-width="3"/><text text-anchor="middle" dominant-baseline="middle" font-size="18">📖</text></svg></div>
+    <p class="sl-muted" id="sp-msg" style="text-align:center">${ready ? 'Tap spin and see what you win.' : 'You already spun today. Come back tomorrow!'}</p>
+    <div class="sl-acts"><button class="sl-btn sec" data-close>Close</button><button class="sl-btn" id="sp-go" ${ready ? '' : 'disabled'}>Spin</button></div>`, m => {
+    $('#sp-go', m).onclick = () => { if (S.flags.spin === dayKey()) return; S.flags.spin = dayKey(); save();
+      const i = Math.floor(Math.random() * n), [v, k] = SPIN[i], w = $('#spw', m), turns = 5 * 360 + (360 - (i + .5) * 360 / n);
+      $('#sp-go', m).disabled = true; sfx('whoosh'); w.style.transition = matchMedia('(prefers-reduced-motion: reduce)').matches ? 'none' : 'transform 3.2s cubic-bezier(.17,.67,.21,1)'; w.style.transform = `rotate(${turns}deg)`;
+      let t = 0; const tick = setInterval(() => { sfx('blip'); if (++t > 14) clearInterval(tick); }, 200);
+      setTimeout(() => { sfx('win');
+        if (k === 'pts') earn(v, 'daily spin'); else if (k === 'xp') { const b = levelInfo(S.xp).lvl; S.xp += v; save(); toast(`<b>+${v} XP</b> daily spin`); if (levelInfo(S.xp).lvl > b) levelUp(); } else { freezeLeft(); S.freeze.left += 1; save(); toast('🧊 You won a streak freeze'); }
+        $('#sp-msg', m).innerHTML = `<b>You won ${k === 'freeze' ? 'a streak freeze' : v + (k === 'xp' ? ' XP' : ' points')}!</b> See you tomorrow.`; }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 300 : 3300);
+    };
+  }, 'sl', );
+  const r = $('#modal-root .modal'); if (r) r.addEventListener('click', () => {}, { once: true });
+}
+/* ---- splash ---- */
+const TIPS = ['Tip: favourite a place with the heart and it moves to the top.', 'Tip: take the breaks the staff suggest. They raise your Wellbeing score.', 'Tip: talk to readers with a 💬 to earn the Book Buddy badge.', 'Tip: three lost pages hide on the street every day.', 'Tip: a 60+ stage score wins the round.'];
+function showSplash() {
+  let seen = false; try { seen = sessionStorage.getItem('bookout:splash') === '1'; } catch (e) {}
+  if (seen || (/[?&]debug/.test(location.search) && !/[?&]splash/.test(location.search))) return;
+  const el = document.createElement('div'); el.className = 'splash'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'BOOKOUT');
+  el.innerHTML = `<div class="sp-sky"><i class="sun"></i><i class="cl c1"></i><i class="cl c2"></i></div>
+    <div class="sp-town" aria-hidden="true"><div class="bd b1"><span>☕</span></div><div class="bd b2"><span>🏛️</span></div><div class="bd b3"><span>📚</span></div><div class="bd b4"><span>🍔</span></div><div class="road"></div></div>
+    <div class="sp-logo"><div class="sp-badge"><span class="dots" aria-hidden="true"><i></i><i></i></span></div><h1><span class="b">BOOK</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div></div>
+    <canvas class="sp-pl" id="sp-pl" width="300" height="320" aria-hidden="true"></canvas>
+    <div class="sp-bottom"><button class="hub-claim" id="sp-go" disabled>Loading…</button><p class="sp-sub">Walk • Read • Collect</p><div class="sp-bar"><i id="sp-bar"></i><b id="sp-pct">0%</b></div><p class="sp-tip">${esc(TIPS[Math.floor(Math.random() * TIPS.length)])}</p></div>`;
+  document.body.append(el); document.body.classList.add('splash-on');
+  const pl = $('#sp-pl', el); const an = () => { if (!pl.isConnected) return; portrait(pl, S.avatar.gender ? S.avatar : Object.assign({}, S.avatar, { gender: 'male' }), 3.4, .92); requestAnimationFrame(an); }; an();
+  const t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 200 : 1400;
+  const fill = now => { const k = Math.min(1, (now - t0) / dur), pct = Math.round(k * 100); $('#sp-bar', el).style.width = pct + '%'; $('#sp-pct', el).textContent = pct + '%';
+    if (k < 1) requestAnimationFrame(fill); else { const b = $('#sp-go', el); b.disabled = false; b.textContent = S.flags.landed ? 'Start reading' : 'Start adventure'; b.classList.add('ready'); } };
+  requestAnimationFrame(fill);
+  $('#sp-go', el).onclick = () => { try { sessionStorage.setItem('bookout:splash', '1'); } catch (e) {} sfx('whoosh'); el.classList.add('out'); document.body.classList.remove('splash-on'); setTimeout(() => el.remove(), 450); };
+}
+/* ---- world map ---- */
+const ISLES = [
+  { x: 28, y: 78, art: ['🏝️', '☕', '🌴'], theme: 'Café cove' },
+  { x: 68, y: 58, art: ['🏛️', '📚', '🌳'], theme: 'Library ridge' },
+  { x: 30, y: 39, art: ['🌋', '🔥', '🪨'], theme: 'Ember peak' },
+  { x: 66, y: 21, art: ['🏰', '👑', '✨'], theme: 'Grand keep' }
+];
+function stageStars(st, i, idx) {
+  const s = S.season, past = i < idx || s.done;
+  if (st.id === 'qualifier') return [past ? 3 : Math.min(3, s.played), 3];
+  if (st.id === 'swiss') return [past ? 3 : i === idx ? Math.min(3, s.wins) : 0, 3];
+  if (st.id === 'knockout') return [past ? 3 : i === idx ? Math.min(3, s.ko) : 0, 3];
+  return [s.done ? 1 : 0, 1];
+}
+function renderMap(el) {
+  const s = S.season, idx = s.done ? 4 : STAGES.findIndex(x => x.id === s.stage);
+  const stars = STAGES.map((st, i) => stageStars(st, i, idx)), got = stars.reduce((a, b) => a + b[0], 0), tot = stars.reduce((a, b) => a + b[1], 0);
+  const pts = ISLES.map(p => [p.x * 4, p.y * 9]);
+  const d = pts.map((p, i) => i ? `C ${pts[i - 1][0] + (i % 2 ? 140 : -140)} ${pts[i - 1][1] - 60}, ${p[0] + (i % 2 ? -40 : 40)} ${p[1] + 120}, ${p[0]} ${p[1]}` : `M ${p[0]} ${p[1]}`).join(' ');
+  el.innerHTML = `<section class="wmap">
+    <header class="wm-top"><button class="wm-ic" data-go="hub" aria-label="Back to the hub">←</button><div class="wm-title">World map · Season ${s.n}</div><button class="wm-ic" id="wm-help" aria-label="How the map works">i</button></header>
+    <div class="wm-hearts"><span>❤️</span><b class="tab">${Math.round(S.stats.energy)}/100</b><small>energy</small></div>
+    <svg class="wm-path" viewBox="0 0 400 900" preserveAspectRatio="none" aria-hidden="true"><path d="${d}" class="wm-road"/><path d="${d}" class="wm-coins"/></svg>
+    ${ISLES.map((p, i) => { const st = STAGES[i], state = i < idx ? 'done' : i === idx ? 'now' : 'locked', [g, m] = stars[i];
+      return `<button class="isle ${state}" style="left:${p.x}%;top:${p.y}%;--d:${i}" data-isle="${i}" aria-label="${esc(st.name)}, ${state}">
+        <span class="isle-land"><span class="a1">${p.art[0]}</span><span class="a2">${p.art[1]}</span><span class="a3">${p.art[2]}</span>${state === 'locked' ? '<span class="lock">🔒</span>' : ''}${state === 'now' ? '<span class="you"><canvas class="wm-av" width="72" height="72"></canvas></span>' : ''}</span>
+        <span class="isle-tag"><b>${i + 1}. ${esc(st.name)}</b><small>${state === 'locked' ? 'Locked' : `★ ${g}/${m}`}</small></span></button>`; }).join('')}
+    <div class="wm-side">${hubBtn('rank', '🏆', 'Rank')}${hubBtn('level', '⭐', 'Level')}${hubBtn('event', '🎪', 'Event', eventList().filter(e => e.on).length)}</div>
+    <footer class="wm-prog"><span class="ch">🧰</span><div><b>Map progress ★ ${got}/${tot}</b><div class="xpbar big"><i style="width:${(got / tot * 100).toFixed(1)}%"></i></div></div><span class="ch ${s.done ? '' : 'dim'}">👑</span></footer>
+  </section>`;
+  $$('.wm-av', el).forEach(c => portrait(c, S.avatar, .9, .95));
+  $('#wm-help', el).onclick = () => modal(`<span class="cap">How the map works</span><h2 class="disp sl-h">Four islands, one season</h2><p class="sl-muted">Every reading session is a round. Win rounds to earn stars and unlock the next island: Qualifier, Swiss stage, Knockout and the Grand Final. Energy drops while you read and breaks refill it.</p><div class="sl-acts"><span></span><button class="sl-btn" data-close>Got it</button></div>`, null, 'sl');
+  $$('[data-isle]', el).forEach(b => b.onclick = () => { const i = +b.dataset.isle, st = STAGES[i], state = i < idx ? 'done' : i === idx ? 'now' : 'locked', [g, m] = stars[i]; sfx(state === 'locked' ? 'thump' : 'open');
+    modal(`<span class="cap">Island ${i + 1} · ${esc(ISLES[i].theme)}</span><h2 class="disp sl-h">${esc(st.name)}</h2><div class="isle-big">${ISLES[i].art.join('')}</div><p class="sl-muted">${esc(st.need)}</p><p style="margin-top:8px;font-weight:700">${state === 'locked' ? `🔒 Clear ${esc(STAGES[i - 1].name)} first.` : state === 'done' ? `✓ Cleared · ★ ${g}/${m}` : `★ ${g}/${m} so far`}</p>
+      <div class="sl-acts"><button class="sl-btn sec" data-close>Close</button>${state === 'now' ? '<button class="sl-btn" id="isl-go">Play next round</button>' : ''}</div>`, m2 => { const g2 = $('#isl-go', m2); if (g2) g2.onclick = () => { closeModal(true); go('hub'); }; }, 'sl'); });
+  $$('[data-hub]', el).forEach(b => b.onclick = () => { const k = b.dataset.hub; sfx('open');
+    if (k === 'rank') go('season'); else if (k === 'event') hubAct('event');
+    else { const L = levelInfo(S.xp); modal(`<span class="cap">Your level</span><h2 class="disp sl-h">Level ${L.lvl} · ${esc(L.title)}</h2><div class="ss-xp"><span class="cap">XP to level ${L.lvl + 1}</span><span class="mono">${L.into}/${L.need}</span></div><div class="xpbar big"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div><p class="sl-muted" style="margin-top:12px">Every point you earn also counts as XP. Read, take breaks, finish quests and spin daily.</p><div class="sl-acts"><span></span><button class="sl-btn" data-close>Nice</button></div>`, null, 'sl'); } });
+}
+/* ---- bottom tab bar + more sheet ---- */
+function tabbarHTML() {
+  const t = [['hub', '🏠', 'Home'], ['home', '🚶', 'Street'], ['map', '🗺️', 'Map'], ['passport', '🪪', 'Passport'], ['more', '⋯', 'More']];
+  const cur = { hub: 'hub', home: 'home', setup: 'home', map: 'map', season: 'map', passport: 'passport' }[view] || 'more';
+  return t.map(([k, e, l]) => `<button class="tb ${cur === k ? 'on' : ''}" data-tab="${k}" aria-current="${cur === k ? 'page' : 'false'}"><span class="e">${e}</span><span>${l}</span></button>`).join('');
+}
+function renderTabbar() {
+  let tb = $('#tabbar'); if (!tb) { tb = document.createElement('nav'); tb.id = 'tabbar'; tb.className = 'tabbar'; tb.setAttribute('aria-label', 'Game'); document.body.append(tb); }
+  tb.hidden = view === 'session'; tb.innerHTML = tabbarHTML();
+  $$('[data-tab]', tb).forEach(b => b.onclick = () => { sfx('tap'); const k = b.dataset.tab; if (k !== 'more') return go(k);
+    modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings']].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
+      m => $$('[data-mgo]', m).forEach(x => x.onclick = () => { closeModal(true); go(x.dataset.mgo); }), 'sl');
+  });
 }
 
 /* =============== home =============== */
@@ -3869,7 +4196,7 @@ function renderPassport(el) {
 }
 
 if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
-render();
+render(); showSplash();
 })();
 </script>
 </body>
