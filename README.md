@@ -12,6 +12,7 @@ A cosy reading game. Pick a place to read, go through its ritual, and read real 
 
 Feels like a real place:
 
+- **Walk the street**: the home screen is a top-down town (Jalan Buku) you walk around with WASD, arrow keys, taps or the on-screen pad. Walk into Kopi & Pages, The Commons Library or Bun & Chapter and up to the counter to order or check in. Readers sit at tables with real books and chat in speech bubbles, people cross at the zebra crossings, cars stop for you, Oyen the cat wanders the park, the Passport Office opens your badges, and a book swap box and Pak Mat's book cart hand out daily treats and tips. Closed venues pull their shutters, and the whole street darkens at night with lamps and lit windows. Pick your hair, hijab, skin and top under **Look**.
 - **Walk-in scenes**: each venue is drawn as a room (café window and chalkboard, library shelves with a real-time clock, diner neon and menu screen) and gets darker at night.
 - **Staff who talk to you**: Aina the barista, Encik Hafiz the librarian and Jay at the diner greet you by name, react to your order and book, call your breaks, and say goodbye. Turn on **Voice** to hear them through your browser's built-in speech.
 - **Sound**: register ka-ching, coffee pour and steam, library stamp and scanner beep, fryer sizzle and order bell, page flips, plus quiet background sound for each venue. All generated in the browser, no audio files.
