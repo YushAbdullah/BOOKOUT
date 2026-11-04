@@ -8,7 +8,7 @@
 <title>BOOKOUT</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Caveat:wght@500;700&family=Anton&family=Archivo:wght@400;600;700;800&family=JetBrains+Mono:wght@700&family=Montserrat:wght@500;800&family=Bebas+Neue&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Caveat:wght@500;700&family=Montserrat:wght@500;800&family=Bebas+Neue&display=swap">
 <style>
 /* Layout: mint canvas + floating cards for the app shell; each venue is a lit "scene" with real materials (chalkboard, oak desk, lightbox). Light look only, per design.md. */
 :root{
@@ -382,155 +382,311 @@ body.st-lock{overflow:hidden}
 .lk-tx{border:0;background:var(--surface-muted);font:600 13px var(--font);padding:6px 10px;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--border)}
 .lk-tx.on{background:var(--primary);box-shadow:none}
 @media (max-width:639px){.street{height:min(72vh,560px);border-width:4px;border-radius:20px;margin-inline:-4px}.st-hud{font-size:12px;padding:6px 10px}.st-btn span{display:none}.st-hint{white-space:normal;width:calc(100% - 28px);text-align:center}.lk{grid-template-columns:1fr}.lk canvas{margin:auto}}
-/* ---------- season mode (Shardline broadcast style) ---------- */
-.sl{--sl-primary:#FF5A1F;--sl-on-primary:#0E0E10;--sl-primary-hover:#FF7A45;--sl-accent:#3DDCC4;--sl-surface:#17171A;--sl-muted:#232327;--sl-raised:#2C2C31;--sl-canvas:#0E0E10;--sl-border:#3A3A40;--sl-text:#F4F4F5;--sl-text-muted:#A1A1AA;--sl-paper:#EDEEF0;--sl-electric:#4D7CFF;--sl-hl:#C8F05A;--sl-success:#3DDC84;--sl-danger:#FF4D5E;
-  --disp:"Anton","Bebas Neue","Oswald",Impact,sans-serif;--txt:"Archivo","Inter",system-ui,sans-serif;--mono:"JetBrains Mono",ui-monospace,monospace;
-  color:var(--sl-text);font-family:var(--txt)}
-.sl .disp{font-family:var(--disp);font-weight:400;text-transform:uppercase;letter-spacing:-.01em;line-height:1.075}
-.sl .cap{font:600 12px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase;color:var(--sl-text-muted)}
-.sl .mono,.mono{font-family:var(--mono);font-weight:700;font-variant-numeric:tabular-nums}
-.sl-muted{color:var(--sl-text-muted);font-size:14px;line-height:20px}
-.sl .shards{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.sl .shards i{position:absolute;top:-30%;height:160%;transform:skewX(-28deg);opacity:.9}
-.sl .shards i:nth-child(1){left:52%;width:9%;background:linear-gradient(180deg,var(--sl-raised),var(--sl-primary))}
-.sl .shards i:nth-child(2){left:66%;width:4%;background:linear-gradient(180deg,var(--sl-raised),var(--sl-accent))}
-.sl .shards i:nth-child(3){left:76%;width:14%;background:linear-gradient(180deg,rgba(44,44,49,.0),rgba(77,124,255,.35))}
-.sl .shards i:nth-child(4){left:93%;width:3%;background:linear-gradient(180deg,var(--sl-raised),var(--sl-primary))}
-.sl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border:0;border-radius:2px;background:var(--sl-primary);color:var(--sl-on-primary);font:700 14px/20px var(--txt);letter-spacing:.08em;text-transform:uppercase;cursor:pointer;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);transition:background .1s,transform .1s}
-.sl-btn:hover{background:var(--sl-primary-hover)}.sl-btn:active{transform:scale(.98)}.sl-btn:disabled{opacity:.4;cursor:not-allowed}
-.sl-btn.sec{background:var(--sl-raised);color:var(--sl-text);clip-path:none;box-shadow:inset 0 0 0 1px var(--sl-border)}.sl-btn.sec:hover{background:#36363c}
-.sl button:focus-visible,.sl input:focus-visible,.sl-btn:focus-visible{outline:2px solid var(--sl-electric);outline-offset:2px}
+/* ---------- landing, places, info, footer ---------- */
+.ld-hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:center;padding:32px 0 56px}
+.ld-hero h1{font-size:clamp(44px,6.4vw,76px);line-height:1.06;letter-spacing:-.03em;margin:14px 0 0}
+.ld-hero h1 em{font-style:normal;position:relative;white-space:nowrap}
+.ld-hero h1 em svg{position:absolute;left:0;bottom:-10px;width:100%;height:16px;overflow:visible}
+.ld-hero h1 em path{fill:none;stroke:var(--primary);stroke-width:4;stroke-linecap:round;stroke-dasharray:240;stroke-dashoffset:240;animation:draw 1s .7s var(--ease) forwards}
+.ld-cap{display:inline-block}
+.ld-hero .lede{font-size:18px;color:var(--text-muted);max-width:520px;margin-top:22px}
+.ld-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.ld-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.ld-stack{position:relative;height:540px}
+.ld-card{position:absolute;width:min(280px,62%);background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e3);padding:10px 10px 16px;display:grid;gap:4px;animation:fan .7s var(--ease) both}
+.ld-card .scene{height:150px;border-radius:16px;overflow:hidden;position:relative}
+.ld-card b{font-size:17px;margin:6px 6px 0}.ld-card span{font-size:13px;color:var(--text-subtle);margin:0 6px}
+.ld-card.c0{left:0;top:0;transform:rotate(-6deg);animation-delay:.15s}
+.ld-card.c1{right:0;top:100px;transform:rotate(5deg);animation-delay:.25s;z-index:1}
+.ld-card.c2{left:8%;top:300px;transform:rotate(-2deg);animation-delay:.35s;z-index:2}
+@keyframes fan{from{opacity:0;transform:translateY(60px) rotate(0) scale(.9)}}
+.ld-sticker{position:absolute;z-index:3;background:var(--surface);box-shadow:var(--e2);border-radius:var(--r-md);padding:10px 14px;font-weight:700;font-size:15px;animation:cas-drop .5s var(--ease) both}
+.ld-sticker.s1{right:0;bottom:30px;transform:rotate(-4deg);--rot:-4deg;animation-delay:.8s}.ld-sticker.s2{left:0;top:200px;transform:rotate(5deg);--rot:5deg;animation-delay:.9s}
+.ld-sec{margin-top:56px}
+.ld-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.ld-step{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);padding:24px;position:relative;display:grid;gap:8px;align-content:start}
+.ld-step .n{position:absolute;right:18px;top:16px;width:32px;height:32px;border-radius:50%;background:var(--surface-tint);display:grid;place-items:center;font-weight:700;font-size:14px}
+.ld-step .e{font-size:34px}.ld-step h3{font-size:20px}.ld-step p{font-size:14px;color:var(--text-muted)}
+.ld-places{display:flex;flex-wrap:wrap;gap:14px}
+.ld-place{border:0;background:var(--surface);box-shadow:var(--e2);border-radius:var(--r-lg);padding:16px 20px;display:grid;gap:2px;text-align:left;transform:rotate(var(--rot));transition:transform .2s var(--ease),box-shadow .2s;min-width:180px}
+.ld-place:hover{transform:rotate(0) translateY(-4px);box-shadow:var(--e3)}
+.ld-place span{font-size:30px}.ld-place b{font-size:16px}.ld-place small{font-size:12px;color:var(--text-subtle)}
+.ld-feat{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.ld-f{border:0;text-align:left;display:grid;gap:8px;align-content:start;transition:transform .2s var(--ease)}.ld-f:hover{transform:translateY(-4px)}
+.ld-f .e{font-size:30px}.ld-f h3{font-size:20px}.ld-f p{font-size:14px;color:var(--text-muted)}
+.ld-mission{margin-top:56px;position:relative;overflow:hidden;padding:48px;border-radius:40px}
+.ld-mission>div:last-child{position:relative;max-width:620px;display:grid;gap:12px;justify-items:start}
+.ld-mission h2{font-size:clamp(28px,4vw,44px);letter-spacing:-.02em;line-height:1.12}
+.link-btn{background:none;border:0;font-weight:600;color:var(--text);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--primary);text-decoration-thickness:2px}
+/* places */
+.pg-hero{position:relative;overflow:hidden;background:var(--surface);border-radius:40px;box-shadow:var(--e2);padding:40px;margin:8px 0 24px}
+.pg-hero-in{position:relative;z-index:1;max-width:640px}
+.pg-hero h1,.info-hero h1{font-size:clamp(36px,5.6vw,60px);letter-spacing:-.03em;line-height:1.08;margin:10px 0 12px}
+.pg-hero .lede{color:var(--text-muted);font-size:17px}
+.pg-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.seg{display:inline-flex;gap:4px;background:var(--surface);padding:4px;border-radius:var(--r-md);box-shadow:var(--e1);margin-bottom:20px}
+.seg button{border:0;background:none;padding:8px 16px;border-radius:var(--r-sm);font-weight:600;font-size:14px;color:var(--text-muted)}
+.seg button[aria-selected=true]{background:var(--primary);color:var(--on-primary)}
+.place{position:relative;padding:0}
+.place-in{border:0;background:none;padding:0;text-align:left;display:flex;flex-direction:column;flex:1;width:100%}
+.place .fav{position:absolute;right:12px;top:12px;z-index:4;width:44px;height:44px;border-radius:50%;border:0;background:var(--surface);box-shadow:var(--e2);font-size:20px;display:grid;place-items:center;transition:transform .2s var(--ease)}
+.place .fav:hover{transform:scale(1.1)}.place .fav.on{animation:favpop .4s var(--ease)}
+@keyframes favpop{50%{transform:scale(1.35) rotate(-10deg)}}
+.place-tags{display:flex;gap:6px;flex-wrap:wrap}
+.ptag{font-size:12px;font-weight:600;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:99px;padding:3px 10px;color:var(--text-muted)}
+.ptag.lv{background:var(--surface-tint);box-shadow:none;color:var(--on-primary)}
+.empty-c{text-align:center;display:grid;gap:6px;justify-items:center;padding:40px}.empty-c .em{font-size:40px}
+.tip-c{margin-top:24px}.tip-c h3{font-size:22px}.perks{margin:12px 0 0;padding-left:20px;display:grid;gap:8px;color:var(--text-muted)}.perks b{color:var(--text)}
+/* info */
+.info{max-width:860px;margin:0 auto}
+.info-tabs{display:flex;gap:4px;flex-wrap:wrap;background:var(--surface);padding:4px;border-radius:var(--r-md);box-shadow:var(--e1);width:max-content;max-width:100%;margin:8px 0 20px}
+.info-tabs button{border:0;background:none;padding:8px 14px;border-radius:var(--r-sm);font-weight:600;font-size:14px;color:var(--text-muted)}
+.info-tabs button[aria-current=page]{background:var(--primary);color:var(--on-primary)}
+.info-hero{position:relative;overflow:hidden;background:var(--surface);border-radius:40px;box-shadow:var(--e2);padding:40px 40px 32px;margin-bottom:20px}
+.info-hero>*:not(.motif){position:relative;z-index:1}
+.info-body{padding:32px 40px;font-size:16px;line-height:1.65}
+.info-body h2{font-size:22px;margin:28px 0 8px}.info-body h2:first-child{margin-top:0}
+.info-body p+p{margin-top:12px}.info-body ul,.info-body ol{padding-left:22px;display:grid;gap:8px;margin:8px 0 0}
+.info-body a{color:var(--text);text-decoration-color:var(--primary);text-decoration-thickness:2px;text-underline-offset:3px}
+.info-body .upd{font-size:13px;color:var(--text-subtle)}
+.vm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
+.vm-c{background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-lg);padding:24px}.vm-c:first-child{background:var(--surface-tint);box-shadow:none;transform:rotate(-1deg)}
+.vm-c .e{font-size:30px}.vm-c h2{margin:6px 0 6px!important}
+.obj{counter-reset:o;list-style:none;padding:0!important}
+.obj li{counter-increment:o;position:relative;padding:14px 16px 14px 60px;background:var(--surface-muted);border-radius:var(--r-md)}
+.obj li::before{content:counter(o);position:absolute;left:14px;top:12px;width:32px;height:32px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-weight:700}
+/* footer */
+.foot-site{margin:72px 0 0;padding:40px 0 calc(32px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--border)}
+.fs-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:24px}
+.fs-brand p{color:var(--text-muted);font-size:14px;margin-top:8px}
+.fs-col{display:grid;gap:6px;align-content:start}.fs-col b{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--text-subtle);margin-bottom:4px}
+.fs-col button,.fs-col a{background:none;border:0;padding:4px 0;text-align:left;color:var(--text);font-size:15px;text-decoration:none}
+.fs-col button:hover,.fs-col a:hover{text-decoration:underline;text-decoration-color:var(--primary);text-decoration-thickness:2px}
+.fs-note{margin-top:28px;font-size:13px;color:var(--text-subtle)}
+/* venue trip steps */
+.trip-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.trip-row .back{margin:0}
+.trip{display:flex;gap:8px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.trip li{display:flex;align-items:center;gap:8px;background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:6px 12px 6px 6px;font-weight:600;font-size:14px;color:var(--text-muted);animation:cas-drop .45s var(--ease) both}
+.trip li:nth-child(2){animation-delay:60ms}.trip li:nth-child(3){animation-delay:120ms}
+.trip li i{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-style:normal;background:var(--surface-tint);font-size:13px}
+.trip li.done{color:var(--text)}.trip li.done i{background:var(--primary);color:var(--on-primary)}
+.trip li.now{color:var(--text);box-shadow:inset 0 0 0 2px var(--primary),var(--e1);transform:rotate(-2deg)}
+.fav-btn{border:0;background:var(--surface);box-shadow:var(--e1);border-radius:var(--r-md);padding:8px 14px;font-weight:600;font-size:14px}
+.fav-btn.on{background:var(--surface-tint)}
+@media (max-width:1023px){.ld-hero{grid-template-columns:1fr}.ld-stack{height:500px;max-width:480px;width:100%;margin:0 auto}.ld-steps,.ld-feat{grid-template-columns:1fr 1fr}.fs-in{grid-template-columns:1fr 1fr}}
+@media (max-width:639px){.ld-hero{padding-top:12px}.ld-stack{height:440px}.ld-card .scene{height:110px}.ld-card.c1{top:90px}.ld-card.c2{top:260px}.ld-steps,.ld-feat{grid-template-columns:1fr}.ld-place{min-width:calc(50% - 7px);flex:1}
+  .ld-mission,.pg-hero,.info-hero{padding:28px 20px;border-radius:var(--r-lg)}.ld-mission .motif i,.pg-hero .motif i,.info-hero .motif i{width:130px!important;height:130px!important;top:-50px!important}.ld-mission .motif i:nth-child(2),.pg-hero .motif i:nth-child(2),.info-hero .motif i:nth-child(2){right:50px!important}.info-body{padding:24px 20px}.vm{grid-template-columns:1fr}.ld-cta .sl-btn{flex:1}
+  .navlinks{overflow-x:auto;flex-wrap:nowrap;gap:18px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.navlinks::-webkit-scrollbar{display:none}.navlinks button{white-space:nowrap}}
+/* ---------- new places: bookstore, lounge, park ---------- */
+.sc-bookstore{background:linear-gradient(180deg,#F6E9F1 0 62%,#8A5A3C 62%)}
+.sc-bookstore .wall{position:absolute;left:4%;top:8%;width:56%;height:50%;border:6px solid #7A3E65;border-radius:6px;background:repeating-linear-gradient(180deg,transparent 0 30%,#7A3E65 30% 33%),repeating-linear-gradient(90deg,#e5534b 0 7%,#f6d27a 7% 12%,#5B8DEF 12% 19%,#6BE683 19% 24%,#9c6ade 24% 31%,#f2a33a 31% 36%)}
+.sc-bookstore .neon{position:absolute;right:6%;top:12%;font:700 clamp(14px,2.4vw,22px)/1.1 var(--font);color:#7A3E65;background:#fff;border-radius:10px;padding:10px 14px;box-shadow:0 0 0 4px #f7c6dc;transform:rotate(3deg)}
+.sc-bookstore .neon small{display:block;font-weight:500;font-size:.62em;color:#4E544F}
+.sc-bookstore .props,.sc-lounge .props,.sc-park .props{position:absolute;right:8%;bottom:30%;font-size:clamp(24px,3.2vw,36px);display:flex;gap:8px}
+.sc-bookstore .counter,.sc-lounge .counter{position:absolute;left:0;right:0;bottom:0;height:34%}
+.sc-bookstore .counter{background:linear-gradient(180deg,#b07a4f,#8a5a36);box-shadow:inset 0 8px 0 #d39a64}
+.sc-lounge{background:linear-gradient(180deg,#2F3B48 0 62%,#5A3D2B 62%)}
+.sc-lounge .win{position:absolute;left:6%;top:9%;width:40%;height:48%;border:6px solid #c9a227;border-radius:6px;background:linear-gradient(180deg,#1d2a44,#3a4f7a);overflow:hidden}
+.sc-lounge .win::after{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:repeating-linear-gradient(90deg,#16213a 0 9%,transparent 9% 12%,#1b2846 12% 20%,transparent 20% 23%);-webkit-mask:linear-gradient(0deg,#000 60%,transparent 60%)}
+.sc-lounge .lampy{position:absolute;top:0;width:3px;height:22%;background:#c9a227}.sc-lounge .lampy::after{content:"";position:absolute;left:-14px;bottom:-14px;width:30px;height:18px;border-radius:30px 30px 4px 4px;background:#f6d27a;box-shadow:0 10px 40px 10px rgba(246,210,122,.45)}
+.sc-lounge .sign{position:absolute;right:7%;top:14%;font:600 italic clamp(16px,2.6vw,26px)/1.1 var(--book);color:#f6d27a;border:2px solid #c9a227;border-radius:8px;padding:8px 14px}
+.sc-lounge .sign small{display:block;font:500 .5em var(--font);letter-spacing:.12em;text-transform:uppercase;color:#e6e9ee;margin-top:4px}
+.sc-lounge .counter{background:linear-gradient(180deg,#6b4426,#4a2f1c);box-shadow:inset 0 8px 0 #8a5a36}
+.sc-park{background:linear-gradient(180deg,#BFE6F5 0 52%,#7CC47F 52%)}
+.sc-park .sun{position:absolute;left:10%;top:10%;width:clamp(40px,8vw,80px);aspect-ratio:1;border-radius:50%;background:#f6d27a;box-shadow:0 0 0 12px rgba(246,210,122,.3)}
+.sc-park .trees{position:absolute;left:0;right:0;bottom:38%;display:flex;justify-content:space-around;font-size:clamp(40px,7vw,72px)}
+.sc-park .pav{position:absolute;right:8%;top:16%;background:#fff;border-radius:10px;padding:10px 14px;font:700 clamp(14px,2.2vw,20px)/1.1 var(--font);color:#3F7D4E;box-shadow:0 0 0 4px #3F7D4E;transform:rotate(-3deg)}
+.sc-park .pav small{display:block;font-weight:500;font-size:.65em;color:#4E544F}
+.sc-park .counter{position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#d9c39a,#b89a6a);box-shadow:inset 0 8px 0 #e9d8b4}
+.pov-bookstore .pov-wall{background:repeating-linear-gradient(90deg,#e5534b 0 14px,#f6d27a 14px 24px,#5B8DEF 24px 40px,#6BE683 40px 50px,#9c6ade 50px 64px,#7A3E65 64px 70px),#7A3E65}
+.pov-bookstore .pov-board{background:#fff;border:6px solid #7A3E65;color:#3a1f30}
+.pov-bookstore .pov-counter{background:linear-gradient(180deg,#b07a4f,#7a4a2e);box-shadow:inset 0 10px 0 #d39a64}
+.pov-lounge .pov-wall{background:linear-gradient(180deg,#2F3B48,#243040)}.pov-lounge .pov-deco{position:absolute;inset:8% 5% auto auto;width:32%;height:46%;background:linear-gradient(180deg,#1d2a44,#3a4f7a);border:6px solid #c9a227;border-radius:6px}
+.pov-lounge .pov-board{background:#1b2533;border:6px solid #c9a227;color:#f6efe0}.pov-lounge .pov-board h3{font-family:var(--book);font-style:italic;font-weight:400}
+.pov-lounge .pov-opt{background:#263244;color:#f6efe0;box-shadow:inset 0 0 0 1.5px #c9a227}.pov-lounge .pov-opt small{color:#cfc6b2}
+.pov-lounge .pov-counter{background:linear-gradient(180deg,#6b4426,#3e2a1d);box-shadow:inset 0 10px 0 #8a5a36}
+.pov-park .pov-wall{background:linear-gradient(180deg,#BFE6F5 0 55%,#7CC47F 55%)}.pov-park .pov-deco{position:absolute;inset:6% 6% auto auto;width:70px;height:70px;border-radius:50%;background:#f6d27a;box-shadow:0 0 0 14px rgba(246,210,122,.3)}
+.pov-park .pov-board{background:#fffaf0;border:6px solid #3F7D4E;color:#1f3d27}
+.pov-park .pov-counter{background:linear-gradient(180deg,#d9c39a,#a8875a);box-shadow:inset 0 10px 0 #e9d8b4}
+/* ---------- season mode (Fealty mint, cascade game feel) ---------- */
+.sl{--sl-primary:#6BE683;--sl-on-primary:#003503;--sl-primary-hover:#55D86C;--sl-accent:#1CBB6C;--sl-surface:#FFFFFF;--sl-muted:#F6FEF6;--sl-raised:#E3F8E6;--sl-canvas:#F6FEF6;--sl-border:#DDEBDF;--sl-text:#0F1A12;--sl-text-muted:#4E544F;--sl-paper:#FFFFFF;--sl-electric:#0F1A12;--sl-hl:#E3F8E6;--sl-success:#1A7F55;--sl-danger:#C42A36;
+  --disp:var(--font);--txt:var(--font);--mono:var(--font);
+  color:var(--sl-text);font-family:var(--font)}
+.sl .disp{font-family:var(--font);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+.sl .cap{font:600 12px/16px var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--text-subtle)}
+.sl .mono,.mono{font-family:var(--font);font-weight:700;font-variant-numeric:tabular-nums}
+.sl-muted{color:var(--text-muted);font-size:14px;line-height:20px}
+/* two-circle motif + hand-drawn doodle */
+.motif{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.motif i{position:absolute;border-radius:50%}
+.motif i:nth-child(1){width:220px;height:220px;right:-40px;top:-60px;background:var(--primary);animation:mo-grow .9s var(--ease) both}
+.motif i:nth-child(2){width:220px;height:220px;right:90px;top:-60px;background:var(--surface-tint);mix-blend-mode:multiply;animation:mo-grow .9s .12s var(--ease) both}
+.motif svg{position:absolute;right:24px;bottom:18px;width:140px;height:60px;overflow:visible}
+.motif path{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:400;stroke-dashoffset:400;animation:draw 1s .5s var(--ease) forwards}
+@keyframes mo-grow{from{transform:scale(.2);opacity:0}}
+@keyframes draw{to{stroke-dashoffset:0}}
+/* cascade: headline rises, chips drop with 60ms stagger, cards fan out */
+.cas{animation:cas-up .6s var(--ease) calc(var(--d,0) * 60ms) both}
+.cas-drop{animation:cas-drop .5s var(--ease) calc(var(--d,0) * 60ms + 200ms) both}
+.cas-fan{animation:cas-fan .7s var(--ease) calc(var(--d,0) * 90ms + 150ms) both}
+@keyframes cas-up{from{opacity:0;transform:translateY(24px)}}
+@keyframes cas-drop{from{opacity:0;transform:translateY(-18px) rotate(var(--rot,-4deg)) scale(.9)}}
+@keyframes cas-fan{from{opacity:0;transform:translateY(40px) rotate(calc(var(--d,0) * -2deg)) scale(.96)}}
+.sl-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:12px 22px;border:0;border-radius:var(--r-sm);background:var(--primary);color:var(--on-primary);font:700 16px/20px var(--font);cursor:pointer;box-shadow:0 4px 0 #3fb85a;transition:background .12s,transform .12s,box-shadow .12s}
+.sl-btn:hover{background:var(--primary-hover)}.sl-btn:active{transform:translateY(3px);box-shadow:0 1px 0 #3fb85a}.sl-btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.sl-btn.sec{background:var(--surface);color:var(--text);box-shadow:inset 0 0 0 1.5px var(--border),0 4px 0 var(--border)}.sl-btn.sec:hover{background:var(--surface-muted)}
+.sl-btn.sec:active{box-shadow:inset 0 0 0 1.5px var(--border),0 1px 0 var(--border)}
+.sl button:focus-visible,.sl input:focus-visible,.sl-btn:focus-visible{outline:2px solid var(--text);outline-offset:2px}
 .sl-acts{display:flex;justify-content:space-between;gap:12px;margin-top:24px;flex-wrap:wrap}
-.chip-side{display:inline-flex;align-items:center;gap:6px;padding:4px 8px;border-radius:2px;font:600 12px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase}
-.chip-side.a{background:var(--sl-primary,#FF5A1F);color:#0E0E10}.chip-side.b{background:var(--sl-accent,#3DDCC4);color:#0E0E10}.chip-side.n{background:var(--sl-raised,#2C2C31);color:var(--sl-text,#F4F4F5)}.chip-side.loss{background:#FF4D5E;color:#0E0E10}
-.tag-hl{display:inline-block;background:var(--sl-hl,#C8F05A);color:#0E0E10;font:700 12px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:2px;margin-top:12px}
-.xpbar{height:8px;background:var(--sl-raised);position:relative;overflow:hidden;margin-top:6px}
-.xpbar i{position:absolute;inset:0 auto 0 0;background:var(--sl-primary);transition:width .45s var(--ease)}
-.xpbar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 2px),var(--sl-canvas) calc(10% - 2px) 10%)}
-.xpbar.big{height:10px}
+/* sticker chips */
+.chip-side{--rot:-4deg;display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:var(--r-md);font:700 13px/18px var(--font);background:var(--surface);color:var(--text);box-shadow:var(--e1),inset 0 0 0 1.5px var(--border);transform:rotate(var(--rot))}
+.chip-side:nth-child(2n){--rot:3deg}.chip-side:nth-child(3n){--rot:-2deg}
+.chip-side.a{background:var(--primary);color:var(--on-primary);box-shadow:var(--e1)}.chip-side.b{background:var(--surface-tint);color:var(--on-primary);box-shadow:var(--e1)}.chip-side.n{background:var(--surface)}.chip-side.loss{background:#FBE3E5;color:#8E1B25;box-shadow:var(--e1)}
+.sc-head .chip-side,.res .chip-side{transform:none}
+.tag-hl{display:inline-block;background:var(--surface-tint);color:var(--on-primary);font:700 13px/18px var(--font);padding:6px 10px;border-radius:var(--r-md);margin-top:12px;transform:rotate(-3deg);box-shadow:var(--e1)}
+.xpbar{height:12px;background:var(--surface-tint);position:relative;overflow:hidden;margin-top:8px;border-radius:99px}
+.xpbar i{position:absolute;inset:0 auto 0 0;background:var(--primary);border-radius:99px;transition:width .45s var(--ease);animation:xpfill 1s .35s var(--ease) both}
+.xpbar::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 2px),rgba(255,255,255,.7) calc(10% - 2px) 10%)}
+@keyframes xpfill{from{width:0}}
+.xpbar.big{height:16px}
 .ss-xp{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:13px}
 
 /* modals in season style */
-.modal.sl{background:var(--sl-surface);border:1px solid var(--sl-border);border-radius:8px;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.scrim:has(.modal.sl){background:rgba(14,14,16,.72);backdrop-filter:blur(8px)}
-.sl-h{font-size:clamp(30px,5vw,38px);margin:4px 0 6px}
+.modal.sl{background:var(--surface);border:0;border-radius:var(--r-lg);box-shadow:var(--e3)}
+.scrim:has(.modal.sl){background:rgba(15,26,18,.35);backdrop-filter:blur(6px)}
+.modal.sl > *{animation:cas-up .5s var(--ease) both}
+.sl-h{font-size:clamp(28px,5vw,36px);margin:4px 0 6px}
 .pl-modal{width:min(720px,100%)}
 .pl-tiles{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:20px}
-.pl-tile{display:grid;justify-items:center;gap:4px;padding:16px 12px 18px;background:var(--sl-muted);border:1px solid var(--sl-border);border-radius:4px;color:var(--sl-text);cursor:pointer;transition:box-shadow .18s,border-color .18s,transform .1s}
-.pl-tile:hover{background:#29292e}.pl-tile:active{transform:scale(.98)}
+.pl-tile{display:grid;justify-items:center;gap:4px;padding:16px 12px 18px;background:var(--surface-muted);border:0;box-shadow:inset 0 0 0 1.5px var(--border);border-radius:var(--r-lg);color:var(--text);cursor:pointer;transition:box-shadow .18s,transform .2s var(--ease)}
+.pl-tile:nth-child(1){animation:cas-fan .7s var(--ease) .1s both}.pl-tile:nth-child(2){--d:1;animation:cas-fan .7s var(--ease) .2s both}
+.pl-tile:hover{transform:translateY(-4px) rotate(-1deg);box-shadow:inset 0 0 0 1.5px var(--border),var(--e2)}.pl-tile:active{transform:scale(.98)}
 .pl-tile canvas{width:150px;height:150px}
-.pl-tile b{font:400 28px/1.2 var(--disp);text-transform:uppercase;margin-top:4px}.pl-tile em{font-style:normal;color:var(--sl-text-muted);font-size:14px}
-.pl-tile.on.side-a{border-color:var(--sl-primary);box-shadow:0 0 0 2px var(--sl-primary),0 0 24px rgba(255,90,31,.4)}
-.pl-tile.on.side-b{border-color:var(--sl-accent);box-shadow:0 0 0 2px var(--sl-accent),0 0 24px rgba(61,220,196,.4)}
+.pl-tile b{font:700 24px/1.2 var(--font);margin-top:4px}.pl-tile em{font-style:normal;color:var(--text-muted);font-size:14px}
+.pl-tile.on{background:var(--surface);box-shadow:inset 0 0 0 3px var(--primary),var(--e2)}
 .pl-edit{display:grid;grid-template-columns:200px 1fr;gap:20px;margin-top:16px;align-items:start}
-.pl-stage{background:var(--sl-canvas);border:1px solid var(--sl-border);border-radius:4px;position:relative;overflow:hidden}
-.pl-stage::before{content:"";position:absolute;left:55%;top:-20%;width:22%;height:140%;transform:skewX(-28deg);background:linear-gradient(180deg,transparent,rgba(255,90,31,.35))}
+.pl-stage{background:var(--surface-tint);border-radius:var(--r-lg);position:relative;overflow:hidden}
+.pl-stage::before{content:"";position:absolute;left:50%;top:50%;width:150px;height:150px;transform:translate(-50%,-40%);border-radius:50%;background:var(--primary);opacity:.55}
 .pl-stage canvas{width:100%;height:auto;display:block;position:relative}
-.sl-tabs{display:flex;gap:4px;flex-wrap:wrap;border-bottom:1px solid var(--sl-border);margin-bottom:14px}
-.sl-tabs button{background:none;border:0;color:var(--sl-text-muted);font:700 13px/20px var(--txt);letter-spacing:.08em;text-transform:uppercase;padding:10px 10px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px}
-.sl-tabs button[aria-selected=true]{color:var(--sl-text);border-bottom-color:var(--sl-primary)}
+.sl-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;background:var(--surface-muted);padding:4px;border-radius:var(--r-md)}
+.sl-tabs button{background:none;border:0;color:var(--text-muted);font:600 14px/20px var(--font);padding:8px 12px;cursor:pointer;border-radius:var(--r-sm)}
+.sl-tabs button[aria-selected=true]{color:var(--text);background:var(--surface);box-shadow:var(--e1)}
 .sl-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.sl-chip{min-height:40px;padding:8px 14px;border-radius:2px;border:1px solid var(--sl-border);background:var(--sl-raised);color:var(--sl-text);font:600 14px var(--txt);cursor:pointer}
-.sl-chip.on{border-color:var(--sl-accent);box-shadow:0 0 0 1px var(--sl-accent),0 0 18px rgba(61,220,196,.3)}
+.sl-chip{min-height:40px;padding:8px 14px;border-radius:var(--r-sm);border:0;box-shadow:inset 0 0 0 1.5px var(--border);background:var(--surface);color:var(--text);font:600 14px var(--font);cursor:pointer;transition:transform .15s var(--ease)}
+.sl-chip:hover{transform:translateY(-2px)}
+.sl-chip.on{background:var(--primary);color:var(--on-primary);box-shadow:none;transform:rotate(-2deg)}
 .pl-g{margin:4px 0 0}
-.sl-sw{width:36px;height:36px;border-radius:50%;border:2px solid var(--sl-border);cursor:pointer}
-.sl-sw.on{box-shadow:0 0 0 2px var(--sl-surface),0 0 0 4px var(--sl-accent)}
-.sl-field{display:grid;gap:6px;font:600 12px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase;color:var(--sl-text-muted);margin-top:16px}
-.sl-field input{font:500 16px var(--txt);letter-spacing:0;text-transform:none;padding:12px 14px;border-radius:2px;border:1px solid var(--sl-border);background:var(--sl-canvas);color:var(--sl-text)}
+.sl-sw{width:36px;height:36px;border-radius:50%;border:0;box-shadow:inset 0 0 0 2px rgba(0,0,0,.12);cursor:pointer;transition:transform .15s var(--ease)}
+.sl-sw:hover{transform:scale(1.1)}
+.sl-sw.on{box-shadow:0 0 0 3px var(--surface),0 0 0 5px var(--accent)}
+.sl-field{display:grid;gap:6px;font:600 13px/16px var(--font);color:var(--text-muted);margin-top:16px}
+.sl-field input{font:500 16px var(--font);padding:12px 14px;border-radius:var(--r-sm);border:1.5px solid var(--border);background:var(--surface);color:var(--text)}
 
-/* stage title card */
-.stagecard{position:fixed;inset:0;z-index:300;background:var(--sl-canvas);display:grid;place-items:center;text-align:center;cursor:pointer;animation:scwipe .45s cubic-bezier(.7,0,.2,1)}
+/* stage title card: mint sheet, circles bloom, headline rises, confetti */
+.stagecard{position:fixed;inset:0;z-index:300;background:var(--surface-muted);display:grid;place-items:center;text-align:center;cursor:pointer;overflow:hidden;animation:scwipe .5s var(--ease)}
 .stagecard .sc-in{position:relative;padding:24px}
-.stagecard h1{font-size:clamp(44px,9vw,96px);margin-top:8px;animation:scup .45s .12s cubic-bezier(.22,1,.36,1) both}
-.stagecard .cap{animation:scup .45s .06s both}
-.stagecard .shards i{animation:shardin .45s cubic-bezier(.7,0,.2,1) both}
-.stagecard .shards i:nth-child(1){left:8%;width:12%}.stagecard .shards i:nth-child(2){left:24%;width:4%}.stagecard .shards i:nth-child(3){left:70%;width:16%}.stagecard .shards i:nth-child(4){left:90%;width:4%}
-.stagecard.out{animation:scout .45s cubic-bezier(.64,0,.78,0) forwards}
-.stagecard.glitch::after{content:"";position:absolute;inset:0;background:var(--sl-hl);mix-blend-mode:difference;opacity:0;animation:glitch .7s steps(1) .25s}
-@keyframes scwipe{from{clip-path:polygon(0 100%,0 100%,0 100%,0 100%)}to{clip-path:polygon(0 100%,0 -60%,160% -60%,100% 100%)}}
-@keyframes scout{to{opacity:0;transform:translate(6%,-4%)}}
+.stagecard h1{font-size:clamp(44px,9vw,88px);margin-top:10px;animation:cas-up .6s .15s var(--ease) both}
+.stagecard .cap{display:inline-block;background:var(--surface);padding:8px 14px;border-radius:var(--r-md);box-shadow:var(--e1);transform:rotate(-4deg);animation:cas-drop .5s .05s var(--ease) both;color:var(--text)}
+.stagecard .motif i:nth-child(1){width:min(70vw,520px);height:min(70vw,520px);right:auto;left:50%;top:50%;margin:calc(min(70vw,520px) / -2) 0 0 calc(min(70vw,520px) / -1.4)}
+.stagecard .motif i:nth-child(2){width:min(70vw,520px);height:min(70vw,520px);right:auto;left:50%;top:50%;margin:calc(min(70vw,520px) / -2) 0 0 calc(min(70vw,520px) / -3.5);background:var(--surface-tint)}
+.stagecard .motif svg{right:auto;left:50%;bottom:auto;top:calc(50% + 70px);width:220px;height:40px;margin-left:-110px}
+.stagecard.out{animation:scout .4s cubic-bezier(.64,0,.78,0) forwards}
+.stagecard .confetti{position:absolute;inset:0;pointer-events:none}
+.stagecard .confetti b{position:absolute;left:50%;top:50%;width:12px;height:12px;border-radius:3px;background:var(--c);animation:conf 1.1s var(--ease) calc(.2s + var(--k) * 20ms) both}
+@keyframes conf{from{transform:translate(-50%,-50%) scale(.2);opacity:1}to{transform:translate(var(--x),var(--y)) rotate(var(--r));opacity:0}}
+@keyframes scwipe{from{clip-path:circle(0 at 50% 60%)}to{clip-path:circle(150% at 50% 60%)}}
+@keyframes scout{to{opacity:0;transform:translateY(-24px) scale(.98)}}
 @keyframes scup{from{opacity:0;transform:translateY(24px)}}
-@keyframes shardin{from{transform:skewX(-28deg) translate(-40%,30%);opacity:0}}
-@keyframes glitch{0%{opacity:.9;transform:translateX(-6px)}20%{opacity:0;transform:none}}
 
 /* moments */
 .mo-setup{font-size:17px;line-height:26px;max-width:40ch;margin-top:4px}
 .mo-opts{display:grid;gap:10px;margin-top:18px}
-.mo-opt{display:grid;gap:2px;text-align:left;min-height:52px;padding:14px 16px;border-radius:4px;border:1px solid var(--sl-border);background:var(--sl-muted);color:var(--sl-text);font:600 15px/22px var(--txt);cursor:pointer;animation:scup .28s cubic-bezier(.22,1,.36,1) both}
-.mo-opt span{font-weight:400;color:var(--sl-text-muted);font-size:13px}
-.mo-opt:hover:not(:disabled){background:#2a2a30}.mo-opt:disabled{opacity:.4;cursor:default}
-.mo-opt.picked{opacity:1;border-color:var(--sl-accent);box-shadow:0 0 0 1px var(--sl-accent),0 0 24px rgba(61,220,196,.3)}
-.mo-fb{margin-top:16px;padding-top:16px;border-top:1px solid var(--sl-border);animation:scup .28s both}
+.mo-opt{display:grid;gap:2px;text-align:left;min-height:52px;padding:14px 16px;border-radius:var(--r-md);border:0;box-shadow:inset 0 0 0 1.5px var(--border);background:var(--surface);color:var(--text);font:600 15px/22px var(--font);cursor:pointer;transition:transform .15s var(--ease),box-shadow .15s;animation:cas-fan .6s var(--ease) both}
+.mo-opt:nth-child(2){animation-delay:90ms}.mo-opt:nth-child(3){animation-delay:180ms}.mo-opt:nth-child(4){animation-delay:270ms}
+.mo-opt span{font-weight:400;color:var(--text-muted);font-size:13px}
+.mo-opt:hover:not(:disabled){transform:translateX(4px);box-shadow:inset 0 0 0 1.5px var(--accent),var(--e1)}.mo-opt:disabled{opacity:.45;cursor:default}
+.mo-opt.picked{opacity:1;background:var(--surface-tint);box-shadow:inset 0 0 0 2px var(--accent)}
+.mo-fb{margin-top:16px;padding-top:16px;border-top:1.5px dashed var(--border);animation:cas-up .4s var(--ease) both}
 .mo-fb p{font-size:16px;line-height:24px}
 .deltas{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.delta{font:700 13px var(--txt);padding:4px 8px;border-radius:2px;background:var(--sl-raised)}
-.delta.up{color:var(--sl-success)}.delta.down{color:var(--sl-danger)}
-.rest-cd{font-size:40px;text-align:center;margin-top:18px;color:var(--sl-accent)}
+.delta{font:700 13px var(--font);padding:5px 10px;border-radius:var(--r-sm);background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);animation:cas-drop .4s var(--ease) both}
+.delta.up{color:var(--success)}.delta.down{color:var(--danger)}
+.rest-cd{font-size:44px;text-align:center;margin-top:18px;color:var(--text)}
 
 /* scorecard */
 .sc-modal{width:min(620px,100%)}
 .sc-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.scorecard{background:var(--sl-paper);color:#0E0E10;margin-top:14px;padding:24px;position:relative;overflow:hidden;animation:stampin .28s .1s cubic-bezier(.22,1,.36,1) both}
-.scorecard::before{content:"";position:absolute;right:-30px;top:-40px;width:90px;height:220px;transform:skewX(-28deg);background:linear-gradient(180deg,rgba(255,90,31,.0),rgba(255,90,31,.18))}
+.scorecard{background:var(--surface-muted);color:var(--text);margin-top:14px;padding:24px;border-radius:var(--r-lg);position:relative;overflow:hidden;animation:cas-fan .7s .1s var(--ease) both}
+.scorecard::before{content:"";position:absolute;right:-50px;top:-60px;width:180px;height:180px;border-radius:50%;background:var(--surface-tint)}
 .sc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;position:relative}
-.sc-k{display:block;font:700 11px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase;color:#4a4a52}
+.sc-k{display:block;font:600 11px/16px var(--font);letter-spacing:.06em;text-transform:uppercase;color:var(--text-subtle)}
 .sc-score{display:block;font-size:64px;line-height:1.05;margin:2px 0}
-.sc-stamp{font:400 30px/1 var(--disp);text-transform:uppercase;padding:8px 12px;border:3px solid currentColor;transform:rotate(-8deg);animation:stamp .28s .45s cubic-bezier(.22,1,.36,1) both}
-.sc-stamp.a{color:#C2410C}.sc-stamp.loss{color:#B4232F}.sc-stamp.b{color:#0F766E}.sc-f{margin-top:8px;position:relative}
+.sc-stamp{font:800 26px/1 var(--font);padding:8px 14px;border:3px solid currentColor;border-radius:var(--r-md);background:var(--surface);transform:rotate(-8deg);animation:stamp .4s .55s cubic-bezier(.34,1.56,.64,1) both}
+.sc-stamp.a{color:var(--success)}.sc-stamp.loss{color:var(--danger)}.sc-stamp.b{color:var(--text-muted)}.sc-f{margin-top:8px;position:relative}
 @keyframes stamp{from{transform:rotate(-8deg) scale(1.8);opacity:0}}
-@keyframes stampin{from{transform:translateY(16px);opacity:0}}
 .sc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:18px;position:relative}
-.sc-stat{background:#fff;padding:10px;border-radius:2px}
+.sc-stat{background:var(--surface);padding:10px 12px;border-radius:var(--r-md);box-shadow:var(--e1);animation:cas-drop .45s var(--ease) both}
+.sc-stat:nth-child(2){animation-delay:60ms;--rot:3deg}.sc-stat:nth-child(3){animation-delay:120ms}.sc-stat:nth-child(4){animation-delay:180ms;--rot:3deg}
 .sc-stat b{display:block;font-size:22px;line-height:28px}
-.sc-d{font:700 12px var(--txt);color:#4a4a52}.sc-d.up{color:#15803D}.sc-d.down{color:#B4232F}
-.sc-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:14px;color:#2a2a30;position:relative}
-.sc-adv{margin-top:16px;padding:16px;background:var(--sl-canvas);border-left:4px solid var(--sl-primary);display:grid;gap:4px}
-.sc-adv b{font-size:30px}
-.rank-chip{justify-self:start;background:var(--sl-hl);color:#0E0E10;font:700 12px/16px var(--txt);letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:2px}
-.sc-say{margin-top:14px;font-size:14px;color:var(--sl-text-muted)}.sc-say b{color:var(--sl-text);margin-right:6px}
+.sc-d{font:700 12px var(--font);color:var(--text-subtle)}.sc-d.up{color:var(--success)}.sc-d.down{color:var(--danger)}
+.sc-meta{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:14px;color:var(--text-muted);position:relative}
+.sc-adv{margin-top:16px;padding:16px 18px;background:var(--surface-tint);border-radius:var(--r-lg);display:grid;gap:4px;animation:cas-up .5s .4s var(--ease) both}
+.sc-adv b{font-size:28px}
+.rank-chip{justify-self:start;background:var(--surface);color:var(--text);font:700 13px/18px var(--font);padding:6px 10px;border-radius:var(--r-md);box-shadow:var(--e1);transform:rotate(-3deg)}
+.sc-say{margin-top:14px;font-size:14px;color:var(--text-muted)}.sc-say b{color:var(--text);margin-right:6px}
 .sc-badges{display:flex;flex-wrap:wrap;gap:8px}.sc-badges .tag-hl{margin-top:8px}
 
 /* home strip */
-.sl-strip{position:relative;overflow:hidden;background:#0E0E10;border-radius:4px;padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;gap:24px;align-items:center;margin:-16px 0 40px}
-.sl-strip .shards i:nth-child(1){left:38%;width:5%}.sl-strip .shards i:nth-child(2){left:46%;width:2%}
-.ss-l{display:grid;gap:2px;position:relative}.ss-l b{font-size:30px}.ss-sub{font-size:14px;color:var(--sl-text-muted)}
+.sl-strip{position:relative;overflow:hidden;background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);padding:20px 24px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr) auto;gap:24px;align-items:center;margin:-16px 0 40px;animation:cas-fan .7s var(--ease) both}
+.sl-strip .motif i:nth-child(1){width:120px;height:120px;right:-30px;top:-40px}.sl-strip .motif i:nth-child(2){width:120px;height:120px;right:40px;top:-40px}
+.sl-strip .motif svg{display:none}
+.ss-l{display:grid;gap:2px;position:relative}.ss-l b{font-size:28px}.ss-sub{font-size:14px;color:var(--text-muted)}
 .ss-r{position:relative}
-.ss-stats{display:flex;gap:16px;margin-top:12px;flex-wrap:wrap}.ss-stats span{display:grid}.ss-stats b{font-size:18px}
+.ss-stats{display:flex;gap:10px;margin-top:12px;flex-wrap:wrap}
+.ss-stats>span{display:grid;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);padding:6px 10px;border-radius:var(--r-md);--rot:-4deg;animation:cas-drop .45s var(--ease) both}
+.ss-stats>span:nth-child(2){--rot:3deg;animation-delay:60ms}.ss-stats>span:nth-child(3){animation-delay:120ms}.ss-stats>span:nth-child(4){--rot:3deg;animation-delay:180ms}
+.ss-stats b{font-size:18px}
 .sl-strip .sl-btn{position:relative}
 
 /* season page */
-.sl-page{background:#0E0E10;margin-inline:calc(50% - 50vw);padding:0 max(16px,calc(50vw - 640px)) 64px;min-height:70vh;margin-top:-24px}
-.sl-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;padding:48px 0 32px;align-items:end}
-.sl-hero .shards i:nth-child(1){left:58%}.sl-hero .shards i:nth-child(2){left:72%}
-.hero-txt{position:relative}.hero-txt h1{font-size:clamp(44px,7vw,67px);margin:6px 0 14px}
-.hero-chips{display:flex;flex-wrap:wrap;gap:8px}
-.hero-pl{position:relative;display:grid;justify-items:center}.hero-pl canvas{width:240px;height:256px}.hero-pl b{font:400 24px var(--disp);text-transform:uppercase}
+.sl-page{padding:0 0 calc(80px + env(safe-area-inset-bottom,0px));min-height:70vh}
+.sl-hero{position:relative;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:24px;padding:40px;align-items:end;background:var(--surface);border-radius:40px;box-shadow:var(--e2);margin-bottom:24px}
+.sl-hero .motif i:nth-child(1){width:340px;height:340px;right:-60px;top:-80px}.sl-hero .motif i:nth-child(2){width:340px;height:340px;right:150px;top:-80px}
+.sl-hero .motif svg{left:40px;right:auto;top:30px;bottom:auto;width:90px;height:30px}
+.hero-txt{position:relative;z-index:1}.hero-txt h1{font-size:clamp(40px,7vw,64px);margin:10px 0 16px}
+.hero-chips{display:flex;flex-wrap:wrap;gap:10px}
+.hero-pl{position:relative;z-index:1;display:grid;justify-items:center}.hero-pl canvas{width:240px;height:256px;animation:cas-up .7s .2s var(--ease) both}.hero-pl b{font:700 22px var(--font);background:var(--surface);padding:6px 14px;border-radius:var(--r-md);box-shadow:var(--e1);transform:rotate(-3deg)}
 .sl-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px}
 .sl-col{display:grid;gap:24px;align-content:start}
-.sl-card{background:var(--sl-surface);border:1px solid var(--sl-border);border-radius:4px;padding:24px}
+.sl-card{background:var(--surface);border-radius:var(--r-lg);box-shadow:var(--e2);padding:24px;position:relative}
 .path{list-style:none;margin:16px 0 0;padding:0;display:grid;gap:12px}
-.node{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px;background:var(--sl-muted);border-radius:4px;margin-left:calc(var(--i) * 18px);border:1px solid transparent;position:relative}
-.node .n{font-size:20px;color:var(--sl-text-muted)}
-.node b{font-size:24px;display:block}.node p{font-size:14px;color:var(--sl-text-muted);margin-top:2px}
-.node.now{border-color:var(--sl-primary);box-shadow:0 0 24px rgba(255,90,31,.25);animation:pulse 1.4s ease-out 1}
-.node.now .n{color:var(--sl-primary)}
-.node.done .n{color:var(--sl-success)}.node.locked{opacity:.45}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}100%{box-shadow:0 0 24px rgba(255,90,31,.25)}}
-.pips{display:flex;gap:6px;margin-top:10px}.pips i{width:22px;height:8px;background:var(--sl-raised)}.pips i.w{background:var(--sl-success)}.pips i.l{background:var(--sl-danger)}
+.node{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:16px;background:var(--surface-muted);border-radius:var(--r-lg);margin-left:calc(var(--i) * 18px);box-shadow:inset 0 0 0 1.5px var(--border);position:relative;animation:cas-fan .7s var(--ease) calc(var(--i) * 90ms + 200ms) both}
+.node .n{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--surface);box-shadow:inset 0 0 0 1.5px var(--border);font-size:16px;color:var(--text-muted)}
+.node b{font-size:22px;display:block}.node p{font-size:14px;color:var(--text-muted);margin-top:2px}
+.node.now{background:var(--surface);box-shadow:inset 0 0 0 3px var(--primary),var(--e2);transform:rotate(-1deg)}
+.node.now .n{background:var(--primary);color:var(--on-primary);box-shadow:none;animation:nodepulse 1.8s ease-out infinite}
+.node.done .n{background:var(--surface-tint);color:var(--success);box-shadow:none}.node.locked{opacity:.5}
+@keyframes nodepulse{0%{box-shadow:0 0 0 0 rgba(107,230,131,.7)}100%{box-shadow:0 0 0 14px rgba(107,230,131,0)}}
+.pips{display:flex;gap:6px;margin-top:10px}.pips i{width:22px;height:10px;border-radius:99px;background:var(--surface-tint)}.pips i.w{background:var(--accent)}.pips i.l{background:var(--danger)}
 .stat-strip{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:12px}
-.readout{background:var(--sl-raised);padding:12px;border-radius:2px}.readout b{display:block;font-size:24px;line-height:32px}.readout small{color:var(--sl-text-muted);font-size:12px;line-height:16px;display:block;margin-top:6px}
-.mbar{height:6px;background:#1c1c20;margin-top:6px}.mbar i{display:block;height:100%;background:var(--sl-accent)}.mbar.energy i{background:var(--sl-hl)}.mbar.focus i{background:var(--sl-primary)}
+.readout{background:var(--surface-muted);padding:14px;border-radius:var(--r-md);box-shadow:inset 0 0 0 1px var(--border);animation:cas-drop .45s var(--ease) both}
+.readout:nth-child(2){animation-delay:60ms;--rot:3deg}.readout:nth-child(3){animation-delay:120ms;--rot:3deg}.readout:nth-child(4){animation-delay:180ms}
+.readout b{display:block;font-size:26px;line-height:32px}.readout small{color:var(--text-muted);font-size:12px;line-height:16px;display:block;margin-top:6px}
+.mbar{height:8px;background:var(--surface-tint);margin-top:6px;border-radius:99px;overflow:hidden}.mbar i{display:block;height:100%;background:var(--accent);border-radius:99px;animation:xpfill 1s .4s var(--ease) both}.mbar.energy i{background:var(--primary)}.mbar.focus i{background:var(--ink)}
 .results{display:grid;gap:8px;margin-top:12px}
-.res{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;background:var(--sl-paper);color:#0E0E10;padding:10px 12px}
-.res .cap{color:#4a4a52}.res b{font-size:20px}
+.res{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;background:var(--surface-muted);color:var(--text);padding:10px 14px;border-radius:var(--r-md)}
+.res .cap{color:var(--text-subtle)}.res b{font-size:20px}
 .ranks{list-style:none;padding:0;margin:12px 0 0;display:grid;gap:8px}
-.ranks li{display:flex;justify-content:space-between;gap:12px;padding:10px 12px;background:var(--sl-muted);border-radius:2px;font-size:14px;opacity:.55}
-.ranks li.got{opacity:1;box-shadow:inset 3px 0 0 var(--sl-hl)}.ranks b{font-weight:700}.ranks span{color:var(--sl-text-muted)}
-.pp-player{display:flex;gap:16px;align-items:center}.pp-player canvas{width:110px;height:118px;background:#0E0E10;border-radius:4px}
+.ranks li{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;background:var(--surface-muted);border-radius:var(--r-md);font-size:14px;opacity:.55}
+.ranks li.got{opacity:1;background:var(--surface-tint)}.ranks li.got b::before{content:"✓ ";color:var(--success)}.ranks b{font-weight:700}.ranks span{color:var(--text-muted)}
+.pp-player{display:flex;gap:16px;align-items:center}.pp-player canvas{width:110px;height:118px;background:var(--surface-tint);border-radius:var(--r-md)}
 @media (max-width:1023px){.sl-strip{grid-template-columns:1fr 1fr}.sl-strip .sl-btn{grid-column:1/-1}.sl-grid{grid-template-columns:1fr}}
-@media (max-width:639px){.sl-strip{grid-template-columns:1fr;padding:18px;margin-top:-20px}.sl-hero{grid-template-columns:1fr;padding-top:32px}.hero-pl{order:-1}.hero-pl canvas{width:180px;height:192px}
-  .pl-edit{grid-template-columns:1fr}.pl-stage{max-width:220px;margin:auto;width:100%}.pl-tile canvas{width:120px;height:120px}.sc-strip{grid-template-columns:repeat(2,1fr)}.sc-score{font-size:52px}.sc-stamp{font-size:22px;padding:6px 8px}.node{margin-left:calc(var(--i) * 8px)}.sl-h{font-size:30px}}
-@media (prefers-reduced-motion:reduce){.stagecard,.stagecard *,.stagecard.out{animation-duration:.18s!important;animation-name:fadeonly!important}.stagecard.glitch::after{display:none}.sc-stamp,.scorecard,.mo-opt,.mo-fb,.node.now{animation:none}}
+@media (max-width:639px){.sl-strip{grid-template-columns:1fr;padding:18px;margin-top:-20px}.sl-hero{grid-template-columns:1fr;padding:28px 20px;border-radius:var(--r-lg)}.hero-pl{order:-1}.hero-pl canvas{width:160px;height:171px}
+  .sl-hero .sl-acts .sl-btn{flex:1 1 100%}
+  .sl-hero .motif i:nth-child(1),.sl-hero .motif i:nth-child(2){width:200px;height:200px;top:-50px}.sl-hero .motif i:nth-child(1){right:-50px}.sl-hero .motif i:nth-child(2){right:70px}
+  .pl-edit{grid-template-columns:1fr}.pl-stage{max-width:220px;margin:auto;width:100%}.pl-tile canvas{width:120px;height:120px}.sc-strip{grid-template-columns:repeat(2,1fr)}.sc-score{font-size:52px}.sc-stamp{font-size:20px;padding:6px 10px}.node{margin-left:calc(var(--i) * 8px)}.sl-h{font-size:28px}}
+@media (prefers-reduced-motion:reduce){.sl *,.sl,.stagecard,.stagecard *,.modal.sl>*{animation-duration:.01ms!important;animation-delay:0s!important}.motif path{stroke-dashoffset:0}.stagecard .confetti{display:none}}
 @keyframes fadeonly{from{opacity:0}}
 /* ---------- mini-games ---------- */
 .mg-modal{width:min(520px,100%)}
@@ -586,7 +742,7 @@ body.st-lock{overflow:hidden}
 .mg-word{display:block;font-size:28px;font-weight:800;margin-top:6px}.mg-res.perfect .mg-word{color:var(--accent)}
 .mg-res p{color:var(--text-muted);margin-top:4px}.mg-res .btn{margin-top:16px;min-width:180px}
 .mg-slot{margin-top:8px}
-.mo-opt.wrong{border-color:var(--sl-danger);opacity:.8}
+.mo-opt.wrong{box-shadow:inset 0 0 0 2px var(--danger);background:#FDF0F1;opacity:.85}
 .rc .mo-opt b{font-family:var(--book);font-weight:400;font-style:italic;font-size:16px;line-height:24px}
 .st-pages{margin-left:6px;padding-left:8px;border-left:1px solid rgba(255,255,255,.25)}
 @media (max-width:639px){.modal:has(.mg-slot) .em{font-size:34px;margin-bottom:4px}.modal:has(.mg-slot) .countdown{font-size:44px;margin:6px 0}.modal:has(.mg-slot) h2{font-size:22px}.mg-glass{height:130px}.mg-sink{height:140px}.mg-gym{grid-template-columns:110px 1fr}.mg-gym canvas{width:110px;height:116px}.mg-cup svg{width:150px;height:188px}}
@@ -599,6 +755,7 @@ body.st-lock{overflow:hidden}
 .sc-office .counter{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,#f4f6f9,#cfd6e0);box-shadow:inset 0 8px 0 #fff}
 .sc-office .props{position:absolute;right:8%;bottom:30%;font-size:clamp(24px,3.2vw,36px);display:flex;gap:8px}
 .office-desk{background:linear-gradient(180deg,#3d5a86,#2f4b7c)}
+.desk-bookstore{background:linear-gradient(180deg,#8f4c78,#7A3E65)}.desk-lounge{background:linear-gradient(180deg,#3f566e,#2c3e50)}.desk-park{background:linear-gradient(180deg,#4f9461,#3F7D4E)}
 .dept-row{display:flex;flex-wrap:wrap;gap:6px}.dept-row span{background:rgba(255,255,255,.14);border-radius:999px;padding:4px 10px;font-size:13px}
 .plate-h{flex:none;align-self:center;color:#F5E9C8;opacity:.75;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:0 2px 0 6px}
 
@@ -758,14 +915,17 @@ body.pov-on{overflow:hidden}
 <div class="glow" style="width:420px;height:420px;right:-120px;top:420px" aria-hidden="true"></div>
 <div class="wrap">
   <nav class="top" aria-label="Main">
-    <button class="logo" data-go="home" aria-label="BOOKOUT home">
+    <button class="logo" data-go="landing" aria-label="BOOKOUT home">
       <span class="dots" aria-hidden="true"><i></i><i></i></span>
       <span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span>
     </button>
     <div class="navlinks">
+      <button data-go="landing" id="nav-landing">Home</button>
       <button data-go="home" id="nav-home">Street</button>
+      <button data-go="places" id="nav-places">Places</button>
       <button data-go="season" id="nav-season">Season</button>
       <button data-go="passport" id="nav-passport">Passport</button>
+      <button data-go="about" id="nav-about">About</button>
     </div>
     <div class="chips" id="chips"></div>
   </nav>
@@ -845,7 +1005,11 @@ function sfx(name) { if (!S.settings.sound) return; try { const c = ac(); if (c)
 const AMB = {
   cafe: { f: 900, q: .7, vol: .045, ev: [['clink', 5], ['pour', 14], ['steam', 18]] },
   library: { f: 260, q: .5, vol: .03, ev: [['flip', 9]] },
-  diner: { f: 1300, q: .5, vol: .05, ev: [['beep', 6], ['sizzle', 9], ['bell', 25]] }
+  diner: { f: 1300, q: .5, vol: .05, ev: [['beep', 6], ['sizzle', 9], ['bell', 25]] },
+  office: { f: 500, q: .5, vol: .025, ev: [['printer', 20], ['beep', 30]] },
+  bookstore: { f: 400, q: .5, vol: .025, ev: [['flip', 8], ['register', 30]] },
+  lounge: { f: 320, q: .6, vol: .03, ev: [['clink', 9], ['pour', 22]] },
+  park: { f: 2600, q: .3, vol: .018, ev: [['blip', 4], ['chime', 26]] }
 };
 function ambient(id) {
   stopAmbient();
@@ -971,7 +1135,7 @@ const VENUES = {
     id: 'office', name: 'Menara Ilham', kind: 'Office tower', emoji: '🏢', open: 8, close: 19, timer: 'clock', cover: '#2F4B7C',
     staff: { name: 'Puan Lina', role: 'Front desk', avatar: '👩🏻‍💼' },
     ritual: 'Book a focus room at reception, read by department, and take pantry and stretch breaks like a real workday.',
-    lengths: [25, 50, 90, 120],
+    lengths: [25, 50, 90, 120], deskTitle: 'Focus rooms', passLabel: 'Room pass', passSub: 'focus room', shelfTitle: 'Departments', posLabel: 'BADGE', itemEm: '🔑',
     lines: {
       greet: n => `Good ${partOfDay()}, ${n}. Welcome to Menara Ilham. Shall I book you a focus room?`,
       order: m => `Focus room booked for ${m} minutes. The department shelves are on your right.`,
@@ -988,6 +1152,79 @@ const VENUES = {
     ],
     sounds: { order: 'beep', prep: ['printer'], serve: 'chime' },
     shelf: ['leadership', 'people', 'finance', 'ops', 'sales', 'innovation'], shelfName: 'Department shelves'
+  },
+  bookstore: {
+    id: 'bookstore', name: 'Pena Bookstore', kind: 'Bookshop', emoji: '📚', open: 10, close: 22, timer: 'clock', cover: '#7A3E65',
+    staff: { name: 'Kak Mira', role: 'Bookseller', avatar: '👩🏽‍💼' },
+    ritual: 'Get a sofa pass for the reading corner, browse the new arrivals table and read on the big sofa. Every chapter earns bookworm points.',
+    lengths: [20, 40, 60, 90], deskTitle: 'Reading corner', passLabel: 'Sofa pass', passSub: 'reading corner', shelfTitle: 'Sections', posLabel: 'PAY', itemEm: '🛋️',
+    lines: {
+      greet: n => `Hi ${n}! Welcome to Pena Bookstore. Want a spot on the reading sofa?`,
+      order: m => `Sofa pass for ${m} minutes. The new arrivals table is right behind you.`,
+      book: b => `${b.title}. Oh, that one changed my life a little. Enjoy!`,
+      prep: () => `Kak Mira is writing your sofa pass…`,
+      serve: () => `The corner sofa is free. Shout if you want a recommendation.`,
+      closed: () => `We're closed for now. We open at 10 in the morning. Bun & Chapter is open 24 hours.`,
+      bye: () => `Thanks for reading with us. Come back for the next chapter!`
+    },
+    breaks: [
+      { id: 'browse', emoji: '🔎', title: 'Browse the shelves', line: 'Take a slow walk along the shelves. Read one blurb you would never normally pick.', min: 2, pts: 4 },
+      { id: 'water', emoji: '💧', title: 'Water break', line: 'There is cold water by the till. Have a few sips.', min: 1, pts: 3 },
+      { id: 'photo', emoji: '📸', title: 'Shelfie', line: 'Take a photo of your book against the shelf wall. It looks great in this light.', min: 1, pts: 5 }
+    ],
+    sounds: { order: 'register', prep: ['printer'], serve: 'chime' },
+    shelf: ['inspiration', 'romance', 'fantasy', 'poetry', 'children'], shelfName: 'New arrivals table'
+  },
+  lounge: {
+    id: 'lounge', name: 'The Loft Lounge', kind: 'Hotel lounge', emoji: '🛋️', open: 6, close: 24, timer: 'cup', cover: '#34495E',
+    staff: { name: 'Daniel', role: 'Lounge host', avatar: '🤵🏽' },
+    ritual: 'Sink into a leather armchair with a pot of tea. Quiet, calm and made for big ideas. Your teapot is the timer.',
+    menuTitle: 'Tea service',
+    menu: [
+      { id: 'earl', name: 'Earl Grey', emoji: '🫖', min: 20, note: 'bergamot & calm', color: '#8B5A2B' },
+      { id: 'mint', name: 'Mint tea', emoji: '🌿', min: 25, note: 'fresh focus', color: '#9CCB86' },
+      { id: 'chai', name: 'Masala chai', emoji: '☕', min: 30, note: 'warm & spiced', color: '#C08552' },
+      { id: 'choc', name: 'Hot chocolate', emoji: '🍫', min: 40, note: 'slow & rich', color: '#5A3020' },
+      { id: 'hightea', name: 'High tea set', emoji: '🍰', min: 60, note: 'the long read', color: '#B5712B' }
+    ],
+    lines: {
+      greet: n => `Good ${partOfDay()}, ${n}. Welcome to the Loft. Tea while you read?`,
+      order: it => `One ${it.name.toLowerCase()}. That will last about ${it.min} minutes. The library wall is yours.`,
+      book: b => `${b.title}. A fine choice for an armchair.`,
+      prep: it => `Daniel is brewing your ${it.name.toLowerCase()}…`,
+      serve: it => `Your ${it.name.toLowerCase()}. Take the armchair by the window.`,
+      closed: () => `The lounge opens at 6 in the morning. Bun & Chapter is open all night.`,
+      bye: () => `It was a pleasure. Do come back.`
+    },
+    breaks: [
+      { id: 'water', emoji: '💧', title: 'Lemon water', line: 'A glass of lemon water for you. Tea is lovely, water is better for you.', min: 1, pts: 3 },
+      { id: 'window', emoji: '🌆', title: 'Look out the window', line: 'Rest your eyes. Look at the furthest building you can see for twenty seconds.', min: 1, pts: 4 },
+      { id: 'photo', emoji: '📸', title: 'Armchair photo', line: 'Book, teapot, armchair. That photo is worth taking.', min: 1, pts: 5 }
+    ],
+    sounds: { order: 'register', prep: ['pour'], serve: 'clink' },
+    shelf: ['leadership', 'business', 'philosophy', 'history'], shelfName: 'Library wall'
+  },
+  park: {
+    id: 'park', name: 'Taman Bacaan', kind: 'Park pavilion', emoji: '🌳', open: 7, close: 19, timer: 'clock', cover: '#3F7D4E',
+    staff: { name: 'Pak Rahman', role: 'Park ranger', avatar: '👴🏽' },
+    ritual: 'Borrow a picnic mat from the ranger, take a book from the little free library and read under the trees. Daylight hours only.',
+    lengths: [15, 30, 45, 60], deskTitle: 'Shady spots', passLabel: 'Picnic mat', passSub: 'under the trees', shelfTitle: 'Little free library', posLabel: 'TAP', itemEm: '🧺',
+    lines: {
+      greet: n => `Selamat ${partOfDay() === 'morning' ? 'pagi' : 'petang'}, ${n}! Nice day for reading outside. Need a mat?`,
+      order: m => `One mat for ${m} minutes. The little free library is next to the pavilion.`,
+      book: b => `${b.title}. Bagus. The trees will like that one too.`,
+      prep: () => `Pak Rahman is rolling out your mat…`,
+      serve: () => `The spot under the big tree is shady right now. Enjoy the breeze.`,
+      closed: () => `The park pavilion closes when it gets dark. Come back at 7 in the morning.`,
+      bye: () => `Take care. Bring a friend next time!`
+    },
+    breaks: [
+      { id: 'walk', emoji: '🚶', title: 'Walk around the lake', line: 'Stretch your legs. One slow lap around the pond.', min: 3, pts: 5 },
+      { id: 'water', emoji: '💧', title: 'Drink some water', line: 'It is warm out here. Drink some water.', min: 1, pts: 3 },
+      { id: 'birds', emoji: '🐦', title: 'Spot a bird', line: 'Put the book down and find one bird. Just watch it for a minute.', min: 1, pts: 4 }
+    ],
+    sounds: { order: 'chime', prep: ['open'], serve: 'chime' },
+    shelf: ['growth', 'poetry', 'philosophy', 'inspiration'], shelfName: 'Little free library'
   }
 };
 const CATS = [
@@ -1068,6 +1305,7 @@ const BADGES = [
   { id: 'memory', e: '🧩', name: 'Total Recall', d: 'Pass 5 recall checks', test: s => (s.flags.recalls || 0) >= 5 },
   { id: 'social', e: '🗣️', name: 'Book Buddy', d: 'Talk books with 5 people on the street', test: s => (s.flags.talks || 0) >= 5 },
   { id: 'debate', e: '⚖️', name: 'Fair Debater', d: 'See both sides in 3 book arguments', test: s => (s.flags.debates || 0) >= 3 },
+  { id: 'homebase', e: '💚', name: 'Home Away From Home', d: 'Read 5 times at a favourite place', test: s => (s.favs || []).some(id => (s.visits[id] || 0) >= 5) },
   { id: 'ownshelf', e: '📱', name: 'Own Shelf', d: 'Add your own EPUB book', test: s => (s.epubs || []).length >= 1 }
 ];
 const POEMS = {
@@ -1249,9 +1487,10 @@ function rememberBook(b) {
 const cover = (b, w = 120) => `<div class="cloth" style="--c:${clothOf(b)};--cw:${w}px"><div class="cl-in"><b>${esc(b.title)}</b><span>${esc(b.author)}</span></div>${b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy" onerror="this.remove()">` : ''}</div>`;
 
 /* =============== router =============== */
-let view = 'home', setup = null, sess = null;
+let view = S.flags && S.flags.landed ? 'home' : 'landing', setup = null, sess = null, infoKey = 'about';
 function go(v, arg) {
   if (sess && v !== 'session') { confirmLeave(() => { finish(false); go(v, arg); }); return; }
+  if (['about', 'vision', 'privacy', 'terms'].includes(v)) { infoKey = v; v = 'info'; }
   view = v;
   if (v === 'setup') setup = { venue: arg, item: null, length: null, book: null, orderNo: null };
   if (v !== 'setup' && v !== 'session') stopAmbient();
@@ -1261,12 +1500,11 @@ document.addEventListener('click', e => { const g = e.target.closest('[data-go]'
 function render() {
   rollDay(); renderChips();
   document.body.classList.toggle('reading', view === 'session');
-  $('#nav-home').setAttribute('aria-current', view === 'home' || view === 'setup' ? 'page' : 'false');
-  $('#nav-passport').setAttribute('aria-current', view === 'passport' ? 'page' : 'false');
-  $('#nav-season').setAttribute('aria-current', view === 'season' ? 'page' : 'false');
+  [['landing', ['landing']], ['home', ['home', 'setup']], ['places', ['places']], ['season', ['season']], ['passport', ['passport']], ['about', ['info']]].forEach(([k, vs]) => $('#nav-' + k).setAttribute('aria-current', vs.includes(view) ? 'page' : 'false'));
   const app = $('#app'); app.innerHTML = '';
   const el = document.createElement('div'); el.className = 'view'; app.append(el);
-  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason })[view](el);
+  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, info: e => renderInfo(e, infoKey) })[view](el);
+  if (view !== 'session') app.insertAdjacentHTML('beforeend', footerHTML());
   const pp = $('#pp-pt'); if (pp) portrait(pp, S.avatar, 2.6, .9);
 }
 function renderChips() {
@@ -1284,6 +1522,9 @@ function sceneArt(v) {
     <div class="board">Today's brews<small>latte · matcha · teh tarik</small></div><div class="props"><span>🥐</span><span>🧁</span><span>🪴</span></div><div class="counter"></div></div>`;
   if (v.id === 'library') { const d = new Date(), hr = (d.getHours() % 12 + d.getMinutes() / 60) * 30, mn = d.getMinutes() * 6;
     return `<div class="layer sc-library"><div class="shelves"></div><div class="clock" title="Real time"><i style="height:26%;transform:translateX(-50%) rotate(${hr}deg)"></i><i style="height:38%;width:2px;transform:translateX(-50%) rotate(${mn}deg)"></i></div><div class="lampg">💡</div><div class="counter"></div></div>`; }
+  if (v.id === 'bookstore') return `<div class="layer sc-bookstore"><div class="wall"></div><div class="neon">New arrivals<small>sofa corner open</small></div><div class="props"><span>🛋️</span><span>🪴</span></div><div class="counter"></div></div>`;
+  if (v.id === 'lounge') return `<div class="layer sc-lounge"><div class="win"></div><div class="lampy" style="left:56%"></div><div class="lampy" style="left:74%"></div><div class="sign">The Loft<small>tea · quiet · ideas</small></div><div class="props"><span>🫖</span><span>🛋️</span></div><div class="counter"></div></div>`;
+  if (v.id === 'park') return `<div class="layer sc-park"><div class="sun"></div><div class="trees"><span>🌳</span><span>🌲</span><span>🌳</span></div><div class="pav">Little free library<small>take one, leave one</small></div><div class="props"><span>🧺</span><span>🐦</span></div><div class="counter"></div></div>`;
   if (v.id === 'office') return `<div class="layer sc-office"><div class="sky"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="wb">Q4 goals<small>read · learn · lead</small></div><div class="props"><span>🪴</span><span>🖥️</span><span>☕</span></div><div class="counter"></div></div>`;
   return `<div class="layer sc-diner"><div class="band"></div><div class="neon">OPEN 24 HOURS</div><div class="screen"><span>🍔</span><span>🍟</span><span>🍗</span><span>🥤</span></div><div class="props"><span>🧂</span><span>🥫</span></div><div class="counter"></div></div>`;
 }
@@ -1302,7 +1543,7 @@ function talk(text, sound = true) {
 }
 
 /* =============== the street: a walkable top-down town =============== */
-const ST = { W: 2300, H: 1080, FACE: 40, WT: 14, CELL: 20 };
+const ST = { W: 3500, H: 1080, FACE: 40, WT: 14, CELL: 20 };
 const OUTL = '#4a3426';
 const LOOKS = {
   skins: ['#f9dcc4', '#f1c29a', '#e0a77a', '#c68b5c', '#9c6640', '#6e4429'],
@@ -1458,6 +1699,8 @@ const STREET_LINES = {
   park: ['Angin sepoi-sepoi 🍃', 'Best baca kat sini', 'Kucing comel 🐱', 'Tengok burung kejap'],
   plaza: ['Kopi O satu!', 'Meeting lagi 😩', 'Lunch break baca jap', 'Dataran ni tenang'],
   office: ['Deadline Jumaat 😬', 'KPI naik bulan ni', 'Lunch kat mana?', 'Zoom call lagi…'],
+  bookstore: ['Ada sequel tak?', 'Wishlist makin panjang 📚', 'Sofa ni selesa gila', 'Blurb dia best!'],
+  lounge: ['Tea ni smooth ☕', 'Big ideas only', 'Quiet sangat, best', 'One more chapter, then meeting'],
   street: ['Jom baca!', 'Panas hari ni ☀️', 'Nak pergi kafe ke?', 'Library buka lagi?', 'Dah 3 hari streak 🔥']
 };
 function pickBook(seed, cats) { const all = cats.flatMap(k => CURATED[k] || []); const b = all[hash(seed) % all.length]; return { title: b[1], color: CLOTH[hash(b[1]) % CLOTH.length] }; }
@@ -1469,6 +1712,8 @@ function buildTown() {
     { id: 'library', x: 640, y: 40, w: 520, h: 480, floor: 'carpet', door: [860, 940], face: '#dfe9dc', label: 'THE COMMONS LIBRARY', where: 'The Commons Library' },
     { id: 'diner', x: 1200, y: 40, w: 440, h: 480, floor: 'checker', door: [1380, 1460], face: '#f8dcd2', label: 'BUN & CHAPTER', where: 'Bun & Chapter' },
     { id: 'office', x: 1700, y: 40, w: 560, h: 480, floor: 'office', door: [1940, 2020], face: '#dce6f2', label: 'MENARA ILHAM · OFFICE', where: 'Menara Ilham (office)' },
+    { id: 'bookstore', x: 2320, y: 40, w: 520, h: 480, floor: 'wood', door: [2540, 2620], face: '#f6e9f1', label: 'PENA BOOKSTORE', where: 'Pena Bookstore' },
+    { id: 'lounge', x: 2880, y: 40, w: 560, h: 480, floor: 'carpet', door: [3120, 3200], face: '#e6e9ee', label: 'THE LOFT LOUNGE', where: 'The Loft Lounge' },
     { id: 'passport', x: 1040, y: 760, w: 280, h: 260, floor: 'tile', door: [1140, 1220], top: true, face: '#e3e6f6', label: 'PASSPORT OFFICE', where: 'Passport Office' }
   ];
   rooms.forEach(r => { const v = VENUES[r.id]; r.status = v ? venueStatus(v) : { open: true }; r.open = r.status.open; });
@@ -1566,7 +1811,7 @@ function buildTown() {
   lights.push({ x: 1180, y: 900, r: 200, room: 'passport' });
 
   /* street furniture */
-  [200, 620, 1040, 1460, 1880].forEach(x => { lamp(x, 548); lamp(x + 120, 724); });
+  [200, 620, 1040, 1460, 1880, 2300, 2720, 3140].forEach(x => { lamp(x, 548); lamp(x + 120, 724); });
 
   /* park */
   const hedge = (x, y, w, h) => { solid(x, y, w, h); item(y + h, c => { rr(c, x, y - 6, w, h + 6, 10, '#4fae5c'); c.fillStyle = '#62c46e'; for (let k = x + 10; k < x + w - 4; k += 18) { c.beginPath(); c.arc(k, y - 2, 6, 0, 7); c.fill(); } }); };
@@ -1645,10 +1890,76 @@ function buildTown() {
   solid(2070, 1000, 70, 30);
   item(1030, c => { block(c, 2070, 1000, 70, 30, 12, '#f6c453', '#c99a2e', 6); c.beginPath(); c.moveTo(2064, 1000); c.lineTo(2146, 1000); c.lineTo(2136, 984); c.lineTo(2074, 984); c.closePath(); c.fillStyle = '#e5534b'; c.fill(); c.lineWidth = 2; c.strokeStyle = OUTL; c.stroke(); c.fillStyle = '#3a2a20'; c.font = '700 9px Outfit, sans-serif'; c.textAlign = 'center'; c.fillText('KOPI O', 2105, 1020); });
 
+  /* Pena Bookstore */
+  const bs = R.bookstore;
+  solid(2360, 140, 220, 46);
+  item(186, c => {
+    block(c, 2360, 140, 220, 46, 16, '#f6e9f1', '#7A3E65', 8);
+    rr(c, 2378, 126, 40, 26, 4, '#2f3b46'); rr(c, 2382, 129, 32, 18, 2, '#f7c6dc', null);
+    for (let k = 0; k < 6; k++) { c.fillStyle = CLOTH[(k * 3) % CLOTH.length]; c.fillRect(2440 + k * 9, 128 - (k % 2) * 3, 7, 22 + (k % 2) * 3); }
+    rr(c, 2520, 130, 40, 20, 4, '#fff'); c.fillStyle = '#7A3E65'; c.font = '700 8px Outfit, sans-serif'; c.textAlign = 'center'; c.fillText('NEW!', 2540, 143);
+  });
+  if (bs.open) person({ name: 'Kak Mira', x: 2470, y: 132, room: 'bookstore', staff: 1, look: { gender: 'female', skin: 2, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 4 }, lines: ['New arrivals hari ni!', 'Nak recommendation?', 'Sofa corner kosong 🛋️'] });
+  zones.push({ id: 'bookstore', x: 2360, y: 186, w: 220, h: 54, icon: '📚', label: () => bs.open ? 'Get a sofa pass from Kak Mira' : 'Pena Bookstore is closed · peek inside', act: () => enterVenue('bookstore'), target: { x: 2470, y: 112 } });
+  [130, 220, 310, 400].forEach((y, i) => {
+    solid(2640, y, 170, 34);
+    item(y + 34, c => { block(c, 2640, y, 170, 34, 22, '#a0522d', '#7a3e2a', 5);
+      for (let k = 0; k < 15; k++) { const bx = 2646 + k * 10.6, hgt = 14 + (hash('p' + i + k) % 6); c.fillStyle = CLOTH[hash('q' + i + k) % CLOTH.length]; c.fillRect(bx, y + 31 - hgt, 8.5, hgt); } });
+  });
+  solid(2390, 290, 170, 50);
+  item(340, c => { block(c, 2390, 290, 170, 50, 14, '#f1e2c4', '#a8794f', 6); for (let k = 0; k < 6; k++) { rr(c, 2402 + k * 26, 296 + (k % 2) * 10, 20, 26, 2, CLOTH[(k * 7) % CLOTH.length], OUTL, 1.2); } });
+  const sofa = (x, y, col) => { solid(x, y, 150, 40); item(y + 40, c => { rr(c, x, y - 14, 150, 22, 8, shade(col, .8)); rr(c, x, y + 2, 150, 36, 10, col, OUTL, 2); rr(c, x - 8, y - 6, 18, 44, 8, shade(col, .85), OUTL, 2); rr(c, x + 140, y - 6, 18, 44, 8, shade(col, .85), OUTL, 2); }); };
+  sofa(2400, 420, '#c0627f');
+  seat('Hana', 2440, 418, 'bookstore', ['romance', 'poetry', 'fantasy']); seat('Ravi', 2510, 418, 'bookstore', ['inspiration', 'children']);
+  plant(2346, 490); plant(2826, 490, .9);
+  lights.push({ x: 2580, y: 300, r: 300, room: 'bookstore' });
+
+  /* The Loft Lounge */
+  const lg = R.lounge;
+  solid(2920, 140, 240, 46);
+  item(186, c => {
+    block(c, 2920, 140, 240, 46, 16, '#e6e9ee', '#34495E', 8);
+    for (let k = 0; k < 5; k++) { rr(c, 2940 + k * 16, 124, 10, 22, 3, ['#9fd3f0', '#f6d27a', '#c99a2e', '#9CCB86', '#f2a6b8'][k], OUTL, 1.2); }
+    rr(c, 3040, 130, 46, 20, 5, '#fff'); circ(c, 3110, 140, 8, '#8B5A2B', OUTL, 1.5); rr(c, 3104, 128, 12, 5, 2, '#8B5A2B', null);
+  });
+  if (lg.open) person({ name: 'Daniel', x: 3060, y: 132, room: 'lounge', staff: 1, look: { gender: 'male', skin: 1, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6 }, lines: ['Tea, sir? Madam?', 'Armchair by the window', 'Earl Grey hari ni 🫖'] });
+  zones.push({ id: 'lounge', x: 2920, y: 186, w: 240, h: 54, icon: '🛋️', label: () => lg.open ? 'Order tea with Daniel' : 'The Loft Lounge is closed · peek inside', act: () => enterVenue('lounge'), target: { x: 3060, y: 112 } });
+  [120, 210, 300, 390].forEach((y, i) => {
+    solid(3240, y, 180, 34);
+    item(y + 34, c => { block(c, 3240, y, 180, 34, 22, '#5a3d2b', '#3e2a1d', 5);
+      for (let k = 0; k < 16; k++) { const bx = 3246 + k * 10.6, hgt = 14 + (hash('l' + i + k) % 6); c.fillStyle = CLOTH[hash('m' + i + k) % CLOTH.length]; c.fillRect(bx, y + 31 - hgt, 8.5, hgt); } });
+  });
+  [[2990, 300, 'Datuk Azman', ['leadership', 'business']], [3150, 300, ''], [2990, 420, 'Sofia', ['philosophy', 'history']], [3150, 420, 'Mr Tan', ['business', 'history']]].forEach(([x, y, n, cats]) => { chair(x, y - 30, '#7a4a3a'); roundTable(x, y, 22, '#efe6da'); if (n) seat(n, x, y - 32, 'lounge', cats); });
+  plant(2906, 490); plant(3426, 490, .9);
+  lights.push({ x: 3160, y: 300, r: 300, room: 'lounge' });
+
+  /* Taman Bacaan: the park pavilion */
+  const PARK = VENUES.park, pk = venueStatus(PARK);
+  solid(700, 786, 110, 30);
+  item(816, c => {
+    c.beginPath(); c.moveTo(690, 788); c.lineTo(820, 788); c.lineTo(800, 764); c.lineTo(710, 764); c.closePath(); c.fillStyle = '#3F7D4E'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = OUTL; c.stroke();
+    block(c, 700, 788, 110, 28, 12, '#f1e2c4', '#a8794f', 6);
+    for (let k = 0; k < 8; k++) { c.fillStyle = CLOTH[(k * 4) % CLOTH.length]; c.fillRect(708 + k * 11, 774 + (k % 2), 8, 14); }
+  });
+  if (pk.open) person({ name: 'Pak Rahman', x: 755, y: 776, room: 'parkdesk', staff: 1, look: { gender: 'male', skin: 2, hair: 'short', head: 'cap', hc: 3, outfit: 'casual', shirt: 0 }, lines: ['Tikar ada, jom!', 'Hari cerah, baca luar', 'Jaga kebersihan ya 🌿'] });
+  zones.push({ id: 'park', x: 690, y: 816, w: 130, h: 44, icon: '🌳', label: () => pk.open ? 'Borrow a mat from Pak Rahman' : 'The park pavilion is closed for the night', act: () => enterVenue('park'), target: { x: 755, y: 840 } });
+
+  /* east garden */
+  hedge(2300, 750, 500, 16); hedge(2960, 750, 500, 16); hedge(2300, 1034, 1160, 16); hedge(3444, 750, 16, 300);
+  tree(2360, 860); tree(2700, 1000, .9); tree(3380, 860); tree(3100, 1000); tree(2560, 820, .85);
+  solid(2830, 880, 150, 70);
+  item(950, (c, t) => { c.beginPath(); c.ellipse(2905, 915, 78, 36, 0, 0, 7); c.fillStyle = '#c9c1b3'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = OUTL; c.stroke();
+    c.beginPath(); c.ellipse(2905, 912, 68, 29, 0, 0, 7); c.fillStyle = '#8fd3f0'; c.fill();
+    for (let k = 0; k < 2; k++) { const ph = (t * .4 + k / 2) % 1; c.strokeStyle = `rgba(255,255,255,${.6 * (1 - ph)})`; c.lineWidth = 2; c.beginPath(); c.ellipse(2880 + k * 50, 912, 6 + ph * 20, 3 + ph * 9, 0, 0, 7); c.stroke(); }
+    circ(c, 2930, 905, 6, '#6BE683', OUTL, 1.2); circ(c, 2870, 920, 5, '#6BE683', OUTL, 1.2); });
+  bench(2440, 960); bench(3200, 880); bench(3220, 990);
+  seat('Rina', 2482, 956, 'park', ['poetry', 'growth']); seat('Encik Zul', 3242, 876, 'park', ['inspiration', 'leadership']);
+
   // walkers
   person({ name: 'Amir', x: 320, y: 538, path: [[320, 538], [900, 538], [900, 712], [490, 712], [490, 820], [490, 712], [320, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Zara', x: 1600, y: 538, path: [[1600, 538], [1420, 538], [1420, 712], [1640, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Faiz', x: 2200, y: 538, path: [[2200, 538], [1700, 538], [1980, 538], [1980, 712], [2200, 712], [1980, 712], [1980, 860], [1820, 900], [1980, 860], [1980, 712], [2200, 712]], room: 'street', lines: STREET_LINES.street });
+  person({ name: 'Nadia', x: 2400, y: 538, path: [[2400, 538], [3300, 538], [3300, 712], [2880, 712], [2880, 780], [2880, 712], [2400, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Mei', x: 1820, y: 880, path: [[1860, 850], [2100, 850], [2040, 975], [1860, 975]], room: 'plaza', lines: STREET_LINES.plaza });
   person({ name: 'Kumar', x: 600, y: 860, path: [[480, 860], [760, 860], [760, 1010], [480, 1010]], room: 'park', lines: STREET_LINES.park });
   const cat = { name: 'Oyen', cat: 1, x: 520, y: 980, tx: 520, ty: 980, wait: 2, bubble: null, next: 6, lines: ['meow', 'meow~', 'purr…'], dir: 'right', phase: 0 };
@@ -1759,7 +2070,7 @@ function mountStreet(root) {
   const resize = () => { const b = wrap.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(b.width * dpr); cv.height = Math.round(b.height * dpr); dark.width = cv.width; dark.height = cv.height; z = Math.max(.6, Math.min(1.2, b.width / 1150)); if (b.height / z > ST.H + 44) z = b.height / (ST.H + 44); vw = b.width / z; vh = b.height / z; };
   resize(); const ro = new ResizeObserver(resize); ro.observe(wrap);
   cam.x = Math.max(0, Math.min(ST.W - vw, pl.x - vw / 2)); cam.y = Math.max(-44, Math.min(ST.H - vh, pl.y - vh / 2));
-  const quest = () => { if (S.todayMin >= 20) return null; const z0 = ['cafe', 'library', 'diner', 'office'].map(id => T.zones.find(q => q.id === id)).find(q => T.R[q.id].open); return z0; };
+  const quest = () => { if (S.todayMin >= 20) return null; const z0 = ['cafe', 'library', 'diner', 'office', 'bookstore', 'lounge'].map(id => T.zones.find(q => q.id === id)).find(q => T.R[q.id].open); return z0; };
   const doAct = () => { if (!zone) return; store('bookout:spot', { x: pl.x, y: pl.y }); if (VENUES[zone.id]) sfx('door'); zone.act(); };
   const actBtn = $('#st-act', wrap); actBtn.onclick = () => { doAct(); cv.focus({ preventScroll: true }); };
   updPages();
@@ -1807,7 +2118,7 @@ function mountStreet(root) {
       if (r && VENUES[r.id] && r.open) {
         sfx('dingdong'); ambient(r.id);
         const staff = T.npcs.find(p => p.staff && p.room === r.id);
-        if (staff) say(staff, { cafe: `Hi ${S.name}! Order at the counter ☕`, library: `Selamat datang, ${S.name}. Check in here.`, diner: `Welcome, ${S.name}! What'll it be? 🍔`, office: `Morning, ${S.name}! Need a focus room?` }[r.id], 4.5);
+        if (staff) say(staff, { cafe: `Hi ${S.name}! Order at the counter ☕`, library: `Selamat datang, ${S.name}. Check in here.`, diner: `Welcome, ${S.name}! What'll it be? 🍔`, office: `Morning, ${S.name}! Need a focus room?`, bookstore: `Hi ${S.name}! New arrivals just came in 📚`, lounge: `Good to see you, ${S.name}. Tea? 🫖` }[r.id], 4.5);
       } else if (r && r.id === 'passport') { sfx('chime'); const staff = T.npcs.find(p => p.room === 'passport'); staff && say(staff, `Hi ${S.name}, come see your badges!`, 4); }
       else stopAmbient();
     }
@@ -1859,9 +2170,10 @@ function mountStreet(root) {
     c.fillStyle = P.walk; c.fillRect(0, 520, ST.W, 40); c.fillRect(0, 690, ST.W, 46);
     c.fillStyle = '#6d727d'; c.fillRect(0, 560, ST.W, 130); c.fillStyle = '#5f646e'; c.fillRect(0, 560, ST.W, 6); c.fillRect(0, 684, ST.W, 6);
     c.fillStyle = '#f3ecd8'; for (let x = 10; x < ST.W; x += 70) c.fillRect(x, 622, 38, 5);
-    [320, 900, 1420, 1980].forEach(cx => { for (let y = 570; y < 680; y += 20) { c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(cx - 34, y, 68, 10); } });
+    [320, 900, 1420, 1980, 2580, 3160].forEach(cx => { for (let y = 570; y < 680; y += 20) { c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(cx - 34, y, 68, 10); } });
     c.fillStyle = P.path; c.fillRect(440, 736, 100, 140); c.beginPath(); c.ellipse(620, 930, 120, 80, 0, 0, 7); c.fill(); c.fillRect(440, 846, 200, 56); c.fillRect(1140, 736, 80, 40);
     c.fillStyle = P.plaza; c.fillRect(1716, 766, 528, 268); c.fillRect(1900, 736, 160, 40);
+    c.fillStyle = P.path; c.fillRect(2800, 736, 160, 60); c.beginPath(); c.ellipse(2905, 915, 150, 90, 0, 0, 7); c.fill(); c.fillRect(2340, 940, 600, 60); c.fillRect(2900, 860, 360, 50);
     [[200, 960], [840, 900], [360, 860], [700, 1010]].forEach(([fx, fy], i) => { for (let q = 0; q < 7; q++) { circ(c, fx + Math.cos(q * 2.4) * 16, fy + Math.sin(q * 2.4) * 9, 3.2, ['#ff8fb1', '#f6d27a', '#fff', '#9c6ade'][(q + i) % 4], null); } });
     // floors + back walls
     for (const r of T.rooms) {
@@ -1993,13 +2305,15 @@ function xpGain(n, reason) {
   if (levelInfo(S.xp).lvl > before) levelUp();
   save(); renderChips();
 }
-function levelUp() { const L = levelInfo(S.xp); sfx('win'); setTimeout(() => stageCard('LEVEL UP', `Level ${L.lvl} · ${L.title}`, { glitch: true, ms: 1400 }), 250); }
+function levelUp() { const L = levelInfo(S.xp); sfx('win'); setTimeout(() => stageCard('Level up!', `Level ${L.lvl} · ${L.title}`, { glitch: true, ms: 1400 }), 250); }
 
 /* ---- stage title card ---- */
+const MOTIF = '<div class="motif" aria-hidden="true"><i></i><i></i><svg viewBox="0 0 140 60"><path d="M4 40 C 24 10, 40 58, 62 30 S 100 8, 112 34 S 132 46, 136 22"/></svg></div>';
+const confetti = () => '<div class="confetti" aria-hidden="true">' + Array.from({ length: 28 }, (_, k) => { const a = k / 28 * Math.PI * 2, r = 160 + (k % 5) * 50; return `<b style="--k:${k};--c:${['#6BE683', '#1CBB6C', '#262828', '#E3F8E6', '#55D86C'][k % 5]};--x:calc(-50% + ${Math.round(Math.cos(a) * r)}px);--y:calc(-50% + ${Math.round(Math.sin(a) * r)}px);--r:${k * 47}deg"></b>`; }).join('') + '</div>';
 function stageCard(title, sub, o = {}) {
   const el = document.createElement('div'); el.className = 'stagecard sl' + (o.glitch ? ' glitch' : '');
   el.setAttribute('role', 'status');
-  el.innerHTML = `<div class="shards" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="sc-in"><span class="cap">${esc(sub || '')}</span><h1 class="disp">${esc(title)}</h1>${o.extra || ''}</div>`;
+  el.innerHTML = `${MOTIF}${o.glitch ? confetti() : ''}<div class="sc-in"><span class="cap">${esc(sub || '')}</span><h1 class="disp">${esc(title)}</h1>${o.extra || ''}</div>`;
   document.body.append(el); sfx('whoosh');
   const out = () => { if (el.classList.contains('out')) return; el.classList.add('out'); setTimeout(() => { el.remove(); o.done && o.done(); }, 460); };
   setTimeout(out, o.ms || 1600); el.onclick = out;
@@ -2058,7 +2372,7 @@ function openPlayer(mode = 'edit', done) {
       const inp = $('#pl-name', m), n = inp ? inp.value.trim() : S.name;
       if (n.length < 2) { const er = $('#pl-err', m); if (er) { er.textContent = 'Use at least 2 characters.'; er.style.color = '#FF4D5E'; } inp && inp.focus(); return; }
       S.avatar = a; S.name = n; save(); cancelAnimationFrame(raf); closeModal(true);
-      if (isNew) stageCard('YOUR SEASON STARTS', `${n} · Season ${S.season.n}`, { ms: 1900 }); else { sfx('chime'); toast('👕 Player updated'); }
+      if (isNew) stageCard('Your season starts', `${n} · Season ${S.season.n}`, { ms: 1900 }); else { sfx('chime'); toast('👕 Player updated'); }
       done && done(); render();
     };
   };
@@ -2069,13 +2383,13 @@ const openLook = done => openPlayer('edit', done);
 /* ---- the current round ---- */
 function seasonRound(mins) {
   const s = S.season, st = STAGES.find(x => x.id === s.stage);
-  if (s.done) return { title: 'FREE READ', sub: `Season ${s.n} complete · ${RANKS[s.rank][0]}`, counts: false };
+  if (s.done) return { title: 'Free read', sub: `Season ${s.n} complete · ${RANKS[s.rank][0]}`, counts: false };
   const short = st && mins != null && mins < st.min;
-  if (s.redemption) return { title: 'REDEMPTION ROUND', sub: short ? `Practice · this round needs ${st.min}+ minutes` : 'Win to get back in', counts: !short };
-  if (s.stage === 'qualifier') return { title: 'QUALIFIER', sub: `Session ${s.played + 1} of 3`, counts: true };
-  if (s.stage === 'swiss') return { title: `SWISS STAGE · DAY ${s.wins + s.losses + 1}`, sub: `${s.wins} W · ${s.losses} L`, counts: true };
-  if (s.stage === 'knockout') return { title: 'KNOCKOUT', sub: short ? `Practice · knockout matches need ${st.min}+ minutes` : `Match ${s.ko + 1} of 3`, counts: !short };
-  return { title: 'THE GRAND FINAL', sub: short ? `Practice · the final needs ${st.min}+ minutes` : 'One session decides your season', counts: !short };
+  if (s.redemption) return { title: 'Redemption round', sub: short ? `Practice · this round needs ${st.min}+ minutes` : 'Win to get back in', counts: !short };
+  if (s.stage === 'qualifier') return { title: 'Qualifier', sub: `Session ${s.played + 1} of 3`, counts: true };
+  if (s.stage === 'swiss') return { title: `Swiss stage · day ${s.wins + s.losses + 1}`, sub: `${s.wins} W · ${s.losses} L`, counts: true };
+  if (s.stage === 'knockout') return { title: 'Knockout', sub: short ? `Practice · knockout matches need ${st.min}+ minutes` : `Match ${s.ko + 1} of 3`, counts: !short };
+  return { title: 'The Grand Final', sub: short ? `Practice · the final needs ${st.min}+ minutes` : 'One session decides your season', counts: !short };
 }
 function applyResult(sc, complete, mins) {
   const s = S.season, round = seasonRound(mins), win = sc.score >= 60, r = { round, win, outcome: 'left', advanced: null, rankUp: false };
@@ -2224,7 +2538,7 @@ function countUp(el) { const n = +el.dataset.count; if (matchMedia('(prefers-red
 /* ---- season page ---- */
 function seasonStrip() {
   const s = S.season, L = levelInfo(S.xp), st = STAGES.find(x => x.id === s.stage);
-  return `<section class="sl sl-strip" aria-label="Season progress"><div class="shards" aria-hidden="true"><i></i><i></i></div>
+  return `<section class="sl sl-strip" aria-label="Season progress">${MOTIF}
     <div class="ss-l"><span class="cap">Season ${s.n} · ${esc(RANKS[s.rank][0])}</span><b class="disp">${s.done ? 'Season complete' : esc(s.redemption ? 'Redemption round' : st.name)}</b>
       <span class="ss-sub">${s.done ? 'Start a new season on the season map' : s.stage === 'qualifier' ? `${s.played} of 3 sessions done` : s.stage === 'swiss' ? `<span class="mono">${s.wins}W · ${s.losses}L</span> · win at 60+` : s.stage === 'knockout' ? `<span class="mono">${s.ko}/3</span> wins · 20+ min sessions` : '30+ min session decides it'}</span></div>
     <div class="ss-r"><div class="ss-xp"><span class="cap">Level ${L.lvl}</span><span class="mono">${L.into}/${L.need} XP</span></div><div class="xpbar"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div>
@@ -2243,24 +2557,24 @@ function renderSeason(el) {
     return `<li class="node ${state}" style="--i:${i}"><span class="n mono">${String(i + 1).padStart(2, '0')}</span><div><b class="disp">${esc(st.name)}</b><p>${esc(st.need)}</p><div class="pips">${pips}</div>${state === 'now' && s.redemption ? '<span class="tag-hl">Redemption round</span>' : ''}</div></li>`;
   };
   el.innerHTML = `<div class="sl sl-page">
-    <section class="sl-hero"><div class="shards" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-      <div class="hero-txt"><span class="cap">Season ${s.n} · ${esc(S.name)}</span><h1 class="disp">${s.done ? 'Season complete' : esc(s.redemption ? 'Redemption round' : STAGES[idx].name)}</h1>
-        <div class="hero-chips"><span class="chip-side a">Rank · ${esc(RANKS[s.rank][0])}</span><span class="chip-side b">Level ${L.lvl} · ${esc(L.title)}</span>${S.streak ? `<span class="chip-side n">🔥 ${S.streak} day streak · ${freezeLeft()} freeze left</span>` : ''}</div>
-        <div class="ss-xp" style="margin-top:20px"><span class="cap">XP to level ${L.lvl + 1}</span><span class="mono">${L.into} / ${L.need}</span></div><div class="xpbar big"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div>
-        <div class="sl-acts" style="justify-content:flex-start"><button class="sl-btn" data-go="home">${s.done ? 'Free read' : 'Play next round'}</button><button class="sl-btn sec" id="se-player">Change player</button>${s.done ? '<button class="sl-btn sec" id="se-new">Start season ' + (s.n + 1) + '</button>' : ''}</div></div>
+    <section class="sl-hero">${MOTIF}
+      <div class="hero-txt"><span class="cap cas">Season ${s.n} · ${esc(S.name)}</span><h1 class="disp cas" style="--d:1">${s.done ? 'Season complete' : esc(s.redemption ? 'Redemption round' : STAGES[idx].name)}</h1>
+        <div class="hero-chips"><span class="chip-side a cas-drop">Rank · ${esc(RANKS[s.rank][0])}</span><span class="chip-side b cas-drop" style="--d:1;--rot:3deg">Level ${L.lvl} · ${esc(L.title)}</span>${S.streak ? `<span class="chip-side n cas-drop" style="--d:2">🔥 ${S.streak} day streak · ${freezeLeft()} freeze left</span>` : ''}</div>
+        <div class="ss-xp cas" style="margin-top:20px;--d:4"><span class="cap">XP to level ${L.lvl + 1}</span><span class="mono">${L.into} / ${L.need}</span></div><div class="xpbar big"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i></div>
+        <div class="sl-acts cas" style="justify-content:flex-start;--d:6"><button class="sl-btn" data-go="home">${s.done ? 'Free read' : 'Play next round'}</button><button class="sl-btn sec" id="se-player">Change player</button>${s.done ? '<button class="sl-btn sec" id="se-new">Start season ' + (s.n + 1) + '</button>' : ''}</div></div>
       <div class="hero-pl"><canvas id="se-pt" width="300" height="320"></canvas><b>${esc(S.name)}</b></div></section>
     <section class="sl-grid">
-      <div class="sl-card"><span class="cap">Season map</span><ol class="path">${STAGES.map(node).join('')}</ol></div>
+      <div class="sl-card cas-fan"><span class="cap">Season map</span><ol class="path">${STAGES.map(node).join('')}</ol></div>
       <div class="sl-col">
-        <div class="sl-card"><span class="cap">Player stats</span><div class="stat-strip">${STATS.map(([k, n, d]) => `<div class="readout"><span class="cap">${n}</span><b class="mono">${Math.round(S.stats[k])}</b><div class="mbar ${k}"><i style="width:${Math.round(S.stats[k])}%"></i></div><small>${esc(d)}</small></div>`).join('')}</div>
+        <div class="sl-card cas-fan" style="--d:1"><span class="cap">Player stats</span><div class="stat-strip">${STATS.map(([k, n, d]) => `<div class="readout"><span class="cap">${n}</span><b class="mono">${Math.round(S.stats[k])}</b><div class="mbar ${k}"><i style="width:${Math.round(S.stats[k])}%"></i></div><small>${esc(d)}</small></div>`).join('')}</div>
           <p class="sl-muted" style="margin-top:12px">Each session gets a stage score: <span class="mono">0.3×Focus + 0.3×Wellbeing + 0.4×Progress</span>. 60 or more is a win. Energy under 20 means a rest before the next session.</p></div>
-        <div class="sl-card"><span class="cap">Recent results</span>${s.log.length ? `<div class="results">${s.log.slice(0, 6).map(r => `<div class="res ${r.o}"><span class="cap">${esc(r.t)}</span><b class="mono">${r.score}</b><span class="chip-side ${r.o === 'win' || r.o === 'done' ? 'a' : r.o === 'loss' ? 'loss' : 'b'}">${esc({ win: 'Win', loss: 'Loss', done: 'Cleared', practice: 'Practice' }[r.o] || r.o)}</span></div>`).join('')}</div>` : '<p class="sl-muted" style="margin-top:8px">No rounds yet. Walk into a venue and read to play your first Qualifier.</p>'}</div>
-        <div class="sl-card"><span class="cap">Ranks</span><ol class="ranks">${RANKS.slice(1).map(([n, d], i) => `<li class="${s.rank >= i + 1 ? 'got' : ''}"><b>${esc(n)}</b><span>${esc(d)}</span></li>`).join('')}</ol></div>
+        <div class="sl-card cas-fan" style="--d:2"><span class="cap">Recent results</span>${s.log.length ? `<div class="results">${s.log.slice(0, 6).map(r => `<div class="res ${r.o}"><span class="cap">${esc(r.t)}</span><b class="mono">${r.score}</b><span class="chip-side ${r.o === 'win' || r.o === 'done' ? 'a' : r.o === 'loss' ? 'loss' : 'b'}">${esc({ win: 'Win', loss: 'Loss', done: 'Cleared', practice: 'Practice' }[r.o] || r.o)}</span></div>`).join('')}</div>` : '<p class="sl-muted" style="margin-top:8px">No rounds yet. Walk into a venue and read to play your first Qualifier.</p>'}</div>
+        <div class="sl-card cas-fan" style="--d:3"><span class="cap">Ranks</span><ol class="ranks">${RANKS.slice(1).map(([n, d], i) => `<li class="${s.rank >= i + 1 ? 'got' : ''}"><b>${esc(n)}</b><span>${esc(d)}</span></li>`).join('')}</ol></div>
       </div>
     </section></div>`;
   const pt = $('#se-pt', el); let raf; const an = () => { if (!pt.isConnected) return; portrait(pt, S.avatar, 3.6, .9); raf = requestAnimationFrame(an); }; an();
   $('#se-player', el).onclick = () => openPlayer('edit');
-  const nw = $('#se-new', el); if (nw) nw.onclick = () => { S.season = freshSeason(s.n + 1); save(); stageCard(`SEASON ${S.season.n}`, 'A new season starts', { done: () => render() }); };
+  const nw = $('#se-new', el); if (nw) nw.onclick = () => { S.season = freshSeason(s.n + 1); save(); stageCard(`Season ${S.season.n}`, 'A new season starts', { done: () => render() }); };
 }
 
 /* =============== mini-games: ordering, breaks and recall =============== */
@@ -2429,9 +2743,13 @@ function playModal(kind, opts, lineFor) {
 }
 const ORDER_GAME = (v, it) => v.id === 'office' ? ['pour', { title: 'Pour a pantry kopi', eyebrow: 'Pantry, level 3', color: '#5a3a22', target: .8, sound: 'pour' }] : v.id === 'cafe' ? ['pour', { title: `Pour your ${it.name.toLowerCase()}`, eyebrow: 'Behind the counter with Aina', color: it.color, foam: /latte|matcha|teh|frapp/i.test(it.name), sound: 'pour' }]
   : v.id === 'diner' ? (/burger|feast/i.test(it.name) ? ['stack', { title: 'Build your burger', eyebrow: 'Kitchen with Jay' }] : ['pour', { title: 'Fill your cola', eyebrow: 'Drinks station', color: '#3b1f14', target: .72, sound: 'sizzle' }])
+  : v.id === 'lounge' ? ['pour', { title: `Pour your ${it.name.toLowerCase()}`, eyebrow: 'Tea service with Daniel', color: it.color, sound: 'pour' }]
+  : v.id === 'bookstore' ? ['stamp', { title: 'Stamp your loyalty card', eyebrow: 'Till with Kak Mira' }]
+  : v.id === 'park' ? ['stamp', { title: 'Stamp your park pass', eyebrow: 'Pavilion with Pak Rahman' }]
   : ['stamp', { title: 'Stamp your day pass', eyebrow: 'Front desk with Encik Hafiz' }];
 function orderLine(v, r) {
-  if (r.skipped) return { cafe: 'No worries, Aina will make it.', diner: 'Jay has it covered.', library: 'Encik Hafiz stamps it for you.' }[v.id];
+  if (r.skipped) return { cafe: 'No worries, Aina will make it.', diner: 'Jay has it covered.', library: 'Encik Hafiz stamps it for you.', office: 'Puan Lina pours it for you.', bookstore: 'Kak Mira stamps it for you.', lounge: 'Daniel pours it for you.', park: 'Pak Rahman stamps it for you.' }[v.id];
+  if (v.id === 'lounge') { const n2 = stars(r.score); return n2 === 3 ? 'A perfect pour. Daniel offers you a job.' : n2 === 2 ? 'Nicely done. Not a drop spilled.' : 'A little wobbly, still delicious.'; }
   const n = stars(r.score);
   if (v.id === 'cafe') return r.extra === 'spilled' ? 'Whoops, it overflowed! Aina wipes the counter and laughs.' : n === 3 ? 'Right on the line. Aina is impressed: "You should work here!"' : r.extra === 'short' ? 'A little short, but it smells amazing.' : 'A little over the line. Extra for you!';
   if (v.id === 'office') return n === 3 ? 'Perfect cup. Puan Lina asks you to make the next one.' : n === 2 ? 'Good enough for a Monday.' : 'Pantry kopi, extra character.';
@@ -2677,7 +2995,10 @@ const STAFF_LOOK = {
   cafe: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 2, acc: 'none' },
   library: { gender: 'male', skin: 2, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6, acc: 'glasses' },
   diner: { gender: 'male', skin: 0, hair: 'spiky', head: 'cap', hc: 1, outfit: 'jersey', shirt: 3, acc: 'none' },
-  office: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_b', hc: 0, outfit: 'smart', shirt: 4, acc: 'none' }
+  office: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_b', hc: 0, outfit: 'smart', shirt: 4, acc: 'none' },
+  bookstore: { gender: 'female', skin: 2, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 4, acc: 'glasses' },
+  lounge: { gender: 'male', skin: 1, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6, acc: 'none' },
+  park: { gender: 'male', skin: 2, hair: 'short', head: 'cap', hc: 3, outfit: 'casual', shirt: 0, acc: 'none' }
 };
 const shade = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(v * k))); return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; };
 function handSVG(side) {
@@ -2704,9 +3025,9 @@ function openPOV(id) {
   const full = $('.street.full'); if (full) { full.classList.remove('full'); document.body.classList.remove('st-lock'); }
   document.body.classList.add('pov-on');
   const el = document.createElement('div'); el.className = `pov pov-${id}${isNight() ? ' night' : ''}`; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', `Inside ${v.name}`);
-  const opts = desk ? v.lengths.map(m => ({ k: m, em: isLib ? '🎫' : '🔑', name: m < 60 ? `${m} min` : `${m / 60} ${m === 60 ? 'hour' : 'hours'}`, sub: isLib ? 'day pass' : m === 25 ? 'one pomodoro' : 'focus room', ok: m <= st.minsLeft }))
+  const opts = desk ? v.lengths.map(m => ({ k: m, em: isLib ? '🎫' : v.itemEm, name: m < 60 ? `${m} min` : `${m / 60} ${m === 60 ? 'hour' : 'hours'}`, sub: isLib ? 'day pass' : m === 25 && id === 'office' ? 'one pomodoro' : v.passSub, ok: m <= st.minsLeft }))
     : v.menu.map(it => ({ k: it.id, em: it.emoji, name: it.name, sub: `${it.min} min${it.bites ? ' · ' + it.bites.length + ' bites' : ''}`, ok: true }));
-  const boardTitle = { cafe: "Today's brews", library: 'Day passes', diner: 'Tonight’s specials', office: 'Book a focus room' }[id];
+  const boardTitle = { cafe: "Today's brews", library: 'Day passes', diner: 'Tonight’s specials', office: 'Book a focus room', bookstore: 'Reading corner', lounge: 'Tea service', park: 'Picnic mats' }[id];
   const STEPS = ['Order', 'Pay', 'Collect', 'Pick a book', 'Read'];
   el.innerHTML = `
     <div class="pov-top"><button class="pov-x" id="pv-leave">← Street</button><span class="pov-where">${v.emoji} ${esc(v.name)}</span><button class="pov-x" id="pv-classic" title="Use the menu screen instead">Menu view</button></div>
@@ -2719,7 +3040,7 @@ function openPOV(id) {
         <canvas class="pov-staff" id="pv-staff" width="320" height="320" aria-hidden="true"></canvas>
         <div class="pov-say" id="pv-say" aria-live="polite"><b>${esc(v.staff.name)} · ${esc(v.staff.role)}</b><p></p></div>
       </div>
-      <div class="pov-counter"><button class="pov-pos" id="pv-pos" disabled aria-label="Card reader"><i></i><span>${isLib ? 'SCAN' : id === 'office' ? 'BADGE' : 'PAY'}</span></button><button class="pov-item" id="pv-item" disabled aria-label="Your order"></button></div>
+      <div class="pov-counter"><button class="pov-pos" id="pv-pos" disabled aria-label="Card reader"><i></i><span>${isLib ? 'SCAN' : v.posLabel || 'PAY'}</span></button><button class="pov-item" id="pv-item" disabled aria-label="Your order"></button></div>
       <div class="pov-shelf" id="pv-shelf" hidden></div>
       <div class="pov-hand l" id="pv-hl">${handSVG('l')}<div class="held" id="pv-heldl"></div></div>
       <div class="pov-hand r" id="pv-hr">${handSVG('r')}<div class="held" id="pv-heldr"></div></div>
@@ -2753,7 +3074,7 @@ function openPOV(id) {
 
   // 1. order
   step(0); povSay(v.lines.greet(S.name));
-  ask(desk ? (isLib ? 'Tap a day pass to check in.' : 'Tap how long you want a focus room.') : 'Tap what you want on the menu.');
+  ask(desk ? (isLib ? 'Tap a day pass to check in.' : `Tap how long you want your ${v.passLabel.toLowerCase()}.`) : 'Tap what you want on the menu.');
   $$('.pov-opt', el).forEach(b => b.onclick = () => {
     if (P.busy || P.ordered) return; P.ordered = true;
     $$('.pov-opt', el).forEach(x => x.classList.toggle('picked', x === b));
@@ -2782,11 +3103,11 @@ function openPOV(id) {
     if (S.settings.games) { const [k, o] = ORDER_GAME(v, it); setTimeout(() => playModal(k, o, r => orderLine(v, r)).then(done), 700); }
     else setTimeout(() => done(null), 1600);
   };
-  const itemEm = () => P.it ? (id === 'diner' ? '🍽️' : P.it.emoji) : isLib ? '🎫' : '🔑';
+  const itemEm = () => P.it ? (id === 'diner' ? '🍽️' : P.it.emoji) : isLib ? '🎫' : v.itemEm;
   const serve = () => {
     const item = $('#pv-item', el); item.innerHTML = `<span>${itemEm()}</span>${id === 'cafe' ? '<i class="steam"></i><i class="steam b"></i>' : ''}`; item.disabled = false; item.classList.add('in', 'pv-glow');
     sfx(v.sounds.serve); povSay(v.lines.serve(P.it, setup.orderNo));
-    ask(desk ? `Take your ${isLib ? 'day pass' : 'room key'}.` : id === 'diner' ? 'Take your tray.' : `Take your ${esc(P.it.name.toLowerCase())}.`);
+    ask(desk ? `Take your ${isLib ? 'day pass' : id === 'office' ? 'room key' : v.passLabel.toLowerCase()}.` : id === 'diner' ? 'Take your tray.' : `Take your ${esc(P.it.name.toLowerCase())}.`);
     item.onclick = () => { if (P.busy || P.took) return; P.took = true; item.classList.remove('pv-glow');
       reach(hr, item, () => { item.innerHTML = ''; item.classList.remove('in'); $('#pv-heldl', el).innerHTML = `<span class="held-em">${itemEm()}</span>`; sfx('thump'); setTimeout(shelf, 500); }); };
   };
@@ -2830,6 +3151,126 @@ function openPOV(id) {
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && POV && !$('#modal-root').innerHTML) closePOV(); });
 
+/* =============== landing, places, info pages =============== */
+const isFav = id => (S.favs || []).includes(id);
+function toggleFav(id) {
+  S.favs = S.favs || []; const on = !isFav(id);
+  S.favs = on ? [...S.favs, id] : S.favs.filter(x => x !== id); save();
+  sfx(on ? 'coin' : 'tap'); if (on) { toast(`💚 ${VENUES[id].name} is now a favourite`); if (!S.flags.fav1) { S.flags.fav1 = 1; earn(5, 'picked a favourite reading spot'); } checkBadges(); }
+  return on;
+}
+const placeOrder = () => Object.values(VENUES).sort((a, b) => (isFav(b.id) - isFav(a.id)) || ((S.visits[b.id] || 0) - (S.visits[a.id] || 0)));
+const PLACE_TAG = { cafe: 'Inspiration · business', library: 'Leadership · history', diner: 'Adventure · late night', office: 'By department', bookstore: 'New arrivals · stories', lounge: 'Big ideas · calm', park: 'Fresh air · growth' };
+function placeCard(v, i = 0) {
+  const st = venueStatus(v), n = S.visits[v.id] || 0, lvl = n >= 10 ? 'Regular' : n >= 3 ? 'Familiar face' : n ? 'Visitor' : 'New';
+  return `<article class="venue place cas-fan" style="--d:${i}">
+    <button class="fav ${isFav(v.id) ? 'on' : ''}" data-fav="${v.id}" aria-pressed="${isFav(v.id)}" aria-label="${isFav(v.id) ? 'Remove from' : 'Add to'} favourites">${isFav(v.id) ? '💚' : '🤍'}</button>
+    <button class="place-in" data-venue="${v.id}" aria-label="${esc(v.name)}, ${esc(st.label)}">
+      <div class="art ${isNight() ? 'night' : ''}"><span class="sign pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><div class="scene mini">${sceneArt(v)}</div></div>
+      <div class="body"><span class="kind">${v.emoji} ${esc(v.kind)} · ${esc(v.staff.role)} ${esc(v.staff.name)}</span><h3>${esc(v.name)}</h3><p class="rit">${esc(v.ritual)}</p>
+        <div class="place-tags"><span class="ptag">${esc(PLACE_TAG[v.id] || '')}</span><span class="ptag lv">${lvl}</span></div>
+        <div class="foot"><span>${n} visit${n === 1 ? '' : 's'}</span><span class="link">${st.open ? 'Walk in →' : 'Peek inside →'}</span></div></div>
+    </button></article>`;
+}
+function bindPlaces(el) {
+  $$('[data-venue]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { sfx('door'); enterVenue(b.dataset.venue); }; });
+  $$('[data-fav]', el).forEach(b => b.onclick = e => { e.stopPropagation(); const on = toggleFav(b.dataset.fav); b.classList.toggle('on', on); b.textContent = on ? '💚' : '🤍'; b.setAttribute('aria-pressed', on); if (view === 'places') render(); });
+}
+let placeFilter = 'all';
+function renderPlaces(el) {
+  const all = placeOrder(), open = all.filter(v => venueStatus(v).open), favs = all.filter(v => isFav(v.id));
+  const list = placeFilter === 'fav' ? favs : placeFilter === 'open' ? open : all;
+  const visited = Object.keys(VENUES).filter(id => S.visits[id]).length, total = Object.keys(VENUES).length;
+  el.innerHTML = `<section class="pg-hero">${MOTIF}
+      <div class="pg-hero-in"><span class="cap cas">Jalan Buku · ${total} places</span><h1 class="cas" style="--d:1">Where do you love to read?</h1>
+      <p class="lede cas" style="--d:2">Every place has its own staff, shelves, timer and breaks. Tap the heart to make it a favourite, and it moves to the top of your street.</p>
+      <div class="pg-chips"><span class="chip-side a cas-drop">🗺️ ${visited}/${total} visited</span><span class="chip-side b cas-drop" style="--d:1">💚 ${favs.length} favourite${favs.length === 1 ? '' : 's'}</span><span class="chip-side n cas-drop" style="--d:2">🟢 ${open.length} open now</span></div></div></section>
+    <div class="seg cas" style="--d:3" role="tablist">${[['all', 'All places'], ['fav', 'Favourites'], ['open', 'Open now']].map(([k, l]) => `<button role="tab" aria-selected="${placeFilter === k}" data-pf="${k}">${l}</button>`).join('')}</div>
+    ${list.length ? `<div class="venues">${list.map(placeCard).join('')}</div>` : `<div class="card empty-c"><div class="em">🤍</div><h3>No favourites yet</h3><p class="muted">Tap the heart on any place to keep it here.</p></div>`}
+    <section class="card tip-c cas-fan"><h3>Favourite spot perks</h3><ul class="perks"><li><b>Top of the street.</b> Favourites show first on the street and here.</li><li><b>Familiar face.</b> Visit a place 3 times and the staff greet you as a regular. At 10 visits you are a Regular.</li><li><b>Badge.</b> Read 5 times at one favourite to earn the Home Away From Home badge.</li></ul></section>`;
+  $$('[data-pf]', el).forEach(b => b.onclick = () => { placeFilter = b.dataset.pf; render(); });
+  bindPlaces(el);
+}
+function renderLanding(el) {
+  S.flags.landed = 1; save();
+  const L = levelInfo(S.xp), vs = Object.values(VENUES);
+  el.innerHTML = `
+  <section class="ld-hero">
+    <div class="ld-txt">
+      <span class="cap ld-cap cas">A reading game for real life</span>
+      <h1 class="cas" style="--d:1">Walk in. Order. <em>Read for real.<svg viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path d="M3 11 C40 3, 80 14, 120 7 S180 4, 197 9"/></svg></em></h1>
+      <p class="lede cas" style="--d:2">BOOKOUT turns daily reading into a walk through town. Pick a café, a library, a bookshop or a park, order at the counter, pull a free classic off the shelf and level up while you read.</p>
+      <div class="ld-cta cas" style="--d:3"><button class="sl-btn" data-go="home">Start walking</button><button class="sl-btn sec" data-go="places">See the places</button></div>
+      <div class="ld-chips"><span class="chip-side a cas-drop" style="--d:4">📚 ${vs.length} places</span><span class="chip-side b cas-drop" style="--d:5;--rot:3deg">🆓 Free forever</span><span class="chip-side n cas-drop" style="--d:6">⭐ You are level ${L.lvl}</span></div>
+    </div>
+    <div class="ld-stack" aria-hidden="true">${vs.slice(0, 3).map((v, i) => `<div class="ld-card c${i}"><div class="scene mini">${sceneArt(v)}</div><b>${v.emoji} ${esc(v.name)}</b><span>${esc(v.kind)}</span></div>`).join('')}
+      <span class="ld-sticker s1">🔥 ${S.streak} day streak</span><span class="ld-sticker s2">🪙 ${S.points} pts</span></div>
+  </section>
+  <section class="ld-sec"><div class="section-head"><h2 class="cas">How it plays</h2><span class="subtle">Four steps, every day</span></div>
+    <div class="ld-steps">${[['🚶', 'Walk the street', 'Move around Jalan Buku with the arrow keys or a tap. Shops follow real opening hours.'], ['💬', 'Meet readers', 'People recommend, argue about or share books. Talk to them, or walk on by.'], ['☕', 'Order at the counter', 'See it through your own hands: order, tap to pay, play a quick mini-game and grab a book.'], ['🏆', 'Read and level up', 'Your drink is the timer. Finish to score, climb the season and collect badges.']].map(([e, t, d], i) => `<div class="ld-step cas-fan" style="--d:${i}"><span class="n">${i + 1}</span><span class="e">${e}</span><h3>${t}</h3><p>${d}</p></div>`).join('')}</div></section>
+  <section class="ld-sec"><div class="section-head"><h2>Pick your spot</h2><button class="link-btn" data-go="places">All places →</button></div>
+    <div class="ld-places">${vs.map((v, i) => `<button class="ld-place cas-drop" style="--d:${i};--rot:${i % 2 ? 3 : -3}deg" data-venue="${v.id}"><span>${v.emoji}</span><b>${esc(v.name)}</b><small>${esc(PLACE_TAG[v.id] || v.kind)}</small></button>`).join('')}</div></section>
+  <section class="ld-sec ld-feat">${[['🏟️', 'Seasons', 'Qualifier, Swiss stage, Knockout and the Grand Final. Every session is a match.', 'season'], ['🎮', 'Mini-games', 'Pour the perfect latte, stack a burger, stamp your pass, stretch on breaks.', 'home'], ['🪪', 'Passport', 'Badges, venue stamps, reading photos and your player card.', 'passport'], ['📱', 'Your own books', 'Add any EPUB you own. It stays on your device.', 'places']].map(([e, t, d, g], i) => `<button class="card ld-f cas-fan" style="--d:${i}" data-go="${g}"><span class="e">${e}</span><h3>${t}</h3><p>${d}</p></button>`).join('')}</section>
+  <section class="ld-mission card cas-fan">${MOTIF}<div><span class="cap">Our mission</span><h2>Make reading every day as easy as grabbing a coffee.</h2><p class="muted">Free books, real places and game design that rewards the habit, not the scroll.</p><button class="sl-btn sec" data-go="vision">Vision, mission and objectives</button></div></section>`;
+  bindPlaces(el);
+}
+const PAGES = {
+  about: { cap: 'About', title: 'About BOOKOUT', body: `
+    <h2>What BOOKOUT is</h2><p>BOOKOUT is a free reading game. You walk down a little street called Jalan Buku, step into a café, library, bookshop, lounge, office or park, and read a real book while the place goes on around you. The drink you order is your timer, the staff suggest breaks, and every session counts towards your season.</p>
+    <h2>About me</h2><p>Hi, I'm Yusri, the person behind BOOKOUT. I wanted reading to feel like going out: a place to be, something to sip, people around you, and a reason to come back tomorrow. So I built the street I wish I could walk down every day.</p>
+    <p>BOOKOUT is a one-person project, built in the open and free for everyone. If you have an idea or found a bug, open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+    <h2>Where the books come from</h2><p>Every built-in book is a public domain classic from <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>. You can also add EPUB files you own.</p>` },
+  vision: { cap: 'Vision · Mission · Objectives', title: 'Why BOOKOUT exists', body: `
+    <div class="vm"><div class="vm-c cas-fan"><span class="e">🔭</span><h2>Vision</h2><p>A world where everyone reads a little every day, wherever they are.</p></div>
+    <div class="vm-c cas-fan" style="--d:1"><span class="e">🎯</span><h2>Mission</h2><p>Make daily reading as easy and rewarding as grabbing a coffee, using real places, free books and game design that rewards the habit.</p></div></div>
+    <h2>Objectives</h2><ol class="obj">
+      <li><b>20 minutes a day.</b> Help every reader build a steady habit of at least 20 minutes of reading a day.</li>
+      <li><b>Free, always.</b> Keep every book and every feature free, with no ads and no paywalls.</li>
+      <li><b>Books that lead.</b> Put inspiring, leadership, business and innovation classics on the shelf next to great stories, so readers grow at work and in life.</li>
+      <li><b>Reading is social.</b> Make it normal to recommend, debate and share books with the people around you.</li>
+      <li><b>Healthy reading.</b> Build breaks, water and stretching into every session.</li>
+      <li><b>Privacy first.</b> No accounts and no tracking. Your reading stays on your device.</li></ol>` },
+  privacy: { cap: 'Privacy policy', title: 'Privacy policy', body: `
+    <p class="upd">Last updated 4 November 2026</p>
+    <h2>The short version</h2><p>BOOKOUT has no accounts, no ads, no analytics and no server of its own. Your progress lives on your device.</p>
+    <h2>What is stored, and where</h2><ul><li><b>On your device only (browser storage):</b> your player name and look, points, XP, streaks, badges, season results, quests, bookmarks, favourite places, notes from book talks and settings.</li>
+      <li><b>EPUB files you add</b> are unpacked and stored in your browser's IndexedDB on this device. They are never uploaded.</li>
+      <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
+    <h2>Requests BOOKOUT makes</h2><ul><li>The app and most book texts load from GitHub Pages, which hosts BOOKOUT. GitHub may keep standard server logs such as your IP address.</li>
+      <li>Fonts load from Google Fonts, which can see your IP address.</li>
+      <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
+      <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
+    <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
+    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, because it does not collect personal information at all.</p>
+    <h2>Contact</h2><p>Questions about privacy: open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` },
+  terms: { cap: 'Terms and conditions', title: 'Terms and conditions', body: `
+    <p class="upd">Last updated 4 November 2026</p>
+    <h2>1. Using BOOKOUT</h2><p>BOOKOUT is free to use for personal reading. By using it you agree to these terms. If you do not agree, please do not use the app.</p>
+    <h2>2. Books</h2><p>Built-in books are public domain texts from Project Gutenberg, provided as is. "Project Gutenberg" is a trademark of the Project Gutenberg Literary Archive Foundation, and BOOKOUT is not affiliated with it. Public domain status can differ by country, so check the law where you live.</p>
+    <h2>3. Your EPUB files</h2><p>Only add EPUB files you have the right to read. They stay on your device. BOOKOUT does not check, copy or share them, and you are responsible for them.</p>
+    <h2>4. Points, badges and seasons</h2><p>Points, XP, ranks and badges are for fun. They have no cash value, cannot be bought or sold, and may change or reset as the game improves.</p>
+    <h2>5. Health</h2><p>Break suggestions such as water, stretching and walking are friendly reminders, not medical advice. Listen to your body.</p>
+    <h2>6. Fair use</h2><p>Please do not try to break, overload or misuse the app or the services it connects to.</p>
+    <h2>7. No warranty</h2><p>BOOKOUT is provided "as is" without warranties of any kind. To the extent the law allows, the maker is not liable for any loss arising from using it, including lost progress stored in your browser.</p>
+    <h2>8. Changes</h2><p>These terms may be updated. The date at the top shows the latest version. Continuing to use BOOKOUT means you accept the updated terms.</p>
+    <h2>9. Contact</h2><p>Open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` }
+};
+function renderInfo(el, key) {
+  const pg = PAGES[key] || PAGES.about;
+  el.innerHTML = `<article class="info">
+    <nav class="info-tabs" aria-label="About BOOKOUT">${[['about', 'About'], ['vision', 'Vision & mission'], ['privacy', 'Privacy'], ['terms', 'Terms']].map(([k, l]) => `<button data-go="${k}" aria-current="${k === key ? 'page' : 'false'}">${l}</button>`).join('')}</nav>
+    <header class="info-hero">${MOTIF}<span class="cap cas">${esc(pg.cap)}</span><h1 class="cas" style="--d:1">${esc(pg.title)}</h1></header>
+    <div class="info-body card cas-fan">${pg.body}</div></article>`;
+}
+function footerHTML() {
+  return `<footer class="foot-site"><div class="fs-in">
+    <div class="fs-brand"><button class="logo" data-go="landing" aria-label="BOOKOUT home"><span class="dots" aria-hidden="true"><i></i><i></i></span><span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span></button><p>Free reading, real places, real habits.</p></div>
+    <div class="fs-col"><b>Play</b><button data-go="home">Street</button><button data-go="places">Places</button><button data-go="season">Season</button><button data-go="passport">Passport</button></div>
+    <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
+    <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button></div>
+  </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No accounts, no tracking</p></footer>`;
+}
+
 /* =============== home =============== */
 function renderHome(el) {
   const L = levelInfo(S.xp), last = S.recent[0], prog = last && S.progress[last.key], q = quests();
@@ -2852,13 +3293,8 @@ function renderHome(el) {
     </div>
   </section>
   <section>
-    <div class="section-head"><h2>Or jump straight in</h2><span class="subtle">Hours follow your local time${isNight() ? ' · it is night outside' : ''}</span></div>
-    <div class="venues">${Object.values(VENUES).map(v => { const st = venueStatus(v); return `
-      <button class="venue" data-venue="${v.id}" aria-label="${esc(v.name)}, ${esc(st.label)}">
-        <div class="art ${isNight() ? 'night' : ''}"><span class="sign pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span><div class="scene mini">${sceneArt(v)}</div></div>
-        <div class="body"><span class="kind">${esc(v.kind)} · ${esc(v.staff.role)} ${esc(v.staff.name)}</span><h3>${esc(v.name)}</h3><p class="rit">${esc(v.ritual)}</p>
-          <div class="foot"><span>${S.visits[v.id] || 0} visit${S.visits[v.id] === 1 ? '' : 's'}</span><span class="link">${st.open ? 'Walk in →' : 'Peek inside →'}</span></div></div>
-      </button>`; }).join('')}</div>
+    <div class="section-head"><h2>Or jump straight in</h2><span class="subtle">Hours follow your local time${isNight() ? ' · it is night outside' : ''} · <button class="link-btn" data-go="places">All ${Object.keys(VENUES).length} places →</button></span></div>
+    <div class="venues">${placeOrder().slice(0, 6).map(placeCard).join('')}</div>
   </section>
   <section class="row2">
     <div class="card">
@@ -2872,7 +3308,7 @@ function renderHome(el) {
       <div class="quests">${q.map(x => `<div class="quest ${x.done ? 'done' : ''}"><span class="ck" aria-hidden="true">${x.done ? '✓' : ''}</span><div><b>${esc(x.label)}</b>${(x.id === 'm20' || x.id === 'lp' || x.id === 'talk') && !x.done ? `<div class="bar" style="margin-top:6px"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
     </div>
   </section>`;
-  $$('[data-venue]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { sfx('door'); go('setup', b.dataset.venue); }; });
+  bindPlaces(el);
   mountStreet(el);
   if (!S.avatar.gender && !$('#modal-root').innerHTML) setTimeout(() => { if (view === 'home' && !S.avatar.gender) openPlayer('new'); }, 400);
 }
@@ -2881,8 +3317,12 @@ function renderHome(el) {
 function renderSetup(el) {
   const v = VENUES[setup.venue], st = venueStatus(v), isLib = v.id === 'library', desk = !!v.lengths;
   const ready = st.open && (desk ? setup.length : setup.item) && setup.book;
+  const hasOrder = desk ? setup.length : setup.item, tsteps = [[isLib ? 'Day pass' : desk ? v.passLabel : 'Order', hasOrder], ['Pick a book', setup.book], ['Sit and read', false]];
+  const nowI = tsteps.findIndex(t => !t[1]);
   el.innerHTML = `
-  <button class="back" data-go="home">← Leave ${esc(v.name)}</button>
+  <div class="trip-row"><button class="back" data-go="home">← Leave ${esc(v.name)}</button>
+    <ol class="trip" aria-label="Your visit">${tsteps.map(([l, d], i) => `<li class="${d ? 'done' : i === nowI ? 'now' : ''}"><i>${d ? '✓' : i + 1}</i>${esc(l)}</li>`).join('')}</ol>
+    <button class="fav-btn ${isFav(v.id) ? 'on' : ''}" id="fav-here" aria-pressed="${isFav(v.id)}">${isFav(v.id) ? '💚 Favourite' : '🤍 Add to favourites'}</button></div>
   <div class="scene ${isNight() ? 'night' : ''}" id="scene">
     ${sceneArt(v)}
     <div class="scene-top"><span class="pill ${st.open ? 'open' : 'closed'}">${esc(st.label)}</span>
@@ -2891,7 +3331,7 @@ function renderSetup(el) {
       <div class="bubble"><b>${esc(v.staff.name)} · ${esc(v.staff.role)}</b><p id="say-text" aria-live="polite"></p></div></div>
   </div>
   <div class="station">
-    <div>${!st.open ? `<div class="notice warn">${esc(v.name)} opens at ${hourLabel(v.open)}. ${isLib ? 'Gold members have 24-hour access. ' : ''}Bun & Chapter is open 24 hours, or turn off realistic hours in Passport → Settings.</div>` : isLib ? libraryDesk(v) : desk ? officeDesk(v) : v.id === 'cafe' ? chalkMenu(v) : lightboxMenu(v)}</div>
+    <div>${!st.open ? `<div class="notice warn">${esc(v.name)} opens at ${hourLabel(v.open)}. ${isLib ? 'Gold members have 24-hour access. ' : ''}Bun & Chapter is open 24 hours, or turn off realistic hours in Passport → Settings.</div>` : isLib ? libraryDesk(v) : desk ? officeDesk(v) : v.id === 'diner' ? lightboxMenu(v) : chalkMenu(v)}</div>
     <div class="card nook">
       <div><span class="eyebrow">${isLib ? 'Front desk' : esc(v.shelfName || 'Book rack')}</span><h3 style="font-size:20px;margin-top:4px">${isLib ? 'Borrow a book' : 'Pick a book to read'}</h3></div>
       <div class="shelfstrip">${setup.book ? cover(setup.book, 84) : [0, 1, 2, 3, 4, 5, 6].map(i => `<span class="spine ghost" style="--w:${22 + (i * 7) % 14}px;--h:${80 + (i * 13) % 34}px"></span>`).join('')}</div>
@@ -2901,7 +3341,7 @@ function renderSetup(el) {
     </div>
   </div>
   <div class="start-bar">
-    <p class="muted">${ready ? `All set: ${desk ? `${setup.length} minutes at ${esc(v.name)}` : `one ${esc(v.menu.find(i => i.id === setup.item).name.toLowerCase())}`} with <b>${esc(setup.book.title)}</b>.` : st.open ? `${isLib ? 'Choose a day pass' : desk ? 'Book a focus room' : 'Order at the counter'} and pick a book to sit down.` : 'Come back when it opens.'}</p>
+    <p class="muted">${ready ? `All set: ${desk ? `${setup.length} minutes at ${esc(v.name)}` : `one ${esc(v.menu.find(i => i.id === setup.item).name.toLowerCase())}`} with <b>${esc(setup.book.title)}</b>.` : st.open ? `${isLib ? 'Choose a day pass' : desk ? `Get your ${v.passLabel.toLowerCase()}` : 'Order at the counter'} and pick a book to sit down.` : 'Come back when it opens.'}</p>
     <button class="btn btn-primary" id="start" data-sfx="1" ${ready ? '' : 'disabled'}>${isLib ? 'Find a seat' : 'Take a seat'}</button>
   </div>`;
   // first line of dialogue
@@ -2920,13 +3360,14 @@ function renderSetup(el) {
   $$('[data-return]', el).forEach(b => b.onclick = () => returnBook(b.dataset.return));
   $$('[data-recent]', el).forEach(b => b.onclick = () => chooseBook([...S.borrowed, ...S.recent].find(x => x.key === b.dataset.recent)));
   $('#browse', el).onclick = openShelves;
+  $('#fav-here', el).onclick = () => { const on = toggleFav(v.id), b = $('#fav-here', el); b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); b.textContent = on ? '💚 Favourite' : '🤍 Add to favourites'; };
   $('#start', el).onclick = prepAndStart;
 }
 function rerenderKeepTalk() { setup.spoke = 0; const y = window.scrollY; render(); window.scrollTo({ top: y }); }
 const chalkMenu = v => `<div class="chalk"><h3>${esc(v.menuTitle)}</h3>${v.menu.map(it => `<button class="row" data-item="${it.id}" aria-pressed="${setup.item === it.id}"><span class="em" aria-hidden="true">${it.emoji}</span><span>${esc(it.name)}<small>${esc(it.note)}</small></span><span class="dots"></span><span style="white-space:nowrap">${it.min} min</span></button>`).join('')}</div>`;
-const officeDesk = v => { const st = venueStatus(v); return `<div class="oak office-desk"><h3>Focus rooms${st.minsLeft < Infinity ? ` <span style="font-weight:400;font-size:14px;opacity:.85">· office closes in ${Math.floor(st.minsLeft / 60)}h ${st.minsLeft % 60}m</span>` : ''}</h3>
-    <div class="tickets">${v.lengths.map(m => { const ok = m <= st.minsLeft; return `<button class="ticket" data-len="${m}" aria-pressed="${setup.length === m}" ${ok ? '' : 'disabled'}><span class="k">Room pass</span><b>${m < 60 ? m + ' min' : m / 60 + (m === 60 ? ' hour' : ' hours')}</b><span>${ok ? (m === 25 ? 'one pomodoro' : 'breaks every 25 min') : 'past closing'}</span></button>`; }).join('')}</div>
-    <h3 style="margin:22px 0 6px">Departments</h3><div class="dept-row">${v.shelf.map(id => { const c = CATS.find(x => x.id === id); return `<span>${c.em} ${esc(c.label)}</span>`; }).join('')}</div></div>`; };
+const officeDesk = v => { const st = venueStatus(v); return `<div class="oak office-desk desk-${v.id}"><h3>${esc(v.deskTitle)}${st.minsLeft < Infinity ? ` <span style="font-weight:400;font-size:14px;opacity:.85">· closes in ${Math.floor(st.minsLeft / 60)}h ${st.minsLeft % 60}m</span>` : ''}</h3>
+    <div class="tickets">${v.lengths.map(m => { const ok = m <= st.minsLeft; return `<button class="ticket" data-len="${m}" aria-pressed="${setup.length === m}" ${ok ? '' : 'disabled'}><span class="k">${esc(v.passLabel)}</span><b>${m < 60 ? m + ' min' : m / 60 + (m === 60 ? ' hour' : ' hours')}</b><span>${ok ? (m === 25 && v.id === 'office' ? 'one pomodoro' : 'breaks every 25 min') : 'past closing'}</span></button>`; }).join('')}</div>
+    <h3 style="margin:22px 0 6px">${esc(v.shelfTitle)}</h3><div class="dept-row">${v.shelf.map(id => { const c = CATS.find(x => x.id === id); return `<span>${c.em} ${esc(c.label)}</span>`; }).join('')}</div></div>`; };
 const lightboxMenu = v => `<div class="lightbox es"><div class="es-kick">★★★★★<span>Tonight's specials!</span></div><h3 class="es-head">Burgers &amp; books</h3><p class="es-tag">Every bite is a slice of reading time.</p><div class="lbgrid">${v.menu.map(it => `<button class="lbitem" data-item="${it.id}" aria-pressed="${setup.item === it.id}"><span class="em" aria-hidden="true">${it.emoji}</span><b>${esc(it.name)}</b><span>${it.min} min · ${it.bites.length} bites</span></button>`).join('')}</div>${setup.orderNo && setup.item ? `<div class="orderno">Order #${setup.orderNo}</div>` : ''}<div class="es-burst" role="img" aria-label="Offer: double finish bonus after 10 PM"><b>2×</b><span>finish bonus<br>after 10 PM</span></div></div>`;
 function libraryDesk(v) {
   const st = venueStatus(v), tier = TIERS[S.member];
@@ -3427,6 +3868,7 @@ function renderPassport(el) {
     m => { $('#ok', m).onclick = () => { S = fresh(); photos = []; save(); store('bookout:photos', []); store('bookout:spot', null); location.reload(); }; });
 }
 
+if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
 render();
 })();
 </script>

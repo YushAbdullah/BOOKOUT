@@ -78,3 +78,9 @@ Alternatives, all free: Cloudflare Pages, Netlify (drag the folder onto app.netl
 - More sources: Open Library / Internet Archive reader, Standard Ebooks (beautifully formatted public domain).
 - More venues: night train, beach hut, rooftop garden; unlock them with levels.
 - Installable PWA with offline books.
+
+## Places, pages and favourites
+
+- Seven reading places on Jalan Buku: Kopi & Pages, The Commons Library, Bun & Chapter, Menara Ilham, Pena Bookstore, The Loft Lounge and the Taman Bacaan park pavilion.
+- Landing page, Places directory with favourites, About me, Vision and mission, Privacy policy and Terms pages. Page text lives in `PAGES` in `index.html`.
+- Season screens use the mint design with cascade motion.
