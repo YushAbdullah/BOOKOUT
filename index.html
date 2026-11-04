@@ -768,11 +768,32 @@ async function loadBlocks(book) {
   }
   const ck = 'bookout:text:' + book.key;
   let text = null; try { text = localStorage.getItem(ck); } catch (e) {}
+  const fromCache = !!text;
+  if (!text && book.src === 'gutenberg') {
+    try { // the site's own library copy: same origin, fast, no proxy
+      const c = new AbortController(); const t = setTimeout(() => c.abort(), 20000);
+      const r = await fetch(`books/${book.id}.txt`, { signal: c.signal }); clearTimeout(t);
+      if (r.ok) { const body = await r.text(); if (body.length > 1000 && !/^\s*</.test(body)) text = cleanText(body); }
+    } catch (e) {}
+  }
   if (!text) {
     text = cleanText(await race(book.txt, 'text', 45000));
-    try { Object.keys(localStorage).filter(k => k.startsWith('bookout:text:')).forEach(k => localStorage.removeItem(k)); localStorage.setItem(ck, text); } catch (e) {}
   }
+  if (!fromCache) try { Object.keys(localStorage).filter(k => k.startsWith('bookout:text:')).forEach(k => localStorage.removeItem(k)); localStorage.setItem(ck, text); } catch (e) {}
   return toBlocks(text);
+}
+let CATALOG = null; // books/catalog.json, written by the "Fetch books" GitHub Action
+const catalogReady = fetch('books/catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => { if (j && j.cats) CATALOG = j; }).catch(() => {});
+const LOCAL_IDS = () => new Set(CATALOG ? Object.values(CATALOG.cats).flat().map(b => b.id) : []);
+function shelfFor(cat) {
+  const list = CATALOG && CATALOG.cats[cat] && CATALOG.cats[cat].length ? CATALOG.cats[cat].map(b => [b.id, b.title, b.author]) : (CURATED[cat] || []);
+  return list.map(([id, t, a]) => gbook(id, t, a, cat));
+}
+function localSearch(q) {
+  const n = q.toLowerCase(), out = [], seen = new Set();
+  const all = CATALOG ? Object.entries(CATALOG.cats).flatMap(([c, l]) => l.map(b => [c, b.id, b.title, b.author])) : Object.entries(CURATED).flatMap(([c, l]) => l.map(x => [c, ...x]));
+  all.forEach(([c, id, t, a]) => { if (!seen.has(id) && (t + ' ' + a).toLowerCase().includes(n)) { seen.add(id); out.push(gbook(id, t, a, c)); } });
+  return out;
 }
 function rememberBook(b) {
   const lite = { key: b.key, src: b.src, id: b.id, title: b.title, author: b.author, cat: b.cat, cover: b.cover, txt: b.txt, page: b.page };
@@ -973,7 +994,7 @@ function openShelves() {
     const bind = () => $$('.spine[data-book]', res).forEach(s => s.onclick = () => {
       $$('.spine.out', res).forEach(x => x.classList.remove('out')); s.classList.add('out'); sfx('thump');
       const b = pool[s.dataset.book], isLib = setup.venue === 'library', prog = S.progress[b.key];
-      pulled.innerHTML = `<div class="pulled">${cover(b, 110)}<div class="info"><h3>${esc(b.title)}</h3><span class="subtle">${esc(b.author)}${b.src === 'local' ? ' · works offline' : ''}</span>
+      pulled.innerHTML = `<div class="pulled">${cover(b, 110)}<div class="info"><h3>${esc(b.title)}</h3><span class="subtle">${esc(b.author)}${b.src === 'local' ? ' · works offline' : b.src === 'gutenberg' && CATALOG && !LOCAL_IDS().has(b.id) ? ' · online copy, may take a while to open' : ''}</span>
         ${prog && prog.pct ? `<span class="subtle">Your bookmark: ${Math.round(prog.pct * 100)}%</span>` : ''}
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><button class="btn btn-primary" id="take" data-sfx="1">${isLib ? 'Borrow this book' : 'Read this one'}</button><button class="btn btn-ghost" id="putback">Put it back</button></div></div></div>`;
       $('#take', pulled).onclick = () => { if (chooseBook(b) !== false) closeModal(); };
@@ -982,22 +1003,26 @@ function openShelves() {
     });
     const show = async () => {
       pulled.innerHTML = '';
-      const curated = q ? [] : (CURATED[cat] || []).map(([id, t, a]) => gbook(id, t, a, cat));
-      const head = q ? `Results for “${esc(q)}”` : `${CATS.find(c => c.id === cat).label} · staff picks`;
-      res.innerHTML = `${q ? '' : `<div class="shelf-label"><span>${head}</span></div><div class="shelf">${spines(cat === 'poetry' ? [POEMS, ...curated] : curated)}</div><div class="shelf-board"></div>`}
-        <div class="shelf-label"><span>${q ? head : 'More from the stacks'}</span></div><div class="shelf" id="more"><div class="fetching"><i></i>${q ? 'The librarian is searching the catalogue…' : 'Fetching more books from Project Gutenberg…'}</div></div><div class="shelf-board"></div>`;
+      await catalogReady;
+      const ready = q ? localSearch(q) : shelfFor(cat);
+      const head = q ? `Ready to read · “${esc(q)}”` : `${CATS.find(c => c.id === cat).label} · ready to read`;
+      res.innerHTML = `<div class="shelf-label"><span>${head}</span><span>${CATALOG ? 'opens instantly' : ''}</span></div><div class="shelf">${spines(!q && cat === 'poetry' ? [POEMS, ...ready] : ready) || '<div class="fetching">Nothing on this shelf matches. Try the wider catalogue below.</div>'}</div><div class="shelf-board"></div>
+        <div class="shelf-label"><span>The wider Gutenberg catalogue</span><span>online · can be slow</span></div><div class="shelf" id="more" style="min-height:110px;align-items:center"><button class="btn btn-ghost btn-sm" id="wider">${q ? `Search all of Gutenberg for “${esc(q)}”` : 'Ask the librarian for more books'}</button></div><div class="shelf-board"></div>`;
       bind();
       const want = q + '|' + cat;
-      try {
-        const seen = new Set(curated.map(b => b.key));
-        const more = (await browse(q ? null : cat, q)).filter(b => !seen.has(b.key));
-        if (want !== q + '|' + cat || !$('#more', m)) return;
-        $('#more', m).innerHTML = more.length ? spines(more) : `<div class="fetching">No books found. Try another title or author.</div>`;
-      } catch (e) {
-        if (!$('#more', m)) return;
-        $('#more', m).innerHTML = `<div class="fetching">The catalogue is not answering (${esc(e.message)}). The staff picks above still work.</div>`;
-      }
-      bind();
+      $('#wider', m).onclick = async () => {
+        $('#more', m).innerHTML = `<div class="fetching"><i></i>The librarian is checking the catalogue…</div>`;
+        try {
+          const seen = new Set(ready.map(b => b.key));
+          const more = (await browse(q ? null : cat, q)).filter(b => !seen.has(b.key));
+          if (want !== q + '|' + cat || !$('#more', m)) return;
+          $('#more', m).style.alignItems = ''; $('#more', m).innerHTML = more.length ? spines(more) : `<div class="fetching">No books found. Try another title or author.</div>`;
+        } catch (e) {
+          if (!$('#more', m)) return;
+          $('#more', m).innerHTML = `<div class="fetching">The catalogue is not answering right now. The ready-to-read shelf above always works.</div>`;
+        }
+        bind();
+      };
     };
     $$('[data-cat]', m).forEach(b => b.onclick = () => { cat = b.dataset.cat; q = ''; $('#pick-q', m).value = ''; $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', x === b)); show(); });
     $('#sf', m).onsubmit = e => { e.preventDefault(); q = $('#pick-q', m).value.trim(); if (q) { $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', 'false')); show(); } };
@@ -1036,10 +1061,11 @@ async function prepAndStart() {
   v.sounds.prep.forEach((s, i) => setTimeout(() => sfx(s), i * 900));
   requestAnimationFrame(() => requestAnimationFrame(() => { const p = $('#pbar'); if (p) p.style.width = '100%'; }));
   let blocks;
-  try { [blocks] = await Promise.all([loadBlocks(book), sleep(2700)]); }
+  const slow = setTimeout(() => { const n = ov.querySelector('p:nth-of-type(2)'); if (n) n.textContent = `Still fetching ${book.title}. Online copies can take up to a minute…`; }, 7000);
+  try { [blocks] = await Promise.all([loadBlocks(book), sleep(2200)]); clearTimeout(slow); }
   catch (e) {
-    ov.remove(); btn.disabled = false;
-    setup.said = `Hmm, I couldn't get that book off the shelf. ${e.message}. Try again or pick another one.`; talk(setup.said);
+    clearTimeout(slow); ov.remove(); btn.disabled = false;
+    setup.said = `Sorry, that book didn't arrive. Books on the ready-to-read shelf open instantly, so try one of those.`; talk(setup.said);
     toast(`📭 Could not download the book. <a style="color:#6BE683" href="${esc(book.page || '#')}" target="_blank" rel="noopener">Open on Gutenberg</a>`, 7000);
     return;
   }
