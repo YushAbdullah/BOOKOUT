@@ -270,18 +270,21 @@ body.reading main{padding-block:8px 24px}
 .desk .prop{position:absolute;font-size:clamp(34px,5vw,56px);filter:drop-shadow(0 10px 10px rgba(0,0,0,.3));pointer-events:none;z-index:0}
 .book{position:relative;display:flex;perspective:2600px;z-index:1;touch-action:pan-y;user-select:none;-webkit-user-select:none}
 .book::before{content:"";position:absolute;inset:-8px -10px -10px;background:var(--cover,#2E4A6B);border-radius:8px;box-shadow:0 30px 60px rgba(0,0,0,.35);z-index:-1}
-.pg{position:relative;width:var(--pw);height:var(--ph);background:var(--paper);padding:var(--pad-t,40px) var(--pad-x,38px) 26px;display:flex;flex-direction:column;overflow:hidden;cursor:pointer}
-.pg.l{border-radius:4px 0 0 4px;background:linear-gradient(to left,rgba(60,40,10,.16),rgba(60,40,10,0) 9%),var(--paper);box-shadow:-1px 0 0 #e9e1cd,-2px 0 0 #fbf6ea,-3px 0 0 #e4dbc5,-4px 0 0 #f7f1e3,-5px 1px 0 #ddd3bb}
-.pg.r{border-radius:0 4px 4px 0;background:linear-gradient(to right,rgba(60,40,10,.16),rgba(60,40,10,0) 9%),var(--paper);box-shadow:1px 0 0 #e9e1cd,2px 0 0 #fbf6ea,3px 0 0 #e4dbc5,4px 0 0 #f7f1e3,5px 1px 0 #ddd3bb}
-.pg.solo{border-radius:3px 6px 6px 3px;background:linear-gradient(to right,rgba(60,40,10,.14),rgba(60,40,10,0) 5%),var(--paper)}
-.rh{font:italic 400 12px/1.2 var(--book);color:var(--paper-soft);text-align:center;letter-spacing:.04em;margin-bottom:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
-.pgc{flex:1;min-height:0;overflow:hidden;font-family:var(--book);font-size:var(--fs,18px);line-height:1.6;color:var(--paper-ink);hyphens:auto;-webkit-hyphens:auto;text-align:justify;overflow-wrap:break-word}
+.pg{position:relative;width:var(--pw);height:var(--ph);background:var(--paper);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");padding:var(--pad-t,40px) var(--pad-x,38px) 26px;display:flex;flex-direction:column;overflow:hidden;cursor:pointer}
+.pg.l{border-radius:4px 0 0 4px;background-color:var(--paper);background-image:linear-gradient(to left,rgba(60,40,10,.16),rgba(60,40,10,0) 9%),radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.5),rgba(180,150,100,.08) 75%,rgba(150,120,70,.16)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");box-shadow:-1px 0 0 #e9e1cd,-2px 0 0 #fbf6ea,-3px 0 0 #e4dbc5,-4px 0 0 #f7f1e3,-5px 1px 0 #ddd3bb}
+.pg.r{border-radius:0 4px 4px 0;background-color:var(--paper);background-image:linear-gradient(to right,rgba(60,40,10,.16),rgba(60,40,10,0) 9%),radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.5),rgba(180,150,100,.08) 75%,rgba(150,120,70,.16)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");box-shadow:1px 0 0 #e9e1cd,2px 0 0 #fbf6ea,3px 0 0 #e4dbc5,4px 0 0 #f7f1e3,5px 1px 0 #ddd3bb}
+.pg.solo{border-radius:3px 6px 6px 3px;background-color:var(--paper);background-image:linear-gradient(to right,rgba(60,40,10,.14),rgba(60,40,10,0) 5%),radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.5),rgba(180,150,100,.08) 75%,rgba(150,120,70,.16)),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .45 0 0 0 0 .38 0 0 0 0 .25 0 0 0 .07 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E")}
+.rh{font:400 11px/1.2 var(--book);font-variant:small-caps;color:var(--paper-soft);text-align:center;letter-spacing:.14em;text-transform:lowercase;margin-bottom:18px;padding-bottom:8px;border-bottom:.5px solid rgba(138,129,112,.35);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:none}
+.pgc{flex:1;min-height:0;overflow:hidden;font-family:var(--book);font-size:var(--fs,18px);line-height:1.55;color:var(--paper-ink);hyphens:auto;-webkit-hyphens:auto;text-align:justify;text-align-last:left;overflow-wrap:break-word;font-kerning:normal;font-variant-ligatures:common-ligatures oldstyle-nums;text-rendering:optimizeLegibility;orphans:2;widows:2}
 .pgc p{margin:0;text-indent:1.4em}
-.narrow .pgc,.narrow .leaf .pgc{text-align:left;hyphens:auto}
+.narrow .pgc,.narrow .leaf .pgc{text-align:justify;hyphens:auto;-webkit-hyphens:auto;word-spacing:-.02em}
 .pgc p.cont,.pgc p.first{text-indent:0}
 .pgc p.first::first-letter{float:left;font-size:3.1em;line-height:.85;padding:.08em .1em 0 0;color:#1A5E40;font-weight:600}
-.pgc h4{font:600 1.02em/1.3 var(--font);text-align:center;margin:1.4em 0 1.1em;letter-spacing:.03em;color:#1d1a14;text-wrap:balance}
+.pgc h4{font:600 1.05em/1.3 var(--book);font-variant:small-caps;text-align:center;margin:1.6em 0 1.2em;letter-spacing:.08em;color:#1d1a14;text-wrap:balance}
+.pgc h4::after{content:"❦";display:block;font-size:.9em;color:#a8956b;margin-top:.5em;font-variant:normal}
 .pgc h4:first-child{margin-top:.6em}
+.pgc p.center{text-align:center;text-align-last:center;text-indent:0;margin:.5em 0;letter-spacing:.05em;font-size:.94em;hyphens:none}
+.pgc p.sep{color:#a8956b;margin:1.1em 0;font-size:1.1em}
 .pgc p.verse{white-space:pre-line;text-indent:0;text-align:left;margin:0 0 1em}
 .pgc .end{text-align:center;font:italic 1em var(--book);color:var(--paper-soft);margin-top:2em}
 .folio{font:400 12px/1 var(--book);color:var(--paper-soft);text-align:center;margin-top:10px;flex:none}
@@ -602,6 +605,34 @@ body.pov-on .tabbar,body.reading .tabbar,body.splash-on .tabbar,body:has(#modal-
 .info-body p+p{margin-top:12px}.info-body ul,.info-body ol{padding-left:22px;display:grid;gap:8px;margin:8px 0 0}
 .info-body a{color:var(--text);text-decoration-color:var(--primary);text-decoration-thickness:2px;text-underline-offset:3px}
 .info-body .upd{font-size:13px;color:var(--text-subtle)}
+.me{display:grid;gap:14px;margin:6px 0 18px}
+.me-top{display:flex;gap:18px;align-items:center}
+.me-ph{margin:0;flex:none;width:112px;position:relative}
+.me-ph img{width:112px;height:140px;object-fit:cover;border-radius:16px;display:block;box-shadow:0 8px 24px rgba(38,40,40,.16);background:var(--primary)}
+.me-ph.noimg img{visibility:hidden}
+.me-ph figcaption{position:absolute;left:6px;bottom:6px;font-size:10px;font-weight:600;background:rgba(255,255,255,.92);border-radius:999px;padding:2px 8px}
+.me-top .cap{font-size:12px;font-weight:600;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.06em}
+.me-top h3{font-size:24px;margin:2px 0 4px}
+.me-head{font-size:17px;font-weight:600;line-height:1.35;margin:0}
+.me-head em{font-style:normal;background:linear-gradient(transparent 58%,var(--primary) 58%)}
+.me-lede{font-size:17px}
+.me-pull{margin:0;padding:10px 16px;border-left:4px solid var(--primary);font-style:italic;background:var(--surface-2,#f4f6f5);border-radius:0 12px 12px 0}
+.me-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.me-stats div{background:var(--ink);color:var(--on-ink);border-radius:14px;padding:12px}
+.me-stats b{display:block;font-size:22px;color:var(--primary)}.me-stats span{font-size:12px;line-height:1.35;display:block;opacity:.85}
+.info-body .me-h{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-subtle);margin:4px 0 -6px}
+.info-body .me-jobs{list-style:none;padding:0;gap:8px}
+.me-jobs li{display:grid;padding:10px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--border)}
+.me-jobs small{font-size:12px;color:var(--text-subtle)}.me-jobs span{font-size:13px;color:var(--text-subtle)}
+.me-pills{display:flex;flex-wrap:wrap;gap:6px}.me-pills span{font-size:13px;padding:4px 12px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-weight:500}
+.info-body a.me-book{display:flex;gap:14px;align-items:center;text-decoration:none;padding:12px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--border);transition:transform .18s}
+.info-body a.me-book:hover{transform:translateY(-2px)}
+.me-book img{width:52px;height:78px;object-fit:cover;border-radius:4px;box-shadow:2px 3px 8px rgba(0,0,0,.2)}
+.me-book span{display:grid}.me-book small{font-size:12px;color:var(--text-subtle)}.me-book i{font-style:normal;font-size:13px;color:var(--text-subtle)}
+.me-q{margin:0;text-align:center;padding:8px 12px}.me-q blockquote{margin:0;font-size:17px;font-weight:600}.me-q figcaption{font-size:13px;color:var(--text-subtle);margin-top:4px}
+.me-links{display:flex;flex-wrap:wrap;gap:8px}.info-body .me-links a{text-decoration:none}
+.info-body .me-sync{font-size:12px;color:var(--text-subtle);margin:0}
+@media (max-width:640px){.me-stats{grid-template-columns:repeat(2,1fr)}.me-top{gap:14px}.me-ph,.me-ph img{width:92px}.me-ph img{height:116px}.me-top h3{font-size:20px}.me-head{font-size:15px}}
 .vm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
 .vm-c{background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-lg);padding:24px}.vm-c:first-child{background:var(--surface-tint);box-shadow:none;transform:rotate(-1deg)}
 .vm-c .e{font-size:30px}.vm-c h2{margin:6px 0 6px!important}
@@ -1577,7 +1608,7 @@ function cleanText(t) {
   t = t.replace(/\r/g, '').replace(/^﻿/, '');
   const s = t.search(/\*\*\*\s*START OF (THE|THIS) PROJECT GUTENBERG[^\n]*/i); if (s >= 0) t = t.slice(t.indexOf('\n', s) + 1);
   const e = t.search(/\*\*\*\s*END OF (THE|THIS) PROJECT GUTENBERG/i); if (e >= 0) t = t.slice(0, e);
-  t = t.replace(/\[Illustration[^\]]*\]/gi, '').replace(/_([^_\n]+)_/g, '$1');
+  t = t.replace(/\[(Illustration|Picture|Frontispiece|Image)[^\]]*\]/gi, '').replace(/_([^_\n]+)_/g, '$1');
   return t.trim();
 }
 function toBlocks(text) {
@@ -1585,11 +1616,15 @@ function toBlocks(text) {
   text.split(/\n\s*\n/).forEach(raw => {
     raw = raw.replace(/^\s+|\s+$/g, ''); if (!raw) return;
     const lines = raw.split('\n'); const single = lines.map(l => l.trim()).join(' ');
+    if (/^[\s*.·]+$/.test(single) && (single.match(/\*/g) || []).length >= 3) { out.push({ t: '⁂', c: 1, sep: 1 }); return; }
+    const letters = single.replace(/[^A-Za-z]/g, ''), upper = letters.replace(/[^A-Z]/g, '').length;
+    if (letters.length > 6 && upper / letters.length > .85 && single.length < 220 && !(single.length < 80 && /^(chapter|book|part|letter|stave|act|scene|canto|section|volume)\b/i.test(single))) { out.push({ t: single.replace(/\s+/g, ' '), c: 1 }); return; }
     const isHead = single.length < 80 && (/^(chapter|book|part|letter|stave|act|scene|canto|section|volume)\b[\s.:]/i.test(single + ' ') || (/[A-Z]/.test(single) && single === single.toUpperCase() && single.length < 60 && !/[.,;]$/.test(single)));
     if (isHead) { out.push({ t: single.replace(/\s+/g, ' '), h: 1, pb: /^(chapter|book|part|stave|act|canto|letter)\b/i.test(single) ? 1 : 0 }); return; }
     const avg = raw.length / lines.length;
-    if (lines.length >= 3 && avg < 55) out.push({ t: lines.map(l => l.trim()).join('\n'), v: 1 });
-    else out.push({ t: single.replace(/\s+/g, ' ') });
+    const tl = lines.map(l => l.trim()), caps = tl.filter(l => /^["'‘“(]?[A-Z0-9]/.test(l)).length / tl.length, maxL = Math.max(...tl.map(l => l.length));
+    if (lines.length >= 3 && avg < 46 && maxL < 60 && caps >= .8 && !tl.some(l => /[a-z]-$/.test(l))) out.push({ t: tl.join('\n'), v: 1 });
+    else out.push({ t: lines.map(l => l.trim()).join('\n').replace(/([a-z])-\n([a-z])/g, '$1$2').replace(/\s+/g, ' ') });
   });
   for (let i = 0; i < out.length; i++) if (out[i].h && out[i + 1] && !out[i + 1].h && !out[i + 1].v) out[i + 1].first = 1;
   if (out[0] && !out[0].h && !out[0].v) out[0].first = 1;
@@ -3370,9 +3405,10 @@ function renderLanding(el) {
 }
 const PAGES = {
   about: { cap: 'About', title: 'About BOOKOUT', body: `
-    <h2>What BOOKOUT is</h2><p>BOOKOUT is a free reading game. You walk down a little street called Jalan Buku, step into a café, library, bookshop, lounge, office or park, and read a real book while the place goes on around you. The drink you order is your timer, the staff suggest breaks, and every session counts towards your season.</p>
-    <h2>About me</h2><p>Hi, I'm Yusri, the person behind BOOKOUT. I wanted reading to feel like going out: a place to be, something to sip, people around you, and a reason to come back tomorrow. So I built the street I wish I could walk down every day.</p>
+    <h2>About me</h2><div id="me-card"></div>
+    <p>I wanted reading to feel like going out: a place to be, something to sip, people around you, and a reason to come back tomorrow. So I built the street I wish I could walk down every day.</p>
     <p>BOOKOUT is a one-person project, built in the open and free for everyone. If you have an idea or found a bug, open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+    <h2>What BOOKOUT is</h2><p>BOOKOUT is a free reading game. You walk down a little street called Jalan Buku, step into a café, library, bookshop, lounge, office or park, and read a real book while the place goes on around you. The drink you order is your timer, the staff suggest breaks, and every session counts towards your season.</p>
     <h2>Where the books come from</h2><p>Every built-in book is a public domain classic from <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>. You can also add EPUB files you own.</p>` },
   vision: { cap: 'Vision · Mission · Objectives', title: 'Why BOOKOUT exists', body: `
     <div class="vm"><div class="vm-c cas-fan"><span class="e">🔭</span><h2>Vision</h2><p>A world where everyone reads a little every day, wherever they are.</p></div>
@@ -3392,6 +3428,7 @@ const PAGES = {
       <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
     <h2>Requests BOOKOUT makes</h2><ul><li>The app and most book texts load from GitHub Pages, which hosts BOOKOUT. GitHub may keep standard server logs such as your IP address.</li>
       <li>Fonts load from Google Fonts, which can see your IP address.</li>
+      <li>The About page loads Yusri's public profile from yushabdullah.github.io (the same GitHub Pages host) so it stays up to date.</li>
       <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
       <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
     <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
@@ -3409,12 +3446,90 @@ const PAGES = {
     <h2>8. Changes</h2><p>These terms may be updated. The date at the top shows the latest version. Continuing to use BOOKOUT means you accept the updated terms.</p>
     <h2>9. Contact</h2><p>Open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` }
 };
+/* About me profile, synced live from Yusri's portfolio (same GitHub Pages host) */
+const ME_URL = 'https://yushabdullah.github.io/';
+const ME_SNAP = {
+  name: 'Yusri Abdullah', role: 'Product owner · Author · Speaker', where: 'Kuala Lumpur, MY',
+  photo: ME_URL + 'img/headshot.jpg',
+  head: 'Hard times built me. Now I build *products* people trust.',
+  lede: "I'm Yusri, a product owner and PMO lead in Kuala Lumpur building people technology. At Aventra Group I own AG ONE Hire and shape the Intelligence Workforce System, an end-to-end HRMS that follows every employee from hire to retire. I also write white papers and speak on talent, leadership and sustainable growth.",
+  pull: '"The hardest part of AI product work usually isn\'t the model. It\'s the people, the timeline and the trust."',
+  paras: ["I started out in public policy. I studied Government and Public Policy, earned a Master's in Business Management with a 3.95 CGPA, and worked in digital marketing, customer operations, HR and teaching before moving into product and PMO.",
+    "At Aventra Group I've built PMO frameworks for the Executive Chairman's Office, run AI portfolio governance and shipped dashboards leaders use every week. Now I bring that to AG ONE Hire.",
+    'Outside work I write, teach and volunteer, and I run business planning workshops for young entrepreneurs.'],
+  pills: ['Product Ownership', 'AI Governance', 'PMO', 'Power BI', 'White papers', 'Malay & English'],
+  stats: [['81→91%', 'Timesheet productivity after a workflow redesign'], ['−30%', 'Leave processing time with a new system'], ['−70%', 'HR admin workload through automation'], ['14', 'Professional certificates, incl. Six Sigma Black Belt']],
+  jobs: [['Apr 2026 – Present', 'Senior Product Analyst & Product Owner, AG ONE Hire', 'Aventra Group Sdn. Bhd.'], ['Jan – Mar 2026', "PMO, Managed Services (Executive Chairman's Office)", 'Aventra Group'], ['Sep – Dec 2025', 'AI Portfolio Programme Management Executive, then Product Manager cum Analyst', 'Aventra Group']],
+  quote: ['“No matter how many mistakes you make or how slow you progress, you are still way ahead of everyone who isn’t trying.”', 'Tony Robbins · the quote that keeps me going'],
+  book: { title: 'Hard Times Build Resilience, Soft Times Make Us Soft', cover: ME_URL + 'img/book-cover.jpg' },
+  links: [['LinkedIn', 'https://www.linkedin.com/in/yushabdullah'], ['Facebook', 'https://www.facebook.com/share/14thwYyD85E/?mibextid=wwXIfr'], ['GitHub', 'https://github.com/YushAbdullah'], ['YouTube', 'https://www.youtube.com/@MonsiuerYush']],
+  synced: 0
+};
+function meData() { const c = store('bookout:me'); return c && c.name ? c : ME_SNAP; }
+function parseProfile(html) {
+  const d = new DOMParser().parseFromString(html, 'text/html'), q = (sel, r = d) => r.querySelector(sel), qa = (sel, r = d) => [...r.querySelectorAll(sel)];
+  const tx = el => el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
+  const abs = u => { try { const x = new URL(u, ME_URL); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; } };
+  const about = q('#about'), hero = q('header.hero'); if (!about || !hero) return null;
+  const h1 = q('h1', hero), headEl = h1 && h1.cloneNode(true);
+  if (headEl) qa('em', headEl).forEach(e => e.textContent = '*' + e.textContent + '*');
+  const book = q('#book');
+  const p = {
+    name: tx(q('.brand b')) || ME_SNAP.name, role: tx(q('.eyebrow', hero)) || ME_SNAP.role,
+    where: tx(q('.portrait span', about)) || ME_SNAP.where,
+    photo: abs((q('.portrait img', about) || {}).getAttribute?.('src') || '') || ME_SNAP.photo,
+    head: tx(headEl), lede: tx(q('.lede', hero)), pull: tx(q('.pull', about)),
+    paras: qa('.text > p', about).filter(e => !e.matches('.kicker,.pull')).map(tx).filter(Boolean),
+    pills: qa('.pill', about).map(tx).filter(Boolean),
+    stats: qa('.strip .wrap > div').map(e => [tx(q('b', e)), tx(q('span', e))]).filter(a => a[0]),
+    jobs: qa('#experience .wrap > .exp > .job').slice(0, 3).map(e => [tx(q('.when', e)), tx(q('h3', e)), tx(q('.org', e))]),
+    quote: [tx(q('.love-q blockquote', about)), tx(q('.love-q figcaption', about))],
+    book: book ? { title: tx(q('h2', book)), cover: abs((q('img', book) || {}).getAttribute?.('src') || '') } : ME_SNAP.book,
+    links: [], synced: Date.now()
+  };
+  const seen = new Set();
+  qa('.socials a.soc', hero).forEach(a => { const h = abs(a.getAttribute('href')), n = tx(a); if (h && n && !seen.has(n)) { seen.add(n); p.links.push([n, h]); } });
+  if (!p.links.length) p.links = ME_SNAP.links;
+  if (!p.paras.length || !p.head) return null;
+  return p;
+}
+function meCardHTML(p) {
+  const em = t => esc(t).replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  const ago = p.synced ? new Date(p.synced).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+  return `<div class="me">
+    <div class="me-top cas-fan"><figure class="me-ph"><img src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)}" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><figcaption>${esc(p.where)}</figcaption></figure>
+      <div><span class="cap">${esc(p.role)}</span><h3>${esc(p.name)}</h3><p class="me-head">${em(p.head)}</p></div></div>
+    <p class="me-lede">${esc(p.lede)}</p>
+    ${p.pull ? `<blockquote class="me-pull">${esc(p.pull)}</blockquote>` : ''}
+    ${p.paras.map(t => `<p>${esc(t)}</p>`).join('')}
+    ${p.stats.length ? `<div class="me-stats">${p.stats.map(([b, s], i) => `<div class="cas-fan" style="--d:${i}"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>` : ''}
+    ${p.jobs.length ? `<h4 class="me-h">Now</h4><ul class="me-jobs">${p.jobs.map(([w, t, o]) => `<li><small>${esc(w)}</small><b>${esc(t)}</b><span>${esc(o)}</span></li>`).join('')}</ul>` : ''}
+    ${p.pills.length ? `<div class="me-pills">${p.pills.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
+    ${p.book && p.book.title ? `<a class="me-book" href="${ME_URL}#book" target="_blank" rel="noopener">${p.book.cover ? `<img src="${esc(p.book.cover)}" alt="" loading="lazy">` : ''}<span><small>My book</small><b>${esc(p.book.title)}</b><i>Read it on my site ↗</i></span></a>` : ''}
+    ${p.quote && p.quote[0] ? `<figure class="me-q"><blockquote>${esc(p.quote[0])}</blockquote><figcaption>${esc(p.quote[1])}</figcaption></figure>` : ''}
+    <div class="me-links"><a class="btn btn-primary btn-sm" href="${ME_URL}" target="_blank" rel="noopener">Full profile ↗</a>${p.links.map(([n, h]) => `<a class="btn btn-ghost btn-sm" href="${esc(h)}" target="_blank" rel="noopener">${esc(n)}</a>`).join('')}</div>
+    <p class="me-sync" id="me-sync">${ago ? `Synced from yushabdullah.github.io · ${esc(ago)}` : 'From yushabdullah.github.io'}</p></div>`;
+}
+let meSyncing = null;
+function syncProfile() {
+  const box = document.getElementById('me-card'); if (!box) return;
+  box.innerHTML = meCardHTML(meData());
+  const fresh = (meData().synced || 0) > Date.now() - 6 * 3600e3;
+  if (fresh || meSyncing) return;
+  meSyncing = fetch(ME_URL, { cache: 'no-cache' }).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(h => {
+    const p = parseProfile(h); if (!p) throw 'parse';
+    try { localStorage.setItem('bookout:me', JSON.stringify(p)); } catch (e) {}
+    const b = document.getElementById('me-card'); if (b) b.innerHTML = meCardHTML(p);
+  }).catch(() => {}).finally(() => { meSyncing = null; });
+}
+window.parseProfile = parseProfile;
 function renderInfo(el, key) {
   const pg = PAGES[key] || PAGES.about;
   el.innerHTML = `<article class="info">
     <nav class="info-tabs" aria-label="About BOOKOUT">${[['about', 'About'], ['vision', 'Vision & mission'], ['privacy', 'Privacy'], ['terms', 'Terms']].map(([k, l]) => `<button data-go="${k}" aria-current="${k === key ? 'page' : 'false'}">${l}</button>`).join('')}</nav>
     <header class="info-hero">${MOTIF}<span class="cap cas">${esc(pg.cap)}</span><h1 class="cas" style="--d:1">${esc(pg.title)}</h1></header>
     <div class="info-body card cas-fan">${pg.body}</div></article>`;
+  if (key === 'about') syncProfile();
 }
 function footerHTML() {
   return `<footer class="foot-site"><div class="fs-in">
@@ -3836,7 +3951,7 @@ function startSession(v, item, book, blocks) {
   const cum = []; let acc = 0; blocks.forEach(b => { cum.push(acc); acc += b.t.length; });
   sess = { venue: v.id, item, total, elapsed: 0, every, nextBreak: every, breakIdx: 0, earned: 0, pagesRead: 0, breaks: 0, photos: 0, minuteAcc: 0, warned: false,
     book, blocks, cum, chars: acc, pos: prog && prog.b != null && prog.b < blocks.length ? { b: prog.b, w: prog.w || 0 } : { b: 0, w: 0 }, hist: [], view: null, lastEnded: false,
-    paused: false, hidden: false, onBreak: null, prompt: null, last: performance.now(), fs: store('bookout:fs') || 18, orderNo: setup.orderNo,
+    paused: false, hidden: false, onBreak: null, prompt: null, last: performance.now(), fs: store('bookout:fs') || (window.innerWidth < 640 ? 16 : 18), orderNo: setup.orderNo,
     e0: S.stats.energy, away: 0, pauses: 0, prompted: 0, taken: 0, skipped: 0, mod: {}, xp: 0, mAt: total >= 600 ? [total * .38].concat(total >= 2400 ? [total * .72] : []) : [] };
   S.visits[v.id] = (S.visits[v.id] || 0) + 1; save();
   sess.minB = sess.pos.b;
@@ -3922,7 +4037,7 @@ function layoutBook() {
   else { pw = Math.min(deskW - 12, 600); ph = Math.min(ph, pw * 1.7); }
   const small = pw < 420;
   book.style.setProperty('--pw', Math.floor(pw) + 'px'); book.style.setProperty('--ph', Math.floor(ph) + 'px');
-  book.style.setProperty('--fs', s.fs + 'px'); book.style.setProperty('--pad-x', small ? '22px' : '38px'); book.style.setProperty('--pad-t', small ? '26px' : '40px'); book.classList.toggle('narrow', small);
+  book.style.setProperty('--fs', s.fs + 'px'); book.style.setProperty('--pad-x', small ? '26px' : '42px'); book.style.setProperty('--pad-t', small ? '24px' : '38px'); book.classList.toggle('narrow', small);
   book.innerHTML = spread ? `<div class="pg l" id="pgL">${pageShell()}</div><div class="pg r" id="pgR">${pageShell()}</div>` : `<div class="pg solo" id="pgL">${pageShell()}</div>`;
   measurer = document.createElement('div'); measurer.className = 'pg r measure'; measurer.innerHTML = pageShell('Running head', '', '1'); book.append(measurer);
   s.view = computeView(s.pos); paintView(s.view);
@@ -3935,7 +4050,7 @@ function layoutPage(pos) {
     const blk = s.blocks[b];
     if (blk.pb && placed > 0 && w === 0) break;
     const el = document.createElement(blk.h ? 'h4' : 'p');
-    if (blk.v) el.className = 'verse'; else if (w > 0) el.className = 'cont'; else if (blk.first) el.className = 'first';
+    if (blk.c) el.className = 'center' + (blk.sep ? ' sep' : ''); else if (blk.v) el.className = 'verse'; else if (w > 0) el.className = 'cont'; else if (blk.first) el.className = 'first';
     if (blk.by) el.style.cssText = 'font-style:italic;text-align:center;color:#8a8170';
     const words = blk.t.split(' ');
     el.textContent = words.slice(w).join(' '); m.append(el);
