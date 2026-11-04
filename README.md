@@ -28,8 +28,11 @@ Game layer:
 - **Points**: 1 per focused minute, break bonuses, finish bonus, last-page bonus. Library members earn 1.25× (Silver) or 1.5× (Gold).
 - **Levels**: Curious Browser → Page Turner → Café Regular → Bookworm → Chapter Chaser → Library Legend → Literary Royalty.
 - **Streaks**: daily streak with a growing bonus.
-- **Daily quests**: read 20 minutes, take a break when asked, finish one order or check-in.
-- **16 badges**, venue passport stamps, and a photo gallery of polaroid-style "aesthetic shots" (illustrated, or with your own photo).
+- **Mini-games**: ordering is hands-on. Hold to pour your drink to the line at Kopi & Pages, tap to stack your burger at Bun & Chapter, and time the stamp on your day pass at the library. Up to 3 stars gives a Focus head start. Breaks are playable too: tap to sip water slowly, follow the stretch moves, scrub bubbles for 20 seconds, pour a refill, or pick a balanced canteen tray, each paying Wellbeing, Energy and points. Turn ordering games off in Settings.
+- **Recall check**: after you finish a session, pick the line you actually read out of three. Correct answers boost Progress and Focus and give +20 XP.
+- **Street quests**: three lost pages are hidden around Jalan Buku every day (walk over them to collect), and one reader in a venue has a `!` over their head. Talk to them for a book request ("read some romance today"), finish a session in that category, then walk back and tell them for XP and points.
+- **Daily quests**: read 20 minutes, take a break when asked, finish one order or check-in, find 3 lost pages, help a reader.
+- **19 badges** (new: Page Hunter, Good Neighbour, Total Recall), venue passport stamps, and a photo gallery of polaroid-style "aesthetic shots" (illustrated, or with your own photo).
 - **Library card**: Visitor borrows 1 book, Silver (150 pts) 3, Gold (400 pts) 6 with 24-hour access. Books are due in 7 days; returning on time pays 15 points.
 - The timer pauses when you switch tabs, so points mean real reading.
 

@@ -532,6 +532,64 @@ body.st-lock{overflow:hidden}
   .pl-edit{grid-template-columns:1fr}.pl-stage{max-width:220px;margin:auto;width:100%}.pl-tile canvas{width:120px;height:120px}.sc-strip{grid-template-columns:repeat(2,1fr)}.sc-score{font-size:52px}.sc-stamp{font-size:22px;padding:6px 8px}.node{margin-left:calc(var(--i) * 8px)}.sl-h{font-size:30px}}
 @media (prefers-reduced-motion:reduce){.stagecard,.stagecard *,.stagecard.out{animation-duration:.18s!important;animation-name:fadeonly!important}.stagecard.glitch::after{display:none}.sc-stamp,.scorecard,.mo-opt,.mo-fb,.node.now{animation:none}}
 @keyframes fadeonly{from{opacity:0}}
+/* ---------- mini-games ---------- */
+.mg-modal{width:min(520px,100%)}
+.mg h2{font-size:26px;margin:4px 0 2px}
+.mg-how{color:var(--text-muted);font-size:15px;margin-top:6px}
+.mg-acts{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}
+.mg-acts .btn-primary{min-width:160px;user-select:none;-webkit-user-select:none;touch-action:none}
+.mg-count{text-align:center;font-weight:600;margin-top:8px;font-variant-numeric:tabular-nums}
+.mg-cup{display:grid;place-items:center;margin-top:12px;touch-action:none;user-select:none;cursor:pointer}
+.mg-cup svg{width:180px;height:225px}
+.mg-stack{position:relative;height:240px;margin-top:12px;background:linear-gradient(#fff4ec,#fde3d6);border-radius:16px;box-shadow:inset 0 0 0 3px #4a3426;overflow:hidden;cursor:pointer;touch-action:manipulation}
+.mg-mover{position:absolute;left:50%;top:18px;margin-left:-80px;box-shadow:0 0 0 2.5px #4a3426}
+.mg-pile{position:absolute;left:0;right:0;bottom:14px;display:flex;flex-direction:column;align-items:center;gap:1px}
+.mg-pile .lay{display:block;box-shadow:0 0 0 2.5px #4a3426;border-radius:8px;animation:drop .25s cubic-bezier(.3,1.6,.5,1)}
+.mg-pile .bun{border-radius:6px 6px 18px 18px!important}
+@keyframes drop{from{transform:translateY(-120px)}}
+.mg-belt{position:relative;height:150px;margin-top:12px;background:repeating-linear-gradient(90deg,#6d727d 0 18px,#5f646e 18px 36px);border-radius:14px;box-shadow:inset 0 0 0 3px #4a3426;overflow:hidden;cursor:pointer}
+.mg-zone{position:absolute;left:50%;top:44px;width:124px;height:84px;margin-left:-62px;border:3px dashed rgba(255,255,255,.7);border-radius:10px}
+.mg-card{position:absolute;left:0;top:50px;width:120px;height:72px;background:#fff6e4;border-radius:8px;box-shadow:0 0 0 2.5px #4a3426;display:grid;place-items:center;font:800 14px var(--font);letter-spacing:.06em;color:#3a2a20}
+.mg-card.inked::after{content:"✓";position:absolute;right:8px;bottom:2px;font-size:28px;color:#c94f4f;transform:rotate(-12deg)}
+.mg-card.gold{background:#fff1b8}
+.mg-stamper{position:absolute;left:50%;top:-6px;width:60px;margin-left:-30px;height:50px;z-index:2;transition:transform .12s}
+.mg-stamper i{display:block;width:60px;height:46px;border-radius:10px 10px 6px 6px;background:#c94f4f;box-shadow:0 0 0 2.5px #4a3426}
+.mg-stamper.down{transform:translateY(42px)}
+.mg-glass{display:block;margin:14px auto 0;width:120px;height:170px;border:0;background:rgba(207,234,247,.5);border-radius:10px 10px 26px 26px;box-shadow:inset 0 0 0 4px #4a3426;position:relative;overflow:hidden;cursor:pointer}
+.mg-glass .w{position:absolute;left:4px;right:4px;bottom:4px;height:78%;background:linear-gradient(#9fdcf5,#5bb8e6);border-radius:0 0 22px 22px;transition:height .35s}
+.mg-glass .ice{position:absolute;width:26px;height:24px;left:28px;bottom:58%;background:rgba(255,255,255,.75);border-radius:6px;transform:rotate(12deg)}.mg-glass .ice.b{left:62px;bottom:48%;transform:rotate(-18deg)}
+.mg-glass.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.mg-gym{display:grid;grid-template-columns:150px 1fr;gap:12px;align-items:center;margin-top:10px}
+.mg-gym canvas{width:150px;height:158px;background:#e3f8e6;border-radius:16px}
+.mg-move{display:grid;gap:6px;text-align:center}.mg-em{font-size:52px;line-height:1}.mg-lbl{font-weight:700;font-size:18px}
+.mg-timer{height:8px;background:var(--surface-tint);border-radius:4px;overflow:hidden}.mg-timer i{display:block;height:100%;background:var(--accent)}
+.mg-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}.mg-pad .btn{font-size:22px;padding:8px}
+.mg .good .mg-gym canvas,.mg-slot.good .mg-gym canvas{box-shadow:0 0 0 4px var(--primary)}
+.mg-slot.bad .mg-gym canvas{box-shadow:0 0 0 4px var(--danger)}
+.mg-sink{position:relative;height:170px;margin-top:12px;background:radial-gradient(circle at 50% 60%,#e8f6fb,#bfe3f0);border-radius:50% 50% 24px 24px/30% 30% 24px 24px;box-shadow:inset 0 0 0 3px #4a3426;overflow:hidden;display:grid;place-items:center;touch-action:none;cursor:grab}
+.mg-hands{font-size:64px;pointer-events:none}
+.bub{position:absolute;width:22px;height:22px;margin:-11px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#fff,rgba(255,255,255,.3) 60%,rgba(160,210,240,.4));box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.9);transform:scale(var(--s));animation:bub 1.4s ease-out forwards;pointer-events:none}
+@keyframes bub{to{transform:translateY(-60px) scale(var(--s));opacity:0}}
+.mg-soap{margin-top:10px}
+.mg-plate{width:190px;height:190px;margin:12px auto 0;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 10px #f3ece0,0 0 0 3px #4a3426;position:relative;display:grid;place-items:center;font-size:34px}
+.mg-plate span{position:absolute;left:50%;top:50%;margin:-20px;transform:rotate(var(--a)) translateY(-48px) rotate(calc(-1 * var(--a)));animation:pop .25s}
+.mg-plate span:first-child{transform:none}
+.mg-plate em{font-size:14px;color:var(--text-subtle);font-style:normal}
+@keyframes pop{from{scale:.3}}
+.mg-food{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px}
+.mg-fd{display:grid;justify-items:center;gap:2px;padding:8px 4px;border-radius:12px;border:0;background:var(--surface-muted);box-shadow:inset 0 0 0 1.5px var(--border);font:600 12px var(--font);cursor:pointer}
+.mg-fd span{font-size:24px}.mg-fd[aria-pressed=true]{background:var(--surface-tint);box-shadow:inset 0 0 0 2px var(--accent)}
+.mg-res{text-align:center;padding:12px 0 4px;animation:rise .28s var(--ease)}
+.mg-stars{font-size:44px;letter-spacing:6px;line-height:1}.mg-stars span{color:#ddd5c7;display:inline-block}.mg-stars span.on{color:#F6C453;animation:starpop .4s both}
+@keyframes starpop{from{transform:scale(0) rotate(-40deg)}60%{transform:scale(1.3)}}
+.mg-word{display:block;font-size:28px;font-weight:800;margin-top:6px}.mg-res.perfect .mg-word{color:var(--accent)}
+.mg-res p{color:var(--text-muted);margin-top:4px}.mg-res .btn{margin-top:16px;min-width:180px}
+.mg-slot{margin-top:8px}
+.mo-opt.wrong{border-color:var(--sl-danger);opacity:.8}
+.rc .mo-opt b{font-family:var(--book);font-weight:400;font-style:italic;font-size:16px;line-height:24px}
+.st-pages{margin-left:6px;padding-left:8px;border-left:1px solid rgba(255,255,255,.25)}
+@media (max-width:639px){.modal:has(.mg-slot) .em{font-size:34px;margin-bottom:4px}.modal:has(.mg-slot) .countdown{font-size:44px;margin:6px 0}.modal:has(.mg-slot) h2{font-size:22px}.mg-glass{height:130px}.mg-sink{height:140px}.mg-gym{grid-template-columns:110px 1fr}.mg-gym canvas{width:110px;height:116px}.mg-cup svg{width:150px;height:188px}}
 @media (max-width:1023px){
   .hero,.row2,.pp-grid,.station{grid-template-columns:1fr}
   .venues{grid-template-columns:1fr 1fr}
@@ -820,7 +878,10 @@ const BADGES = [
   { id: 'clutch', e: '🎯', name: 'Clutch', d: 'Win a round right after 2 losses', test: s => s.flags.clutch },
   { id: 'noshort', e: '🧠', name: 'No Shortcuts', d: 'Clear a season stage without a Focus drop under 70', test: s => s.flags.noshort },
   { id: 'clear', e: '💡', name: 'Clear Head', d: 'Make 5 perfect calls in reading moments', test: s => (s.flags.perfects || 0) >= 5 },
-  { id: 'champ', e: '🏆', name: 'Champion', d: 'Win a season Grand Final', test: s => s.flags.champ }
+  { id: 'champ', e: '🏆', name: 'Champion', d: 'Win a season Grand Final', test: s => s.flags.champ },
+  { id: 'hunter', e: '📄', name: 'Page Hunter', d: 'Find all 3 lost pages on the street in a day', test: s => s.flags.hunter },
+  { id: 'helper', e: '💬', name: 'Good Neighbour', d: 'Help 3 readers with their book requests', test: s => (s.flags.helped || 0) >= 3 },
+  { id: 'memory', e: '🧩', name: 'Total Recall', d: 'Pass 5 recall checks', test: s => (s.flags.recalls || 0) >= 5 }
 ];
 const POEMS = {
   key: 'local:poems', src: 'local', id: 'poems', title: 'Pocket Poems', author: 'Frost, Shakespeare, Shelley, Henley, Dickinson', cat: 'poetry',
@@ -837,7 +898,7 @@ const POEMS = {
 const KEY = 'bookout:v1';
 const fresh = () => ({ name: 'Reader', since: dayKey(), points: 0, xp: 0, streak: 0, best: 0, lastDay: null, minutes: 0, today: dayKey(), todayMin: 0,
   sessions: 0, pages: 0, visits: {}, finished: {}, genres: [], brk: {}, flags: {}, badges: {}, member: 'none', borrowed: [], progress: {}, recent: [],
-  quests: {}, orderNo: 40, settings: { speed: 1, hours: true, sound: true, ambient: true, voice: false } });
+  quests: {}, orderNo: 40, settings: { speed: 1, hours: true, sound: true, ambient: true, voice: false, games: true } });
 let S = Object.assign(fresh(), store(KEY) || {});
 S.settings = Object.assign(fresh().settings, S.settings);
 const save = () => store(KEY, S);
@@ -886,7 +947,9 @@ function quests() {
   return [
     { id: 'm20', label: 'Read 20 minutes today', pts: 20, prog: Math.min(S.todayMin / 20, 1), done: S.todayMin >= 20 },
     { id: 'brk', label: 'Take a break when the staff ask', pts: 10, done: !!S.quests.brk },
-    { id: 'fin', label: 'Finish one order or check-in', pts: 15, done: !!S.quests.fin }
+    { id: 'fin', label: 'Finish one order or check-in', pts: 15, done: !!S.quests.fin },
+    { id: 'lp', label: 'Find 3 lost pages on the street', pts: 15, prog: Math.min(((S.flags.lp && S.flags.lp.day === dayKey()) ? S.flags.lp.got.length : 0) / 3, 1), done: !!(S.flags.lp && S.flags.lp.day === dayKey() && S.flags.lp.got.length >= 3) },
+    (q => ({ id: 'npc', label: q ? `Read ${q.label.toLowerCase()} for ${q.name}, then tell them` : 'Help a reader on the street (look for the !)', pts: 20, done: !!(q && q.paid) }))(S.flags.npcq && S.flags.npcq.day === dayKey() ? S.flags.npcq : null)
   ];
 }
 function questCheck() { quests().forEach(q => { if (q.done && !S.quests['paid_' + q.id]) { S.quests['paid_' + q.id] = 1; earn(q.pts, `daily quest: ${q.label.toLowerCase()}`); } }); }
@@ -1402,7 +1465,7 @@ let TOWN = null;
 function streetHTML() {
   return `<section class="street" id="street" aria-label="BOOKOUT street. Walk to a counter to start reading.">
     <canvas id="st-cv" tabindex="0" aria-label="Map of the street with Kopi & Pages, The Commons Library, Bun & Chapter, a park and the Passport Office"></canvas>
-    <div class="st-hud"><span class="st-pin">📍</span><b id="st-where">Jalan Buku</b><span class="st-time" id="st-time"></span></div>
+    <div class="st-hud"><span class="st-pin">📍</span><b id="st-where">Jalan Buku</b><span class="st-time" id="st-time"></span><span class="st-pages" id="st-pages" title="Lost pages found today"></span></div>
     <div class="st-tools"><button class="st-btn" id="st-look" aria-label="Change your look">👕 <span>Look</span></button><button class="st-btn" id="st-full" aria-label="Full screen map">⛶</button></div>
     <div class="st-hint" id="st-hint"><span class="kb">Walk with <kbd>WASD</kbd> or arrow keys, or click anywhere.</span><span class="tc">Tap anywhere or use the arrows to walk.</span> Walk up to a counter to start.</div>
     <button class="st-act" id="st-act" hidden data-sfx="1"><span class="ic"></span><span class="tx"></span><kbd>E</kbd></button>
@@ -1416,7 +1479,26 @@ function mountStreet(root) {
   const pl = { name: S.name, x: 320, y: 548, dir: 'down', moving: false, phase: 0, look: S.avatar, path: null, seed: 3, me: 1 };
   if (spot && !hits(T.solids, spot.x, spot.y)) { pl.x = spot.x; pl.y = spot.y; pl.dir = 'up'; }
   const keys = new Set(); let dpr = 1, z = 1, vw = 0, vh = 0, cam = { x: 0, y: 0 }, inRoom = null, zone = null, last = performance.now(), stepT = 0, raf = 0, dark = document.createElement('canvas'), honked = 0, clickMark = null;
-  TOWN = { keys, alive: true, wrap, act: () => zone && doAct() };
+  // ---- street quests: lost pages and a reader who needs a tip ----
+  const today = dayKey();
+  if (!S.flags.lp || S.flags.lp.day !== today) S.flags.lp = { day: today, got: [] };
+  const SPOTS = [[500, 380], [110, 200], [1050, 470], [720, 470], [1480, 460], [1290, 300], [660, 1000], [250, 900], [1300, 540], [1000, 712], [1230, 975], [820, 850], [1560, 640], [160, 708], [400, 230], [1110, 250]].filter(([x, y]) => !hits(T.solids, x, y));
+  const picked = SPOTS.map(sp => [hash(today + sp.join(',')), sp]).sort((a, b) => a[0] - b[0]).slice(0, 3).map(e => e[1]);
+  T.pages = picked.map(([x, y], i) => ({ x, y, i, got: S.flags.lp.got.includes(i) }));
+  T.pages.forEach(pg => T.items.push({ sy: pg.y - 40, draw: (c, t) => { if (!pg.got) drawLostPage(c, pg, t); } }));
+  const updPages = () => { const e = $('#st-pages', wrap); if (e) e.textContent = `📄 ${S.flags.lp.got.length}/3`; };
+  const readers = T.npcs.filter(p => p.book && !p.staff && VENUES[p.room]).sort((a, b) => a.name < b.name ? -1 : 1);
+  const giver = readers.length ? readers[hash(today + 'q') % readers.length] : null, qcat = CATS[hash(today + 'c') % CATS.length];
+  const npcQuest = () => S.flags.npcq && S.flags.npcq.day === today ? S.flags.npcq : null;
+  if (giver) T.zones.push({ id: 'npc', follow: giver, r: 74, icon: '💬', label: () => { const q = npcQuest(); return !q ? `Talk to ${giver.name}` : !q.done ? `${giver.name} is waiting for a ${qcat.label.toLowerCase()} read` : !q.paid ? `Tell ${giver.name} about your book` : `Chat with ${giver.name}`; }, act: () => {
+    const q = npcQuest();
+    if (!q) { S.flags.npcq = { day: today, name: giver.name, cat: qcat.id, label: qcat.label, done: false }; say(giver, `Boleh tolong? Read some ${qcat.label.toLowerCase()} today and tell me if it's good! ${qcat.em}`, 6); toast(`💬 New quest from ${esc(giver.name)}: finish a session with a <b>${esc(qcat.label)}</b> book`, 6000); sfx('chime'); }
+    else if (q.done && !q.paid) { q.paid = 1; S.flags.helped = (S.flags.helped || 0) + 1; say(giver, 'Best! I will borrow it next. Terima kasih 💚', 5); xpGain(30, `${giver.name}'s request`); earn(10, 'helped a reader'); questCheck(); checkBadges(); }
+    else say(giver, q.done ? 'Thanks again, kawan!' : `Still waiting for your ${qcat.label.toLowerCase()} pick 📚`, 4);
+    save(); zone = null;
+  } });
+  TOWN = { keys, alive: true, wrap, T, pl, act: () => zone && doAct() };
+  if (/[?&]debug/.test(location.search)) Object.assign(window, { TOWN, playModal });
   const roomAt = (x, y) => T.rooms.find(r => x > r.x && x < r.x + r.w && y > r.y && y < r.y + r.h);
   const resize = () => { const b = wrap.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(b.width * dpr); cv.height = Math.round(b.height * dpr); dark.width = cv.width; dark.height = cv.height; z = Math.max(.6, Math.min(1.2, b.width / 1150)); if (b.height / z > ST.H + 44) z = b.height / (ST.H + 44); vw = b.width / z; vh = b.height / z; };
   resize(); const ro = new ResizeObserver(resize); ro.observe(wrap);
@@ -1424,6 +1506,7 @@ function mountStreet(root) {
   const quest = () => { if (S.todayMin >= 20) return null; const z0 = ['cafe', 'library', 'diner'].map(id => T.zones.find(q => q.id === id)).find(q => T.R[q.id].open); return z0; };
   const doAct = () => { if (!zone) return; store('bookout:spot', { x: pl.x, y: pl.y }); if (zone.id === 'cafe' || zone.id === 'library' || zone.id === 'diner') sfx('door'); zone.act(); };
   const actBtn = $('#st-act', wrap); actBtn.onclick = () => { doAct(); cv.focus({ preventScroll: true }); };
+  updPages();
   const hint = $('#st-hint', wrap); if (S.flags.walked) hint.hidden = true;
   const walked = () => { if (!S.flags.walked) { S.flags.walked = 1; save(); hint.classList.add('bye'); setTimeout(() => hint.hidden = true, 600); } };
   // input
@@ -1474,8 +1557,14 @@ function mountStreet(root) {
     }
     // zones
     let zn = null;
-    for (const q of T.zones) { if (q.follow) { if (Math.hypot(q.follow.x - pl.x, q.follow.y - pl.y) < 46) zn = q; } else if (pl.x > q.x && pl.x < q.x + q.w && pl.y > q.y && pl.y < q.y + q.h) zn = q; }
+    for (const q of T.zones) { if (q.follow) { if (Math.hypot(q.follow.x - pl.x, q.follow.y - pl.y) < (q.r || 46)) zn = q; } else if (pl.x > q.x && pl.x < q.x + q.w && pl.y > q.y && pl.y < q.y + q.h) zn = q; }
     if (zn !== zone) { zone = zn; actBtn.hidden = !zn; if (zn) { $('.ic', actBtn).textContent = zn.icon; $('.tx', actBtn).textContent = zn.label(); sfx('blip'); } }
+    // lost pages
+    for (const pg of T.pages) if (!pg.got && Math.hypot(pg.x - pl.x, pg.y - pl.y) < 28) {
+      pg.got = true; S.flags.lp.got.push(pg.i); const bk = pickBook(today + pg.i, Object.keys(CURATED)); say(pl, `📄 A lost page from ${bk.title}!`, 3.2); sfx('coin'); xpGain(5);
+      if (S.flags.lp.got.length >= 3) { S.flags.hunter = 1; setTimeout(() => xpGain(15, 'found all 3 lost pages'), 600); }
+      questCheck(); checkBadges(); save(); updPages();
+    }
     // npcs
     const now = performance.now() / 1000, talking = T.npcs.filter(p => p.bubble && p.bubble.until > now).length;
     for (const p of T.npcs) {
@@ -1575,6 +1664,8 @@ function mountStreet(root) {
     const scr = (x, y) => [(x - cam.x) * z, (y - cam.y) * z], now = performance.now() / 1000;
     const tag = (p, me) => { const [sx, sy] = scr(p.x, p.y); c.font = '600 11px Outfit, sans-serif'; const w = c.measureText(p.name).width + 22; rr(c, sx - w / 2, sy + 4, w, 18, 9, me ? '#1CBB6C' : 'rgba(42,30,22,.82)', null); circ(c, sx - w / 2 + 9, sy + 13, 3, p.staff ? '#f6d27a' : '#6BE683', null); c.fillStyle = '#fff'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(p.name, sx - w / 2 + 15, sy + 13.5); };
     for (const p of T.npcs) if (!p.cat) tag(p); tag(pl, true);
+    if (giver) { const q = npcQuest(), ic = !q ? '!' : !q.done ? '…' : !q.paid ? '★' : '♥', [mx, my] = scr(giver.x, giver.y - (giver.sit ? 66 : 72)), bb = Math.sin(t * 4) * 3;
+      if (!(giver.bubble && giver.bubble.until > performance.now() / 1000)) { circ(c, mx, my + bb, 11, q && q.paid ? '#ff8fb1' : '#F6C453', OUTL, 2.5); c.fillStyle = '#3a2a20'; c.font = '800 14px Outfit, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(ic, mx, my + bb + 1); } }
     const q = quest(); if (q && zone !== q) { const [sx, sy] = scr(q.target.x, q.target.y - 34); const b = Math.sin(t * 5) * 5; c.save(); c.translate(sx, sy + b); c.beginPath(); c.moveTo(-9, -22); c.lineTo(9, -22); c.lineTo(9, -8); c.lineTo(17, -8); c.lineTo(0, 8); c.lineTo(-17, -8); c.lineTo(-9, -8); c.closePath(); c.fillStyle = '#E5534B'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#7a2420'; c.stroke(); c.restore(); }
     for (const p of [...T.npcs, pl]) {
       if (!p.bubble || p.bubble.until < now) continue;
@@ -1914,6 +2005,233 @@ function renderSeason(el) {
   const nw = $('#se-new', el); if (nw) nw.onclick = () => { S.season = freshSeason(s.n + 1); save(); stageCard(`SEASON ${S.season.n}`, 'A new season starts', { done: () => render() }); };
 }
 
+/* =============== mini-games: ordering, breaks and recall =============== */
+const stars = sc => sc >= .9 ? 3 : sc >= .6 ? 2 : 1;
+function mgResult(el, r, line, onDone) {
+  const n = stars(r.score);
+  el.innerHTML = `<div class="mg-res ${r.perfect ? 'perfect' : ''}"><div class="mg-stars" aria-label="${n} of 3 stars">${[1, 2, 3].map(i => `<span class="${i <= n ? 'on' : ''}" style="animation-delay:${i * 120}ms">★</span>`).join('')}</div>
+    <b class="mg-word">${r.skipped ? 'Skipped' : r.perfect ? 'Perfect!' : n === 3 ? 'Great!' : n === 2 ? 'Nice!' : 'Oops!'}</b><p>${esc(line)}</p>${onDone ? '<button class="btn btn-primary mg-go">Continue</button>' : ''}</div>`;
+  sfx(r.skipped ? 'tap' : n === 3 ? 'win' : n === 2 ? 'coin' : 'thump');
+  if (onDone) { const b = $('.mg-go', el); b.focus(); b.onclick = onDone; }
+}
+// every game: mount(el, opts) -> Promise<{score 0..1, perfect, skipped, extra}>
+const GAMES = {
+  pour(el, o) {
+    return new Promise(res => {
+      const target = o.target || .8, col = o.color || '#8A5A3C';
+      el.innerHTML = `<p class="mg-how">Hold to pour. Let go right on the line.</p>
+        <div class="mg-cup" aria-hidden="true"><svg viewBox="0 0 160 200"><defs><clipPath id="mgc"><path d="M30 20 L130 20 L118 180 Q116 190 106 190 L54 190 Q44 190 42 180 Z"/></clipPath></defs>
+          <path d="M130 60 q30 0 28 28 q-2 26 -32 26" fill="none" stroke="#4a3426" stroke-width="9" stroke-linecap="round"/>
+          <path d="M30 20 L130 20 L118 180 Q116 190 106 190 L54 190 Q44 190 42 180 Z" fill="#fffaf0"/>
+          <g clip-path="url(#mgc)"><rect id="mg-lq" x="20" width="130" y="190" height="0" fill="${col}"/>${o.foam ? '<rect id="mg-fm" x="20" width="130" y="190" height="0" fill="#f3e3c8"/>' : ''}</g>
+          <line x1="22" x2="138" y1="${190 - target * 170}" y2="${190 - target * 170}" stroke="#E5534B" stroke-width="3" stroke-dasharray="7 5"/>
+          <path d="M30 20 L130 20 L118 180 Q116 190 106 190 L54 190 Q44 190 42 180 Z" fill="none" stroke="#4a3426" stroke-width="7" stroke-linejoin="round"/>
+          <rect id="mg-stream" x="76" y="-10" width="8" height="0" rx="4" fill="${col}"/></svg></div>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button><button class="btn btn-primary mg-hold">Hold to pour</button></div>`;
+      let lvl = 0, holding = false, done = false, t0 = 0, raf;
+      const lq = $('#mg-lq', el), fm = $('#mg-fm', el), stream = $('#mg-stream', el);
+      const paint = () => { const h = Math.min(1, lvl) * 170; lq.setAttribute('y', 190 - h); lq.setAttribute('height', h); if (fm) { fm.setAttribute('y', 190 - h); fm.setAttribute('height', Math.min(h, 12)); } stream.setAttribute('height', holding ? 190 - h + 10 : 0); };
+      const loop = now => { if (done) return; if (holding) { const dt = (now - t0) / 1000; t0 = now; lvl += dt * (.32 + lvl * .35); if (lvl >= 1.04) { finish(); return; } } paint(); raf = requestAnimationFrame(loop); };
+      const start = e => { if (done) return; e && e.preventDefault(); holding = true; t0 = performance.now(); sfx(o.sound || 'pour'); };
+      const stop = () => { if (!holding || done) return; holding = false; if (lvl > .05) finish(); };
+      const finish = () => {
+        done = true; holding = false; paint(); cancelAnimationFrame(raf);
+        const diff = Math.abs(Math.min(lvl, 1.04) - target), spilled = lvl >= 1;
+        const score = spilled ? .15 : Math.max(.1, 1 - diff / .3);
+        res({ score, perfect: !spilled && diff < .035, extra: spilled ? 'spilled' : lvl < target ? 'short' : 'over' });
+      };
+      const hold = $('.mg-hold', el), cup = $('.mg-cup', el);
+      [hold, cup].forEach(n => { n.addEventListener('pointerdown', start); n.addEventListener('pointerup', stop); n.addEventListener('pointerleave', stop); n.addEventListener('pointercancel', stop); });
+      el._key = e => { if (e.key === ' ' || e.key === 'Enter') { if (e.type === 'keydown' && !e.repeat) start(e); if (e.type === 'keyup') stop(); } };
+      $('[data-skip]', el).onclick = () => { done = true; cancelAnimationFrame(raf); res({ score: .5, skipped: true }); };
+      raf = requestAnimationFrame(loop);
+    });
+  },
+  stack(el, o) {
+    return new Promise(res => {
+      const parts = o.parts || [['patty', '#7a4a2a', 14, 150], ['cheese', '#f6c453', 7, 164], ['lettuce', '#6cc24a', 8, 158], ['tomato', '#e5534b', 9, 140], ['top', '#e0a35a', 30, 156]];
+      el.innerHTML = `<p class="mg-how">Tap (or press space) to drop each layer on the bun.</p><div class="mg-stack" aria-hidden="true"><div class="mg-mover"></div><div class="mg-pile"><i class="lay bun" style="width:156px;height:22px;background:#e0a35a"></i></div></div>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button><button class="btn btn-primary mg-drop">Drop</button></div>`;
+      const mover = $('.mg-mover', el), pile = $('.mg-pile', el), box = $('.mg-stack', el);
+      let i = 0, offs = [], done = false, t0 = performance.now(), x = 0, raf;
+      const setPart = () => { const [, c, h, w] = parts[i]; mover.style.cssText = `width:${w}px;height:${h}px;background:${c};border-radius:${parts[i][0] === 'top' ? '80px 80px 10px 10px' : parts[i][0] === 'lettuce' ? '12px' : '8px'}`; };
+      const loop = now => { if (done) return; const W = box.clientWidth, sp = 1.4 + i * .35; x = Math.sin((now - t0) / 1000 * sp * 2) * (W / 2 - 90); mover.style.transform = `translateX(${x}px)`; raf = requestAnimationFrame(loop); };
+      const drop = () => {
+        if (done) return; const [n, c, h, w] = parts[i]; offs.push(x); sfx('thump');
+        const lay = document.createElement('i'); lay.className = 'lay ' + n; lay.style.cssText = `width:${w}px;height:${h}px;background:${c};transform:translateX(${x}px);border-radius:${mover.style.borderRadius}`; pile.prepend(lay);
+        i++; if (i >= parts.length) { done = true; mover.remove(); cancelAnimationFrame(raf); const sc = offs.map(v => Math.max(0, 1 - Math.abs(v) / 80)); const score = sc.reduce((a, b) => a + b, 0) / sc.length; setTimeout(() => res({ score, perfect: offs.every(v => Math.abs(v) < 14) }), 450); }
+        else { setPart(); t0 = performance.now() - Math.random() * 900; }
+      };
+      setPart(); raf = requestAnimationFrame(loop);
+      $('.mg-drop', el).onclick = drop; box.onclick = drop;
+      el._key = e => { if (e.type === 'keydown' && (e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); drop(); } };
+      $('[data-skip]', el).onclick = e => { e.stopPropagation(); done = true; cancelAnimationFrame(raf); res({ score: .5, skipped: true }); };
+    });
+  },
+  stamp(el, o) {
+    return new Promise(res => {
+      const cards = o.cards || ['DAY PASS', 'SEAT 12', 'DUE IN 7 DAYS'];
+      el.innerHTML = `<p class="mg-how">Tap when the card is under the stamp.</p><div class="mg-belt" aria-hidden="true"><div class="mg-stamper"><i></i></div><div class="mg-zone"></div><div class="mg-card"></div></div><p class="mg-count"></p>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button><button class="btn btn-primary mg-st">Stamp!</button></div>`;
+      const card = $('.mg-card', el), belt = $('.mg-belt', el), stp = $('.mg-stamper', el), cnt = $('.mg-count', el);
+      let i = 0, sc = [], done = false, t0 = performance.now(), pos = 0, lock = false, raf;
+      const next = () => { card.textContent = cards[i]; card.className = 'mg-card'; t0 = performance.now(); cnt.textContent = `Card ${i + 1} of ${cards.length}`; };
+      const loop = now => { if (done) return; if (!lock) { const W = belt.clientWidth, p = ((now - t0) / 1000 * (.55 + i * .15)) % 1; pos = W + 20 - p * (W + 160); card.style.transform = `translateX(${pos}px)`; } raf = requestAnimationFrame(loop); };
+      const hit = () => {
+        if (done || lock) return; lock = true; const W = belt.clientWidth, c = pos + 60, diff = Math.abs(c - W / 2);
+        sc.push(Math.max(0, 1 - diff / 110)); sfx('stamp'); stp.classList.add('down'); card.classList.add('inked'); if (diff < 18) card.classList.add('gold');
+        setTimeout(() => { stp.classList.remove('down'); i++; lock = false; if (i >= cards.length) { done = true; cancelAnimationFrame(raf); const score = sc.reduce((a, b) => a + b, 0) / sc.length; res({ score, perfect: sc.every(v => v > .84) }); } else next(); }, 520);
+      };
+      next(); raf = requestAnimationFrame(loop);
+      $('.mg-st', el).onclick = hit; belt.onclick = hit;
+      el._key = e => { if (e.type === 'keydown' && (e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); hit(); } };
+      $('[data-skip]', el).onclick = () => { done = true; cancelAnimationFrame(raf); res({ score: .5, skipped: true }); };
+    });
+  },
+  sip(el) {
+    return new Promise(res => {
+      el.innerHTML = `<p class="mg-how">Tap to take a sip. Slowly, not all at once!</p><button class="mg-glass" aria-label="Take a sip"><i class="w"></i><i class="ice"></i><i class="ice b"></i></button><p class="mg-count">8 sips left</p>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button></div>`;
+      const g = $('.mg-glass', el), w = $('.w', g), cnt = $('.mg-count', el); let left = 8, good = 0, taps = 0, last = 0, done = false;
+      const sip = () => {
+        if (done) return; const now = performance.now(); taps++;
+        if (now - last < 420) { g.classList.remove('shake'); void g.offsetWidth; g.classList.add('shake'); cnt.textContent = 'Too fast! Slow sips.'; last = now; return; }
+        last = now; left--; good++; w.style.height = (left / 8 * 78) + '%'; sfx('blip'); setTimeout(() => sfx('blip'), 90);
+        cnt.textContent = left ? `${left} sip${left > 1 ? 's' : ''} left` : 'Glass empty. Ahh!';
+        if (!left) { done = true; setTimeout(() => res({ score: good / taps, perfect: good === taps }), 400); }
+      };
+      g.onclick = sip; el._key = e => { if (e.type === 'keydown' && (e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); sip(); } };
+      $('[data-skip]', el).onclick = () => { done = true; res({ score: .5, skipped: true }); };
+    });
+  },
+  stretch(el) {
+    return new Promise(res => {
+      const MOVES = { up: ['⬆️', 'Reach up high'], left: ['⬅️', 'Lean left'], right: ['➡️', 'Lean right'], down: ['⬇️', 'Touch your toes'] }, keys = Object.keys(MOVES);
+      const seq = Array.from({ length: 8 }, (_, k) => keys[(k * 7 + Math.floor(Math.random() * 3)) % 4]);
+      el.innerHTML = `<p class="mg-how">Copy each move: press the arrow key or tap the button before the bar runs out.</p>
+        <div class="mg-gym"><canvas width="200" height="210"></canvas><div class="mg-move"><b class="mg-em"></b><span class="mg-lbl"></span><div class="mg-timer"><i></i></div></div></div>
+        <div class="mg-pad">${keys.map(k => `<button class="btn btn-ghost" data-mv="${k}" aria-label="${MOVES[k][1]}">${MOVES[k][0]}</button>`).join('')}</div><p class="mg-count"></p>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button></div>`;
+      const cv = $('canvas', el), em = $('.mg-em', el), lbl = $('.mg-lbl', el), bar = $('.mg-timer i', el), cnt = $('.mg-count', el);
+      let i = 0, hits = 0, done = false, t0 = 0, pose = '', raf; const T = 1900;
+      const drawMe = () => { const c = cv.getContext('2d'); c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, 200, 210); c.save(); c.translate(100, 190); if (pose === 'left') c.rotate(-.28); if (pose === 'right') c.rotate(.28); if (pose === 'down') { c.translate(0, 0); c.scale(1, .82); } if (pose === 'up') c.translate(0, -14); c.scale(2.6, 2.6); drawPerson(c, { x: 0, y: 0, look: S.avatar, dir: 'down', seed: 2, moving: pose === 'up', phase: 1.2 }, performance.now() / 1000); c.restore(); };
+      const show = () => { if (i >= seq.length) { done = true; cancelAnimationFrame(raf); res({ score: hits / seq.length, perfect: hits === seq.length }); return; } const [e, l] = MOVES[seq[i]]; em.textContent = e; lbl.textContent = l; cnt.textContent = `Move ${i + 1} of ${seq.length} · ${hits} right`; t0 = performance.now(); };
+      const answer = k => { if (done) return; const ok = k === seq[i]; if (ok) { hits++; pose = k; sfx('chime'); el.classList.add('good'); } else { sfx('thump'); el.classList.add('bad'); } setTimeout(() => { el.classList.remove('good', 'bad'); pose = ''; }, 500); i++; show(); };
+      const loop = now => { if (done) return; const k = (now - t0) / T; bar.style.width = Math.max(0, 100 - k * 100) + '%'; if (k >= 1) { sfx('tap'); i++; show(); } drawMe(); raf = requestAnimationFrame(loop); };
+      $$('[data-mv]', el).forEach(b => b.onclick = () => answer(b.dataset.mv));
+      el._key = e => { const m = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right' }[e.key]; if (m && e.type === 'keydown') { e.preventDefault(); answer(m); } };
+      $('[data-skip]', el).onclick = () => { done = true; cancelAnimationFrame(raf); res({ score: .5, skipped: true }); };
+      show(); raf = requestAnimationFrame(loop);
+    });
+  },
+  scrub(el) {
+    return new Promise(res => {
+      el.innerHTML = `<p class="mg-how">Rub back and forth over your hands to make bubbles. 20 seconds of scrubbing!</p><div class="mg-sink" aria-label="Scrub your hands"><span class="mg-hands">🙌</span></div><div class="bar mg-soap"><i></i></div><p class="mg-count">0%</p>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button></div>`;
+      const sink = $('.mg-sink', el), bar = $('.mg-soap i', el), cnt = $('.mg-count', el); let dist = 0, lx = null, ly = null, done = false, lastB = 0; const NEED = 3200, t0 = performance.now();
+      const rub = (x, y) => {
+        if (done) return; if (lx != null) dist += Math.hypot(x - lx, y - ly); lx = x; ly = y;
+        const p = Math.min(1, dist / NEED); bar.style.width = p * 100 + '%'; cnt.textContent = Math.round(p * 100) + '% bubbly';
+        const now = performance.now(); if (now - lastB > 70) { lastB = now; const b = document.createElement('i'); b.className = 'bub'; const r = sink.getBoundingClientRect(); b.style.left = (x - r.left) + 'px'; b.style.top = (y - r.top) + 'px'; b.style.setProperty('--s', (.5 + Math.random()) + ''); sink.append(b); setTimeout(() => b.remove(), 1400); if (Math.random() < .3) sfx('blip'); }
+        if (p >= 1) { done = true; const secs = (performance.now() - t0) / 1000; setTimeout(() => res({ score: 1, perfect: secs >= 8, extra: secs }), 300); }
+      };
+      sink.addEventListener('pointermove', e => { if (e.pointerType === 'mouse' || e.buttons || e.pressure) rub(e.clientX, e.clientY); });
+      sink.addEventListener('pointerdown', e => { lx = null; sink.setPointerCapture(e.pointerId); });
+      el._key = e => { if (e.type === 'keydown' && (e.key === 'ArrowLeft' || e.key === 'ArrowRight')) { e.preventDefault(); const r = sink.getBoundingClientRect(); rub(r.left + r.width / 2 + (e.key === 'ArrowLeft' ? -60 : 60), r.top + r.height / 2 + Math.random() * 20); } };
+      $('[data-skip]', el).onclick = () => { done = true; res({ score: .5, skipped: true }); };
+    });
+  },
+  tray(el) {
+    return new Promise(res => {
+      const FOOD = [['nasi', '🍚', 'Nasi lemak rice', 1], ['sambal', '🌶️', 'Sambal', 1], ['telur', '🥚', 'Boiled egg', 1], ['bilis', '🐟', 'Ikan bilis', 1], ['kacang', '🥜', 'Peanuts', 1], ['timun', '🥒', 'Cucumber', 1], ['ayam', '🍗', 'Ayam goreng', 0], ['kuih', '🍡', 'Kuih', 0], ['tehais', '🧋', 'Teh ais', 0]];
+      const pick = new Set();
+      el.innerHTML = `<p class="mg-how">Build your plate at the canteen. Up to 7 things. Can you make a classic nasi lemak?</p>
+        <div class="mg-plate" aria-live="polite"></div><div class="mg-food">${FOOD.map(([k, e, n]) => `<button class="mg-fd" data-f="${k}" aria-pressed="false"><span>${e}</span>${esc(n)}</button>`).join('')}</div>
+        <div class="mg-acts"><button class="btn btn-ghost btn-sm" data-skip>Skip</button><button class="btn btn-primary mg-serve" disabled>Eat!</button></div>`;
+      const plate = $('.mg-plate', el), serve = $('.mg-serve', el);
+      const draw = () => { plate.innerHTML = [...pick].map((k, i) => `<span style="--a:${i * 51}deg">${FOOD.find(f => f[0] === k)[1]}</span>`).join('') || '<em>Empty plate</em>'; serve.disabled = !pick.size; };
+      $$('[data-f]', el).forEach(b => b.onclick = () => { const k = b.dataset.f; if (pick.has(k)) pick.delete(k); else if (pick.size < 7) pick.add(k); b.setAttribute('aria-pressed', pick.has(k)); sfx('tap'); draw(); });
+      serve.onclick = () => { const classic = FOOD.filter(f => f[3]).filter(f => pick.has(f[0])).length / 6; const treats = ['kuih', 'tehais'].filter(k => pick.has(k)).length; const score = Math.max(.1, classic - treats * .1); res({ score, perfect: classic === 1 && !treats, extra: { ayam: pick.has('ayam'), treats } }); };
+      $('[data-skip]', el).onclick = () => res({ score: .5, skipped: true }); draw();
+    });
+  }
+};
+let MG_KEY = null;
+document.addEventListener('keydown', e => MG_KEY && MG_KEY(e)); document.addEventListener('keyup', e => MG_KEY && MG_KEY(e));
+function runGame(kind, el, opts = {}) {
+  const p = GAMES[kind](el, opts); MG_KEY = e => { if (e.target.tagName === 'BUTTON' && kind !== 'pour') return; if (kind === 'pour' && e.key === ' ') e.preventDefault(); el._key && el._key(e); };
+  return p.then(r => { MG_KEY = null; return r; });
+}
+function playModal(kind, opts, lineFor) {
+  return new Promise(resolve => {
+    const m = modal(`<div class="mg"><span class="eyebrow">${esc(opts.eyebrow || 'Mini-game')}</span><h2>${esc(opts.title)}</h2><div class="mg-slot"></div></div>`, null, 'mg-modal');
+    const slot = $('.mg-slot', m);
+    runGame(kind, slot, opts).then(r => mgResult(slot, r, lineFor(r), () => { closeModal(true); resolve(r); }));
+  });
+}
+const ORDER_GAME = (v, it) => v.id === 'cafe' ? ['pour', { title: `Pour your ${it.name.toLowerCase()}`, eyebrow: 'Behind the counter with Aina', color: it.color, foam: /latte|matcha|teh|frapp/i.test(it.name), sound: 'pour' }]
+  : v.id === 'diner' ? (/burger|feast/i.test(it.name) ? ['stack', { title: 'Build your burger', eyebrow: 'Kitchen with Jay' }] : ['pour', { title: 'Fill your cola', eyebrow: 'Drinks station', color: '#3b1f14', target: .72, sound: 'sizzle' }])
+  : ['stamp', { title: 'Stamp your day pass', eyebrow: 'Front desk with Encik Hafiz' }];
+function orderLine(v, r) {
+  if (r.skipped) return { cafe: 'No worries, Aina will make it.', diner: 'Jay has it covered.', library: 'Encik Hafiz stamps it for you.' }[v.id];
+  const n = stars(r.score);
+  if (v.id === 'cafe') return r.extra === 'spilled' ? 'Whoops, it overflowed! Aina wipes the counter and laughs.' : n === 3 ? 'Right on the line. Aina is impressed: "You should work here!"' : r.extra === 'short' ? 'A little short, but it smells amazing.' : 'A little over the line. Extra for you!';
+  if (v.id === 'diner') return n === 3 ? 'Picture perfect! Jay takes a photo for the menu.' : n === 2 ? 'Slightly leaning, still delicious.' : 'The leaning tower of burger. It still tastes good!';
+  return n === 3 ? 'Crisp, straight stamps. Encik Hafiz nods approvingly.' : n === 2 ? 'A bit smudged, still valid.' : 'Very artistic stamping. It still counts.';
+}
+const BREAK_GAME = { water: 'sip', exercise: 'stretch', wash: 'scrub', refill: 'pour', canteen: 'tray' };
+function breakReward(b, r) {
+  if (r.skipped || !sess) return 'Enjoy the rest of your break.';
+  const n = stars(r.score); sess.mod = sess.mod || {}; sess.mod.well = (sess.mod.well || 0) + n * 2; energy(n * 2 + (r.extra && r.extra.ayam ? 6 : 0));
+  earn(n * 2 + (r.perfect ? 4 : 0), `${b.title.toLowerCase()} mini-game`);
+  if (b.id === 'canteen') return r.perfect ? 'A perfect classic nasi lemak. Sedap!' : r.extra && r.extra.treats ? 'Tasty, though the sweets will make you sleepy later.' : 'Good meal. Energy restored.';
+  if (b.id === 'water') return r.perfect ? 'Slow, steady sips. Your brain thanks you.' : 'Hydrated, but next time sip slower.';
+  if (b.id === 'exercise') return n === 3 ? 'Flexible! Your back feels brand new.' : 'Good stretch. Try to keep up with the moves next time.';
+  if (b.id === 'wash') return r.perfect ? 'Squeaky clean and bubbly. No greasy pages!' : 'Clean enough. A full 20 seconds is best.';
+  return n === 3 ? 'Perfect refill, not a drop spilled.' : 'Refilled. A bit messy, but cold and fizzy.';
+}
+
+/* ---- recall check: spot the line you actually read ---- */
+const decodeHTML = h => { const d = document.createElement('textarea'); d.innerHTML = h; return d.value; };
+const sentencesOf = txt => decodeHTML((txt || '').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').split(/(?<=[.!?”"])\s+/).map(x => x.trim()).filter(x => x.length >= 45 && x.length <= 150 && /^[“"A-Z]/.test(x));
+function snipPage(s, view) { if (!view || !view.L) return; const ss = sentencesOf(view.L.html + ' ' + (view.R ? view.R.html : '')); if (ss.length) { s.snips = s.snips || []; s.snips.push(ss[Math.floor(Math.random() * ss.length)]); if (s.snips.length > 30) s.snips.shift(); } s.maxB = Math.max(s.maxB || 0, s.pos.b); }
+function recallSet(s) {
+  if (!s.snips || !s.snips.length || !s.blocks) return null;
+  const real = s.snips[Math.floor(Math.random() * s.snips.length)], pool = [];
+  for (let b = (s.maxB || 0) + 4; b < s.blocks.length && pool.length < 40; b++) pool.push(...sentencesOf(s.blocks[b].t));
+  if (pool.length < 2) for (let b = 0; b < Math.min(s.blocks.length, (s.minB || 0) - 4) && pool.length < 40; b++) pool.push(...sentencesOf(s.blocks[b].t));
+  const fakes = pool.filter(x => x !== real).sort(() => Math.random() - .5).slice(0, 2);
+  if (fakes.length < 2) return null;
+  return { real, opts: [real, ...fakes].sort(() => Math.random() - .5) };
+}
+function recallCheck(s, next) {
+  const set = recallSet(s); if (!set) { next(); return; }
+  sfx('whoosh');
+  modal(`<span class="cap">Recall check · ${esc(s.book.title)}</span><h2 class="disp sl-h">Which line did you read?</h2>
+    <p class="sl-muted">One of these is from the pages you just read. The other two come later in the book.</p>
+    <div class="mo-opts rc">${set.opts.map((o, i) => `<button class="mo-opt" data-i="${i}" style="animation-delay:${i * 60}ms"><b>“${esc(o.replace(/^[“"]|[”"]$/g, ''))}”</b></button>`).join('')}</div><div id="rc-fb"></div>`, m => {
+    $$('.mo-opt', m).forEach(b => b.onclick = () => {
+      const ok = set.opts[+b.dataset.i] === set.real;
+      $$('.mo-opt', m).forEach(x => { x.disabled = true; if (set.opts[+x.dataset.i] === set.real) x.classList.add('picked'); else if (x === b) x.classList.add('wrong'); });
+      s.mod = s.mod || {}; if (ok) { s.mod.progress = (s.mod.progress || 0) + 8; s.mod.focus = (s.mod.focus || 0) + 4; S.flags.recalls = (S.flags.recalls || 0) + 1; xpGain(20); }
+      sfx(ok ? 'coin' : 'thump'); save();
+      $('#rc-fb', m).innerHTML = `<div class="mo-fb"><p>${ok ? 'Sharp memory! You really read it.' : 'Not that one. The highlighted line was on your pages. No penalty, it just shows what stuck.'}</p>
+        <div class="deltas">${ok ? '<span class="delta up">▲ <span class="mono">+8</span> Progress</span><span class="delta up">▲ <span class="mono">+4</span> Focus</span>' : ''}</div>${ok ? '<span class="tag-hl">+20 XP</span>' : ''}
+        <div class="sl-acts"><span></span><button class="sl-btn" id="rc-ok">See my scorecard</button></div></div>`;
+      $('#rc-ok', m).onclick = () => { closeModal(true); next(); }; $('#rc-ok', m).focus();
+    });
+  }, 'sl');
+}
+function drawLostPage(c, pg, t) {
+  const b = Math.sin(t * 3 + pg.i) * 3;
+  c.save(); c.translate(pg.x, pg.y - 16 + b);
+  const g = c.createRadialGradient(0, 4, 2, 0, 4, 24); g.addColorStop(0, 'rgba(255,225,110,.55)'); g.addColorStop(1, 'rgba(255,225,110,0)'); c.fillStyle = g; c.beginPath(); c.arc(0, 4, 24, 0, 7); c.fill();
+  c.rotate(Math.sin(t * 1.5 + pg.i) * .2); rr(c, -9, -12, 18, 22, 2, '#fffaf0', OUTL, 2);
+  c.strokeStyle = '#c9bfae'; c.lineWidth = 1.2; for (let k = 0; k < 4; k++) { c.beginPath(); c.moveTo(-5, -6 + k * 5); c.lineTo(5, -6 + k * 5); c.stroke(); }
+  c.restore();
+  const sp = (t * 2 + pg.i) % 1; c.fillStyle = `rgba(255,255,255,${1 - sp})`; c.beginPath(); c.arc(pg.x + 10, pg.y - 30 - sp * 8, 2.2, 0, 7); c.fill();
+}
+
 /* =============== home =============== */
 function renderHome(el) {
   const L = levelInfo(S.xp), last = S.recent[0], prog = last && S.progress[last.key], q = quests();
@@ -1953,7 +2271,7 @@ function renderHome(el) {
     </div>
     <div class="card">
       <div class="section-head" style="margin-bottom:0"><h3 style="font-size:22px">Daily quests</h3><span class="subtle">Resets at midnight</span></div>
-      <div class="quests">${q.map(x => `<div class="quest ${x.done ? 'done' : ''}"><span class="ck" aria-hidden="true">${x.done ? '✓' : ''}</span><div><b>${esc(x.label)}</b>${x.id === 'm20' && !x.done ? `<div class="bar" style="margin-top:6px"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
+      <div class="quests">${q.map(x => `<div class="quest ${x.done ? 'done' : ''}"><span class="ck" aria-hidden="true">${x.done ? '✓' : ''}</span><div><b>${esc(x.label)}</b>${(x.id === 'm20' || x.id === 'lp') && !x.done ? `<div class="bar" style="margin-top:6px"><i style="width:${x.prog * 100}%"></i></div>` : ''}</div><span class="pts">+${x.pts}</span></div>`).join('')}</div>
     </div>
   </section>`;
   $$('[data-venue]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { sfx('door'); go('setup', b.dataset.venue); }; });
@@ -1996,8 +2314,10 @@ function renderSetup(el) {
   $$('[data-item]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => {
     const it = v.menu.find(i => i.id === b.dataset.item); setup.item = it.id;
     if (v.id === 'diner') setup.orderNo = ++S.orderNo; save();
-    sfx(v.sounds.order); setup.said = v.lines.order(it, setup.orderNo); rerenderKeepTalk(); }; });
-  $$('[data-len]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { setup.length = +b.dataset.len; sfx('stamp'); setTimeout(() => sfx('printer'), 250); setup.said = v.lines.order(setup.length); rerenderKeepTalk(); }; });
+    sfx(v.sounds.order); setup.said = v.lines.order(it, setup.orderNo); setup.orderBonus = null; rerenderKeepTalk();
+    if (S.settings.games) { const [k, o] = ORDER_GAME(v, it); setTimeout(() => playModal(k, o, r => orderLine(v, r)).then(r => { setup.orderBonus = r; }), 300); } }; });
+  $$('[data-len]', el).forEach(b => { b.dataset.sfx = 1; b.onclick = () => { setup.length = +b.dataset.len; sfx('stamp'); setTimeout(() => sfx('printer'), 250); setup.said = v.lines.order(setup.length); setup.orderBonus = null; rerenderKeepTalk();
+    if (S.settings.games) { const [k, o] = ORDER_GAME(v); setTimeout(() => playModal(k, o, r => orderLine(v, r)).then(r => { setup.orderBonus = r; }), 500); } }; });
   $$('[data-tier]', el).forEach(b => b.onclick = () => buyTier(b.dataset.tier));
   $$('[data-return]', el).forEach(b => b.onclick = () => returnBook(b.dataset.return));
   $$('[data-recent]', el).forEach(b => b.onclick = () => chooseBook([...S.borrowed, ...S.recent].find(x => x.key === b.dataset.recent)));
@@ -2148,6 +2468,8 @@ function startSession(v, item, book, blocks) {
     paused: false, hidden: false, onBreak: null, prompt: null, last: performance.now(), fs: store('bookout:fs') || 18, orderNo: setup.orderNo,
     e0: S.stats.energy, away: 0, pauses: 0, prompted: 0, taken: 0, skipped: 0, mod: {}, xp: 0, mAt: total >= 600 ? [total * .38].concat(total >= 2400 ? [total * .72] : []) : [] };
   S.visits[v.id] = (S.visits[v.id] || 0) + 1; save();
+  sess.minB = sess.pos.b;
+  if (setup.orderBonus && !setup.orderBonus.skipped) { sess.mod.focus = stars(setup.orderBonus.score) * 2; if (setup.orderBonus.perfect) xpGain(10, 'perfect order'); }
   view = 'session'; render(); window.scrollTo({ top: 0 });
   openCover();
   const rd = seasonRound(total / 60); stageCard(rd.title, rd.sub, { ms: 1500 });
@@ -2288,7 +2610,7 @@ function turn(dir) {
     else { const want = old.L.html.length * (spread ? 2 : 1); let b = s.pos.b, acc = 0; while (b > 0 && acc < want) { b--; acc += s.blocks[b].t.length; } s.pos = { b, w: 0 }; }
   }
   const nv = computeView(s.pos); s.view = nv;
-  if (dir > 0 && !old.end) { const n = spread ? 2 : 1; s.pagesRead += n; S.pages += n; checkBadges(); if (nv.end && !s.lastEnded) { s.lastEnded = true; earn(30, 'reached the last page'); } }
+  if (dir > 0 && !old.end) { snipPage(s, old); const n = spread ? 2 : 1; s.pagesRead += n; S.pages += n; checkBadges(); if (nv.end && !s.lastEnded) { s.lastEnded = true; earn(30, 'reached the last page'); } }
   sfx('flip');
   const book = $('#book');
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) { paintView(nv); updHud(); return; }
@@ -2378,11 +2700,14 @@ function startBreak(b) {
   sess.onBreak = { b, left: b.min * 60 }; sess.last = performance.now();
   modal(`<div class="em">${b.emoji}</div><h2>On break: ${esc(b.title.toLowerCase())}</h2><p class="muted" style="margin-top:8px">Your bookmark and timer are saved.</p>
     <div class="countdown tab" id="bcd">${fmt(b.min * 60)}</div><div class="bar"><i id="bbar" style="width:0%"></i></div>
+    ${BREAK_GAME[b.id] ? '<div class="mg-slot mg" id="mg-slot"></div>' : ''}
     <div class="acts"><button class="btn btn-primary" id="back">I'm back</button></div>`, m => { $('#back', m).onclick = backFromBreak; });
+  const kind = BREAK_GAME[b.id], slot = $('#mg-slot');
+  if (kind && slot) runGame(kind, slot, kind === 'pour' ? { color: '#3b1f14', target: .75, sound: 'pour' } : {}).then(r => { if ($('#mg-slot') === slot) mgResult(slot, r, breakReward(b, r)); });
 }
 function updBreak() { const o = sess.onBreak, t = o.b.min * 60; const c = $('#bcd'), bb = $('#bbar'); if (c) c.textContent = fmt(o.left); if (bb) bb.style.width = ((1 - o.left / t) * 100) + '%'; }
 function backFromBreak() {
-  const b = sess.onBreak.b; sess.onBreak = null; sess.last = performance.now(); closeModal(true);
+  const b = sess.onBreak.b; sess.onBreak = null; sess.last = performance.now(); closeModal(true); MG_KEY = null;
   S.brk[b.id] = (S.brk[b.id] || 0) + 1; sess.breaks++; S.quests.brk = 1; energy({ water: 6, washroom: 4, exercise: 8, canteen: 22, refill: 4, wash: 3 }[b.id] || 3);
   earn(b.pts, b.title.toLowerCase()); questCheck(); checkBadges(); save(); updHud();
 }
@@ -2390,7 +2715,8 @@ function finish(complete, why) {
   if (!sess) return;
   clearInterval(tickTimer);
   const s = sess, v = VENUES[s.venue];
-  if (s.minuteAcc >= 30) minuteRead(s.venue);
+  if (s.minuteAcc >= 30) { minuteRead(s.venue); s.minuteAcc = 0; }
+  if (complete && !s.recallDone) { s.recallDone = 1; recallCheck(s, () => finish(complete, why)); return; }
   const sc = sessionScore(s, complete), deltas = settleStats(sc), res = applyResult(sc, complete, s.total / 60);
   deltas.energy = Math.round(S.stats.energy - s.e0);
   if (complete) {
@@ -2398,6 +2724,7 @@ function finish(complete, why) {
     earn(Math.round(s.total / 60 / 2) + 10, why === 'closing' ? 'stayed until closing' : v.id === 'library' ? 'full check-in completed' : `finished your ${s.item.name.toLowerCase()}`);
     xpGain(50); if (sc.score >= 60) xpGain(50);
     if (S.flags.firstDay !== dayKey()) { S.flags.firstDay = dayKey(); xpGain(25); }
+    const nq = S.flags.npcq; if (nq && nq.day === dayKey() && !nq.done && s.book.cat === nq.cat) { nq.done = true; setTimeout(() => toast(`💬 ${esc(nq.name)}'s request is done! Walk over on the street to tell them.`, 6500), 1200); }
     questCheck();
   }
   const badges = checkBadges(); save();
@@ -2473,6 +2800,7 @@ function renderPassport(el) {
         <label class="toggle" for="t-sound"><span>Sound effects</span><input type="checkbox" id="t-sound" ${S.settings.sound ? 'checked' : ''}></label>
         <label class="toggle" for="t-amb"><span>Venue background sound</span><input type="checkbox" id="t-amb" ${S.settings.ambient ? 'checked' : ''}></label>
         <label class="toggle" for="t-voice"><span>Staff speak out loud</span><input type="checkbox" id="t-voice" ${S.settings.voice ? 'checked' : ''}></label>
+        <label class="toggle" for="t-games"><span>Mini-games when ordering</span><input type="checkbox" id="t-games" ${S.settings.games ? 'checked' : ''}></label>
         <label class="toggle" for="t-hours"><span>Realistic opening hours</span><input type="checkbox" id="t-hours" ${S.settings.hours ? 'checked' : ''}></label>
         <label class="toggle" for="t-demo"><span>Demo speed (time runs 30× faster)</span><input type="checkbox" id="t-demo" ${S.settings.speed > 1 ? 'checked' : ''}></label>
         <div style="margin-top:16px"><button class="btn btn-ghost btn-sm" id="reset">Reset all progress</button></div>
@@ -2489,7 +2817,7 @@ function renderPassport(el) {
   const tg = (id, fn) => $(id, el).onchange = e => { fn(e.target.checked); save(); renderChips(); };
   tg('#t-sound', v => S.settings.sound = v); tg('#t-amb', v => S.settings.ambient = v);
   tg('#t-voice', v => { S.settings.voice = v; if (v) speak(`Hello ${S.name}! I will read out what the staff say.`, 'Aina'); });
-  tg('#t-hours', v => S.settings.hours = v); tg('#t-demo', v => S.settings.speed = v ? 30 : 1);
+  tg('#t-hours', v => S.settings.hours = v); tg('#t-games', v => S.settings.games = v); tg('#t-demo', v => S.settings.speed = v ? 30 : 1);
   $('#reset', el).onclick = () => modal(`<div class="em">🧹</div><h2>Reset everything?</h2><p class="muted" style="margin-top:8px">Points, badges, streaks, borrowed books and photos on this device will be erased. This cannot be undone.</p><div class="acts"><button class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-danger" id="ok">Erase my progress</button></div>`,
     m => { $('#ok', m).onclick = () => { S = fresh(); photos = []; save(); store('bookout:photos', []); store('bookout:spot', null); location.reload(); }; });
 }
