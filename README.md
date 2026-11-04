@@ -20,6 +20,11 @@ Feels like a real place:
 
 Game layer:
 
+- **Season mode** (from the Shardline gamification spec, mapped to reading): pick a male or female player (looks only, same stats), customise skin, hair, headwear (songkok, kopiah, three tudung styles, cap), outfit (casual, smart-casual, baju Melayu or baju kurung, team jersey) and extras, and name them.
+- **Stats**: Focus (not switching tabs), Wellbeing (taking suggested breaks), Progress (finishing and turning pages) and Energy (drains as you read, breaks refill it; under 20 you rest before the next session). Each session gets a stage score `0.3×Focus + 0.3×Wellbeing + 0.4×Progress`; 60+ is a win.
+- **Stages**: Qualifier (3 sessions) → Swiss Stage (3 wins before 3 losses, else a Redemption Round) → Knockout (3 wins, 20+ minute sessions) → Grand Final (30+ minutes). Ranks: Rookie, Contender, Finalist, Champion, Legend.
+- **Moments**: one or two short decisions per session (phone buzzing, a friend asking to lepak, a hard word…) with three choices that move your stats; the best call gives +15 XP.
+- Broadcast-style stage title cards, light scorecards with a stamp, a season map page, XP curve `100 × level^1.4`, a weekly streak freeze, and a gentle reminder after 45 minutes a day.
 - **Points**: 1 per focused minute, break bonuses, finish bonus, last-page bonus. Library members earn 1.25× (Silver) or 1.5× (Gold).
 - **Levels**: Curious Browser → Page Turner → Café Regular → Bookworm → Chapter Chaser → Library Legend → Literary Royalty.
 - **Streaks**: daily streak with a growing bonus.
