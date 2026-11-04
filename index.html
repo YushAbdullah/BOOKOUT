@@ -382,6 +382,37 @@ body.st-lock{overflow:hidden}
 .lk-tx{border:0;background:var(--surface-muted);font:600 13px var(--font);padding:6px 10px;border-radius:999px;cursor:pointer;box-shadow:inset 0 0 0 1.5px var(--border)}
 .lk-tx.on{background:var(--primary);box-shadow:none}
 @media (max-width:639px){.street{height:min(72vh,560px);border-width:4px;border-radius:20px;margin-inline:-4px}.st-hud{font-size:12px;padding:6px 10px}.st-btn span{display:none}.st-hint{white-space:normal;width:calc(100% - 28px);text-align:center}.lk{grid-template-columns:1fr}.lk canvas{margin:auto}}
+/* ---------- new places: bookstore, lounge, park ---------- */
+.sc-bookstore{background:linear-gradient(180deg,#F6E9F1 0 62%,#8A5A3C 62%)}
+.sc-bookstore .wall{position:absolute;left:4%;top:8%;width:56%;height:50%;border:6px solid #7A3E65;border-radius:6px;background:repeating-linear-gradient(180deg,transparent 0 30%,#7A3E65 30% 33%),repeating-linear-gradient(90deg,#e5534b 0 7%,#f6d27a 7% 12%,#5B8DEF 12% 19%,#6BE683 19% 24%,#9c6ade 24% 31%,#f2a33a 31% 36%)}
+.sc-bookstore .neon{position:absolute;right:6%;top:12%;font:700 clamp(14px,2.4vw,22px)/1.1 var(--font);color:#7A3E65;background:#fff;border-radius:10px;padding:10px 14px;box-shadow:0 0 0 4px #f7c6dc;transform:rotate(3deg)}
+.sc-bookstore .neon small{display:block;font-weight:500;font-size:.62em;color:#4E544F}
+.sc-bookstore .props,.sc-lounge .props,.sc-park .props{position:absolute;right:8%;bottom:30%;font-size:clamp(24px,3.2vw,36px);display:flex;gap:8px}
+.sc-bookstore .counter,.sc-lounge .counter{position:absolute;left:0;right:0;bottom:0;height:34%}
+.sc-bookstore .counter{background:linear-gradient(180deg,#b07a4f,#8a5a36);box-shadow:inset 0 8px 0 #d39a64}
+.sc-lounge{background:linear-gradient(180deg,#2F3B48 0 62%,#5A3D2B 62%)}
+.sc-lounge .win{position:absolute;left:6%;top:9%;width:40%;height:48%;border:6px solid #c9a227;border-radius:6px;background:linear-gradient(180deg,#1d2a44,#3a4f7a);overflow:hidden}
+.sc-lounge .win::after{content:"";position:absolute;left:0;right:0;bottom:0;height:55%;background:repeating-linear-gradient(90deg,#16213a 0 9%,transparent 9% 12%,#1b2846 12% 20%,transparent 20% 23%);-webkit-mask:linear-gradient(0deg,#000 60%,transparent 60%)}
+.sc-lounge .lampy{position:absolute;top:0;width:3px;height:22%;background:#c9a227}.sc-lounge .lampy::after{content:"";position:absolute;left:-14px;bottom:-14px;width:30px;height:18px;border-radius:30px 30px 4px 4px;background:#f6d27a;box-shadow:0 10px 40px 10px rgba(246,210,122,.45)}
+.sc-lounge .sign{position:absolute;right:7%;top:14%;font:600 italic clamp(16px,2.6vw,26px)/1.1 var(--book);color:#f6d27a;border:2px solid #c9a227;border-radius:8px;padding:8px 14px}
+.sc-lounge .sign small{display:block;font:500 .5em var(--font);letter-spacing:.12em;text-transform:uppercase;color:#e6e9ee;margin-top:4px}
+.sc-lounge .counter{background:linear-gradient(180deg,#6b4426,#4a2f1c);box-shadow:inset 0 8px 0 #8a5a36}
+.sc-park{background:linear-gradient(180deg,#BFE6F5 0 52%,#7CC47F 52%)}
+.sc-park .sun{position:absolute;left:10%;top:10%;width:clamp(40px,8vw,80px);aspect-ratio:1;border-radius:50%;background:#f6d27a;box-shadow:0 0 0 12px rgba(246,210,122,.3)}
+.sc-park .trees{position:absolute;left:0;right:0;bottom:38%;display:flex;justify-content:space-around;font-size:clamp(40px,7vw,72px)}
+.sc-park .pav{position:absolute;right:8%;top:16%;background:#fff;border-radius:10px;padding:10px 14px;font:700 clamp(14px,2.2vw,20px)/1.1 var(--font);color:#3F7D4E;box-shadow:0 0 0 4px #3F7D4E;transform:rotate(-3deg)}
+.sc-park .pav small{display:block;font-weight:500;font-size:.65em;color:#4E544F}
+.sc-park .counter{position:absolute;left:0;right:0;bottom:0;height:30%;background:linear-gradient(180deg,#d9c39a,#b89a6a);box-shadow:inset 0 8px 0 #e9d8b4}
+.pov-bookstore .pov-wall{background:repeating-linear-gradient(90deg,#e5534b 0 14px,#f6d27a 14px 24px,#5B8DEF 24px 40px,#6BE683 40px 50px,#9c6ade 50px 64px,#7A3E65 64px 70px),#7A3E65}
+.pov-bookstore .pov-board{background:#fff;border:6px solid #7A3E65;color:#3a1f30}
+.pov-bookstore .pov-counter{background:linear-gradient(180deg,#b07a4f,#7a4a2e);box-shadow:inset 0 10px 0 #d39a64}
+.pov-lounge .pov-wall{background:linear-gradient(180deg,#2F3B48,#243040)}.pov-lounge .pov-deco{position:absolute;inset:8% 5% auto auto;width:32%;height:46%;background:linear-gradient(180deg,#1d2a44,#3a4f7a);border:6px solid #c9a227;border-radius:6px}
+.pov-lounge .pov-board{background:#1b2533;border:6px solid #c9a227;color:#f6efe0}.pov-lounge .pov-board h3{font-family:var(--book);font-style:italic;font-weight:400}
+.pov-lounge .pov-opt{background:#263244;color:#f6efe0;box-shadow:inset 0 0 0 1.5px #c9a227}.pov-lounge .pov-opt small{color:#cfc6b2}
+.pov-lounge .pov-counter{background:linear-gradient(180deg,#6b4426,#3e2a1d);box-shadow:inset 0 10px 0 #8a5a36}
+.pov-park .pov-wall{background:linear-gradient(180deg,#BFE6F5 0 55%,#7CC47F 55%)}.pov-park .pov-deco{position:absolute;inset:6% 6% auto auto;width:70px;height:70px;border-radius:50%;background:#f6d27a;box-shadow:0 0 0 14px rgba(246,210,122,.3)}
+.pov-park .pov-board{background:#fffaf0;border:6px solid #3F7D4E;color:#1f3d27}
+.pov-park .pov-counter{background:linear-gradient(180deg,#d9c39a,#a8875a);box-shadow:inset 0 10px 0 #e9d8b4}
 /* ---------- season mode (Fealty mint, cascade game feel) ---------- */
 .sl{--sl-primary:#6BE683;--sl-on-primary:#003503;--sl-primary-hover:#55D86C;--sl-accent:#1CBB6C;--sl-surface:#FFFFFF;--sl-muted:#F6FEF6;--sl-raised:#E3F8E6;--sl-canvas:#F6FEF6;--sl-border:#DDEBDF;--sl-text:#0F1A12;--sl-text-muted:#4E544F;--sl-paper:#FFFFFF;--sl-electric:#0F1A12;--sl-hl:#E3F8E6;--sl-success:#1A7F55;--sl-danger:#C42A36;
   --disp:var(--font);--txt:var(--font);--mono:var(--font);
@@ -628,6 +659,7 @@ body.st-lock{overflow:hidden}
 .sc-office .counter{position:absolute;left:0;right:0;bottom:0;height:34%;background:linear-gradient(180deg,#f4f6f9,#cfd6e0);box-shadow:inset 0 8px 0 #fff}
 .sc-office .props{position:absolute;right:8%;bottom:30%;font-size:clamp(24px,3.2vw,36px);display:flex;gap:8px}
 .office-desk{background:linear-gradient(180deg,#3d5a86,#2f4b7c)}
+.desk-bookstore{background:linear-gradient(180deg,#8f4c78,#7A3E65)}.desk-lounge{background:linear-gradient(180deg,#3f566e,#2c3e50)}.desk-park{background:linear-gradient(180deg,#4f9461,#3F7D4E)}
 .dept-row{display:flex;flex-wrap:wrap;gap:6px}.dept-row span{background:rgba(255,255,255,.14);border-radius:999px;padding:4px 10px;font-size:13px}
 .plate-h{flex:none;align-self:center;color:#F5E9C8;opacity:.75;font-size:11px;letter-spacing:.12em;text-transform:uppercase;padding:0 2px 0 6px}
 
@@ -874,7 +906,11 @@ function sfx(name) { if (!S.settings.sound) return; try { const c = ac(); if (c)
 const AMB = {
   cafe: { f: 900, q: .7, vol: .045, ev: [['clink', 5], ['pour', 14], ['steam', 18]] },
   library: { f: 260, q: .5, vol: .03, ev: [['flip', 9]] },
-  diner: { f: 1300, q: .5, vol: .05, ev: [['beep', 6], ['sizzle', 9], ['bell', 25]] }
+  diner: { f: 1300, q: .5, vol: .05, ev: [['beep', 6], ['sizzle', 9], ['bell', 25]] },
+  office: { f: 500, q: .5, vol: .025, ev: [['printer', 20], ['beep', 30]] },
+  bookstore: { f: 400, q: .5, vol: .025, ev: [['flip', 8], ['register', 30]] },
+  lounge: { f: 320, q: .6, vol: .03, ev: [['clink', 9], ['pour', 22]] },
+  park: { f: 2600, q: .3, vol: .018, ev: [['blip', 4], ['chime', 26]] }
 };
 function ambient(id) {
   stopAmbient();
@@ -1000,7 +1036,7 @@ const VENUES = {
     id: 'office', name: 'Menara Ilham', kind: 'Office tower', emoji: '🏢', open: 8, close: 19, timer: 'clock', cover: '#2F4B7C',
     staff: { name: 'Puan Lina', role: 'Front desk', avatar: '👩🏻‍💼' },
     ritual: 'Book a focus room at reception, read by department, and take pantry and stretch breaks like a real workday.',
-    lengths: [25, 50, 90, 120],
+    lengths: [25, 50, 90, 120], deskTitle: 'Focus rooms', passLabel: 'Room pass', passSub: 'focus room', shelfTitle: 'Departments', posLabel: 'BADGE', itemEm: '🔑',
     lines: {
       greet: n => `Good ${partOfDay()}, ${n}. Welcome to Menara Ilham. Shall I book you a focus room?`,
       order: m => `Focus room booked for ${m} minutes. The department shelves are on your right.`,
@@ -1017,6 +1053,79 @@ const VENUES = {
     ],
     sounds: { order: 'beep', prep: ['printer'], serve: 'chime' },
     shelf: ['leadership', 'people', 'finance', 'ops', 'sales', 'innovation'], shelfName: 'Department shelves'
+  },
+  bookstore: {
+    id: 'bookstore', name: 'Pena Bookstore', kind: 'Bookshop', emoji: '📚', open: 10, close: 22, timer: 'clock', cover: '#7A3E65',
+    staff: { name: 'Kak Mira', role: 'Bookseller', avatar: '👩🏽‍💼' },
+    ritual: 'Get a sofa pass for the reading corner, browse the new arrivals table and read on the big sofa. Every chapter earns bookworm points.',
+    lengths: [20, 40, 60, 90], deskTitle: 'Reading corner', passLabel: 'Sofa pass', passSub: 'reading corner', shelfTitle: 'Sections', posLabel: 'PAY', itemEm: '🛋️',
+    lines: {
+      greet: n => `Hi ${n}! Welcome to Pena Bookstore. Want a spot on the reading sofa?`,
+      order: m => `Sofa pass for ${m} minutes. The new arrivals table is right behind you.`,
+      book: b => `${b.title}. Oh, that one changed my life a little. Enjoy!`,
+      prep: () => `Kak Mira is writing your sofa pass…`,
+      serve: () => `The corner sofa is free. Shout if you want a recommendation.`,
+      closed: () => `We're closed for now. We open at 10 in the morning. Bun & Chapter is open 24 hours.`,
+      bye: () => `Thanks for reading with us. Come back for the next chapter!`
+    },
+    breaks: [
+      { id: 'browse', emoji: '🔎', title: 'Browse the shelves', line: 'Take a slow walk along the shelves. Read one blurb you would never normally pick.', min: 2, pts: 4 },
+      { id: 'water', emoji: '💧', title: 'Water break', line: 'There is cold water by the till. Have a few sips.', min: 1, pts: 3 },
+      { id: 'photo', emoji: '📸', title: 'Shelfie', line: 'Take a photo of your book against the shelf wall. It looks great in this light.', min: 1, pts: 5 }
+    ],
+    sounds: { order: 'register', prep: ['printer'], serve: 'chime' },
+    shelf: ['inspiration', 'romance', 'fantasy', 'poetry', 'children'], shelfName: 'New arrivals table'
+  },
+  lounge: {
+    id: 'lounge', name: 'The Loft Lounge', kind: 'Hotel lounge', emoji: '🛋️', open: 6, close: 24, timer: 'cup', cover: '#34495E',
+    staff: { name: 'Daniel', role: 'Lounge host', avatar: '🤵🏽' },
+    ritual: 'Sink into a leather armchair with a pot of tea. Quiet, calm and made for big ideas. Your teapot is the timer.',
+    menuTitle: 'Tea service',
+    menu: [
+      { id: 'earl', name: 'Earl Grey', emoji: '🫖', min: 20, note: 'bergamot & calm', color: '#8B5A2B' },
+      { id: 'mint', name: 'Mint tea', emoji: '🌿', min: 25, note: 'fresh focus', color: '#9CCB86' },
+      { id: 'chai', name: 'Masala chai', emoji: '☕', min: 30, note: 'warm & spiced', color: '#C08552' },
+      { id: 'choc', name: 'Hot chocolate', emoji: '🍫', min: 40, note: 'slow & rich', color: '#5A3020' },
+      { id: 'hightea', name: 'High tea set', emoji: '🍰', min: 60, note: 'the long read', color: '#B5712B' }
+    ],
+    lines: {
+      greet: n => `Good ${partOfDay()}, ${n}. Welcome to the Loft. Tea while you read?`,
+      order: it => `One ${it.name.toLowerCase()}. That will last about ${it.min} minutes. The library wall is yours.`,
+      book: b => `${b.title}. A fine choice for an armchair.`,
+      prep: it => `Daniel is brewing your ${it.name.toLowerCase()}…`,
+      serve: it => `Your ${it.name.toLowerCase()}. Take the armchair by the window.`,
+      closed: () => `The lounge opens at 6 in the morning. Bun & Chapter is open all night.`,
+      bye: () => `It was a pleasure. Do come back.`
+    },
+    breaks: [
+      { id: 'water', emoji: '💧', title: 'Lemon water', line: 'A glass of lemon water for you. Tea is lovely, water is better for you.', min: 1, pts: 3 },
+      { id: 'window', emoji: '🌆', title: 'Look out the window', line: 'Rest your eyes. Look at the furthest building you can see for twenty seconds.', min: 1, pts: 4 },
+      { id: 'photo', emoji: '📸', title: 'Armchair photo', line: 'Book, teapot, armchair. That photo is worth taking.', min: 1, pts: 5 }
+    ],
+    sounds: { order: 'register', prep: ['pour'], serve: 'clink' },
+    shelf: ['leadership', 'business', 'philosophy', 'history'], shelfName: 'Library wall'
+  },
+  park: {
+    id: 'park', name: 'Taman Bacaan', kind: 'Park pavilion', emoji: '🌳', open: 7, close: 19, timer: 'clock', cover: '#3F7D4E',
+    staff: { name: 'Pak Rahman', role: 'Park ranger', avatar: '👴🏽' },
+    ritual: 'Borrow a picnic mat from the ranger, take a book from the little free library and read under the trees. Daylight hours only.',
+    lengths: [15, 30, 45, 60], deskTitle: 'Shady spots', passLabel: 'Picnic mat', passSub: 'under the trees', shelfTitle: 'Little free library', posLabel: 'TAP', itemEm: '🧺',
+    lines: {
+      greet: n => `Selamat ${partOfDay() === 'morning' ? 'pagi' : 'petang'}, ${n}! Nice day for reading outside. Need a mat?`,
+      order: m => `One mat for ${m} minutes. The little free library is next to the pavilion.`,
+      book: b => `${b.title}. Bagus. The trees will like that one too.`,
+      prep: () => `Pak Rahman is rolling out your mat…`,
+      serve: () => `The spot under the big tree is shady right now. Enjoy the breeze.`,
+      closed: () => `The park pavilion closes when it gets dark. Come back at 7 in the morning.`,
+      bye: () => `Take care. Bring a friend next time!`
+    },
+    breaks: [
+      { id: 'walk', emoji: '🚶', title: 'Walk around the lake', line: 'Stretch your legs. One slow lap around the pond.', min: 3, pts: 5 },
+      { id: 'water', emoji: '💧', title: 'Drink some water', line: 'It is warm out here. Drink some water.', min: 1, pts: 3 },
+      { id: 'birds', emoji: '🐦', title: 'Spot a bird', line: 'Put the book down and find one bird. Just watch it for a minute.', min: 1, pts: 4 }
+    ],
+    sounds: { order: 'chime', prep: ['open'], serve: 'chime' },
+    shelf: ['growth', 'poetry', 'philosophy', 'inspiration'], shelfName: 'Little free library'
   }
 };
 const CATS = [
@@ -1313,6 +1422,9 @@ function sceneArt(v) {
     <div class="board">Today's brews<small>latte · matcha · teh tarik</small></div><div class="props"><span>🥐</span><span>🧁</span><span>🪴</span></div><div class="counter"></div></div>`;
   if (v.id === 'library') { const d = new Date(), hr = (d.getHours() % 12 + d.getMinutes() / 60) * 30, mn = d.getMinutes() * 6;
     return `<div class="layer sc-library"><div class="shelves"></div><div class="clock" title="Real time"><i style="height:26%;transform:translateX(-50%) rotate(${hr}deg)"></i><i style="height:38%;width:2px;transform:translateX(-50%) rotate(${mn}deg)"></i></div><div class="lampg">💡</div><div class="counter"></div></div>`; }
+  if (v.id === 'bookstore') return `<div class="layer sc-bookstore"><div class="wall"></div><div class="neon">New arrivals<small>sofa corner open</small></div><div class="props"><span>🛋️</span><span>🪴</span></div><div class="counter"></div></div>`;
+  if (v.id === 'lounge') return `<div class="layer sc-lounge"><div class="win"></div><div class="lampy" style="left:56%"></div><div class="lampy" style="left:74%"></div><div class="sign">The Loft<small>tea · quiet · ideas</small></div><div class="props"><span>🫖</span><span>🛋️</span></div><div class="counter"></div></div>`;
+  if (v.id === 'park') return `<div class="layer sc-park"><div class="sun"></div><div class="trees"><span>🌳</span><span>🌲</span><span>🌳</span></div><div class="pav">Little free library<small>take one, leave one</small></div><div class="props"><span>🧺</span><span>🐦</span></div><div class="counter"></div></div>`;
   if (v.id === 'office') return `<div class="layer sc-office"><div class="sky"><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="wb">Q4 goals<small>read · learn · lead</small></div><div class="props"><span>🪴</span><span>🖥️</span><span>☕</span></div><div class="counter"></div></div>`;
   return `<div class="layer sc-diner"><div class="band"></div><div class="neon">OPEN 24 HOURS</div><div class="screen"><span>🍔</span><span>🍟</span><span>🍗</span><span>🥤</span></div><div class="props"><span>🧂</span><span>🥫</span></div><div class="counter"></div></div>`;
 }
@@ -1331,7 +1443,7 @@ function talk(text, sound = true) {
 }
 
 /* =============== the street: a walkable top-down town =============== */
-const ST = { W: 2300, H: 1080, FACE: 40, WT: 14, CELL: 20 };
+const ST = { W: 3500, H: 1080, FACE: 40, WT: 14, CELL: 20 };
 const OUTL = '#4a3426';
 const LOOKS = {
   skins: ['#f9dcc4', '#f1c29a', '#e0a77a', '#c68b5c', '#9c6640', '#6e4429'],
@@ -1487,6 +1599,8 @@ const STREET_LINES = {
   park: ['Angin sepoi-sepoi 🍃', 'Best baca kat sini', 'Kucing comel 🐱', 'Tengok burung kejap'],
   plaza: ['Kopi O satu!', 'Meeting lagi 😩', 'Lunch break baca jap', 'Dataran ni tenang'],
   office: ['Deadline Jumaat 😬', 'KPI naik bulan ni', 'Lunch kat mana?', 'Zoom call lagi…'],
+  bookstore: ['Ada sequel tak?', 'Wishlist makin panjang 📚', 'Sofa ni selesa gila', 'Blurb dia best!'],
+  lounge: ['Tea ni smooth ☕', 'Big ideas only', 'Quiet sangat, best', 'One more chapter, then meeting'],
   street: ['Jom baca!', 'Panas hari ni ☀️', 'Nak pergi kafe ke?', 'Library buka lagi?', 'Dah 3 hari streak 🔥']
 };
 function pickBook(seed, cats) { const all = cats.flatMap(k => CURATED[k] || []); const b = all[hash(seed) % all.length]; return { title: b[1], color: CLOTH[hash(b[1]) % CLOTH.length] }; }
@@ -1498,6 +1612,8 @@ function buildTown() {
     { id: 'library', x: 640, y: 40, w: 520, h: 480, floor: 'carpet', door: [860, 940], face: '#dfe9dc', label: 'THE COMMONS LIBRARY', where: 'The Commons Library' },
     { id: 'diner', x: 1200, y: 40, w: 440, h: 480, floor: 'checker', door: [1380, 1460], face: '#f8dcd2', label: 'BUN & CHAPTER', where: 'Bun & Chapter' },
     { id: 'office', x: 1700, y: 40, w: 560, h: 480, floor: 'office', door: [1940, 2020], face: '#dce6f2', label: 'MENARA ILHAM · OFFICE', where: 'Menara Ilham (office)' },
+    { id: 'bookstore', x: 2320, y: 40, w: 520, h: 480, floor: 'wood', door: [2540, 2620], face: '#f6e9f1', label: 'PENA BOOKSTORE', where: 'Pena Bookstore' },
+    { id: 'lounge', x: 2880, y: 40, w: 560, h: 480, floor: 'carpet', door: [3120, 3200], face: '#e6e9ee', label: 'THE LOFT LOUNGE', where: 'The Loft Lounge' },
     { id: 'passport', x: 1040, y: 760, w: 280, h: 260, floor: 'tile', door: [1140, 1220], top: true, face: '#e3e6f6', label: 'PASSPORT OFFICE', where: 'Passport Office' }
   ];
   rooms.forEach(r => { const v = VENUES[r.id]; r.status = v ? venueStatus(v) : { open: true }; r.open = r.status.open; });
@@ -1595,7 +1711,7 @@ function buildTown() {
   lights.push({ x: 1180, y: 900, r: 200, room: 'passport' });
 
   /* street furniture */
-  [200, 620, 1040, 1460, 1880].forEach(x => { lamp(x, 548); lamp(x + 120, 724); });
+  [200, 620, 1040, 1460, 1880, 2300, 2720, 3140].forEach(x => { lamp(x, 548); lamp(x + 120, 724); });
 
   /* park */
   const hedge = (x, y, w, h) => { solid(x, y, w, h); item(y + h, c => { rr(c, x, y - 6, w, h + 6, 10, '#4fae5c'); c.fillStyle = '#62c46e'; for (let k = x + 10; k < x + w - 4; k += 18) { c.beginPath(); c.arc(k, y - 2, 6, 0, 7); c.fill(); } }); };
@@ -1674,10 +1790,76 @@ function buildTown() {
   solid(2070, 1000, 70, 30);
   item(1030, c => { block(c, 2070, 1000, 70, 30, 12, '#f6c453', '#c99a2e', 6); c.beginPath(); c.moveTo(2064, 1000); c.lineTo(2146, 1000); c.lineTo(2136, 984); c.lineTo(2074, 984); c.closePath(); c.fillStyle = '#e5534b'; c.fill(); c.lineWidth = 2; c.strokeStyle = OUTL; c.stroke(); c.fillStyle = '#3a2a20'; c.font = '700 9px Outfit, sans-serif'; c.textAlign = 'center'; c.fillText('KOPI O', 2105, 1020); });
 
+  /* Pena Bookstore */
+  const bs = R.bookstore;
+  solid(2360, 140, 220, 46);
+  item(186, c => {
+    block(c, 2360, 140, 220, 46, 16, '#f6e9f1', '#7A3E65', 8);
+    rr(c, 2378, 126, 40, 26, 4, '#2f3b46'); rr(c, 2382, 129, 32, 18, 2, '#f7c6dc', null);
+    for (let k = 0; k < 6; k++) { c.fillStyle = CLOTH[(k * 3) % CLOTH.length]; c.fillRect(2440 + k * 9, 128 - (k % 2) * 3, 7, 22 + (k % 2) * 3); }
+    rr(c, 2520, 130, 40, 20, 4, '#fff'); c.fillStyle = '#7A3E65'; c.font = '700 8px Outfit, sans-serif'; c.textAlign = 'center'; c.fillText('NEW!', 2540, 143);
+  });
+  if (bs.open) person({ name: 'Kak Mira', x: 2470, y: 132, room: 'bookstore', staff: 1, look: { gender: 'female', skin: 2, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 4 }, lines: ['New arrivals hari ni!', 'Nak recommendation?', 'Sofa corner kosong 🛋️'] });
+  zones.push({ id: 'bookstore', x: 2360, y: 186, w: 220, h: 54, icon: '📚', label: () => bs.open ? 'Get a sofa pass from Kak Mira' : 'Pena Bookstore is closed · peek inside', act: () => enterVenue('bookstore'), target: { x: 2470, y: 112 } });
+  [130, 220, 310, 400].forEach((y, i) => {
+    solid(2640, y, 170, 34);
+    item(y + 34, c => { block(c, 2640, y, 170, 34, 22, '#a0522d', '#7a3e2a', 5);
+      for (let k = 0; k < 15; k++) { const bx = 2646 + k * 10.6, hgt = 14 + (hash('p' + i + k) % 6); c.fillStyle = CLOTH[hash('q' + i + k) % CLOTH.length]; c.fillRect(bx, y + 31 - hgt, 8.5, hgt); } });
+  });
+  solid(2390, 290, 170, 50);
+  item(340, c => { block(c, 2390, 290, 170, 50, 14, '#f1e2c4', '#a8794f', 6); for (let k = 0; k < 6; k++) { rr(c, 2402 + k * 26, 296 + (k % 2) * 10, 20, 26, 2, CLOTH[(k * 7) % CLOTH.length], OUTL, 1.2); } });
+  const sofa = (x, y, col) => { solid(x, y, 150, 40); item(y + 40, c => { rr(c, x, y - 14, 150, 22, 8, shade(col, .8)); rr(c, x, y + 2, 150, 36, 10, col, OUTL, 2); rr(c, x - 8, y - 6, 18, 44, 8, shade(col, .85), OUTL, 2); rr(c, x + 140, y - 6, 18, 44, 8, shade(col, .85), OUTL, 2); }); };
+  sofa(2400, 420, '#c0627f');
+  seat('Hana', 2440, 418, 'bookstore', ['romance', 'poetry', 'fantasy']); seat('Ravi', 2510, 418, 'bookstore', ['inspiration', 'children']);
+  plant(2346, 490); plant(2826, 490, .9);
+  lights.push({ x: 2580, y: 300, r: 300, room: 'bookstore' });
+
+  /* The Loft Lounge */
+  const lg = R.lounge;
+  solid(2920, 140, 240, 46);
+  item(186, c => {
+    block(c, 2920, 140, 240, 46, 16, '#e6e9ee', '#34495E', 8);
+    for (let k = 0; k < 5; k++) { rr(c, 2940 + k * 16, 124, 10, 22, 3, ['#9fd3f0', '#f6d27a', '#c99a2e', '#9CCB86', '#f2a6b8'][k], OUTL, 1.2); }
+    rr(c, 3040, 130, 46, 20, 5, '#fff'); circ(c, 3110, 140, 8, '#8B5A2B', OUTL, 1.5); rr(c, 3104, 128, 12, 5, 2, '#8B5A2B', null);
+  });
+  if (lg.open) person({ name: 'Daniel', x: 3060, y: 132, room: 'lounge', staff: 1, look: { gender: 'male', skin: 1, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6 }, lines: ['Tea, sir? Madam?', 'Armchair by the window', 'Earl Grey hari ni 🫖'] });
+  zones.push({ id: 'lounge', x: 2920, y: 186, w: 240, h: 54, icon: '🛋️', label: () => lg.open ? 'Order tea with Daniel' : 'The Loft Lounge is closed · peek inside', act: () => enterVenue('lounge'), target: { x: 3060, y: 112 } });
+  [120, 210, 300, 390].forEach((y, i) => {
+    solid(3240, y, 180, 34);
+    item(y + 34, c => { block(c, 3240, y, 180, 34, 22, '#5a3d2b', '#3e2a1d', 5);
+      for (let k = 0; k < 16; k++) { const bx = 3246 + k * 10.6, hgt = 14 + (hash('l' + i + k) % 6); c.fillStyle = CLOTH[hash('m' + i + k) % CLOTH.length]; c.fillRect(bx, y + 31 - hgt, 8.5, hgt); } });
+  });
+  [[2990, 300, 'Datuk Azman', ['leadership', 'business']], [3150, 300, ''], [2990, 420, 'Sofia', ['philosophy', 'history']], [3150, 420, 'Mr Tan', ['business', 'history']]].forEach(([x, y, n, cats]) => { chair(x, y - 30, '#7a4a3a'); roundTable(x, y, 22, '#efe6da'); if (n) seat(n, x, y - 32, 'lounge', cats); });
+  plant(2906, 490); plant(3426, 490, .9);
+  lights.push({ x: 3160, y: 300, r: 300, room: 'lounge' });
+
+  /* Taman Bacaan: the park pavilion */
+  const PARK = VENUES.park, pk = venueStatus(PARK);
+  solid(700, 786, 110, 30);
+  item(816, c => {
+    c.beginPath(); c.moveTo(690, 788); c.lineTo(820, 788); c.lineTo(800, 764); c.lineTo(710, 764); c.closePath(); c.fillStyle = '#3F7D4E'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = OUTL; c.stroke();
+    block(c, 700, 788, 110, 28, 12, '#f1e2c4', '#a8794f', 6);
+    for (let k = 0; k < 8; k++) { c.fillStyle = CLOTH[(k * 4) % CLOTH.length]; c.fillRect(708 + k * 11, 774 + (k % 2), 8, 14); }
+  });
+  if (pk.open) person({ name: 'Pak Rahman', x: 755, y: 776, room: 'parkdesk', staff: 1, look: { gender: 'male', skin: 2, hair: 'short', head: 'cap', hc: 3, outfit: 'casual', shirt: 0 }, lines: ['Tikar ada, jom!', 'Hari cerah, baca luar', 'Jaga kebersihan ya 🌿'] });
+  zones.push({ id: 'park', x: 690, y: 816, w: 130, h: 44, icon: '🌳', label: () => pk.open ? 'Borrow a mat from Pak Rahman' : 'The park pavilion is closed for the night', act: () => enterVenue('park'), target: { x: 755, y: 840 } });
+
+  /* east garden */
+  hedge(2300, 750, 500, 16); hedge(2960, 750, 500, 16); hedge(2300, 1034, 1160, 16); hedge(3444, 750, 16, 300);
+  tree(2360, 860); tree(2700, 1000, .9); tree(3380, 860); tree(3100, 1000); tree(2560, 820, .85);
+  solid(2830, 880, 150, 70);
+  item(950, (c, t) => { c.beginPath(); c.ellipse(2905, 915, 78, 36, 0, 0, 7); c.fillStyle = '#c9c1b3'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = OUTL; c.stroke();
+    c.beginPath(); c.ellipse(2905, 912, 68, 29, 0, 0, 7); c.fillStyle = '#8fd3f0'; c.fill();
+    for (let k = 0; k < 2; k++) { const ph = (t * .4 + k / 2) % 1; c.strokeStyle = `rgba(255,255,255,${.6 * (1 - ph)})`; c.lineWidth = 2; c.beginPath(); c.ellipse(2880 + k * 50, 912, 6 + ph * 20, 3 + ph * 9, 0, 0, 7); c.stroke(); }
+    circ(c, 2930, 905, 6, '#6BE683', OUTL, 1.2); circ(c, 2870, 920, 5, '#6BE683', OUTL, 1.2); });
+  bench(2440, 960); bench(3200, 880); bench(3220, 990);
+  seat('Rina', 2482, 956, 'park', ['poetry', 'growth']); seat('Encik Zul', 3242, 876, 'park', ['inspiration', 'leadership']);
+
   // walkers
   person({ name: 'Amir', x: 320, y: 538, path: [[320, 538], [900, 538], [900, 712], [490, 712], [490, 820], [490, 712], [320, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Zara', x: 1600, y: 538, path: [[1600, 538], [1420, 538], [1420, 712], [1640, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Faiz', x: 2200, y: 538, path: [[2200, 538], [1700, 538], [1980, 538], [1980, 712], [2200, 712], [1980, 712], [1980, 860], [1820, 900], [1980, 860], [1980, 712], [2200, 712]], room: 'street', lines: STREET_LINES.street });
+  person({ name: 'Nadia', x: 2400, y: 538, path: [[2400, 538], [3300, 538], [3300, 712], [2880, 712], [2880, 780], [2880, 712], [2400, 712]], room: 'street', lines: STREET_LINES.street });
   person({ name: 'Mei', x: 1820, y: 880, path: [[1860, 850], [2100, 850], [2040, 975], [1860, 975]], room: 'plaza', lines: STREET_LINES.plaza });
   person({ name: 'Kumar', x: 600, y: 860, path: [[480, 860], [760, 860], [760, 1010], [480, 1010]], room: 'park', lines: STREET_LINES.park });
   const cat = { name: 'Oyen', cat: 1, x: 520, y: 980, tx: 520, ty: 980, wait: 2, bubble: null, next: 6, lines: ['meow', 'meow~', 'purr…'], dir: 'right', phase: 0 };
@@ -1788,7 +1970,7 @@ function mountStreet(root) {
   const resize = () => { const b = wrap.getBoundingClientRect(); dpr = Math.min(window.devicePixelRatio || 1, 2); cv.width = Math.round(b.width * dpr); cv.height = Math.round(b.height * dpr); dark.width = cv.width; dark.height = cv.height; z = Math.max(.6, Math.min(1.2, b.width / 1150)); if (b.height / z > ST.H + 44) z = b.height / (ST.H + 44); vw = b.width / z; vh = b.height / z; };
   resize(); const ro = new ResizeObserver(resize); ro.observe(wrap);
   cam.x = Math.max(0, Math.min(ST.W - vw, pl.x - vw / 2)); cam.y = Math.max(-44, Math.min(ST.H - vh, pl.y - vh / 2));
-  const quest = () => { if (S.todayMin >= 20) return null; const z0 = ['cafe', 'library', 'diner', 'office'].map(id => T.zones.find(q => q.id === id)).find(q => T.R[q.id].open); return z0; };
+  const quest = () => { if (S.todayMin >= 20) return null; const z0 = ['cafe', 'library', 'diner', 'office', 'bookstore', 'lounge'].map(id => T.zones.find(q => q.id === id)).find(q => T.R[q.id].open); return z0; };
   const doAct = () => { if (!zone) return; store('bookout:spot', { x: pl.x, y: pl.y }); if (VENUES[zone.id]) sfx('door'); zone.act(); };
   const actBtn = $('#st-act', wrap); actBtn.onclick = () => { doAct(); cv.focus({ preventScroll: true }); };
   updPages();
@@ -1836,7 +2018,7 @@ function mountStreet(root) {
       if (r && VENUES[r.id] && r.open) {
         sfx('dingdong'); ambient(r.id);
         const staff = T.npcs.find(p => p.staff && p.room === r.id);
-        if (staff) say(staff, { cafe: `Hi ${S.name}! Order at the counter ☕`, library: `Selamat datang, ${S.name}. Check in here.`, diner: `Welcome, ${S.name}! What'll it be? 🍔`, office: `Morning, ${S.name}! Need a focus room?` }[r.id], 4.5);
+        if (staff) say(staff, { cafe: `Hi ${S.name}! Order at the counter ☕`, library: `Selamat datang, ${S.name}. Check in here.`, diner: `Welcome, ${S.name}! What'll it be? 🍔`, office: `Morning, ${S.name}! Need a focus room?`, bookstore: `Hi ${S.name}! New arrivals just came in 📚`, lounge: `Good to see you, ${S.name}. Tea? 🫖` }[r.id], 4.5);
       } else if (r && r.id === 'passport') { sfx('chime'); const staff = T.npcs.find(p => p.room === 'passport'); staff && say(staff, `Hi ${S.name}, come see your badges!`, 4); }
       else stopAmbient();
     }
@@ -1888,9 +2070,10 @@ function mountStreet(root) {
     c.fillStyle = P.walk; c.fillRect(0, 520, ST.W, 40); c.fillRect(0, 690, ST.W, 46);
     c.fillStyle = '#6d727d'; c.fillRect(0, 560, ST.W, 130); c.fillStyle = '#5f646e'; c.fillRect(0, 560, ST.W, 6); c.fillRect(0, 684, ST.W, 6);
     c.fillStyle = '#f3ecd8'; for (let x = 10; x < ST.W; x += 70) c.fillRect(x, 622, 38, 5);
-    [320, 900, 1420, 1980].forEach(cx => { for (let y = 570; y < 680; y += 20) { c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(cx - 34, y, 68, 10); } });
+    [320, 900, 1420, 1980, 2580, 3160].forEach(cx => { for (let y = 570; y < 680; y += 20) { c.fillStyle = 'rgba(255,255,255,.85)'; c.fillRect(cx - 34, y, 68, 10); } });
     c.fillStyle = P.path; c.fillRect(440, 736, 100, 140); c.beginPath(); c.ellipse(620, 930, 120, 80, 0, 0, 7); c.fill(); c.fillRect(440, 846, 200, 56); c.fillRect(1140, 736, 80, 40);
     c.fillStyle = P.plaza; c.fillRect(1716, 766, 528, 268); c.fillRect(1900, 736, 160, 40);
+    c.fillStyle = P.path; c.fillRect(2800, 736, 160, 60); c.beginPath(); c.ellipse(2905, 915, 150, 90, 0, 0, 7); c.fill(); c.fillRect(2340, 940, 600, 60); c.fillRect(2900, 860, 360, 50);
     [[200, 960], [840, 900], [360, 860], [700, 1010]].forEach(([fx, fy], i) => { for (let q = 0; q < 7; q++) { circ(c, fx + Math.cos(q * 2.4) * 16, fy + Math.sin(q * 2.4) * 9, 3.2, ['#ff8fb1', '#f6d27a', '#fff', '#9c6ade'][(q + i) % 4], null); } });
     // floors + back walls
     for (const r of T.rooms) {
@@ -2460,9 +2643,13 @@ function playModal(kind, opts, lineFor) {
 }
 const ORDER_GAME = (v, it) => v.id === 'office' ? ['pour', { title: 'Pour a pantry kopi', eyebrow: 'Pantry, level 3', color: '#5a3a22', target: .8, sound: 'pour' }] : v.id === 'cafe' ? ['pour', { title: `Pour your ${it.name.toLowerCase()}`, eyebrow: 'Behind the counter with Aina', color: it.color, foam: /latte|matcha|teh|frapp/i.test(it.name), sound: 'pour' }]
   : v.id === 'diner' ? (/burger|feast/i.test(it.name) ? ['stack', { title: 'Build your burger', eyebrow: 'Kitchen with Jay' }] : ['pour', { title: 'Fill your cola', eyebrow: 'Drinks station', color: '#3b1f14', target: .72, sound: 'sizzle' }])
+  : v.id === 'lounge' ? ['pour', { title: `Pour your ${it.name.toLowerCase()}`, eyebrow: 'Tea service with Daniel', color: it.color, sound: 'pour' }]
+  : v.id === 'bookstore' ? ['stamp', { title: 'Stamp your loyalty card', eyebrow: 'Till with Kak Mira' }]
+  : v.id === 'park' ? ['stamp', { title: 'Stamp your park pass', eyebrow: 'Pavilion with Pak Rahman' }]
   : ['stamp', { title: 'Stamp your day pass', eyebrow: 'Front desk with Encik Hafiz' }];
 function orderLine(v, r) {
-  if (r.skipped) return { cafe: 'No worries, Aina will make it.', diner: 'Jay has it covered.', library: 'Encik Hafiz stamps it for you.' }[v.id];
+  if (r.skipped) return { cafe: 'No worries, Aina will make it.', diner: 'Jay has it covered.', library: 'Encik Hafiz stamps it for you.', office: 'Puan Lina pours it for you.', bookstore: 'Kak Mira stamps it for you.', lounge: 'Daniel pours it for you.', park: 'Pak Rahman stamps it for you.' }[v.id];
+  if (v.id === 'lounge') { const n2 = stars(r.score); return n2 === 3 ? 'A perfect pour. Daniel offers you a job.' : n2 === 2 ? 'Nicely done. Not a drop spilled.' : 'A little wobbly, still delicious.'; }
   const n = stars(r.score);
   if (v.id === 'cafe') return r.extra === 'spilled' ? 'Whoops, it overflowed! Aina wipes the counter and laughs.' : n === 3 ? 'Right on the line. Aina is impressed: "You should work here!"' : r.extra === 'short' ? 'A little short, but it smells amazing.' : 'A little over the line. Extra for you!';
   if (v.id === 'office') return n === 3 ? 'Perfect cup. Puan Lina asks you to make the next one.' : n === 2 ? 'Good enough for a Monday.' : 'Pantry kopi, extra character.';
@@ -2708,7 +2895,10 @@ const STAFF_LOOK = {
   cafe: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 2, acc: 'none' },
   library: { gender: 'male', skin: 2, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6, acc: 'glasses' },
   diner: { gender: 'male', skin: 0, hair: 'spiky', head: 'cap', hc: 1, outfit: 'jersey', shirt: 3, acc: 'none' },
-  office: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_b', hc: 0, outfit: 'smart', shirt: 4, acc: 'none' }
+  office: { gender: 'female', skin: 1, hair: 'long', head: 'tudung_b', hc: 0, outfit: 'smart', shirt: 4, acc: 'none' },
+  bookstore: { gender: 'female', skin: 2, hair: 'long', head: 'tudung_a', hc: 0, outfit: 'casual', shirt: 4, acc: 'glasses' },
+  lounge: { gender: 'male', skin: 1, hair: 'side', head: 'none', hc: 0, outfit: 'smart', shirt: 6, acc: 'none' },
+  park: { gender: 'male', skin: 2, hair: 'short', head: 'cap', hc: 3, outfit: 'casual', shirt: 0, acc: 'none' }
 };
 const shade = (hex, k) => { const n = parseInt(hex.slice(1), 16), f = v => Math.max(0, Math.min(255, Math.round(v * k))); return `rgb(${f(n >> 16)},${f((n >> 8) & 255)},${f(n & 255)})`; };
 function handSVG(side) {
@@ -2735,9 +2925,9 @@ function openPOV(id) {
   const full = $('.street.full'); if (full) { full.classList.remove('full'); document.body.classList.remove('st-lock'); }
   document.body.classList.add('pov-on');
   const el = document.createElement('div'); el.className = `pov pov-${id}${isNight() ? ' night' : ''}`; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', `Inside ${v.name}`);
-  const opts = desk ? v.lengths.map(m => ({ k: m, em: isLib ? '🎫' : '🔑', name: m < 60 ? `${m} min` : `${m / 60} ${m === 60 ? 'hour' : 'hours'}`, sub: isLib ? 'day pass' : m === 25 ? 'one pomodoro' : 'focus room', ok: m <= st.minsLeft }))
+  const opts = desk ? v.lengths.map(m => ({ k: m, em: isLib ? '🎫' : v.itemEm, name: m < 60 ? `${m} min` : `${m / 60} ${m === 60 ? 'hour' : 'hours'}`, sub: isLib ? 'day pass' : m === 25 && id === 'office' ? 'one pomodoro' : v.passSub, ok: m <= st.minsLeft }))
     : v.menu.map(it => ({ k: it.id, em: it.emoji, name: it.name, sub: `${it.min} min${it.bites ? ' · ' + it.bites.length + ' bites' : ''}`, ok: true }));
-  const boardTitle = { cafe: "Today's brews", library: 'Day passes', diner: 'Tonight’s specials', office: 'Book a focus room' }[id];
+  const boardTitle = { cafe: "Today's brews", library: 'Day passes', diner: 'Tonight’s specials', office: 'Book a focus room', bookstore: 'Reading corner', lounge: 'Tea service', park: 'Picnic mats' }[id];
   const STEPS = ['Order', 'Pay', 'Collect', 'Pick a book', 'Read'];
   el.innerHTML = `
     <div class="pov-top"><button class="pov-x" id="pv-leave">← Street</button><span class="pov-where">${v.emoji} ${esc(v.name)}</span><button class="pov-x" id="pv-classic" title="Use the menu screen instead">Menu view</button></div>
@@ -2750,7 +2940,7 @@ function openPOV(id) {
         <canvas class="pov-staff" id="pv-staff" width="320" height="320" aria-hidden="true"></canvas>
         <div class="pov-say" id="pv-say" aria-live="polite"><b>${esc(v.staff.name)} · ${esc(v.staff.role)}</b><p></p></div>
       </div>
-      <div class="pov-counter"><button class="pov-pos" id="pv-pos" disabled aria-label="Card reader"><i></i><span>${isLib ? 'SCAN' : id === 'office' ? 'BADGE' : 'PAY'}</span></button><button class="pov-item" id="pv-item" disabled aria-label="Your order"></button></div>
+      <div class="pov-counter"><button class="pov-pos" id="pv-pos" disabled aria-label="Card reader"><i></i><span>${isLib ? 'SCAN' : v.posLabel || 'PAY'}</span></button><button class="pov-item" id="pv-item" disabled aria-label="Your order"></button></div>
       <div class="pov-shelf" id="pv-shelf" hidden></div>
       <div class="pov-hand l" id="pv-hl">${handSVG('l')}<div class="held" id="pv-heldl"></div></div>
       <div class="pov-hand r" id="pv-hr">${handSVG('r')}<div class="held" id="pv-heldr"></div></div>
@@ -2784,7 +2974,7 @@ function openPOV(id) {
 
   // 1. order
   step(0); povSay(v.lines.greet(S.name));
-  ask(desk ? (isLib ? 'Tap a day pass to check in.' : 'Tap how long you want a focus room.') : 'Tap what you want on the menu.');
+  ask(desk ? (isLib ? 'Tap a day pass to check in.' : `Tap how long you want your ${v.passLabel.toLowerCase()}.`) : 'Tap what you want on the menu.');
   $$('.pov-opt', el).forEach(b => b.onclick = () => {
     if (P.busy || P.ordered) return; P.ordered = true;
     $$('.pov-opt', el).forEach(x => x.classList.toggle('picked', x === b));
@@ -2813,11 +3003,11 @@ function openPOV(id) {
     if (S.settings.games) { const [k, o] = ORDER_GAME(v, it); setTimeout(() => playModal(k, o, r => orderLine(v, r)).then(done), 700); }
     else setTimeout(() => done(null), 1600);
   };
-  const itemEm = () => P.it ? (id === 'diner' ? '🍽️' : P.it.emoji) : isLib ? '🎫' : '🔑';
+  const itemEm = () => P.it ? (id === 'diner' ? '🍽️' : P.it.emoji) : isLib ? '🎫' : v.itemEm;
   const serve = () => {
     const item = $('#pv-item', el); item.innerHTML = `<span>${itemEm()}</span>${id === 'cafe' ? '<i class="steam"></i><i class="steam b"></i>' : ''}`; item.disabled = false; item.classList.add('in', 'pv-glow');
     sfx(v.sounds.serve); povSay(v.lines.serve(P.it, setup.orderNo));
-    ask(desk ? `Take your ${isLib ? 'day pass' : 'room key'}.` : id === 'diner' ? 'Take your tray.' : `Take your ${esc(P.it.name.toLowerCase())}.`);
+    ask(desk ? `Take your ${isLib ? 'day pass' : id === 'office' ? 'room key' : v.passLabel.toLowerCase()}.` : id === 'diner' ? 'Take your tray.' : `Take your ${esc(P.it.name.toLowerCase())}.`);
     item.onclick = () => { if (P.busy || P.took) return; P.took = true; item.classList.remove('pv-glow');
       reach(hr, item, () => { item.innerHTML = ''; item.classList.remove('in'); $('#pv-heldl', el).innerHTML = `<span class="held-em">${itemEm()}</span>`; sfx('thump'); setTimeout(shelf, 500); }); };
   };
@@ -2922,7 +3112,7 @@ function renderSetup(el) {
       <div class="bubble"><b>${esc(v.staff.name)} · ${esc(v.staff.role)}</b><p id="say-text" aria-live="polite"></p></div></div>
   </div>
   <div class="station">
-    <div>${!st.open ? `<div class="notice warn">${esc(v.name)} opens at ${hourLabel(v.open)}. ${isLib ? 'Gold members have 24-hour access. ' : ''}Bun & Chapter is open 24 hours, or turn off realistic hours in Passport → Settings.</div>` : isLib ? libraryDesk(v) : desk ? officeDesk(v) : v.id === 'cafe' ? chalkMenu(v) : lightboxMenu(v)}</div>
+    <div>${!st.open ? `<div class="notice warn">${esc(v.name)} opens at ${hourLabel(v.open)}. ${isLib ? 'Gold members have 24-hour access. ' : ''}Bun & Chapter is open 24 hours, or turn off realistic hours in Passport → Settings.</div>` : isLib ? libraryDesk(v) : desk ? officeDesk(v) : v.id === 'diner' ? lightboxMenu(v) : chalkMenu(v)}</div>
     <div class="card nook">
       <div><span class="eyebrow">${isLib ? 'Front desk' : esc(v.shelfName || 'Book rack')}</span><h3 style="font-size:20px;margin-top:4px">${isLib ? 'Borrow a book' : 'Pick a book to read'}</h3></div>
       <div class="shelfstrip">${setup.book ? cover(setup.book, 84) : [0, 1, 2, 3, 4, 5, 6].map(i => `<span class="spine ghost" style="--w:${22 + (i * 7) % 14}px;--h:${80 + (i * 13) % 34}px"></span>`).join('')}</div>
@@ -2932,7 +3122,7 @@ function renderSetup(el) {
     </div>
   </div>
   <div class="start-bar">
-    <p class="muted">${ready ? `All set: ${desk ? `${setup.length} minutes at ${esc(v.name)}` : `one ${esc(v.menu.find(i => i.id === setup.item).name.toLowerCase())}`} with <b>${esc(setup.book.title)}</b>.` : st.open ? `${isLib ? 'Choose a day pass' : desk ? 'Book a focus room' : 'Order at the counter'} and pick a book to sit down.` : 'Come back when it opens.'}</p>
+    <p class="muted">${ready ? `All set: ${desk ? `${setup.length} minutes at ${esc(v.name)}` : `one ${esc(v.menu.find(i => i.id === setup.item).name.toLowerCase())}`} with <b>${esc(setup.book.title)}</b>.` : st.open ? `${isLib ? 'Choose a day pass' : desk ? `Get your ${v.passLabel.toLowerCase()}` : 'Order at the counter'} and pick a book to sit down.` : 'Come back when it opens.'}</p>
     <button class="btn btn-primary" id="start" data-sfx="1" ${ready ? '' : 'disabled'}>${isLib ? 'Find a seat' : 'Take a seat'}</button>
   </div>`;
   // first line of dialogue
@@ -2955,9 +3145,9 @@ function renderSetup(el) {
 }
 function rerenderKeepTalk() { setup.spoke = 0; const y = window.scrollY; render(); window.scrollTo({ top: y }); }
 const chalkMenu = v => `<div class="chalk"><h3>${esc(v.menuTitle)}</h3>${v.menu.map(it => `<button class="row" data-item="${it.id}" aria-pressed="${setup.item === it.id}"><span class="em" aria-hidden="true">${it.emoji}</span><span>${esc(it.name)}<small>${esc(it.note)}</small></span><span class="dots"></span><span style="white-space:nowrap">${it.min} min</span></button>`).join('')}</div>`;
-const officeDesk = v => { const st = venueStatus(v); return `<div class="oak office-desk"><h3>Focus rooms${st.minsLeft < Infinity ? ` <span style="font-weight:400;font-size:14px;opacity:.85">· office closes in ${Math.floor(st.minsLeft / 60)}h ${st.minsLeft % 60}m</span>` : ''}</h3>
-    <div class="tickets">${v.lengths.map(m => { const ok = m <= st.minsLeft; return `<button class="ticket" data-len="${m}" aria-pressed="${setup.length === m}" ${ok ? '' : 'disabled'}><span class="k">Room pass</span><b>${m < 60 ? m + ' min' : m / 60 + (m === 60 ? ' hour' : ' hours')}</b><span>${ok ? (m === 25 ? 'one pomodoro' : 'breaks every 25 min') : 'past closing'}</span></button>`; }).join('')}</div>
-    <h3 style="margin:22px 0 6px">Departments</h3><div class="dept-row">${v.shelf.map(id => { const c = CATS.find(x => x.id === id); return `<span>${c.em} ${esc(c.label)}</span>`; }).join('')}</div></div>`; };
+const officeDesk = v => { const st = venueStatus(v); return `<div class="oak office-desk desk-${v.id}"><h3>${esc(v.deskTitle)}${st.minsLeft < Infinity ? ` <span style="font-weight:400;font-size:14px;opacity:.85">· closes in ${Math.floor(st.minsLeft / 60)}h ${st.minsLeft % 60}m</span>` : ''}</h3>
+    <div class="tickets">${v.lengths.map(m => { const ok = m <= st.minsLeft; return `<button class="ticket" data-len="${m}" aria-pressed="${setup.length === m}" ${ok ? '' : 'disabled'}><span class="k">${esc(v.passLabel)}</span><b>${m < 60 ? m + ' min' : m / 60 + (m === 60 ? ' hour' : ' hours')}</b><span>${ok ? (m === 25 && v.id === 'office' ? 'one pomodoro' : 'breaks every 25 min') : 'past closing'}</span></button>`; }).join('')}</div>
+    <h3 style="margin:22px 0 6px">${esc(v.shelfTitle)}</h3><div class="dept-row">${v.shelf.map(id => { const c = CATS.find(x => x.id === id); return `<span>${c.em} ${esc(c.label)}</span>`; }).join('')}</div></div>`; };
 const lightboxMenu = v => `<div class="lightbox es"><div class="es-kick">★★★★★<span>Tonight's specials!</span></div><h3 class="es-head">Burgers &amp; books</h3><p class="es-tag">Every bite is a slice of reading time.</p><div class="lbgrid">${v.menu.map(it => `<button class="lbitem" data-item="${it.id}" aria-pressed="${setup.item === it.id}"><span class="em" aria-hidden="true">${it.emoji}</span><b>${esc(it.name)}</b><span>${it.min} min · ${it.bites.length} bites</span></button>`).join('')}</div>${setup.orderNo && setup.item ? `<div class="orderno">Order #${setup.orderNo}</div>` : ''}<div class="es-burst" role="img" aria-label="Offer: double finish bonus after 10 PM"><b>2×</b><span>finish bonus<br>after 10 PM</span></div></div>`;
 function libraryDesk(v) {
   const st = venueStatus(v), tier = TIERS[S.member];
