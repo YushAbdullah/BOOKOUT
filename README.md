@@ -34,7 +34,9 @@ Books come from **Project Gutenberg**. Each of the 12 categories opens with hand
 - Plain HTML, CSS and JavaScript in one `index.html`. No build step, no server, no accounts.
 - Progress is saved in the browser (`localStorage`).
 - Font: Outfit (Google Fonts, open licence), the free fallback for Gilroy in the design system.
-- Books: [Gutendex](https://gutendex.com) catalogue, book text from gutenberg.org. If the browser blocks the direct download, the app retries through free CORS proxies (allorigins, corsproxy.io).
+- Books: a free GitHub Action (**Fetch books**, `.github/workflows/fetch-books.yml`) copies about 100 public-domain books from Project Gutenberg into `books/` and writes `books/catalog.json`. Those open instantly from your own site. It reruns monthly, or when `books/picks.json` changes, or from the Actions tab → Fetch books → Run workflow.
+- To add a book to the shelves, add its Gutenberg ID to `books/picks.json`.
+- Searching the wider catalogue uses the free [Gutendex](https://gutendex.com) API; those books download through free CORS proxies and can be slow.
 
 ## Run it
 

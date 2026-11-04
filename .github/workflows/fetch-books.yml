@@ -1,0 +1,40 @@
+name: Fetch books
+
+# Copies free Project Gutenberg books into the site so they open instantly.
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - books/picks.json
+      - books/build.py
+      - .github/workflows/fetch-books.yml
+  schedule:
+    - cron: "0 3 1 * *"   # refresh once a month
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fetch-books
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Download books
+        run: python3 books/build.py
+      - name: Commit new books
+        run: |
+          git config user.name "bookout-librarian"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add books
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Update library books"
+          git push
