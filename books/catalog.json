@@ -344,6 +344,152 @@
     "title": "The Republic",
     "author": "Plato"
    }
+  ],
+  "inspiration": [
+   {
+    "id": 4507,
+    "title": "As a Man Thinketh",
+    "author": "James Allen"
+   },
+   {
+    "id": 935,
+    "title": "Self-Help",
+    "author": "Samuel Smiles"
+   },
+   {
+    "id": 368,
+    "title": "Acres of Diamonds",
+    "author": "Russell H. Conwell"
+   },
+   {
+    "id": 2376,
+    "title": "Up from Slavery",
+    "author": "Booker T. Washington"
+   },
+   {
+    "id": 2274,
+    "title": "How to Live on 24 Hours a Day",
+    "author": "Arnold Bennett"
+   }
+  ],
+  "business": [
+   {
+    "id": 8581,
+    "title": "The Art of Money Getting",
+    "author": "P. T. Barnum"
+   },
+   {
+    "id": 20203,
+    "title": "Autobiography of Benjamin Franklin",
+    "author": "Benjamin Franklin"
+   },
+   {
+    "id": 24518,
+    "title": "Extraordinary Popular Delusions and the Madness of Crowds",
+    "author": "Charles Mackay"
+   }
+  ],
+  "innovation": [
+   {
+    "id": 820,
+    "title": "Edison, His Life and Inventions",
+    "author": "Frank Lewis Dyer and T. C. Martin"
+   },
+   {
+    "id": 2009,
+    "title": "On the Origin of Species",
+    "author": "Charles Darwin"
+   }
+  ],
+  "leadership": [
+   {
+    "id": 132,
+    "title": "The Art of War",
+    "author": "Sun Tzu"
+   },
+   {
+    "id": 1232,
+    "title": "The Prince",
+    "author": "Niccolò Machiavelli"
+   },
+   {
+    "id": 16317,
+    "title": "The Art of Public Speaking",
+    "author": "Dale Carnegie and J. Berg Esenwein"
+   },
+   {
+    "id": 2944,
+    "title": "Essays, First Series",
+    "author": "Ralph Waldo Emerson"
+   },
+   {
+    "id": 2680,
+    "title": "Meditations",
+    "author": "Marcus Aurelius"
+   }
+  ],
+  "people": [
+   {
+    "id": 16317,
+    "title": "The Art of Public Speaking",
+    "author": "Dale Carnegie and J. Berg Esenwein"
+   },
+   {
+    "id": 935,
+    "title": "Self-Help",
+    "author": "Samuel Smiles"
+   },
+   {
+    "id": 2274,
+    "title": "How to Live on 24 Hours a Day",
+    "author": "Arnold Bennett"
+   }
+  ],
+  "finance": [
+   {
+    "id": 8581,
+    "title": "The Art of Money Getting",
+    "author": "P. T. Barnum"
+   },
+   {
+    "id": 24518,
+    "title": "Extraordinary Popular Delusions and the Madness of Crowds",
+    "author": "Charles Mackay"
+   },
+   {
+    "id": 3300,
+    "title": "The Wealth of Nations",
+    "author": "Adam Smith"
+   },
+   {
+    "id": 59844,
+    "title": "The Science of Getting Rich",
+    "author": "W. D. (Wallace Delois) Wattles"
+   }
+  ],
+  "ops": [
+   {
+    "id": 6435,
+    "title": "The Principles of Scientific Management",
+    "author": "Frederick Winslow Taylor"
+   },
+   {
+    "id": 132,
+    "title": "The Art of War",
+    "author": "Sun Tzu"
+   }
+  ],
+  "sales": [
+   {
+    "id": 8581,
+    "title": "The Art of Money Getting",
+    "author": "P. T. Barnum"
+   },
+   {
+    "id": 16317,
+    "title": "The Art of Public Speaking",
+    "author": "Dale Carnegie and J. Berg Esenwein"
+   }
   ]
  }
 }
