@@ -463,10 +463,37 @@ body.splash-on{overflow:hidden}
 .sp-sky .cl::before{content:"";position:absolute;left:22%;top:-18px;width:50px;height:44px;border-radius:50%;background:#fff}
 .sp-sky .c1{width:130px;left:6%;top:16%}.sp-sky .c2{width:90px;left:60%;top:26%;animation-duration:40s}
 @keyframes cloud{to{transform:translateX(40vw)}}
-.sp-town{position:absolute;left:0;right:0;top:34%;height:22%;display:flex;justify-content:center;align-items:flex-end;gap:2%;pointer-events:none}
-.sp-town .bd{position:relative;width:min(120px,20vw);border-radius:12px 12px 0 0;box-shadow:inset 0 -10px 0 rgba(0,0,0,.08);display:grid;place-items:center;font-size:clamp(24px,5vw,38px);animation:cas-up .6s var(--ease) both}
-.sp-town .b1{height:70%;background:#f3dcc0;animation-delay:.1s}.sp-town .b2{height:100%;background:#dfe9dc;animation-delay:.18s}.sp-town .b3{height:84%;background:#f6e9f1;animation-delay:.26s}.sp-town .b4{height:62%;background:#f8dcd2;animation-delay:.34s}
-.sp-town .road{position:absolute;left:0;right:0;bottom:-26px;height:26px;background:#6d727d;box-shadow:inset 0 -3px 0 #5f646e}
+.sp-town{position:absolute;left:0;right:0;top:31%;height:25%;display:flex;justify-content:center;align-items:flex-end;gap:clamp(10px,3.4vw,34px);pointer-events:none;perspective:1100px;perspective-origin:50% -40%}
+.sp-town .bd{--th:25vh;--w:min(112px,18.5vw);--d:min(46px,7.5vw);position:relative;width:var(--w);height:var(--h);transform-style:preserve-3d;animation:cas-up .7s var(--ease) both}
+.sp-town .cube{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateX(-14deg) rotateY(-28deg);animation:sp-sway 7s ease-in-out infinite alternate}
+.sp-town .fc{position:absolute;display:block;backface-visibility:hidden}
+.sp-town .front{inset:0;transform:translateZ(calc(var(--d) / 2));background:var(--c);border-radius:6px 6px 0 0;overflow:hidden;box-shadow:inset 0 -8px 0 rgba(0,0,0,.08),inset 0 0 0 2px rgba(38,40,40,.12)}
+.sp-town .side{top:0;height:100%;width:var(--d);left:calc((var(--w) - var(--d)) / 2);transform:rotateY(90deg) translateZ(calc(var(--w) / 2));background:linear-gradient(180deg,var(--c),var(--c)),var(--c);filter:brightness(.78) saturate(1.05);border-radius:6px 6px 0 0;overflow:hidden}
+.sp-town .side::after{content:"";position:absolute;left:22%;right:22%;top:18%;bottom:30%;background:repeating-linear-gradient(180deg,rgba(60,90,120,.45) 0 12px,transparent 12px 22px)}
+.sp-town .top{left:0;width:var(--w);height:var(--d);top:calc((var(--h) - var(--d)) / 2);transform:rotateX(90deg) translateZ(calc(var(--h) / 2));background:var(--roof);box-shadow:inset 0 0 0 4px rgba(0,0,0,.08)}
+.sp-town .left{top:0;height:100%;width:var(--d);left:calc((var(--w) - var(--d)) / 2);transform:rotateY(-90deg) translateZ(calc(var(--w) / 2));background:var(--c);filter:brightness(.9)}
+.sp-town .win{position:absolute;left:12%;right:12%;top:30%;height:30%;background:linear-gradient(90deg,transparent 46%,var(--c) 46% 54%,transparent 54%),linear-gradient(180deg,#cdeeff,#8fc8e8);border-radius:4px;box-shadow:inset 0 0 0 3px rgba(255,255,255,.7),0 2px 0 rgba(0,0,0,.08)}
+.sp-town .win::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.65) 38%,transparent 46%);animation:sp-glint 5s ease-in-out infinite}
+.sp-town .door{position:absolute;left:50%;bottom:0;width:26%;height:24%;transform:translateX(-50%);background:var(--door,#6b4a33);border-radius:6px 6px 0 0;box-shadow:inset 0 0 0 2px rgba(0,0,0,.15)}
+.sp-town .awn{position:absolute;left:4%;right:4%;top:22%;height:10%;background:repeating-linear-gradient(90deg,var(--awn,#e5534b) 0 12px,#fff 12px 24px);border-radius:0 0 8px 8px;box-shadow:0 4px 0 rgba(0,0,0,.1);transform-origin:top;animation:sp-awn 3s ease-in-out infinite alternate}
+.sp-town .sign{position:absolute;left:50%;top:5%;transform:translateX(-50%);font-size:clamp(20px,4.6vw,34px);line-height:1;filter:drop-shadow(0 3px 0 rgba(0,0,0,.12));animation:sp-bob 2.6s ease-in-out infinite}
+.sp-town .lbl{position:absolute;left:8%;right:8%;bottom:28%;text-align:center;font:800 clamp(7px,1.6vw,10px)/1.4 Outfit,sans-serif;letter-spacing:.08em;color:#262828;background:rgba(255,255,255,.85);border-radius:4px}
+.sp-town .cols{position:absolute;left:10%;right:10%;top:36%;bottom:24%;background:repeating-linear-gradient(90deg,#fff 0 9%,transparent 9% 22.75%);opacity:.85}
+.sp-town .ped{position:absolute;left:-4%;right:-4%;top:14%;height:16%;background:var(--roof);clip-path:polygon(50% 0,100% 100%,0 100%)}
+.sp-town .shadow{position:absolute;left:-10%;right:-40%;bottom:-12px;height:24px;background:radial-gradient(closest-side,rgba(20,60,30,.35),transparent);transform:translateZ(-20px);filter:blur(2px)}
+.sp-town .b1{--h:calc(var(--th) * .7);--c:#f3dcc0;--roof:#c98b5a;--awn:#6BE683;animation-delay:.1s}
+.sp-town .b2{--h:calc(var(--th) * .95);--c:#e7efe3;--roof:#8aa58a;--door:#3d5a45;animation-delay:.18s}
+.sp-town .b3{--h:calc(var(--th) * .82);--c:#f6e1ec;--roof:#c77fa3;--awn:#B985E6;animation-delay:.26s}
+.sp-town .b4{--h:calc(var(--th) * .62);--c:#f8d8cc;--roof:#b44c3a;--awn:#F2A33A;animation-delay:.34s}
+.sp-town .b2 .cube{animation-delay:-2s}.sp-town .b3 .cube{animation-delay:-4s}.sp-town .b4 .cube{animation-delay:-5.5s}
+.sp-town .road{position:absolute;left:-10%;right:-10%;bottom:-34px;height:34px;background:#6d727d;transform:rotateX(38deg);transform-origin:top;box-shadow:inset 0 3px 0 #8a8f99,inset 0 -3px 0 #5f646e}
+.sp-town .road::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1px;background:repeating-linear-gradient(90deg,#f3ecd8 0 26px,transparent 26px 52px);animation:sp-road 1.6s linear infinite}
+@keyframes sp-sway{from{transform:rotateX(-14deg) rotateY(-32deg)}to{transform:rotateX(-12deg) rotateY(-18deg)}}
+@keyframes sp-bob{50%{transform:translate(-50%,-4px)}}
+@keyframes sp-awn{to{transform:scaleY(1.15)}}
+@keyframes sp-glint{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+@keyframes sp-road{to{background-position:-52px 0}}
+@media (prefers-reduced-motion:reduce){.sp-town .cube,.sp-town .sign,.sp-town .awn,.sp-town .win::after,.sp-town .road::after{animation:none}}
 .sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
@@ -512,6 +539,27 @@ body.splash-on{overflow:hidden}
 .wm-prog b{font-size:15px}.wm-prog .ch{font-size:34px}.wm-prog .ch.dim{filter:grayscale(1);opacity:.6}
 .wm-prog .xpbar{background:rgba(255,255,255,.18)}
 /* tab bar */
+.heal-fab{position:fixed;left:16px;bottom:20px;z-index:149;display:flex;align-items:center;gap:6px;height:44px;padding:0 16px 0 12px;border:0;border-radius:999px;background:var(--surface);color:var(--text);font:600 14px/1 inherit;box-shadow:0 6px 22px rgba(16,40,20,.18),inset 0 0 0 1px var(--border);transition:transform .2s}
+.heal-fab:hover{transform:translateY(-2px)}.heal-fab em{font-style:normal}
+.heal-btn.on{background:var(--primary);color:var(--on-primary)}
+.heal-btn.on span,.heal-btn#heal-hud.on{animation:heal-pulse 2.4s ease-in-out infinite}
+.heal-btn[data-n]:not([data-n=""])::after{content:attr(data-n);position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;border-radius:9px;background:var(--ink);color:#fff;font-size:11px;display:grid;place-items:center}
+.heal-btn:not(.heal-fab){position:relative}
+body.pov-on .heal-fab,body.splash-on .heal-fab,body:has(#modal-root .scrim) .heal-fab,body:has(.stagecard) .heal-fab{display:none}
+@media (max-width:1023px){.heal-fab{bottom:calc(92px + env(safe-area-inset-bottom,0px));left:12px;height:40px;padding:0 12px}.heal-fab em{display:none}}
+@keyframes heal-pulse{50%{transform:scale(1.12)}}
+.heal-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:14px 0}
+.heal-t{position:relative;display:grid;gap:2px;text-align:left;padding:14px;border-radius:16px;border:0;background:var(--surface);box-shadow:inset 0 0 0 1px var(--border);color:var(--text);cursor:pointer;transition:transform .18s,background .2s,box-shadow .2s;animation:cas-up .5s var(--ease) both;animation-delay:calc(var(--d) * 40ms)}
+.heal-t:hover{transform:translateY(-2px)}
+.heal-t .e{font-size:28px;line-height:1}.heal-t b{font-size:15px;margin-top:6px}.heal-t small{font-size:12px;color:var(--text-subtle);line-height:1.3}
+.heal-t.on{background:var(--primary);box-shadow:0 8px 20px rgba(107,230,131,.35)}.heal-t.on small{color:var(--text)}
+.heal-t .eq{position:absolute;top:14px;right:14px;display:none;gap:2px;align-items:flex-end;height:16px}
+.heal-t.on .eq{display:flex}.heal-t .eq s{width:3px;background:var(--ink);border-radius:2px;animation:heal-eq .9s ease-in-out infinite}
+.heal-t .eq s:nth-child(2){animation-delay:.2s}.heal-t .eq s:nth-child(3){animation-delay:.4s}
+@keyframes heal-eq{0%,100%{height:4px}50%{height:16px}}
+.heal-v{display:flex;align-items:center;gap:10px}.heal-v input{flex:1;accent-color:#3fbf5a}
+.heal-act{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
+@media (prefers-reduced-motion:reduce){.heal-t .eq s,.heal-btn.on span{animation:none}}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:150;display:none;justify-content:space-around;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(38,40,40,.94);backdrop-filter:blur(10px);border-radius:22px 22px 0 0;box-shadow:0 -8px 30px rgba(16,40,20,.18)}
 .tb{flex:1;max-width:90px;border:0;background:rgba(255,255,255,.06);color:#fff;border-radius:14px;padding:6px 4px;display:grid;justify-items:center;gap:2px;font:700 11px var(--font);letter-spacing:.03em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .tb .e{font-size:22px;line-height:1.1}
@@ -605,34 +653,6 @@ body.pov-on .tabbar,body.reading .tabbar,body.splash-on .tabbar,body:has(#modal-
 .info-body p+p{margin-top:12px}.info-body ul,.info-body ol{padding-left:22px;display:grid;gap:8px;margin:8px 0 0}
 .info-body a{color:var(--text);text-decoration-color:var(--primary);text-decoration-thickness:2px;text-underline-offset:3px}
 .info-body .upd{font-size:13px;color:var(--text-subtle)}
-.me{display:grid;gap:14px;margin:6px 0 18px}
-.me-top{display:flex;gap:18px;align-items:center}
-.me-ph{margin:0;flex:none;width:112px;position:relative}
-.me-ph img{width:112px;height:140px;object-fit:cover;border-radius:16px;display:block;box-shadow:0 8px 24px rgba(38,40,40,.16);background:var(--primary)}
-.me-ph.noimg img{visibility:hidden}
-.me-ph figcaption{position:absolute;left:6px;bottom:6px;font-size:10px;font-weight:600;background:rgba(255,255,255,.92);border-radius:999px;padding:2px 8px}
-.me-top .cap{font-size:12px;font-weight:600;color:var(--text-subtle);text-transform:uppercase;letter-spacing:.06em}
-.me-top h3{font-size:24px;margin:2px 0 4px}
-.me-head{font-size:17px;font-weight:600;line-height:1.35;margin:0}
-.me-head em{font-style:normal;background:linear-gradient(transparent 58%,var(--primary) 58%)}
-.me-lede{font-size:17px}
-.me-pull{margin:0;padding:10px 16px;border-left:4px solid var(--primary);font-style:italic;background:var(--surface-2,#f4f6f5);border-radius:0 12px 12px 0}
-.me-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.me-stats div{background:var(--ink);color:var(--on-ink);border-radius:14px;padding:12px}
-.me-stats b{display:block;font-size:22px;color:var(--primary)}.me-stats span{font-size:12px;line-height:1.35;display:block;opacity:.85}
-.info-body .me-h{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-subtle);margin:4px 0 -6px}
-.info-body .me-jobs{list-style:none;padding:0;gap:8px}
-.me-jobs li{display:grid;padding:10px 14px;border-radius:12px;box-shadow:inset 0 0 0 1px var(--border)}
-.me-jobs small{font-size:12px;color:var(--text-subtle)}.me-jobs span{font-size:13px;color:var(--text-subtle)}
-.me-pills{display:flex;flex-wrap:wrap;gap:6px}.me-pills span{font-size:13px;padding:4px 12px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-weight:500}
-.info-body a.me-book{display:flex;gap:14px;align-items:center;text-decoration:none;padding:12px;border-radius:14px;box-shadow:inset 0 0 0 1px var(--border);transition:transform .18s}
-.info-body a.me-book:hover{transform:translateY(-2px)}
-.me-book img{width:52px;height:78px;object-fit:cover;border-radius:4px;box-shadow:2px 3px 8px rgba(0,0,0,.2)}
-.me-book span{display:grid}.me-book small{font-size:12px;color:var(--text-subtle)}.me-book i{font-style:normal;font-size:13px;color:var(--text-subtle)}
-.me-q{margin:0;text-align:center;padding:8px 12px}.me-q blockquote{margin:0;font-size:17px;font-weight:600}.me-q figcaption{font-size:13px;color:var(--text-subtle);margin-top:4px}
-.me-links{display:flex;flex-wrap:wrap;gap:8px}.info-body .me-links a{text-decoration:none}
-.info-body .me-sync{font-size:12px;color:var(--text-subtle);margin:0}
-@media (max-width:640px){.me-stats{grid-template-columns:repeat(2,1fr)}.me-top{gap:14px}.me-ph,.me-ph img{width:92px}.me-ph img{height:116px}.me-top h3{font-size:20px}.me-head{font-size:15px}}
 .vm{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:8px}
 .vm-c{background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-lg);padding:24px}.vm-c:first-child{background:var(--surface-tint);box-shadow:none;transform:rotate(-1deg)}
 .vm-c .e{font-size:30px}.vm-c h2{margin:6px 0 6px!important}
@@ -1216,6 +1236,94 @@ function stopAmbient() {
   a.timers.forEach(clearTimeout);
   try { const c = AU.ctx; a.g.gain.cancelScheduledValues(c.currentTime); a.g.gain.setTargetAtTime(0, c.currentTime, .3); setTimeout(() => { try { a.src.stop(); a.lfo.stop(); } catch (e) {} }, 1500); } catch (e) {}
 }
+/* healing soundscapes: layered, generated live, no audio files */
+const HEAL_LIST = [
+  ['rain', '🌧️', 'Rain', 'Steady rain on the window'],
+  ['storm', '⛈️', 'Thunder', 'Far-off thunder and heavy rain'],
+  ['ocean', '🌊', 'Ocean', 'Slow waves on the beach'],
+  ['stream', '🏞️', 'Stream', 'A little river over stones'],
+  ['forest', '🌳', 'Forest birds', 'Breeze and birdsong'],
+  ['night', '🌙', 'Night crickets', 'A warm kampung night'],
+  ['fire', '🔥', 'Fireplace', 'Soft crackling fire'],
+  ['cafe', '☕', 'Café murmur', 'People, cups and spoons'],
+  ['bowl', '🔔', 'Singing bowl', 'Slow bell for calm breathing'],
+  ['calm', '🎼', 'Healing pad', 'Soft warm chords, 432 Hz'],
+  ['brown', '🟤', 'Deep focus', 'Brown noise for concentration']
+];
+const HEAL = { on: {}, vol: .7, bus: null, want: null };
+(() => { const h = store('bookout:heal'); if (h) { HEAL.vol = h.vol ?? .7; HEAL.want = h.on || []; } })();
+function healBus() { const c = ac(); if (!HEAL.bus) { HEAL.bus = c.createGain(); HEAL.bus.gain.value = HEAL.vol; HEAL.bus.connect(AU.master); } return HEAL.bus; }
+function brownBuf() {
+  if (!AU.brown) { const c = ac(), n = c.sampleRate * 4; AU.brown = c.createBuffer(1, n, c.sampleRate); const d = AU.brown.getChannelData(0); let l = 0; for (let i = 0; i < n; i++) { l = (l + .02 * (Math.random() * 2 - 1)) / 1.02; d[i] = l * 3.2; } }
+  return AU.brown;
+}
+function healLayer(id) {
+  const c = ac(), out = c.createGain(), nodes = [], timers = [], t0 = c.currentTime, me = { live: true };
+  out.gain.setValueAtTime(0, t0); out.gain.linearRampToValueAtTime(1, t0 + 2.5); out.connect(healBus());
+  const loop = (buf, type, f, q, vol) => { const s = c.createBufferSource(), fl = c.createBiquadFilter(), g = c.createGain(); s.buffer = buf; s.loop = true; fl.type = type; fl.frequency.value = f; fl.Q.value = q; g.gain.value = vol; s.connect(fl); fl.connect(g); g.connect(out); s.start(t0, Math.random() * 1.5); nodes.push(s); return { s, fl, g }; };
+  const lfo = (param, rate, depth) => { const o = c.createOscillator(), g = c.createGain(); o.frequency.value = rate; g.gain.value = depth; o.connect(g); g.connect(param); o.start(); nodes.push(o); };
+  const every = (min, max, fn) => { const tick = () => { if (!me.live) return; try { fn(c.currentTime + .02); } catch (e) {} timers.push(setTimeout(tick, (min + Math.random() * (max - min)) * 1000)); }; timers.push(setTimeout(tick, Math.random() * min * 1000)); };
+  const W = noiseBuf(), B = brownBuf();
+  if (id === 'rain' || id === 'storm') {
+    loop(W, 'lowpass', 5200, .3, id === 'storm' ? .32 : .22); const hi = loop(W, 'highpass', 6500, .5, .05); lfo(hi.g.gain, .11, .02); loop(B, 'lowpass', 400, .5, .25);
+    every(.04, .22, t => burst(t, .03 + Math.random() * .03, { freq: 2500 + Math.random() * 4000, q: 2, vol: .03 + Math.random() * .05, dest: out }));
+    if (id === 'storm') every(14, 30, t => { burst(t, 4 + Math.random() * 3, { type: 'lowpass', freq: 180, sweep: 60, q: .7, vol: .55, att: .5, dest: out }); burst(t + .1, 1.2, { type: 'lowpass', freq: 900, sweep: 120, vol: .18, att: .05, dest: out }); });
+  } else if (id === 'ocean') {
+    const w = loop(W, 'lowpass', 700, .6, .3); lfo(w.g.gain, .085, .28); lfo(w.fl.frequency, .085, 450); const d = loop(B, 'lowpass', 300, .5, .3); lfo(d.g.gain, .085, .15);
+  } else if (id === 'stream') {
+    const a = loop(W, 'bandpass', 1800, .8, .18); lfo(a.fl.frequency, 3.1, 500); const b = loop(W, 'bandpass', 3200, 1.2, .08); lfo(b.fl.frequency, 5.3, 900); loop(B, 'lowpass', 500, .5, .15);
+    every(.2, .8, t => tone(500 + Math.random() * 900, t, .05, { slide: 1200 + Math.random() * 900, vol: .015, dest: out }));
+  } else if (id === 'forest') {
+    const w = loop(W, 'lowpass', 900, .4, .07); lfo(w.g.gain, .07, .05);
+    every(1.5, 5, t => { const f = 2400 + Math.random() * 1800, n = 2 + (Math.random() * 4 | 0); for (let i = 0; i < n; i++) tone(f + Math.random() * 300, t + i * .13, .1, { slide: f * (Math.random() > .5 ? 1.35 : .75), vol: .035, dest: out }); });
+    every(6, 14, t => { tone(1300, t, .35, { slide: 1050, vol: .03, dest: out }); tone(1050, t + .4, .45, { slide: 880, vol: .03, dest: out }); });
+  } else if (id === 'night') {
+    loop(B, 'lowpass', 300, .5, .12);
+    every(.6, 1.4, t => { const f = 4300 + Math.random() * 400; for (let i = 0; i < 3; i++) tone(f, t + i * .055, .035, { type: 'triangle', vol: .016, dest: out }); });
+    every(5, 11, t => { for (let i = 0; i < 2; i++) tone(320, t + i * .5, .25, { type: 'triangle', slide: 280, vol: .025, dest: out }); });
+  } else if (id === 'fire') {
+    const r = loop(B, 'lowpass', 600, .5, .35); lfo(r.g.gain, .3, .08); loop(W, 'bandpass', 900, .4, .02);
+    every(.05, .5, t => burst(t, .01 + Math.random() * .02, { type: 'highpass', freq: 1500 + Math.random() * 3000, q: .7, vol: .05 + Math.random() * .12, dest: out }));
+    every(2, 6, t => burst(t, .25, { type: 'lowpass', freq: 300, vol: .12, dest: out }));
+  } else if (id === 'cafe') {
+    const m = loop(B, 'bandpass', 450, .8, .45); lfo(m.fl.frequency, .2, 120); const v = loop(W, 'bandpass', 1100, 2, .03); lfo(v.g.gain, .5, .02);
+    every(2.5, 7, t => { const f = 2600 + Math.random() * 1600; tone(f, t, .35, { vol: .025, dest: out }); tone(f * 1.5, t + .01, .25, { vol: .012, dest: out }); });
+    every(9, 20, t => burst(t, 1.1, { freq: 600, sweep: 1400, q: 3, vol: .05, att: .1, dest: out }));
+  } else if (id === 'bowl') {
+    every(9, 14, t => { const f = [216, 256, 288][Math.random() * 3 | 0]; [1, 2.71, 5.1].forEach((m, i) => tone(f * m, t, 9 - i * 2, { vol: .07 / (i + 1), att: .02, dest: out })); tone(f * 1.003, t, 9, { vol: .05, att: .02, dest: out }); });
+  } else if (id === 'calm') {
+    const chords = [[216, 272.2, 324, 432], [192.4, 242.4, 288.3, 384.9], [242.4, 288.3, 363.3, 432], [181.6, 228.8, 272.2, 363.3]]; let k = 0;
+    const pad = c.createBiquadFilter(); pad.type = 'lowpass'; pad.frequency.value = 900; pad.connect(out); lfo(pad.frequency, .05, 300);
+    every(8, 8, () => { const t = c.currentTime + .05; chords[k++ % chords.length].forEach(f => { ['sine', 'triangle'].forEach((ty, j) => { const o = c.createOscillator(), g = c.createGain(); o.type = ty; o.frequency.value = f * (j ? 1.002 : 1); g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(j ? .012 : .03, t + 3); g.gain.linearRampToValueAtTime(0, t + 9.5); o.connect(g); g.connect(pad); o.start(t); o.stop(t + 10); }); }); });
+  } else if (id === 'brown') { loop(B, 'lowpass', 900, .4, .5); }
+  me.stop = () => { me.live = false; timers.forEach(clearTimeout); const t = c.currentTime; out.gain.cancelScheduledValues(t); out.gain.setValueAtTime(out.gain.value, t); out.gain.linearRampToValueAtTime(0, t + 1.2); setTimeout(() => { nodes.forEach(n => { try { n.stop(); } catch (e) {} }); out.disconnect(); }, 1500); };
+  return me;
+}
+function healSave() { store('bookout:heal', { on: Object.keys(HEAL.on), vol: HEAL.vol }); }
+function healToggle(id, force) {
+  const want = force ?? !HEAL.on[id];
+  if (want && !HEAL.on[id]) { if (!S.settings.sound) { S.settings.sound = true; save(); try { renderChips(); } catch (e) {} } if (!ac()) return; HEAL.on[id] = healLayer(id); }
+  else if (!want && HEAL.on[id]) { const l = HEAL.on[id]; delete HEAL.on[id]; l.stop(); }
+  healSave(); healBadge();
+}
+function healStopAll() { Object.keys(HEAL.on).forEach(k => healToggle(k, false)); }
+function healPause() { Object.values(HEAL.on).forEach(l => l.stop()); const ids = Object.keys(HEAL.on); HEAL.on = {}; HEAL.want = ids; healBadge(); }
+function healBadge() { const n = Object.keys(HEAL.on).length; $$('.heal-btn').forEach(b => { b.classList.toggle('on', n > 0); b.dataset.n = n || ''; }); }
+function healResume() { if (HEAL.want && HEAL.want.length && S.settings.sound) { const w = HEAL.want; HEAL.want = null; w.forEach(id => HEAL_LIST.some(h => h[0] === id) && healToggle(id, true)); } }
+function openHeal() {
+  sfx('tap');
+  const tiles = HEAL_LIST.map(([id, e, l, d], i) => `<button class="heal-t ${HEAL.on[id] ? 'on' : ''}" data-heal="${id}" style="--d:${i}" aria-pressed="${!!HEAL.on[id]}"><span class="e">${e}</span><b>${l}</b><small>${d}</small><i class="eq" aria-hidden="true"><s></s><s></s><s></s></i></button>`).join('');
+  modal(`<span class="cap">Healing sounds</span><h2 class="disp sl-h">Breathe, then read</h2><p class="muted">Mix as many as you like. They keep playing while you walk and read.</p>
+    <div class="heal-g">${tiles}</div>
+    <label class="heal-v"><span>🔈</span><input type="range" min="0" max="100" value="${Math.round(HEAL.vol * 100)}" id="heal-vol" aria-label="Healing sound volume"><span>🔊</span></label>
+    <div class="heal-act"><button class="btn btn-ghost btn-sm" id="heal-off">Stop all</button><button class="btn btn-primary btn-sm" id="heal-done">Done</button></div>`, m => {
+    $$('[data-heal]', m).forEach(b => b.onclick = () => { healToggle(b.dataset.heal); const on = !!HEAL.on[b.dataset.heal]; b.classList.toggle('on', on); b.setAttribute('aria-pressed', on); });
+    $('#heal-vol', m).oninput = e => { HEAL.vol = e.target.value / 100; if (HEAL.bus) HEAL.bus.gain.setTargetAtTime(HEAL.vol, AU.ctx.currentTime, .1); healSave(); };
+    $('#heal-off', m).onclick = () => { healStopAll(); $$('[data-heal]', m).forEach(b => { b.classList.remove('on'); b.setAttribute('aria-pressed', 'false'); }); };
+    $('#heal-done', m).onclick = () => closeModal();
+  }, 'sl heal-m');
+}
+document.addEventListener('pointerdown', () => setTimeout(healResume, 50), { once: true });
 document.addEventListener('pointerdown', () => ac(), { once: true });
 document.addEventListener('click', e => { const b = e.target.closest('.btn,.hb,.chip,.navlinks button,.plate'); if (b && !b.dataset.sfx) sfx('tap'); });
 let voices = [];
@@ -1702,7 +1810,7 @@ function renderChips() {
     <span class="chip" title="Points to spend">🪙 <span class="tab">${S.points}</span> <small>pts</small></span>
     <span class="chip" title="${esc(L.title)}">⭐ <small>Lv</small> ${L.lvl}</span>
     <button class="chip" id="snd" aria-label="${S.settings.sound ? 'Mute sound' : 'Turn sound on'}">${S.settings.sound ? '🔊' : '🔇'}</button>`;
-  $('#snd').onclick = () => { S.settings.sound = !S.settings.sound; save(); renderChips(); if (!S.settings.sound) { stopAmbient(); try { speechSynthesis.cancel(); } catch (e) {} } else if (view === 'setup' || view === 'session') ambient((sess || setup).venue); };
+  $('#snd').onclick = () => { S.settings.sound = !S.settings.sound; save(); renderChips(); if (!S.settings.sound) { stopAmbient(); healPause(); try { speechSynthesis.cancel(); } catch (e) {} } else { healResume(); } if (S.settings.sound) if (view === 'setup' || view === 'session') ambient((sess || setup).venue); };
 }
 
 /* =============== scene art =============== */
@@ -2158,6 +2266,18 @@ function buildTown() {
   const cars = [{ x: -120, y: 600, v: 110, col: '#5B8DEF' }, { x: 1800, y: 655, v: -95, col: '#F2A33A' }, { x: 700, y: 600, v: 125, col: '#E5534B' }];
   return { rooms, R, solids, items, npcs, zones, lights, cars };
 }
+const MUSLIM_NAMES = /^(aina|amir|faiz|hafiz|mira|ros|mat|rahman|nadia|zara|lina|aisyah|siti|nurul|arif|hakim|farah|hana|rina|zul|azman|ahmad|muhammad|muhd|mohd|yusri|yusry|ali|fatimah|aminah|iman|irfan|haziq|syafiq|amirah|aqil|danish|adam|hasan|husin|ismail|ibrahim|khadijah|maryam|nur|nor|wan|zainab|zaki|azlan|aziz|rashid|salleh|kamal|hamzah|fauzi|hidayah|izzat|syahmi|razak|rosli|faridah)$/i;
+const MALAY_TITLES = /^(encik|cik|kak|pak|puan|abang|makcik|pakcik|tuan|haji|hajah|ustaz|ustazah|datuk|dato|tok|mak|adik)$/i;
+function greetFor(name, me) {
+  const w = String(name || '').trim().split(/\s+/), title = w.length > 1 && MALAY_TITLES.test(w[0]), first = (title ? w[1] : w[0]) || '';
+  const muslim = title || MUSLIM_NAMES.test(first), r = Math.random(), meMuslim = MUSLIM_NAMES.test(String(me || '').split(/\s+/)[0]);
+  if (muslim) return r < .6 ? [`Assalamualaikum, ${me}!`, 'Waalaikumussalam 😊'] : r < .9 ? [`Apa khabar, ${me}?`, 'Khabar baik! 😄'] : [`Eh ${me}! Sihat?`, 'Sihat, alhamdulillah!'];
+  if (/^(kumar|devi|priya|raju|ravi|siva|lakshmi|arjun)$/i.test(first)) return r < .5 ? [`Vanakkam, ${me}! Apa khabar?`, 'Baik! Vanakkam 🙏'] : [`Hello ${me}! 👋`, meMuslim ? 'Hello! Apa khabar?' : 'Hello! 👋'];
+  if (/^(mei|ling|wei|tan|lim|chong|lee|wong)$/i.test(first)) return r < .4 ? [`Ni hao, ${me}! 👋`, 'Hello! Ni hao 😄'] : [`Hello ${me}! Makan already?`, 'Sudah! You? 😄'];
+  return r < .5 ? [`Hello, ${me}! 👋`, 'Hello! 👋'] : r < .8 ? [`Hi ${me}! Apa khabar?`, 'Baik, thanks!'] : [`Hey ${me}, good to see you!`, 'You too! 😊'];
+}
+const CAR_LINES = ['Hey! Watch out! 🚗', 'Oi! Tengok jalan lah!', 'Aiyo, careful boss!', 'Hey hey hey! Look left lah!', 'Hello?! This is a road!', 'Eh! Use the zebra crossing!'];
+const OUCH_LINES = ['Ouch! Sorry, hello! 😅', 'Aduh! Sorry sorry!', 'Oops, my bad! 🙏', 'Alamak! Sorry!'];
 function say(p, text, secs = 4) { p.bubble = { text, until: performance.now() / 1000 + secs, born: performance.now() / 1000 }; }
 
 /* ---- grid + path finding ---- */
@@ -2218,7 +2338,8 @@ function mountStreet(root) {
   const spot = store('bookout:spot');
   const pl = { name: S.name, x: 320, y: 548, dir: 'down', moving: false, phase: 0, look: S.avatar, path: null, seed: 3, me: 1 };
   if (spot && !hits(T.solids, spot.x, spot.y)) { pl.x = spot.x; pl.y = spot.y; pl.dir = 'up'; }
-  const keys = new Set(); let dpr = 1, z = 1, vw = 0, vh = 0, cam = { x: 0, y: 0 }, inRoom = null, zone = null, last = performance.now(), stepT = 0, raf = 0, dark = document.createElement('canvas'), honked = 0, clickMark = null;
+  const keys = new Set(); let dpr = 1, z = 1, vw = 0, vh = 0, cam = { x: 0, y: 0 }, inRoom = null, zone = null, last = performance.now(), stepT = 0, raf = 0, dark = document.createElement('canvas'), honked = 0, clickMark = null, shake = 0, shx = 0, shy = 0;
+  const fx = [], puff = (x, y, n, o = {}) => { for (let i = 0; i < n; i++) { const a = Math.random() * 6.28, sp = (o.sp || 40) * (.4 + Math.random()); fx.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp * .5 - (o.up || 10), life: 0, max: (o.life || .6) * (.7 + Math.random() * .6), r: (o.r || 5) * (.6 + Math.random() * .8), col: o.col || 'rgba(190,175,150,' }); } }, pop = (x, y, e) => fx.push({ x, y, vx: 0, vy: -38, life: 0, max: 1.1, e });
   // ---- people who want to talk books ----
   let talkOpen = false;
   const talkTo = p => { if (talkOpen || $('#modal-root').innerHTML) return; talkOpen = true; keys.clear(); pl.path = null; p.face = 1; openTalk(p, () => { talkOpen = false; p.face = 0; }); };
@@ -2298,7 +2419,7 @@ function mountStreet(root) {
     if (dx || dy) {
       const ok = move(dx, dy); pl.moving = ok; if (!ok && pl.path) pl.path = null;
       pl.dir = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
-      if (ok) { pl.phase += dt * 13; stepT -= dt; if (stepT <= 0) { stepT = .3; if (S.settings.sound && AU.ctx) try { burst(AU.ctx.currentTime, .05, { freq: 600, vol: .035, type: 'lowpass' }); } catch (e) {} } }
+      if (ok) { pl.phase += dt * 13; stepT -= dt; if (stepT <= 0) { stepT = .3; puff(pl.x - dx * 2, pl.y, 2, { sp: 14, up: 6, life: .45, r: 3.5 }); if (S.settings.sound && AU.ctx) try { burst(AU.ctx.currentTime, .05, { freq: 600, vol: .035, type: 'lowpass' }); } catch (e) {} } }
     }
     // room changes
     const r = roomAt(pl.x, pl.y), rid = r ? r.id : (pl.y > 740 && pl.x < 980 ? 'park' : pl.y > 740 && pl.x > 1700 ? 'plaza' : null);
@@ -2337,15 +2458,33 @@ function mountStreet(root) {
       }
       if (p.lines && (p.next -= dt) <= 0) { p.next = 9 + Math.random() * 16; if (talking < 3 && (!p.bubble || p.bubble.until < now) && Math.hypot(p.x - (cam.x + vw / 2), p.y - (cam.y + vh / 2)) < Math.max(vw, vh)) say(p, p.lines[Math.floor(Math.random() * p.lines.length)], 3.5 + Math.random()); }
       if (p.staff && p.room === inRoom && !p.cat) p.dir = p.room === 'passport' ? 'up' : 'down';
+      if (!p.cat) { const d = Math.hypot(p.x - pl.x, p.y - pl.y);
+        if (d < 34 && (pl.moving || p.moving) && now - (p.greeted || -99) > 20 && now - (pl.greetT || -99) > 2.5) {
+          p.greeted = now; pl.greetT = now; const [hi, back] = greetFor(p.name, S.name || 'friend');
+          if (d < 18) { pop(p.x, p.y - 70, '💫'); say(p, 'Eh! ' + hi, 3.6); sfx('thump'); } else { pop(p.x, p.y - 70, '👋'); say(p, hi, 3.4); sfx('blip'); }
+          p.dir = Math.abs(pl.x - p.x) > Math.abs(pl.y - p.y) ? (pl.x > p.x ? 'right' : 'left') : (pl.y > p.y ? 'down' : 'up');
+          if (p.path) p.wait = Math.max(p.wait || 0, 1.8);
+          setTimeout(() => { if (TOWN && TOWN.alive) say(pl, back, 2.8); }, 1100);
+        } }
     }
     // cars
     for (const k of T.cars) {
       const ahead = q => k.v > 0 ? q.x - k.x : k.x - q.x, inLane = q => Math.abs(q.y - 14 - k.y) < 30 && ahead(q) > 30 && ahead(q) < 150;
-      const blocked = inLane(pl) || T.npcs.some(q => q.path && inLane(q)) || T.cars.some(o => o !== k && o.v * k.v > 0 && o.y === k.y && ahead(o) > 0 && ahead(o) < 110);
-      k.stop = blocked; if (inLane(pl) && now - honked > 4) { honked = now; if (S.settings.sound && AU.ctx) { tone(392, AU.ctx.currentTime, .12, { type: 'square', vol: .04 }); tone(392, AU.ctx.currentTime + .18, .16, { type: 'square', vol: .04 }); } }
+      let blocked = inLane(pl) || T.npcs.some(q => q.path && inLane(q)) || T.cars.some(o => o !== k && o.v * k.v > 0 && o.y === k.y && ahead(o) > 0 && ahead(o) < 110);
+      k.stop = blocked; if (inLane(pl) && !(now - (k.bumped || -9) < 3) && now - honked > 4) { honked = now; if (S.settings.sound && AU.ctx) { tone(392, AU.ctx.currentTime, .12, { type: 'square', vol: .04 }); tone(392, AU.ctx.currentTime + .18, .16, { type: 'square', vol: .04 }); } }
+      if (now - (k.bumped || -9) < 1.4) blocked = true;
+      if (Math.abs(pl.x - k.x) < 46 && pl.y > k.y - 14 && pl.y - 10 < k.y + 26 && now - (k.bumped || -9) > 1.4) {
+        k.bumped = now; blocked = true; const up = pl.y < k.y + 6; pl.y = up ? k.y - 24 : k.y + 60; pl.path = null; keys.clear();
+        shake = .45; puff(pl.x, pl.y, 14, { sp: 70, up: 20, life: .7, r: 7 }); pop(pl.x, pl.y - 70, '💥');
+        say(k, CAR_LINES[Math.random() * CAR_LINES.length | 0], 3.2); setTimeout(() => { if (TOWN && TOWN.alive) say(pl, OUCH_LINES[Math.random() * OUCH_LINES.length | 0], 2.8); }, 700);
+        if (S.settings.sound && AU.ctx) { const t0 = AU.ctx.currentTime; burst(t0, .25, { type: 'lowpass', freq: 400, vol: .35 }); tone(110, t0, .2, { type: 'triangle', vol: .2 }); tone(370, t0 + .12, .35, { type: 'square', vol: .05 }); tone(466, t0 + .12, .35, { type: 'square', vol: .04 }); tone(370, t0 + .55, .5, { type: 'square', vol: .05 }); tone(466, t0 + .55, .5, { type: 'square', vol: .04 }); }
+        try { navigator.vibrate && navigator.vibrate([60, 40, 90]); } catch (e) {}
+      }
       if (!blocked) k.x += k.v * dt;
       if (k.v > 0 && k.x > ST.W + 140) k.x = -140; if (k.v < 0 && k.x < -140) k.x = ST.W + 140;
     }
+    for (let i = fx.length - 1; i >= 0; i--) { const f = fx[i]; f.life += dt; if (f.life > f.max) { fx.splice(i, 1); continue; } f.x += f.vx * dt; f.y += f.vy * dt; if (!f.e) { f.vx *= .92; f.vy *= .92; } }
+    if (shake > 0) { shake -= dt; const m = Math.max(0, shake) * 22; shx = (Math.random() - .5) * m; shy = (Math.random() - .5) * m; } else shx = shy = 0;
     // camera
     const tx = Math.max(0, Math.min(ST.W - vw, pl.x - vw / 2)), ty = Math.max(-44, Math.min(ST.H - vh, pl.y - vh / 2));
     cam.x += (tx - cam.x) * Math.min(1, dt * 6); cam.y += (ty - cam.y) * Math.min(1, dt * 6);
@@ -2353,7 +2492,7 @@ function mountStreet(root) {
   const nightA = () => { const d = new Date(), h = d.getHours() + d.getMinutes() / 60; return h >= 20 || h < 5.5 ? .55 : h >= 18 ? (h - 18) / 2 * .55 : h < 7 ? (7 - h) / 1.5 * .55 : 0; };
   const draw = t => {
     const P = pats(c), W = cv.width, H = cv.height, k = dpr * z;
-    c.setTransform(k, 0, 0, k, -cam.x * k, -cam.y * k);
+    c.setTransform(k, 0, 0, k, -(cam.x + shx) * k, -(cam.y + shy) * k);
     c.fillStyle = P.grass; c.fillRect(-60, -80, ST.W + 120, ST.H + 140);
     // ground: walks, road, park paths
     c.fillStyle = P.walk; c.fillRect(0, 520, ST.W, 40); c.fillRect(0, 690, ST.W, 46);
@@ -2418,6 +2557,9 @@ function mountStreet(root) {
       for (const L of T.lights) if (L.street) { const g = c.createRadialGradient(L.x, L.y, 0, L.x, L.y, 60); g.addColorStop(0, `rgba(255,200,90,${.35 * na / .55})`); g.addColorStop(1, 'rgba(255,200,90,0)'); c.fillStyle = g; c.fillRect(L.x - 60, L.y - 60, 120, 120); }
       c.globalCompositeOperation = 'source-over';
     }
+    for (const f of fx) { const a = 1 - f.life / f.max;
+      if (f.e) { c.save(); c.globalAlpha = Math.min(1, a * 1.6); const sc = .6 + Math.min(1, f.life * 8) * .6; c.translate(f.x, f.y); c.scale(sc, sc); c.font = '26px serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(f.e, 0, 0); c.restore(); }
+      else { c.fillStyle = f.col + (a * .55).toFixed(3) + ')'; c.beginPath(); c.arc(f.x, f.y, f.r * (1 + f.life * 1.5), 0, 7); c.fill(); } }
     // screen-space labels
     c.setTransform(dpr, 0, 0, dpr, 0, 0);
     const scr = (x, y) => [(x - cam.x) * z, (y - cam.y) * z], now = performance.now() / 1000;
@@ -2426,9 +2568,9 @@ function mountStreet(root) {
     if (giver) { const q = npcQuest(), ic = !q ? '!' : !q.done ? '…' : !q.paid ? '★' : '♥', [mx, my] = scr(giver.x, giver.y - (giver.sit ? 66 : 72)), bb = Math.sin(t * 4) * 3;
       if (!(giver.bubble && giver.bubble.until > performance.now() / 1000)) { circ(c, mx, my + bb, 11, q && q.paid ? '#ff8fb1' : '#F6C453', OUTL, 2.5); c.fillStyle = '#3a2a20'; c.font = '800 14px Outfit, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(ic, mx, my + bb + 1); } }
     const q = quest(); if (q && zone !== q) { const [sx, sy] = scr(q.target.x, q.target.y - 34); const b = Math.sin(t * 5) * 5; c.save(); c.translate(sx, sy + b); c.beginPath(); c.moveTo(-9, -22); c.lineTo(9, -22); c.lineTo(9, -8); c.lineTo(17, -8); c.lineTo(0, 8); c.lineTo(-17, -8); c.lineTo(-9, -8); c.closePath(); c.fillStyle = '#E5534B'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#7a2420'; c.stroke(); c.restore(); }
-    for (const p of [...T.npcs, pl]) {
+    for (const p of [...T.npcs, pl, ...T.cars]) {
       if (!p.bubble || p.bubble.until < now) continue;
-      const age = now - p.bubble.born, left = p.bubble.until - now, s = Math.min(1, age * 6) * Math.min(1, left * 4), [sx, sy1] = scr(p.x, p.y - (p.cat ? 22 : 62) - (p.sit ? -6 : 0)), sy0 = Math.max(40, sy1);
+      const age = now - p.bubble.born, left = p.bubble.until - now, s = Math.min(1, age * 6) * Math.min(1, left * 4), [sx, sy1] = scr(p.x, p.y - (p.cat ? 22 : p.col ? 26 : 62) - (p.sit ? -6 : 0) - (p.me && [...T.npcs, ...T.cars].some(o => o.bubble && o.bubble.until > now && Math.abs(o.x - p.x) < 130 && Math.abs(o.y - p.y) < 90) ? 34 : 0)), sy0 = Math.max(40, sy1);
       c.save(); c.globalAlpha = Math.max(0, s); c.translate(sx, sy0); c.scale(.7 + .3 * s, .7 + .3 * s);
       c.font = '600 12.5px Outfit, sans-serif'; const w = Math.min(220, c.measureText(p.bubble.text).width + 22);
       rr(c, -w / 2, -30, w, 26, 13, '#fff', OUTL, 2); c.beginPath(); c.moveTo(-6, -5); c.lineTo(0, 3); c.lineTo(6, -5); c.fillStyle = '#fff'; c.fill(); c.strokeStyle = OUTL; c.lineWidth = 2; c.beginPath(); c.moveTo(-6, -4); c.lineTo(0, 3); c.lineTo(6, -4); c.stroke();
@@ -3405,8 +3547,9 @@ function renderLanding(el) {
 }
 const PAGES = {
   about: { cap: 'About', title: 'About BOOKOUT', body: `
-    <h2>About me</h2><div id="me-card"></div>
+    <h2>About me</h2><p>Hi, I'm Yusri, the person behind BOOKOUT. By day I'm a product owner in Kuala Lumpur building people technology. I also write books and speak on talent, leadership and growth. Hard times taught me that a little reading every day changes a lot.</p>
     <p>I wanted reading to feel like going out: a place to be, something to sip, people around you, and a reason to come back tomorrow. So I built the street I wish I could walk down every day.</p>
+    <p>More about me and my books at <a href="https://yushabdullah.github.io/" target="_blank" rel="noopener">yushabdullah.github.io</a>.</p>
     <p>BOOKOUT is a one-person project, built in the open and free for everyone. If you have an idea or found a bug, open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>
     <h2>What BOOKOUT is</h2><p>BOOKOUT is a free reading game. You walk down a little street called Jalan Buku, step into a café, library, bookshop, lounge, office or park, and read a real book while the place goes on around you. The drink you order is your timer, the staff suggest breaks, and every session counts towards your season.</p>
     <h2>Where the books come from</h2><p>Every built-in book is a public domain classic from <a href="https://www.gutenberg.org" target="_blank" rel="noopener">Project Gutenberg</a>. You can also add EPUB files you own.</p>` },
@@ -3428,7 +3571,6 @@ const PAGES = {
       <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
     <h2>Requests BOOKOUT makes</h2><ul><li>The app and most book texts load from GitHub Pages, which hosts BOOKOUT. GitHub may keep standard server logs such as your IP address.</li>
       <li>Fonts load from Google Fonts, which can see your IP address.</li>
-      <li>The About page loads Yusri's public profile from yushabdullah.github.io (the same GitHub Pages host) so it stays up to date.</li>
       <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
       <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
     <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
@@ -3446,90 +3588,12 @@ const PAGES = {
     <h2>8. Changes</h2><p>These terms may be updated. The date at the top shows the latest version. Continuing to use BOOKOUT means you accept the updated terms.</p>
     <h2>9. Contact</h2><p>Open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` }
 };
-/* About me profile, synced live from Yusri's portfolio (same GitHub Pages host) */
-const ME_URL = 'https://yushabdullah.github.io/';
-const ME_SNAP = {
-  name: 'Yusri Abdullah', role: 'Product owner · Author · Speaker', where: 'Kuala Lumpur, MY',
-  photo: ME_URL + 'img/headshot.jpg',
-  head: 'Hard times built me. Now I build *products* people trust.',
-  lede: "I'm Yusri, a product owner and PMO lead in Kuala Lumpur building people technology. At Aventra Group I own AG ONE Hire and shape the Intelligence Workforce System, an end-to-end HRMS that follows every employee from hire to retire. I also write white papers and speak on talent, leadership and sustainable growth.",
-  pull: '"The hardest part of AI product work usually isn\'t the model. It\'s the people, the timeline and the trust."',
-  paras: ["I started out in public policy. I studied Government and Public Policy, earned a Master's in Business Management with a 3.95 CGPA, and worked in digital marketing, customer operations, HR and teaching before moving into product and PMO.",
-    "At Aventra Group I've built PMO frameworks for the Executive Chairman's Office, run AI portfolio governance and shipped dashboards leaders use every week. Now I bring that to AG ONE Hire.",
-    'Outside work I write, teach and volunteer, and I run business planning workshops for young entrepreneurs.'],
-  pills: ['Product Ownership', 'AI Governance', 'PMO', 'Power BI', 'White papers', 'Malay & English'],
-  stats: [['81→91%', 'Timesheet productivity after a workflow redesign'], ['−30%', 'Leave processing time with a new system'], ['−70%', 'HR admin workload through automation'], ['14', 'Professional certificates, incl. Six Sigma Black Belt']],
-  jobs: [['Apr 2026 – Present', 'Senior Product Analyst & Product Owner, AG ONE Hire', 'Aventra Group Sdn. Bhd.'], ['Jan – Mar 2026', "PMO, Managed Services (Executive Chairman's Office)", 'Aventra Group'], ['Sep – Dec 2025', 'AI Portfolio Programme Management Executive, then Product Manager cum Analyst', 'Aventra Group']],
-  quote: ['“No matter how many mistakes you make or how slow you progress, you are still way ahead of everyone who isn’t trying.”', 'Tony Robbins · the quote that keeps me going'],
-  book: { title: 'Hard Times Build Resilience, Soft Times Make Us Soft', cover: ME_URL + 'img/book-cover.jpg' },
-  links: [['LinkedIn', 'https://www.linkedin.com/in/yushabdullah'], ['Facebook', 'https://www.facebook.com/share/14thwYyD85E/?mibextid=wwXIfr'], ['GitHub', 'https://github.com/YushAbdullah'], ['YouTube', 'https://www.youtube.com/@MonsiuerYush']],
-  synced: 0
-};
-function meData() { const c = store('bookout:me'); return c && c.name ? c : ME_SNAP; }
-function parseProfile(html) {
-  const d = new DOMParser().parseFromString(html, 'text/html'), q = (sel, r = d) => r.querySelector(sel), qa = (sel, r = d) => [...r.querySelectorAll(sel)];
-  const tx = el => el ? el.textContent.replace(/\s+/g, ' ').trim() : '';
-  const abs = u => { try { const x = new URL(u, ME_URL); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; } };
-  const about = q('#about'), hero = q('header.hero'); if (!about || !hero) return null;
-  const h1 = q('h1', hero), headEl = h1 && h1.cloneNode(true);
-  if (headEl) qa('em', headEl).forEach(e => e.textContent = '*' + e.textContent + '*');
-  const book = q('#book');
-  const p = {
-    name: tx(q('.brand b')) || ME_SNAP.name, role: tx(q('.eyebrow', hero)) || ME_SNAP.role,
-    where: tx(q('.portrait span', about)) || ME_SNAP.where,
-    photo: abs((q('.portrait img', about) || {}).getAttribute?.('src') || '') || ME_SNAP.photo,
-    head: tx(headEl), lede: tx(q('.lede', hero)), pull: tx(q('.pull', about)),
-    paras: qa('.text > p', about).filter(e => !e.matches('.kicker,.pull')).map(tx).filter(Boolean),
-    pills: qa('.pill', about).map(tx).filter(Boolean),
-    stats: qa('.strip .wrap > div').map(e => [tx(q('b', e)), tx(q('span', e))]).filter(a => a[0]),
-    jobs: qa('#experience .wrap > .exp > .job').slice(0, 3).map(e => [tx(q('.when', e)), tx(q('h3', e)), tx(q('.org', e))]),
-    quote: [tx(q('.love-q blockquote', about)), tx(q('.love-q figcaption', about))],
-    book: book ? { title: tx(q('h2', book)), cover: abs((q('img', book) || {}).getAttribute?.('src') || '') } : ME_SNAP.book,
-    links: [], synced: Date.now()
-  };
-  const seen = new Set();
-  qa('.socials a.soc', hero).forEach(a => { const h = abs(a.getAttribute('href')), n = tx(a); if (h && n && !seen.has(n)) { seen.add(n); p.links.push([n, h]); } });
-  if (!p.links.length) p.links = ME_SNAP.links;
-  if (!p.paras.length || !p.head) return null;
-  return p;
-}
-function meCardHTML(p) {
-  const em = t => esc(t).replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  const ago = p.synced ? new Date(p.synced).toLocaleDateString(undefined, { day: 'numeric', month: 'short', year: 'numeric' }) : '';
-  return `<div class="me">
-    <div class="me-top cas-fan"><figure class="me-ph"><img src="${esc(p.photo)}" alt="Portrait of ${esc(p.name)}" loading="lazy" onerror="this.parentNode.classList.add('noimg')"><figcaption>${esc(p.where)}</figcaption></figure>
-      <div><span class="cap">${esc(p.role)}</span><h3>${esc(p.name)}</h3><p class="me-head">${em(p.head)}</p></div></div>
-    <p class="me-lede">${esc(p.lede)}</p>
-    ${p.pull ? `<blockquote class="me-pull">${esc(p.pull)}</blockquote>` : ''}
-    ${p.paras.map(t => `<p>${esc(t)}</p>`).join('')}
-    ${p.stats.length ? `<div class="me-stats">${p.stats.map(([b, s], i) => `<div class="cas-fan" style="--d:${i}"><b>${esc(b)}</b><span>${esc(s)}</span></div>`).join('')}</div>` : ''}
-    ${p.jobs.length ? `<h4 class="me-h">Now</h4><ul class="me-jobs">${p.jobs.map(([w, t, o]) => `<li><small>${esc(w)}</small><b>${esc(t)}</b><span>${esc(o)}</span></li>`).join('')}</ul>` : ''}
-    ${p.pills.length ? `<div class="me-pills">${p.pills.map(t => `<span>${esc(t)}</span>`).join('')}</div>` : ''}
-    ${p.book && p.book.title ? `<a class="me-book" href="${ME_URL}#book" target="_blank" rel="noopener">${p.book.cover ? `<img src="${esc(p.book.cover)}" alt="" loading="lazy">` : ''}<span><small>My book</small><b>${esc(p.book.title)}</b><i>Read it on my site ↗</i></span></a>` : ''}
-    ${p.quote && p.quote[0] ? `<figure class="me-q"><blockquote>${esc(p.quote[0])}</blockquote><figcaption>${esc(p.quote[1])}</figcaption></figure>` : ''}
-    <div class="me-links"><a class="btn btn-primary btn-sm" href="${ME_URL}" target="_blank" rel="noopener">Full profile ↗</a>${p.links.map(([n, h]) => `<a class="btn btn-ghost btn-sm" href="${esc(h)}" target="_blank" rel="noopener">${esc(n)}</a>`).join('')}</div>
-    <p class="me-sync" id="me-sync">${ago ? `Synced from yushabdullah.github.io · ${esc(ago)}` : 'From yushabdullah.github.io'}</p></div>`;
-}
-let meSyncing = null;
-function syncProfile() {
-  const box = document.getElementById('me-card'); if (!box) return;
-  box.innerHTML = meCardHTML(meData());
-  const fresh = (meData().synced || 0) > Date.now() - 6 * 3600e3;
-  if (fresh || meSyncing) return;
-  meSyncing = fetch(ME_URL, { cache: 'no-cache' }).then(r => r.ok ? r.text() : Promise.reject(r.status)).then(h => {
-    const p = parseProfile(h); if (!p) throw 'parse';
-    try { localStorage.setItem('bookout:me', JSON.stringify(p)); } catch (e) {}
-    const b = document.getElementById('me-card'); if (b) b.innerHTML = meCardHTML(p);
-  }).catch(() => {}).finally(() => { meSyncing = null; });
-}
-window.parseProfile = parseProfile;
 function renderInfo(el, key) {
   const pg = PAGES[key] || PAGES.about;
   el.innerHTML = `<article class="info">
     <nav class="info-tabs" aria-label="About BOOKOUT">${[['about', 'About'], ['vision', 'Vision & mission'], ['privacy', 'Privacy'], ['terms', 'Terms']].map(([k, l]) => `<button data-go="${k}" aria-current="${k === key ? 'page' : 'false'}">${l}</button>`).join('')}</nav>
     <header class="info-hero">${MOTIF}<span class="cap cas">${esc(pg.cap)}</span><h1 class="cas" style="--d:1">${esc(pg.title)}</h1></header>
     <div class="info-body card cas-fan">${pg.body}</div></article>`;
-  if (key === 'about') syncProfile();
 }
 function footerHTML() {
   return `<footer class="foot-site"><div class="fs-in">
@@ -3647,7 +3711,7 @@ function showSplash() {
   if (seen || (/[?&]debug/.test(location.search) && !/[?&]splash/.test(location.search))) return;
   const el = document.createElement('div'); el.className = 'splash'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'BOOKOUT');
   el.innerHTML = `<div class="sp-sky"><i class="sun"></i><i class="cl c1"></i><i class="cl c2"></i></div>
-    <div class="sp-town" aria-hidden="true"><div class="bd b1"><span>☕</span></div><div class="bd b2"><span>🏛️</span></div><div class="bd b3"><span>📚</span></div><div class="bd b4"><span>🍔</span></div><div class="road"></div></div>
+    <div class="sp-town" aria-hidden="true"><div class="bd b1"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">☕</span><span class="lbl">KOPI</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b2"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="ped"></span><span class="cols"></span><span class="sign">🏛️</span><span class="lbl">LIBRARY</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b3"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">📚</span><span class="lbl">PENA</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b4"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">🍔</span><span class="lbl">BUN</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="road"></div></div>
     <div class="sp-logo"><div class="sp-badge"><span class="dots" aria-hidden="true"><i></i><i></i></span></div><h1><span class="b">BOOK</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div></div>
     <canvas class="sp-pl" id="sp-pl" width="300" height="320" aria-hidden="true"></canvas>
     <div class="sp-bottom"><button class="hub-claim" id="sp-go" disabled>Loading…</button><p class="sp-sub">Walk • Read • Collect</p><div class="sp-bar"><i id="sp-bar"></i><b id="sp-pct">0%</b></div><p class="sp-tip">${esc(TIPS[Math.floor(Math.random() * TIPS.length)])}</p></div>`;
@@ -3707,6 +3771,8 @@ function tabbarHTML() {
 function renderTabbar() {
   let tb = $('#tabbar'); if (!tb) { tb = document.createElement('nav'); tb.id = 'tabbar'; tb.className = 'tabbar'; tb.setAttribute('aria-label', 'Game'); document.body.append(tb); }
   tb.hidden = view === 'session'; tb.innerHTML = tabbarHTML();
+  let hf = $('#heal-fab'); if (!hf) { hf = document.createElement('button'); hf.id = 'heal-fab'; hf.className = 'heal-btn heal-fab'; hf.setAttribute('aria-label', 'Healing sounds'); hf.title = 'Healing sounds'; hf.innerHTML = '<span>🎧</span><em>Sounds</em>'; hf.onclick = openHeal; document.body.append(hf); }
+  hf.hidden = ['session', 'landing', 'info', 'places', 'passport'].includes(view); healBadge();
   $$('[data-tab]', tb).forEach(b => b.onclick = () => { sfx('tap'); const k = b.dataset.tab; if (k !== 'more') return go(k);
     modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings']].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
       m => $$('[data-mgo]', m).forEach(x => x.onclick = () => { closeModal(true); go(x.dataset.mgo); }), 'sl');
@@ -3997,7 +4063,7 @@ function renderSession(el) {
     <span class="sp"></span>
     <button class="hb" id="fsdown" aria-label="Smaller text">A−</button><button class="hb" id="fsup" aria-label="Larger text">A+</button>
     <button class="hb" id="pause" aria-label="Pause">Pause</button><button class="hb" id="snap" aria-label="Take a photo">📸</button>
-    <button class="hb" id="mute" aria-label="Sound">${S.settings.sound ? '🔊' : '🔇'}</button><button class="hb" id="leave">Leave</button>
+    <button class="hb heal-btn" id="heal-hud" aria-label="Healing sounds" title="Healing sounds">🎧</button><button class="hb" id="mute" aria-label="Sound">${S.settings.sound ? '🔊' : '🔇'}</button><button class="hb" id="leave">Leave</button>
   </div>
   <div class="desk ${v.id}" id="desk">
     ${v.id === 'cafe' ? `<span class="prop" style="right:3%;top:6%">${s.item.emoji}</span><span class="prop" style="left:3%;bottom:8%">🥐</span>` : v.id === 'diner' ? `<span class="prop" style="right:3%;top:6%">🥤</span><span class="prop" style="left:3%;bottom:6%">🍟</span>` : `<span class="prop" style="right:3%;top:6%">💡</span><span class="prop" style="left:3%;bottom:6%">📚</span>`}
@@ -4017,7 +4083,8 @@ function renderSession(el) {
   $('#pause', el).onclick = () => setPaused(!sess.paused); $('#resume', el).onclick = () => setPaused(false);
   $('#leave', el).onclick = () => confirmLeave(() => finish(false));
   $('#snap', el).onclick = () => openPhoto(false);
-  $('#mute', el).onclick = () => { S.settings.sound = !S.settings.sound; save(); $('#mute').textContent = S.settings.sound ? '🔊' : '🔇'; renderChips(); S.settings.sound ? ambient(sess.venue) : stopAmbient(); };
+  $('#heal-hud', el).onclick = openHeal; healBadge();
+  $('#mute', el).onclick = () => { S.settings.sound = !S.settings.sound; save(); $('#mute').textContent = S.settings.sound ? '🔊' : '🔇'; renderChips(); S.settings.sound ? (ambient(sess.venue), healResume()) : (stopAmbient(), healPause()); };
   $('#fsdown', el).onclick = () => setFs(-1); $('#fsup', el).onclick = () => setFs(1);
   bindGestures($('#book', el));
   ambient(v.id);
