@@ -1222,6 +1222,7 @@ const clothOf = b => CLOTH[hash(b.title) % CLOTH.length];
 /* =============== sound: all generated in the browser, no files =============== */
 const AU = { ctx: null, master: null, amb: null, buf: null };
 function ac() {
+  try { if (navigator.audioSession && navigator.audioSession.type !== 'playback') navigator.audioSession.type = 'playback'; } catch (e) {}
   if (!AU.ctx) {
     const C = window.AudioContext || window.webkitAudioContext; if (!C) return null;
     AU.ctx = new C(); AU.master = AU.ctx.createGain(); AU.master.gain.value = .9; AU.master.connect(AU.ctx.destination);
@@ -1386,6 +1387,15 @@ function openHeal() {
   }, 'sl heal-m');
 }
 document.addEventListener('pointerdown', () => setTimeout(healResume, 50), { once: true });
+/* iPhone: audio only unlocks inside a real tap (touchend/click), and the silent switch mutes Web Audio unless
+   a media element has played once. Unlock both on the first tap. */
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQAAAAA=';
+function unlockAudio() {
+  const c = ac(); if (!c) return;
+  try { c.resume(); const b = c.createBuffer(1, 1, 22050), s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0); } catch (e) {}
+  if (!AU.unlocked) { AU.unlocked = true; try { const a = new Audio(SILENT_WAV); a.setAttribute('playsinline', ''); a.play().catch(() => {}); } catch (e) {} }
+}
+['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { capture: true, passive: true }));
 document.addEventListener('pointerdown', () => ac(), { once: true });
 document.addEventListener('click', e => { const b = e.target.closest('.btn,.hb,.chip,.navlinks button,.plate'); if (b && !b.dataset.sfx) sfx('tap'); });
 let voices = [];
@@ -3833,7 +3843,8 @@ const festLook = (f, who) => Object.assign({}, FEST_BASE[who], f ? f[who] : {});
 /* ---- welcome music: an upbeat little jingle made live with WebAudio ---- */
 const JINGLE = { on: false, timer: 0, out: null };
 function jingleStart(f) {
-  if (JINGLE.on || !S.settings.sound) return; const c = ac(); if (!c || c.state !== 'running') return;
+  if (JINGLE.on || !S.settings.sound) return; const c = ac(); if (!c) return;
+  if (c.state !== 'running') { if (!JINGLE.waiting) { JINGLE.waiting = true; c.resume().then(() => { JINGLE.waiting = false; if (c.state === 'running') jingleStart(f); }).catch(() => { JINGLE.waiting = false; }); } return; }
   JINGLE.on = true; const out = JINGLE.out = c.createGain(); out.gain.value = 0; out.gain.linearRampToValueAtTime(.55, c.currentTime + .6); out.connect(AU.master);
   const bpm = 124, st = 60 / bpm / 4, mtof = m => 440 * Math.pow(2, (m - 69) / 12);
   const prog = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]]; // C G Am F
@@ -3885,8 +3896,8 @@ function showSplash() {
   const boy = $('#sp-boy', el), girl = $('#sp-girl', el), lb = festLook(F, 'boy'), lg = festLook(F, 'girl');
   const an = () => { if (!boy.isConnected) return; portrait(boy, lb, 3, .93); portrait(girl, lg, 3, .93); requestAnimationFrame(an); }; an();
   const mb = $('.sp-music', el); let userOff = false;
-  mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { userOff = true; jingleStop(.3); } else { userOff = false; if (!S.settings.sound) { S.settings.sound = true; save(); } ac(); setTimeout(() => jingleStart(F), 30); } };
-  el.addEventListener('pointerdown', () => { if (!userOff && !JINGLE.on) { ac(); setTimeout(() => jingleStart(F), 30); } });
+  mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { userOff = true; jingleStop(.3); } else { userOff = false; if (!S.settings.sound) { S.settings.sound = true; save(); } unlockAudio(); jingleStart(F); } };
+  const kick = e => { if (e.target.closest('#sp-go,.sp-music') || el.classList.contains('out')) return; if (!userOff && !JINGLE.on) { unlockAudio(); jingleStart(F); } }; el.addEventListener('touchend', kick, { passive: true }); el.addEventListener('click', kick);
   setTimeout(() => jingleStart(F), 300);
   const t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 200 : 1400;
   const fill = now => { const k = Math.min(1, (now - t0) / dur), pct = Math.round(k * 100); $('#sp-bar', el).style.width = pct + '%'; $('#sp-pct', el).textContent = pct + '%';
