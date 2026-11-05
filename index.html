@@ -52,7 +52,7 @@ nav.top{display:flex;align-items:center;gap:16px;padding-block:16px;flex-wrap:wr
 body.reading nav.top{display:none}
 .logo{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0}
 .wordmark{display:inline-flex;align-items:center;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
-.wordmark .b{color:var(--accent)} .wordmark .o{color:var(--ink)}
+.wordmark .b{color:var(--primary)} .wordmark .o{color:var(--ink)}
 .specs{height:.74em;width:auto;margin:0 .03em;flex:none;overflow:visible}
 .specs circle{fill:none;stroke:currentColor;stroke-width:9}.specs path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round}
 .navlinks{display:flex;gap:24px;margin-left:24px}
@@ -532,7 +532,7 @@ body.splash-on{overflow:hidden}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
 .sp-badge .specs{height:34px;color:var(--primary)}
 .sp-logo h1{display:flex;align-items:center;font:900 clamp(52px,14vw,92px)/1 var(--font);letter-spacing:-.03em;background:#fff;padding:18px 26px 12px;border-radius:28px;box-shadow:0 8px 0 #DDEBDF,0 20px 40px rgba(16,40,20,.18);transform:rotate(-2deg)}
-.sp-logo h1 .b{color:#1CBB6C}.sp-logo h1 .o{color:var(--ink)}
+.sp-logo h1 .b{color:var(--primary)}.sp-logo h1 .o{color:var(--ink)}
 .sp-rib{margin-top:-10px;background:var(--ink);color:#fff;font:700 13px var(--font);letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:10px;transform:rotate(2deg);box-shadow:0 4px 0 #000}
 .sp-pl{position:relative;z-index:2;align-self:end;width:min(240px,56vw);height:auto;animation:cas-up .7s .4s var(--ease) both}
 .sp-bottom{position:relative;z-index:2;display:grid;justify-items:center;gap:10px;width:min(420px,100%)}
@@ -4764,7 +4764,20 @@ function drawPolaroid(cv, s, img) {
   }
   c.textAlign = 'left'; c.fillStyle = '#0F1A12'; c.font = '600 26px Outfit, sans-serif'; c.fillText(v.name, 40, 650);
   c.fillStyle = '#5F655F'; c.font = '400 18px Outfit, sans-serif'; c.fillText(`${s.book.title.slice(0, 40)} · ${new Date().toLocaleDateString()}`, 40, 684);
-  c.textAlign = 'right'; c.font = '800 22px Outfit, sans-serif'; const ow = c.measureText('OUT').width; c.fillStyle = '#1CBB6C'; c.fillText('BOOK', 560 - ow, 728); c.fillStyle = '#262828'; c.fillText('OUT', 560, 728);
+  drawLogo(c, 560, 728, 22);
+}
+/* BOOKOUT logo on a canvas: B + reading-glasses OO + K in green, OUT in ink. Right-aligned at x, baseline y. */
+function drawLogo(c, x, y, size) {
+  c.save(); c.font = `900 ${size}px Outfit, sans-serif`; c.textAlign = 'left';
+  const wB = c.measureText('B').width, wK = c.measureText('K').width, wO = c.measureText('OUT').width;
+  const gh = size * .74, gw = gh * 96 / 50, gap = size * .03, total = wB + gap + gw + gap + wK + wO;
+  let cx = x - total; const top = y - size * .7 + (size * .7 - gh) / 2;
+  c.fillStyle = '#6BE683'; c.fillText('B', cx, y); cx += wB + gap;
+  const k = gh / 50; c.lineWidth = 9 * k; c.strokeStyle = '#6BE683';
+  for (const ox of [24, 72]) { c.beginPath(); c.arc(cx + ox * k, top + 26 * k, 18 * k, 0, Math.PI * 2); c.stroke(); }
+  c.beginPath(); c.lineWidth = 6 * k; c.lineCap = 'round'; c.strokeStyle = '#262828'; c.moveTo(cx + 42 * k, top + 23 * k); c.quadraticCurveTo(cx + 48 * k, top + 18 * k, cx + 54 * k, top + 23 * k); c.stroke();
+  cx += gw + gap; c.fillStyle = '#6BE683'; c.fillText('K', cx, y); cx += wK;
+  c.fillStyle = '#262828'; c.fillText('OUT', cx, y); c.restore();
 }
 function wrapText(c, text, x, y, maxW, lh, maxLines) {
   const words = text.split(' '); let line = '', n = 0;
