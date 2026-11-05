@@ -6,6 +6,14 @@
 <meta name="description" content="BOOKOUT: a cosy reading game. Walk into a café, library or burger joint, order, and read real free books.">
 <meta name="theme-color" content="#F6FEF6">
 <title>BOOKOUT</title>
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BOOKOUT">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Caveat:wght@500;700&family=Montserrat:wght@500;800&family=Bebas+Neue&display=swap">
@@ -453,7 +461,7 @@ body.st-lock{overflow:hidden}
 .more-b{display:flex;align-items:center;gap:10px;border:0;background:var(--surface-muted);box-shadow:inset 0 0 0 1px var(--border);border-radius:var(--r-md);padding:14px;font-weight:600;font-size:15px;text-align:left;animation:cas-drop .4s var(--ease) calc(var(--d) * 40ms) both}
 .more-b span{font-size:22px}
 /* splash */
-.splash{position:fixed;inset:0;z-index:500;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;background:linear-gradient(180deg,#9ED9F2 0,#CFF0DA 55%,#6BE683 55.2%,#4FBF66 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px))}
+.splash{position:fixed;inset:0;z-index:500;overflow:hidden;display:grid;grid-template-rows:auto 1fr auto;justify-items:center;background:linear-gradient(180deg,var(--sky1,#9ED9F2) 0,var(--sky2,#CFF0DA) 55%,#6BE683 55.2%,#4FBF66 100%);padding:calc(28px + env(safe-area-inset-top,0px)) 20px calc(24px + env(safe-area-inset-bottom,0px))}
 .splash.out{animation:spout .45s cubic-bezier(.64,0,.78,0) forwards}
 @keyframes spout{to{opacity:0;transform:scale(1.04)}}
 body.splash-on{overflow:hidden}
@@ -494,6 +502,32 @@ body.splash-on{overflow:hidden}
 @keyframes sp-glint{0%,60%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 @keyframes sp-road{to{background-position:-52px 0}}
 @media (prefers-reduced-motion:reduce){.sp-town .cube,.sp-town .sign,.sp-town .awn,.sp-town .win::after,.sp-town .road::after{animation:none}}
+.sp-kids{position:relative;z-index:2;align-self:end;display:flex;justify-content:center;gap:0;animation:cas-up .7s .4s var(--ease) both}
+.sp-kids .kid{position:relative;width:min(160px,38vw)}
+.sp-kids canvas{width:100%;height:auto;display:block;animation:kid-hop 2.4s ease-in-out infinite}
+.sp-kids .girl canvas{animation-delay:-1.2s}
+.sp-kids .wave{position:absolute;top:22%;font-size:clamp(22px,6vw,32px);animation:kid-wave 1.2s ease-in-out infinite;transform-origin:70% 90%}
+.sp-kids .boy .wave{left:4%}.sp-kids .girl .wave{right:4%;animation-delay:-.6s}
+@keyframes kid-hop{0%,100%{transform:translateY(0)}45%{transform:translateY(-8px)}55%{transform:translateY(-8px)}}
+@keyframes kid-wave{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(18deg)}}
+.sp-music{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:14px;z-index:6;border:0;border-radius:999px;padding:8px 14px;background:rgba(255,255,255,.9);color:#262828;font:700 13px/1 Outfit,sans-serif;box-shadow:0 6px 18px rgba(16,40,20,.18);cursor:pointer;animation:mus-pulse 1.6s ease-in-out infinite}
+.sp-music.on{background:var(--primary);animation:none}
+@keyframes mus-pulse{50%{transform:scale(1.06)}}
+.sp-fest{margin-top:14px;display:grid;justify-items:center;gap:2px;background:rgba(255,255,255,.92);border-radius:16px;padding:8px 16px;box-shadow:0 8px 22px rgba(16,40,20,.16);animation:cas-up .6s .5s var(--ease) both}
+.sp-fest b{font-size:clamp(15px,4.2vw,20px);color:#262828}.sp-fest span{font-size:12px;color:#4E544F}
+.sp-fx{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:1}
+.sp-fx span{position:absolute;top:-8%;animation:fest-fall linear infinite;opacity:.9}
+@keyframes fest-fall{0%{transform:translate(0,0) rotate(0)}50%{transform:translate(18px,55vh) rotate(160deg)}100%{transform:translate(-10px,112vh) rotate(320deg)}}
+.sp-garland{position:absolute;left:-2%;right:-2%;top:29%;height:30px;display:flex;justify-content:space-between;z-index:1;pointer-events:none}
+.sp-garland::before{content:"";position:absolute;left:0;right:0;top:2px;height:2px;background:rgba(38,40,40,.35);border-radius:2px}
+.sp-garland i{width:4%;height:22px;background:var(--c);clip-path:polygon(0 0,100% 0,50% 100%);margin-top:3px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.1);transform-origin:top;animation:flag-sway 2.4s ease-in-out infinite;animation-delay:calc(var(--d) * -.2s)}
+@keyframes flag-sway{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(6deg)}}
+.splash.night .sp-sky .sun{background:#FFF6D8;box-shadow:0 0 0 14px rgba(255,246,216,.15),0 0 60px 20px rgba(255,246,216,.35)}
+.splash.night .sp-sky .cl{opacity:.25}
+.splash.night .sp-sky .stars{position:absolute;inset:0 0 50% 0;background-image:radial-gradient(2px 2px at 12% 20%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 30% 8%,#fff 50%,transparent 51%),radial-gradient(2px 2px at 48% 26%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 66% 12%,#fff 50%,transparent 51%),radial-gradient(2px 2px at 84% 30%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 92% 6%,#fff 50%,transparent 51%),radial-gradient(1.5px 1.5px at 22% 36%,#fff 50%,transparent 51%);animation:twinkle 3s ease-in-out infinite alternate}
+@keyframes twinkle{to{opacity:.5}}
+.splash.night .sp-sub,.splash.night .sp-tip{color:#fff}
+@media (prefers-reduced-motion:reduce){.sp-fx,.sp-kids canvas,.sp-kids .wave,.sp-garland i,.sp-music{animation:none}}
 .sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
@@ -1935,16 +1969,16 @@ function drawPerson(c, p, t) {
   const head = L.head || (L.hair === 'hijab' ? 'tudung_a' : L.hair === 'cap' ? 'cap' : 'none');
   const style = L.hair === 'hijab' || L.hair === 'cap' || !L.hair ? 'short' : L.hair;
   const tud = head.startsWith('tudung'), fem = L.gender === 'female' || tud, outfit = L.outfit || 'casual';
-  const kurung = outfit === 'baju' && fem, melayu = outfit === 'baju' && !fem;
+  const kurung = outfit === 'baju' && fem, melayu = outfit === 'baju' && !fem, longTop = kurung || outfit === 'kurta' || (fem && outfit === 'samfu');
   const bob = p.moving ? -Math.abs(Math.sin(p.phase)) * 2.2 : Math.sin(t * 2 + (p.seed || 0)) * .5;
   const y = p.y + (sit ? 6 : 0);
-  const skin = LOOKS.skins[(L.skin || 0) % 6], hair = LOOKS.hairc[(L.hc || 0) % 8], shirt = LOOKS.shirts[(L.shirt || 0) % 8];
+  const skin = LOOKS.skins[(L.skin || 0) % 6], hair = L.hairHex || LOOKS.hairc[(L.hc || 0) % 8], shirt = L.shirtHex || LOOKS.shirts[(L.shirt || 0) % 8];
   const pants = L.pants || (outfit === 'smart' ? '#2d3142' : melayu ? shirt : '#3b3f5c');
   const shade = (hex, f) => { const n = parseInt(hex.slice(1), 16); const ch = s => Math.max(0, Math.min(255, Math.round(((n >> s) & 255) * f))); return `rgb(${ch(16)},${ch(8)},${ch(0)})`; };
   c.fillStyle = 'rgba(40,25,10,.2)'; c.beginPath(); c.ellipse(x, p.y + 1, 13, 5, 0, 0, 7); c.fill();
   if (!sit) {
     const s = p.moving ? Math.sin(p.phase) * 3 : 0;
-    if (kurung) { rr(c, x - 7, y - 3 - Math.max(0, s), 6, 4, 2, '#3a2a20', OUTL, 1.5); rr(c, x + 1, y - 3 - Math.max(0, -s), 6, 4, 2, '#3a2a20', OUTL, 1.5); rr(c, x - 11, y - 14, 22, 12, 4, shade(shirt, .8), OUTL, 2); }
+    if (longTop && fem) { rr(c, x - 7, y - 3 - Math.max(0, s), 6, 4, 2, '#3a2a20', OUTL, 1.5); rr(c, x + 1, y - 3 - Math.max(0, -s), 6, 4, 2, '#3a2a20', OUTL, 1.5); rr(c, x - 11, y - 14, 22, 12, 4, L.skirtHex || shade(shirt, .8), OUTL, 2); }
     else { rr(c, x - 8, y - 12 - Math.max(0, s), 7, 12, 3, pants, OUTL, 2); rr(c, x + 1, y - 12 - Math.max(0, -s), 7, 12, 3, pants, OUTL, 2); }
   }
   const by = y + bob, hy = by - 40, R = 13;
@@ -1956,12 +1990,15 @@ function drawPerson(c, p, t) {
   if (style === 'pony' && !tud) { const px = dir === 'left' ? x + 13 : dir === 'right' ? x - 13 : x; if (!front || dir !== 'down') { circ(c, px, hy - 2, 6, hair, OUTL, 2); rr(c, px - 3, hy + 2, 6, 14, 3, hair, OUTL, 1.8); } }
   if (tud) rr(c, x - (head === 'tudung_b' ? 18 : 16), by - 44, head === 'tudung_b' ? 36 : 32, head === 'tudung_b' ? 30 : 24, 11, hair, OUTL, 2);
   // body
-  if (kurung) rr(c, x - 12, by - 28, 24, 22, 8, shirt, OUTL, 2.2); else rr(c, x - 12, by - 28, 24, 19, 8, shirt, OUTL, 2.2);
+  if (longTop) rr(c, x - 12, by - 28, 24, 22, 8, shirt, OUTL, 2.2); else rr(c, x - 12, by - 28, 24, 19, 8, shirt, OUTL, 2.2);
   if (front) {
     c.lineWidth = 1.6; c.strokeStyle = OUTL;
     if (outfit === 'smart') { c.fillStyle = '#fff'; c.beginPath(); c.moveTo(x - 6, by - 27); c.lineTo(x, by - 21); c.lineTo(x + 6, by - 27); c.closePath(); c.fill(); c.stroke(); c.beginPath(); c.moveTo(x, by - 21); c.lineTo(x, by - 11); c.stroke(); }
     if (melayu) { rr(c, x - 5, by - 30, 10, 4, 2, shade(shirt, .8), OUTL, 1.4); c.fillStyle = '#f6d27a'; [-24, -20, -16].forEach(d => { c.beginPath(); c.arc(x, by + d, 1.1, 0, 7); c.fill(); }); rr(c, x - 13, by - 15, 26, 7, 2, '#b8862b', OUTL, 1.6); c.strokeStyle = '#f6d27a'; c.beginPath(); c.moveTo(x - 9, by - 9); c.lineTo(x - 3, by - 14); c.moveTo(x + 1, by - 9); c.lineTo(x + 7, by - 14); c.stroke(); }
     if (kurung) { c.strokeStyle = OUTL; c.beginPath(); c.arc(x, by - 28, 4, .1 * Math.PI, .9 * Math.PI); c.stroke(); c.fillStyle = 'rgba(255,255,255,.55)'; [[-6, -18], [5, -14], [-2, -10], [6, -22]].forEach(([a, b]) => { c.beginPath(); c.arc(x + a, by + b, 1.5, 0, 7); c.fill(); }); }
+    if (outfit === 'samfu') { rr(c, x - 5, by - 30, 10, 4, 2, L.trimHex || '#f6d27a', OUTL, 1.3); c.strokeStyle = L.trimHex || '#f6d27a'; c.lineWidth = 1.6; [-23, -18, -13].forEach(d => { c.beginPath(); c.moveTo(x - 3, by + d); c.lineTo(x + 3, by + d); c.stroke(); }); }
+    if (outfit === 'kurta') { c.strokeStyle = L.trimHex || '#f6d27a'; c.lineWidth = 2; c.beginPath(); c.moveTo(x, by - 28); c.lineTo(x, by - 17); c.stroke(); c.fillStyle = L.trimHex || '#f6d27a'; [-26, -22, -18].forEach(d => { c.beginPath(); c.arc(x + 2.5, by + d, 1, 0, 7); c.fill(); }); c.beginPath(); c.arc(x, by - 28, 5, .05 * Math.PI, .95 * Math.PI); c.stroke(); for (let i = -9; i <= 9; i += 4.5) { c.beginPath(); c.arc(x + i, by - 8, 1.2, 0, 7); c.fill(); } }
+    if (outfit === 'sweater') { c.strokeStyle = L.trimHex || '#fff'; c.lineWidth = 1.8; c.beginPath(); for (let i = 0; i <= 6; i++) c.lineTo(x - 11 + i * 3.7, by - 19 + (i % 2 ? -3 : 0)); c.stroke(); rr(c, x - 12, by - 12, 24, 3, 1, 'rgba(255,255,255,.35)', null); if (L.scarfHex) { rr(c, x - 10, by - 31, 20, 5, 2.5, L.scarfHex, OUTL, 1.4); rr(c, x + 3, by - 28, 5, 10, 2, L.scarfHex, OUTL, 1.4); } }
     if (outfit === 'jersey') { c.strokeStyle = '#fff'; c.lineWidth = 2; c.beginPath(); c.moveTo(x - 11, by - 22); c.lineTo(x - 6, by - 27); c.moveTo(x + 11, by - 22); c.lineTo(x + 6, by - 27); c.stroke(); c.fillStyle = '#fff'; c.font = '800 9px Archivo, Outfit, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('7', x, by - 17); }
   }
   if (head === 'tudung_b' && front) rr(c, x - 14, by - 31, 28, 13, 8, hair, OUTL, 2);
@@ -3748,24 +3785,114 @@ function openSpin() {
   }, 'sl', );
   const r = $('#modal-root .modal'); if (r) r.addEventListener('click', () => {}, { once: true });
 }
+/* ---- celebrations: the start screen dresses up for festivals (dates for lunar festivals are approximate) ---- */
+const FEST_BASE = {
+  boy: { gender: 'male', skin: 2, hair: 'short', hc: 0, head: 'none', outfit: 'casual', acc: 'none', shirt: 1 },
+  girl: { gender: 'female', skin: 2, hair: 'long', hc: 6, head: 'tudung_a', outfit: 'casual', acc: 'none', shirt: 7 }
+};
+const FESTS = [
+  { id: 'raya', name: 'Hari Raya Aidilfitri', greet: 'Selamat Hari Raya Aidilfitri', sub: 'Maaf zahir dan batin', fx: ['🌙', '✨', '🪔', '🎉'], flags: ['#1CBB6C', '#F6C453', '#ffffff'], sky: ['#BFE8D6', '#F3F9E8'], scale: 'major',
+    dates: [['2027-03-09', '2027-03-24'], ['2028-02-26', '2028-03-12']],
+    boy: { outfit: 'baju', head: 'songkok', shirtHex: '#1F8A5B' }, girl: { outfit: 'baju', head: 'tudung_b', shirtHex: '#1F8A5B', hairHex: '#F3E3B5', skirtHex: '#176B47' } },
+  { id: 'ramadan', name: 'Ramadan', greet: 'Ramadan Kareem', sub: 'Salam Ramadan, happy reading after iftar', fx: ['🌙', '⭐', '✨'], flags: ['#2E4A6B', '#F6C453', '#ffffff'], sky: ['#2E3F6B', '#9FB8E0'], night: 1, scale: 'major',
+    dates: [['2027-02-08', '2027-03-08'], ['2028-01-28', '2028-02-25']],
+    boy: { outfit: 'baju', head: 'kopiah', shirtHex: '#F7F1E3' }, girl: { outfit: 'baju', head: 'tudung_a', shirtHex: '#8FA8D8', hairHex: '#F7F1E3', skirtHex: '#6F86B8' } },
+  { id: 'adha', name: 'Hari Raya Aidiladha', greet: 'Selamat Hari Raya Aidiladha', sub: 'Salam Aidiladha', fx: ['🌙', '✨', '🕌'], flags: ['#B8862B', '#1CBB6C', '#ffffff'], sky: ['#F7E3B5', '#FBF6EA'], scale: 'major',
+    dates: [['2026-05-25', '2026-05-30'], ['2027-05-14', '2027-05-19'], ['2028-05-03', '2028-05-08']],
+    boy: { outfit: 'baju', head: 'songkok', shirtHex: '#7A4A2A' }, girl: { outfit: 'baju', head: 'tudung_b', shirtHex: '#C9A15A', hairHex: '#7A4A2A', skirtHex: '#A07B3A' } },
+  { id: 'cny', name: 'Chinese New Year', greet: 'Gong Xi Fa Cai', sub: 'Happy Chinese New Year', fx: ['🏮', '🧧', '🍊', '🎆'], flags: ['#E5534B', '#F6C453', '#E5534B'], sky: ['#FFD9C9', '#FFF4E3'], scale: 'penta',
+    dates: [['2027-02-01', '2027-02-14'], ['2028-01-21', '2028-02-03']],
+    boy: { outfit: 'samfu', shirtHex: '#D23B2F', pants: '#2b1d16' }, girl: { outfit: 'samfu', head: 'tudung_a', shirtHex: '#D23B2F', hairHex: '#F6C453', skirtHex: '#9E2A22' } },
+  { id: 'mooncake', name: 'Mid-Autumn Festival', greet: 'Happy Mid-Autumn Festival', sub: 'Mooncakes and lanterns tonight', fx: ['🏮', '🥮', '🌕'], flags: ['#F2A33A', '#E5534B', '#F6C453'], sky: ['#3B3F6B', '#B9A9E0'], night: 1, scale: 'penta',
+    dates: [['2027-09-12', '2027-09-17'], ['2028-09-30', '2028-10-05']],
+    boy: { outfit: 'samfu', shirtHex: '#F2A33A', trimHex: '#7A2E2E', pants: '#2b1d16' }, girl: { outfit: 'samfu', head: 'tudung_a', shirtHex: '#F2A33A', trimHex: '#7A2E2E', hairHex: '#7A2E2E', skirtHex: '#C9792A' } },
+  { id: 'deepavali', name: 'Deepavali', greet: 'Happy Deepavali', sub: 'May light win over darkness', fx: ['🪔', '✨', '🌼', '🎇'], flags: ['#F2A33A', '#E5534B', '#9C6ADE', '#1CBB6C'], sky: ['#FFE0B8', '#FFF6E6'], scale: 'major',
+    dates: [['2026-11-02', '2026-11-11'], ['2027-10-23', '2027-11-01'], ['2028-10-11', '2028-10-20']],
+    boy: { outfit: 'kurta', shirtHex: '#F2A33A', trimHex: '#7A2E2E', pants: '#f7f1e3' }, girl: { outfit: 'kurta', head: 'tudung_a', shirtHex: '#C2306A', trimHex: '#F6C453', hairHex: '#F6C453', skirtHex: '#8E2350' } },
+  { id: 'christmas', name: 'Christmas', greet: 'Merry Christmas', sub: 'Warm drinks and good books', fx: ['❄️', '🎄', '⭐', '🎁'], flags: ['#E5534B', '#1CBB6C', '#ffffff'], sky: ['#CFE3F2', '#F4FAFF'], bells: 1, scale: 'major',
+    dates: [['12-18', '12-27']],
+    boy: { outfit: 'sweater', shirtHex: '#C8382E', scarfHex: '#1F8A5B' }, girl: { outfit: 'sweater', head: 'tudung_a', shirtHex: '#1F8A5B', hairHex: '#C8382E', scarfHex: '#F7F1E3' } },
+  { id: 'newyear', name: 'New Year', greet: 'Happy New Year', sub: 'New year, new books', fx: ['🎆', '🎉', '✨', '🥳'], flags: ['#6BE683', '#262828', '#F6C453'], sky: ['#2A2F4F', '#8D93C7'], night: 1, scale: 'major',
+    dates: [['12-30', '12-31'], ['01-01', '01-04']],
+    boy: { outfit: 'smart', shirtHex: '#2E4A6B' }, girl: { outfit: 'baju', head: 'tudung_a', shirtHex: '#9C6ADE', hairHex: '#262828', skirtHex: '#2E4A6B' } },
+  { id: 'merdeka', name: 'Merdeka & Malaysia Day', greet: 'Selamat Hari Merdeka', sub: 'Sayangi Malaysiaku, jom membaca', fx: ['🇲🇾', '🎉', '⭐'], flags: ['#CC0001', '#ffffff', '#010066', '#FFCC00'], sky: ['#CFE8FF', '#F4FAFF'], scale: 'major',
+    dates: [['08-25', '09-16']],
+    boy: { outfit: 'baju', head: 'songkok', shirtHex: '#2E3F8F' }, girl: { outfit: 'baju', head: 'tudung_a', shirtHex: '#CC2B2B', hairHex: '#F7F1E3', skirtHex: '#2E3F8F' } },
+  { id: 'bookday', name: 'World Book Day', greet: 'Happy World Book Day', sub: 'Read one more chapter today', fx: ['📚', '📖', '✨'], flags: ['#6BE683', '#5B8DEF', '#F2A33A'], sky: ['#DFF5FF', '#F6FEF6'], scale: 'major',
+    dates: [['04-21', '04-25']],
+    boy: { outfit: 'smart', shirtHex: '#5B8DEF', acc: 'glasses' }, girl: { outfit: 'baju', head: 'tudung_a', shirtHex: '#6BE683', hairHex: '#2E4A6B', skirtHex: '#2E4A6B', acc: 'glasses' } }
+];
+function festNow(d = new Date()) {
+  const q = (location.search.match(/[?&]fest=(\w+)/) || [])[1];
+  if (q) return q === 'none' ? null : FESTS.find(f => f.id === q) || null;
+  const ymd = dayKey(d), md = ymd.slice(5);
+  return FESTS.find(f => f.dates.some(([a, b]) => a.length === 5 ? (a <= b ? md >= a && md <= b : md >= a || md <= b) : ymd >= a && ymd <= b)) || null;
+}
+const festLook = (f, who) => Object.assign({}, FEST_BASE[who], f ? f[who] : {});
+
+/* ---- welcome music: an upbeat little jingle made live with WebAudio ---- */
+const JINGLE = { on: false, timer: 0, out: null };
+function jingleStart(f) {
+  if (JINGLE.on || !S.settings.sound) return; const c = ac(); if (!c || c.state !== 'running') return;
+  JINGLE.on = true; const out = JINGLE.out = c.createGain(); out.gain.value = 0; out.gain.linearRampToValueAtTime(.55, c.currentTime + .6); out.connect(AU.master);
+  const bpm = 124, st = 60 / bpm / 4, mtof = m => 440 * Math.pow(2, (m - 69) / 12);
+  const prog = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]]; // C G Am F
+  const pent = [72, 74, 76, 79, 81, 84], maj = [72, 74, 76, 77, 79, 81, 83, 84];
+  const tune = f && f.scale === 'penta'
+    ? [0, -1, 2, -1, 3, 2, 1, -1, 0, -1, 1, 2, 4, -1, 3, -1, 5, -1, 4, 3, 2, -1, 1, -1, 2, 3, 2, 1, 0, -1, -1, -1]
+    : [4, -1, 4, 5, 7, -1, 5, 4, 2, -1, 2, 4, 5, -1, 4, 2, 0, -1, 0, 2, 4, -1, 2, 0, 1, -1, 2, 4, 7, -1, -1, -1];
+  const scale = f && f.scale === 'penta' ? pent : maj;
+  const nz = (t, dur, o) => burst(t, dur, Object.assign({ dest: out }, o));
+  const voice = (m, t, dur, type, vol, cut) => { const o = c.createOscillator(), g = c.createGain(), fl = c.createBiquadFilter(); o.type = type; o.frequency.value = mtof(m); fl.type = 'lowpass'; fl.frequency.value = cut || 3000; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dur); o.connect(fl); fl.connect(g); g.connect(out); o.start(t); o.stop(t + dur + .05); };
+  let step = 0, next = c.currentTime + .08;
+  const tick = () => {
+    if (!JINGLE.on) return;
+    while (next < c.currentTime + .15) {
+      const bar = Math.floor(step / 16) % 4, s16 = step % 16, ch = prog[bar], t = next;
+      if (s16 % 4 === 0) { const k = c.createOscillator(), g = c.createGain(); k.frequency.setValueAtTime(150, t); k.frequency.exponentialRampToValueAtTime(45, t + .12); g.gain.setValueAtTime(.5, t); g.gain.exponentialRampToValueAtTime(.001, t + .16); k.connect(g); g.connect(out); k.start(t); k.stop(t + .2); }
+      if (s16 === 4 || s16 === 12) nz(t, .12, { freq: 1800, q: .8, vol: .22 });
+      if (s16 % 2 === 1) nz(t, .03, { type: 'highpass', freq: 8000, vol: f && f.bells ? .12 : .06 });
+      if (f && f.bells && s16 % 2 === 0) voice(96 + (s16 % 4 ? 0 : 3), t, .12, 'sine', .03);
+      if (s16 % 4 === 0 || s16 === 10) voice(ch[0] - 24, t, st * 3, 'triangle', .22, 900);
+      if (s16 === 2 || s16 === 6 || s16 === 10 || s16 === 14) ch.forEach(m => voice(m, t, st * 1.6, 'square', .028, 1800));
+      const n = tune[step % 32]; if (n >= 0) voice(scale[n % scale.length], t, st * 2.2, 'triangle', .13, 4000);
+      step++; next += st;
+    }
+  };
+  JINGLE.timer = setInterval(tick, 25); tick();
+  $$('.sp-music').forEach(b => { b.classList.add('on'); b.textContent = '🎵 Music on'; });
+}
+function jingleStop(fade = .8) {
+  if (!JINGLE.on) return; JINGLE.on = false; clearInterval(JINGLE.timer);
+  const c = AU.ctx, o = JINGLE.out; if (c && o) { o.gain.cancelScheduledValues(c.currentTime); o.gain.setValueAtTime(o.gain.value, c.currentTime); o.gain.linearRampToValueAtTime(0, c.currentTime + fade); setTimeout(() => o.disconnect(), fade * 1000 + 600); }
+  $$('.sp-music').forEach(b => { b.classList.remove('on'); b.textContent = '🎵 Play music'; });
+}
+
 /* ---- splash ---- */
 const TIPS = ['Tip: favourite a place with the heart and it moves to the top.', 'Tip: take the breaks the staff suggest. They raise your Wellbeing score.', 'Tip: talk to readers with a 💬 to earn the Book Buddy badge.', 'Tip: three lost pages hide on the street every day.', 'Tip: a 60+ stage score wins the round.'];
 function showSplash() {
   let seen = false; try { seen = sessionStorage.getItem('bookout:splash') === '1'; } catch (e) {}
   if (seen || (/[?&]debug/.test(location.search) && !/[?&]splash/.test(location.search))) return;
-  const el = document.createElement('div'); el.className = 'splash'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'BOOKOUT');
-  el.innerHTML = `<div class="sp-sky"><i class="sun"></i><i class="cl c1"></i><i class="cl c2"></i></div>
+  const F = festNow();
+  const el = document.createElement('div'); el.className = 'splash' + (F ? ' fest fest-' + F.id + (F.night ? ' night' : '') : ''); el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'BOOKOUT');
+  if (F) { el.style.setProperty('--sky1', F.sky[0]); el.style.setProperty('--sky2', F.sky[1]); }
+  el.innerHTML = `<div class="sp-sky"><i class="sun"></i><i class="cl c1"></i><i class="cl c2"></i>${F && F.night ? '<i class="stars"></i>' : ''}</div>${F ? `<div class="sp-fx" aria-hidden="true">${Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 6.3 + (i % 3) * 2.1) % 100}%;animation-delay:${(i * .73) % 6}s;animation-duration:${6 + (i % 5)}s;font-size:${16 + (i % 4) * 5}px">${F.fx[i % F.fx.length]}</span>`).join('')}</div><div class="sp-garland" aria-hidden="true">${Array.from({ length: 22 }, (_, i) => `<i style="--c:${F.flags[i % F.flags.length]};--d:${i}"></i>`).join('')}</div>` : ''}<button class="sp-music" type="button">🎵 Play music</button>
     <div class="sp-town" aria-hidden="true"><div class="bd b1"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">☕</span><span class="lbl">KOPI</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b2"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="ped"></span><span class="cols"></span><span class="sign">🏛️</span><span class="lbl">LIBRARY</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b3"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">📚</span><span class="lbl">PENA</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b4"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">🍔</span><span class="lbl">BUN</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="road"></div></div>
-    <div class="sp-logo"><div class="sp-badge"><span class="dots" aria-hidden="true"><i></i><i></i></span></div><h1><span class="b">BOOK</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div></div>
-    <canvas class="sp-pl" id="sp-pl" width="300" height="320" aria-hidden="true"></canvas>
+    <div class="sp-logo"><div class="sp-badge"><span class="dots" aria-hidden="true"><i></i><i></i></span></div><h1><span class="b">BOOK</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div>${F ? `<div class="sp-fest"><b>${esc(F.fx[0])} ${esc(F.greet)}</b><span>${esc(F.sub)}</span></div>` : ''}</div>
+    <div class="sp-kids" aria-hidden="true"><div class="kid boy"><canvas id="sp-boy" width="220" height="260"></canvas><span class="wave">👋</span></div><div class="kid girl"><canvas id="sp-girl" width="220" height="260"></canvas><span class="wave">👋</span></div></div>
     <div class="sp-bottom"><button class="hub-claim" id="sp-go" disabled>Loading…</button><p class="sp-sub">Walk • Read • Collect</p><div class="sp-bar"><i id="sp-bar"></i><b id="sp-pct">0%</b></div><p class="sp-tip">${esc(TIPS[Math.floor(Math.random() * TIPS.length)])}</p></div>`;
   document.body.append(el); document.body.classList.add('splash-on');
-  const pl = $('#sp-pl', el); const an = () => { if (!pl.isConnected) return; portrait(pl, S.avatar.gender ? S.avatar : Object.assign({}, S.avatar, { gender: 'male' }), 3.4, .92); requestAnimationFrame(an); }; an();
+  const boy = $('#sp-boy', el), girl = $('#sp-girl', el), lb = festLook(F, 'boy'), lg = festLook(F, 'girl');
+  const an = () => { if (!boy.isConnected) return; portrait(boy, lb, 3, .93); portrait(girl, lg, 3, .93); requestAnimationFrame(an); }; an();
+  const mb = $('.sp-music', el); let userOff = false;
+  mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { userOff = true; jingleStop(.3); } else { userOff = false; if (!S.settings.sound) { S.settings.sound = true; save(); } ac(); setTimeout(() => jingleStart(F), 30); } };
+  el.addEventListener('pointerdown', () => { if (!userOff && !JINGLE.on) { ac(); setTimeout(() => jingleStart(F), 30); } });
+  setTimeout(() => jingleStart(F), 300);
   const t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 200 : 1400;
   const fill = now => { const k = Math.min(1, (now - t0) / dur), pct = Math.round(k * 100); $('#sp-bar', el).style.width = pct + '%'; $('#sp-pct', el).textContent = pct + '%';
     if (k < 1) requestAnimationFrame(fill); else { const b = $('#sp-go', el); b.disabled = false; b.textContent = S.flags.landed ? 'Start reading' : 'Start adventure'; b.classList.add('ready'); } };
   requestAnimationFrame(fill);
-  $('#sp-go', el).onclick = () => { try { sessionStorage.setItem('bookout:splash', '1'); } catch (e) {} sfx('whoosh'); el.classList.add('out'); document.body.classList.remove('splash-on'); setTimeout(() => el.remove(), 450); };
+  $('#sp-go', el).onclick = () => { try { sessionStorage.setItem('bookout:splash', '1'); } catch (e) {} jingleStop(1.4); sfx('whoosh'); el.classList.add('out'); document.body.classList.remove('splash-on'); setTimeout(() => el.remove(), 450); };
 }
 /* ---- world map ---- */
 const ISLES = [
@@ -4589,7 +4716,7 @@ function renderPassport(el) {
 }
 
 if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
-if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth });
+if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth, JINGLE, festNow });
 render(); showSplash(); netInit();
 })();
 </script>
