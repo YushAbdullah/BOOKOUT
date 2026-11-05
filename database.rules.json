@@ -1,0 +1,25 @@
+{
+  "rules": {
+    "users": {
+      ".read": "auth != null && auth.token.email == 'muhdyusry.abdullah@gmail.com' && auth.token.email_verified == true",
+      "$uid": {
+        ".read": "auth != null && auth.uid == $uid",
+        ".write": "auth != null && auth.uid == $uid",
+        "name": { ".validate": "newData.isString() && newData.val().length >= 1 && newData.val().length <= 24" },
+        "email": { ".validate": "newData.isString() && newData.val().length <= 120" },
+        "reading": { ".validate": "newData.isString() && newData.val().length <= 120" }
+      }
+    },
+    "presence": {
+      ".read": "auth != null",
+      "$uid": {
+        ".write": "auth != null && auth.uid == $uid",
+        ".validate": "newData.val() == null || (newData.hasChildren(['name', 'x', 'y', 't']) && newData.child('name').isString() && newData.child('name').val().length <= 24 && newData.child('x').isNumber() && newData.child('y').isNumber())",
+        "say": {
+          "text": { ".validate": "newData.isString() && newData.val().length <= 60" }
+        },
+        "reading": { ".validate": "newData.isString() && newData.val().length <= 120" }
+      }
+    }
+  }
+}

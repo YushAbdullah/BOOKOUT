@@ -560,6 +560,34 @@ body.pov-on .heal-fab,body.splash-on .heal-fab,body:has(#modal-root .scrim) .hea
 .heal-v{display:flex;align-items:center;gap:10px}.heal-v input{flex:1;accent-color:#3fbf5a}
 .heal-act{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
 @media (prefers-reduced-motion:reduce){.heal-t .eq s,.heal-btn.on span{animation:none}}
+.mp-chip{display:inline-flex;align-items:center;gap:6px;font:600 13px/1 Outfit,sans-serif;cursor:pointer}
+.mp-chip[hidden]{display:none!important}
+.mp-dot{width:9px;height:9px;border-radius:50%;background:#1CBB6C;box-shadow:0 0 0 3px rgba(28,187,108,.25);animation:mp-pulse 2s infinite;flex:none;display:inline-block}
+.mp-dot.off{background:#9aa0a6;box-shadow:none;animation:none}
+@keyframes mp-pulse{50%{box-shadow:0 0 0 6px rgba(28,187,108,.08)}}
+.st-btn.mp-chip{padding:0 12px}
+.hub-mp{position:absolute;left:0;top:calc(100% + 8px);background:#fff;color:var(--text);border:0;border-radius:999px;padding:8px 14px;box-shadow:0 6px 18px rgba(16,40,20,.14)}
+.hub-hud{position:relative}
+.mp-g{width:100%;margin:14px 0 4px;gap:10px}
+.mp-or{display:flex;align-items:center;gap:10px;color:var(--text-subtle);font-size:13px;margin:10px 0}.mp-or::before,.mp-or::after{content:"";flex:1;height:1px;background:var(--border)}
+.mp-form{display:grid;gap:10px}.mp-form input{width:100%}
+.mp-err{min-height:1.2em;font-size:13px;color:#c0392b;margin:0}
+.mp-link{background:none;border:0;padding:0;color:var(--text);text-decoration:underline;text-decoration-color:var(--primary);text-decoration-thickness:2px;font:inherit;cursor:pointer;justify-self:start}
+.mp-fine{font-size:12px;color:var(--text-subtle);margin-top:12px}
+.mp-av{width:40px;height:40px;border-radius:50%;background:var(--surface-muted,#eef3ef);flex:none}
+.mp-quick{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;flex-wrap:wrap;justify-content:center;gap:6px;width:min(560px,calc(100% - 24px));padding:10px;background:rgba(42,30,22,.9);border-radius:18px;z-index:5;animation:cas-up .3s var(--ease) both}
+.mp-quick button{border:0;border-radius:999px;padding:8px 12px;background:#fff6e4;color:#2a1d15;font:600 13px/1 Outfit,sans-serif;cursor:pointer}
+.mp-quick button:hover{background:var(--primary)}
+.ad-wrap{padding:24px;display:grid;gap:16px}
+.ad-kpi{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.ad-kpi div{background:var(--ink);color:var(--on-ink);border-radius:14px;padding:14px}.ad-kpi b{display:block;font-size:24px;color:var(--primary)}.ad-kpi span{font-size:12px;opacity:.85}
+.ad-tools{display:flex;gap:8px}.ad-tools input{flex:1;min-height:40px;border-radius:10px;border:1px solid var(--border);padding:0 12px;font:inherit}
+.ad-tbl{display:grid;gap:6px}
+.ad-h,.ad-r{display:grid;grid-template-columns:2.4fr repeat(5,1fr);gap:8px;align-items:center;padding:10px 12px;border-radius:12px;font-size:14px}
+.ad-h{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-subtle)}
+.ad-r{box-shadow:inset 0 0 0 1px var(--border)}
+.ad-n{display:flex;gap:10px;align-items:center;min-width:0}.ad-n span{display:grid;min-width:0}.ad-n small{color:var(--text-subtle);font-size:12px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:720px){.ad-kpi{grid-template-columns:repeat(2,1fr)}.ad-kpi div:first-child{grid-column:1/-1}.ad-h{display:none}.ad-r{grid-template-columns:repeat(3,1fr)}.ad-n{grid-column:1/-1}.ad-r>span[data-l]::before{content:attr(data-l);display:block;font-size:11px;color:var(--text-subtle)}}
 .tabbar{position:fixed;left:0;right:0;bottom:0;z-index:150;display:none;justify-content:space-around;gap:4px;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px));background:rgba(38,40,40,.94);backdrop-filter:blur(10px);border-radius:22px 22px 0 0;box-shadow:0 -8px 30px rgba(16,40,20,.18)}
 .tb{flex:1;max-width:90px;border:0;background:rgba(255,255,255,.06);color:#fff;border-radius:14px;padding:6px 4px;display:grid;justify-items:center;gap:2px;font:700 11px var(--font);letter-spacing:.03em;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .tb .e{font-size:22px;line-height:1.1}
@@ -1612,7 +1640,8 @@ const POEMS = {
 };
 
 /* =============== state =============== */
-const KEY = 'bookout:v1';
+const SLOT = (/[?&]mp=local/.test(location.search) && (location.search.match(/[?&]slot=(\w+)/) || [])[1]) || '';
+const KEY = 'bookout:v1' + (SLOT ? ':' + SLOT : '');
 const fresh = () => ({ name: 'Reader', since: dayKey(), points: 0, xp: 0, streak: 0, best: 0, lastDay: null, minutes: 0, today: dayKey(), todayMin: 0,
   sessions: 0, pages: 0, visits: {}, finished: {}, genres: [], brk: {}, flags: {}, badges: {}, member: 'none', borrowed: [], progress: {}, recent: [],
   quests: {}, orderNo: 40, settings: { speed: 1, hours: true, sound: true, ambient: true, voice: false, games: true, pov: true } });
@@ -1799,9 +1828,10 @@ function render() {
   [['hub', ['hub']], ['home', ['home', 'setup']], ['places', ['places']], ['map', ['map', 'season']], ['passport', ['passport']], ['about', ['info']]].forEach(([k, vs]) => $('#nav-' + k).setAttribute('aria-current', vs.includes(view) ? 'page' : 'false'));
   const app = $('#app'); app.innerHTML = '';
   const el = document.createElement('div'); el.className = 'view'; app.append(el);
-  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, hub: renderHub, map: renderMap, info: e => renderInfo(e, infoKey) })[view](el);
+  ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, hub: renderHub, map: renderMap, admin: renderAdmin, info: e => renderInfo(e, infoKey) })[view](el);
   if (view !== 'session') app.insertAdjacentHTML('beforeend', footerHTML());
   document.body.dataset.view = view; renderTabbar();
+  renderAuthChip(); netPresence(true);
   const pp = $('#pp-pt'); if (pp) portrait(pp, S.avatar, 2.6, .9);
 }
 function renderChips() {
@@ -2326,7 +2356,7 @@ function streetHTML() {
   return `<section class="street" id="street" aria-label="BOOKOUT street. Walk to a counter to start reading.">
     <canvas id="st-cv" tabindex="0" aria-label="Map of the street with Kopi & Pages, The Commons Library, Bun & Chapter, a park and the Passport Office"></canvas>
     <div class="st-hud"><span class="st-pin">📍</span><b id="st-where">Jalan Buku</b><span class="st-time" id="st-time"></span><span class="st-pages" id="st-pages" title="Lost pages found today"></span></div>
-    <div class="st-tools"><button class="st-btn" id="st-look" aria-label="Change your look">👕 <span>Look</span></button><button class="st-btn" id="st-full" aria-label="Full screen map">⛶</button></div>
+    <div class="st-tools"><button class="st-btn mp-chip" hidden></button><button class="st-btn" id="st-chat" aria-label="Quick chat" hidden>💬</button><button class="st-btn" id="st-look" aria-label="Change your look">👕 <span>Look</span></button><button class="st-btn" id="st-full" aria-label="Full screen map">⛶</button></div>
     <div class="st-hint" id="st-hint"><span class="kb">Walk with <kbd>WASD</kbd> or arrow keys, or click anywhere.</span><span class="tc">Tap anywhere or use the arrows to walk.</span> Walk up to a counter to start.</div>
     <button class="st-act" id="st-act" hidden data-sfx="1"><span class="ic"></span><span class="tx"></span><kbd>E</kbd></button>
     <div class="st-dpad" aria-hidden="true">${['up', 'left', 'right', 'down'].map(d => `<button data-d="${d}">${{ up: '▲', left: '◀', right: '▶', down: '▼' }[d]}</button>`).join('')}</div>
@@ -2404,6 +2434,10 @@ function mountStreet(root) {
   });
   $('#st-full', wrap).onclick = () => { wrap.classList.toggle('full'); document.body.classList.toggle('st-lock', wrap.classList.contains('full')); cv.focus({ preventScroll: true }); };
   $('#st-look', wrap).onclick = () => openLook(() => { pl.look = S.avatar; });
+  if (ME_POS.set) { pl.x = ME_POS.x; pl.y = ME_POS.y; }
+  const chatB = $('#st-chat', wrap), syncChat = () => { chatB.hidden = !NET.user; }; syncChat(); NET.listeners.add(syncChat);
+  chatB.onclick = () => { let bar = $('.mp-quick', wrap); if (bar) { bar.remove(); return; } wrap.insertAdjacentHTML('beforeend', quickChat()); bar = $('.mp-quick', wrap);
+    $$('[data-q]', bar).forEach(b => b.onclick = () => { const t = QUICK_LINES[+b.dataset.q]; say(pl, t, 4); netSay(t); sfx('blip'); bar.remove(); cv.focus({ preventScroll: true }); }); };
   const move = (dx, dy) => {
     let moved = false;
     if (dx && !hits(T.solids, pl.x + dx, pl.y)) { pl.x += dx; moved = true; }
@@ -2484,6 +2518,9 @@ function mountStreet(root) {
       if (k.v > 0 && k.x > ST.W + 140) k.x = -140; if (k.v < 0 && k.x < -140) k.x = ST.W + 140;
     }
     for (let i = fx.length - 1; i >= 0; i--) { const f = fx[i]; f.life += dt; if (f.life > f.max) { fx.splice(i, 1); continue; } f.x += f.vx * dt; f.y += f.vy * dt; if (!f.e) { f.vx *= .92; f.vy *= .92; } }
+    Object.assign(ME_POS, { x: pl.x, y: pl.y, dir: pl.dir, mv: pl.moving, set: 1 }); netPresence();
+    for (const o of NET.others.values()) { const ddx = o.tx - o.x, ddy = o.ty - o.y, dd = Math.hypot(ddx, ddy); if (dd > 400) { o.x = o.tx; o.y = o.ty; } else { const k = Math.min(1, dt * 8); o.x += ddx * k; o.y += ddy * k; } o.moving = o.mv || dd > 2; if (o.moving) o.phase += dt * 12;
+      const d = Math.hypot(o.x - pl.x, o.y - pl.y); if (d < 40 && pl.moving && now - (o.greeted || -99) > 30) { o.greeted = now; const hi = greetFor(o.name, o.name)[0]; say(pl, hi, 3.5); netSay(hi); pop(o.x, o.y - 70, '👋'); } }
     if (shake > 0) { shake -= dt; const m = Math.max(0, shake) * 22; shx = (Math.random() - .5) * m; shy = (Math.random() - .5) * m; } else shx = shy = 0;
     // camera
     const tx = Math.max(0, Math.min(ST.W - vw, pl.x - vw / 2)), ty = Math.max(-44, Math.min(ST.H - vh, pl.y - vh / 2));
@@ -2534,7 +2571,7 @@ function mountStreet(root) {
       for (let q = 1; q < 8; q++) { const u = q / 8, x = x0 + (x1 - x0) * u, y = 18 + 2 * u * (1 - u) * 18 * 2 * .5 * 2; const col = ['#ff8fb1', '#f6d27a', '#6BE683', '#5B8DEF', '#9C6ADE'][(seg * 7 + q) % 5]; const on = Math.sin(t * 2 + seg * 3 + q) > -.6; circ(c, x, y + 3, 3.4, on ? col : '#cfc6b8', null); }
     }
     // sortable things
-    const ppl = T.npcs.filter(p => !p.cat).map(p => ({ sy: p.y, draw: (cc, tt) => drawPerson(cc, p, tt) }));
+    const ppl = [...T.npcs.filter(p => !p.cat), ...NET.others.values()].map(p => ({ sy: p.y, draw: (cc, tt) => drawPerson(cc, p, tt) }));
     const catD = T.npcs.filter(p => p.cat).map(p => ({ sy: p.y, draw: (cc, tt) => drawCat(cc, p, tt) }));
     const carD = T.cars.map(k => ({ sy: k.y + 16, draw: cc => drawCar(cc, k) }));
     const all = [...T.items, ...ppl, ...catD, ...carD, { sy: pl.y, draw: (cc, tt) => drawPerson(cc, pl, tt) }].sort((a, b) => a.sy - b.sy);
@@ -2564,11 +2601,11 @@ function mountStreet(root) {
     c.setTransform(dpr, 0, 0, dpr, 0, 0);
     const scr = (x, y) => [(x - cam.x) * z, (y - cam.y) * z], now = performance.now() / 1000;
     const tag = (p, me) => { const [sx, sy] = scr(p.x, p.y); c.font = '600 11px Outfit, sans-serif'; const w = c.measureText(p.name).width + 22; rr(c, sx - w / 2, sy + 4, w, 18, 9, me ? '#1CBB6C' : 'rgba(42,30,22,.82)', null); circ(c, sx - w / 2 + 9, sy + 13, 3, p.staff ? '#f6d27a' : '#6BE683', null); c.fillStyle = '#fff'; c.textAlign = 'left'; c.textBaseline = 'middle'; c.fillText(p.name, sx - w / 2 + 15, sy + 13.5); };
-    for (const p of T.npcs) if (!p.cat) tag(p); tag(pl, true);
+    for (const p of T.npcs) if (!p.cat) tag(p); for (const o of NET.others.values()) { tag(o, true); if (o.reading) { const [sx, sy] = scr(o.x, o.y - 66); c.font = '16px serif'; c.textAlign = 'center'; c.fillText('📖', sx, sy); } } tag(pl, true);
     if (giver) { const q = npcQuest(), ic = !q ? '!' : !q.done ? '…' : !q.paid ? '★' : '♥', [mx, my] = scr(giver.x, giver.y - (giver.sit ? 66 : 72)), bb = Math.sin(t * 4) * 3;
       if (!(giver.bubble && giver.bubble.until > performance.now() / 1000)) { circ(c, mx, my + bb, 11, q && q.paid ? '#ff8fb1' : '#F6C453', OUTL, 2.5); c.fillStyle = '#3a2a20'; c.font = '800 14px Outfit, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(ic, mx, my + bb + 1); } }
     const q = quest(); if (q && zone !== q) { const [sx, sy] = scr(q.target.x, q.target.y - 34); const b = Math.sin(t * 5) * 5; c.save(); c.translate(sx, sy + b); c.beginPath(); c.moveTo(-9, -22); c.lineTo(9, -22); c.lineTo(9, -8); c.lineTo(17, -8); c.lineTo(0, 8); c.lineTo(-17, -8); c.lineTo(-9, -8); c.closePath(); c.fillStyle = '#E5534B'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = '#7a2420'; c.stroke(); c.restore(); }
-    for (const p of [...T.npcs, pl, ...T.cars]) {
+    for (const p of [...T.npcs, ...NET.others.values(), pl, ...T.cars]) {
       if (!p.bubble || p.bubble.until < now) continue;
       const age = now - p.bubble.born, left = p.bubble.until - now, s = Math.min(1, age * 6) * Math.min(1, left * 4), [sx, sy1] = scr(p.x, p.y - (p.cat ? 22 : p.col ? 26 : 62) - (p.sit ? -6 : 0) - (p.me && [...T.npcs, ...T.cars].some(o => o.bubble && o.bubble.until > now && Math.abs(o.x - p.x) < 130 && Math.abs(o.y - p.y) < 90) ? 34 : 0)), sy0 = Math.max(40, sy1);
       c.save(); c.globalAlpha = Math.max(0, s); c.translate(sx, sy0); c.scale(.7 + .3 * s, .7 + .3 * s);
@@ -2702,7 +2739,7 @@ function openPlayer(mode = 'edit', done) {
       if (step === 2 && isNew) { step = 3; draw(); return; }
       const inp = $('#pl-name', m), n = inp ? inp.value.trim() : S.name;
       if (n.length < 2) { const er = $('#pl-err', m); if (er) { er.textContent = 'Use at least 2 characters.'; er.style.color = '#FF4D5E'; } inp && inp.focus(); return; }
-      S.avatar = a; S.name = n; save(); cancelAnimationFrame(raf); closeModal(true);
+      S.avatar = a; S.name = n; save(); cancelAnimationFrame(raf); closeModal(true); netStats(); netPresence(true);
       if (isNew) stageCard('Your season starts', `${n} · Season ${S.season.n}`, { ms: 1900 }); else { sfx('chime'); toast('👕 Player updated'); }
       done && done(); render();
     };
@@ -3562,10 +3599,10 @@ const PAGES = {
       <li><b>Books that lead.</b> Put inspiring, leadership, business and innovation classics on the shelf next to great stories, so readers grow at work and in life.</li>
       <li><b>Reading is social.</b> Make it normal to recommend, debate and share books with the people around you.</li>
       <li><b>Healthy reading.</b> Build breaks, water and stretching into every session.</li>
-      <li><b>Privacy first.</b> No accounts and no tracking. Your reading stays on your device.</li></ol>` },
+      <li><b>Privacy first.</b> Play alone with no account at all. If you sign in to read with others, we keep only what the game needs, with no ads and no tracking.</li></ol>` },
   privacy: { cap: 'Privacy policy', title: 'Privacy policy', body: `
-    <p class="upd">Last updated 4 November 2026</p>
-    <h2>The short version</h2><p>BOOKOUT has no accounts, no ads, no analytics and no server of its own. Your progress lives on your device.</p>
+    <p class="upd">Last updated 5 November 2026</p>
+    <h2>The short version</h2><p>BOOKOUT has no ads and no analytics. You can play alone with no account, and your progress stays on your device. If you sign in to play together, a small player profile is stored with Google Firebase so other readers can see you on the street.</p>
     <h2>What is stored, and where</h2><ul><li><b>On your device only (browser storage):</b> your player name and look, points, XP, streaks, badges, season results, quests, bookmarks, favourite places, notes from book talks and settings.</li>
       <li><b>EPUB files you add</b> are unpacked and stored in your browser's IndexedDB on this device. They are never uploaded.</li>
       <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
@@ -3573,12 +3610,18 @@ const PAGES = {
       <li>Fonts load from Google Fonts, which can see your IP address.</li>
       <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
       <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
+    <h2>If you sign in to play together</h2><ul><li><b>Sign-in:</b> handled by Google Firebase Authentication, using your Google account or an email and password. BOOKOUT never sees your password.</li>
+      <li><b>What other players see:</b> your player name, your look, where you are on the street, what you are reading, and the quick-chat lines you send.</li>
+      <li><b>What the admin sees:</b> the BOOKOUT admin (Yusri) can see your player name, email, level, points, reading minutes, sessions, streak and when you were last online, to run and improve the game.</li>
+      <li><b>Where it lives:</b> Google Firebase Realtime Database. Your live street position is deleted when you leave.</li>
+      <li><b>Deleting your account:</b> open an issue on GitHub or contact the admin, and your profile will be removed.</li></ul>
     <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
-    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, because it does not collect personal information at all.</p>
+    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, Playing alone collects nothing. Children under 13 should only sign in to play together with a parent's permission.</p>
     <h2>Contact</h2><p>Questions about privacy: open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` },
   terms: { cap: 'Terms and conditions', title: 'Terms and conditions', body: `
-    <p class="upd">Last updated 4 November 2026</p>
+    <p class="upd">Last updated 5 November 2026</p>
     <h2>1. Using BOOKOUT</h2><p>BOOKOUT is free to use for personal reading. By using it you agree to these terms. If you do not agree, please do not use the app.</p>
+    <h2>Accounts and playing together</h2><p>Signing in is optional. If you sign in, keep your login safe and use a player name that is not offensive or pretending to be someone else. Be kind in quick chat. The admin may remove players who misuse the game.</p>
     <h2>2. Books</h2><p>Built-in books are public domain texts from Project Gutenberg, provided as is. "Project Gutenberg" is a trademark of the Project Gutenberg Literary Archive Foundation, and BOOKOUT is not affiliated with it. Public domain status can differ by country, so check the law where you live.</p>
     <h2>3. Your EPUB files</h2><p>Only add EPUB files you have the right to read. They stay on your device. BOOKOUT does not check, copy or share them, and you are responsible for them.</p>
     <h2>4. Points, badges and seasons</h2><p>Points, XP, ranks and badges are for fun. They have no cash value, cannot be bought or sold, and may change or reset as the game improves.</p>
@@ -3601,7 +3644,7 @@ function footerHTML() {
     <div class="fs-col"><b>Play</b><button data-go="home">Street</button><button data-go="places">Places</button><button data-go="season">Season</button><button data-go="passport">Passport</button></div>
     <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
     <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button></div>
-  </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No accounts, no tracking</p></footer>`;
+  </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No ads, no tracking</p></footer>`;
 }
 
 /* =============== game hub, splash, world map =============== */
@@ -3631,6 +3674,7 @@ function renderHub(el) {
       <button class="hud-me" data-player aria-label="Edit your player"><canvas id="hub-av" width="112" height="112"></canvas>
         <span class="hud-id"><b>${esc(S.name)}</b><small>Level ${L.lvl} · ${esc(L.title)}</small><span class="hud-xp"><i style="width:${(L.into / L.need * 100).toFixed(1)}%"></i><em>${L.into}/${L.need}</em></span></span></button>
       <div class="hud-cur"><span class="cur">🪙 <b class="tab">${S.points}</b><button data-hub="shop" aria-label="Shop">+</button></span><span class="cur">🔥 <b class="tab">${S.streak}</b></span></div>
+      <button class="mp-chip hub-mp" hidden></button>
     </header>
     <button class="hub-spin ${spinReady ? 'ready' : ''}" data-hub="spin"><span class="wh" aria-hidden="true"></span><span><b>Daily spin</b><em>${spinReady ? 'FREE' : 'Tomorrow'}</em></span></button>
     <div class="hub-side l">${hubBtn('event', '🎪', 'Event', evN)}${hubBtn('shop', '🛍️', 'Shop')}${hubBtn('pass', '🏟️', 'Pass')}</div>
@@ -3664,6 +3708,7 @@ function hubAct(k, v, chestReady) {
     <p class="sl-muted" style="margin-top:12px">Finish them all to unlock the daily chest on the hub.</p><div class="sl-acts"><span></span><button class="sl-btn" data-close>Let's go</button></div>`, null, 'sl');
   if (k === 'mail') { const list = mailList(), read = S.flags.mailRead || []; S.flags.mailRead = list.map(m => m.id); save();
     return modal(`<span class="cap">Inbox</span><h2 class="disp sl-h">Mail</h2><div class="hq">${list.map((m, i) => `<div class="hq-r ${read.includes(m.id) ? '' : 'new'}" style="--d:${i}"><span class="ck">${m.em}</span><div><b>${esc(m.t)}</b><small>${esc(m.from)} · ${esc(m.d)}</small></div>${read.includes(m.id) ? '' : '<span class="pts">New</span>'}</div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, () => render(), 'sl'); }
+  if (k === 'friend' && NET.mode !== 'off') return NET.user ? openOnline() : openAuth();
   if (k === 'friend') { const t = S.talks || [];
     return modal(`<span class="cap">Book buddies</span><h2 class="disp sl-h">People you talked to</h2>${t.length ? `<div class="hq">${t.slice(0, 12).map((x, i) => `<div class="hq-r" style="--d:${i}"><span class="ck">${(STANCES[x.stance] || {}).em || '💬'}</span><div><b>${esc(x.name)}</b><small>${esc(x.title)}${x.note ? ` · “${esc(x.note)}”` : ''}</small></div><span class="pts">${esc(x.day.slice(5))}</span></div>`).join('')}</div>` : '<p class="sl-muted" style="margin-top:8px">Nobody yet. Walk the street and tap a reader with a 💬 to talk books.</p>'}<div class="sl-acts"><span></span><button class="sl-btn" data-go="home">Walk the street</button></div>`, m => $$('[data-go]', m).forEach(b => b.addEventListener('click', () => closeModal(true))), 'sl'); }
   if (k === 'event') return modal(`<span class="cap">Live now</span><h2 class="disp sl-h">Events</h2><div class="hq">${eventList().map((e, i) => `<div class="hq-r ${e.on ? 'new' : 'done'}" style="--d:${i}"><span class="ck">${e.em}</span><div><b>${esc(e.t)}</b><small>${esc(e.d)}</small></div><span class="pts">${e.on ? 'Live' : 'Done'}</span></div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, null, 'sl');
@@ -3774,9 +3819,178 @@ function renderTabbar() {
   let hf = $('#heal-fab'); if (!hf) { hf = document.createElement('button'); hf.id = 'heal-fab'; hf.className = 'heal-btn heal-fab'; hf.setAttribute('aria-label', 'Healing sounds'); hf.title = 'Healing sounds'; hf.innerHTML = '<span>🎧</span><em>Sounds</em>'; hf.onclick = openHeal; document.body.append(hf); }
   hf.hidden = ['session', 'landing', 'info', 'places', 'passport'].includes(view); healBadge();
   $$('[data-tab]', tb).forEach(b => b.onclick = () => { sfx('tap'); const k = b.dataset.tab; if (k !== 'more') return go(k);
-    modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings']].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
-      m => $$('[data-mgo]', m).forEach(x => x.onclick = () => { closeModal(true); go(x.dataset.mgo); }), 'sl');
+    modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings'], ...(NET.mode === 'off' ? [] : NET.user ? [['online', '🟢', 'Online & account']] : [['signin', '🔑', 'Sign in']]), ...(NET.isAdmin() ? [['admin', '🛡️', 'Admin']] : [])].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
+      m => $$('[data-mgo]', m).forEach(x => x.onclick = () => { closeModal(true); const g = x.dataset.mgo; g === 'online' ? openOnline() : g === 'signin' ? openAuth() : go(g); }), 'sl');
   });
+}
+
+/* =============== multiplayer: accounts, live street, admin =============== */
+/* Paste the web app config from Firebase console → Project settings → Your apps. null = single-player only. */
+const FIREBASE_CONFIG = null;
+const ADMIN_EMAILS = ['muhdyusry.abdullah@gmail.com'];
+const FB_VER = '10.12.2';
+const QUICK_LINES = ['Assalamualaikum 👋', 'Waalaikumussalam 😊', 'Apa khabar?', 'Khabar baik!', 'Hello! 👋', 'What are you reading? 📖', 'Jom baca sama-sama ☕', 'Good book! 👍', 'Haha 😂', 'See you! 👋'];
+const NET = { mode: 'off', user: null, others: new Map(), online: 0, ready: false, listeners: new Set(), lastSend: 0, lastSent: '' };
+NET.emit = () => NET.listeners.forEach(f => { try { f(); } catch (e) {} });
+NET.isAdmin = () => !!(NET.user && NET.user.email && NET.user.verified && ADMIN_EMAILS.includes(NET.user.email.toLowerCase()));
+NET.signedIn = () => !!NET.user;
+function loadScript(src) { return new Promise((ok, no) => { const s = document.createElement('script'); s.src = src; s.onload = ok; s.onerror = no; document.head.append(s); }); }
+
+/* driver: Firebase (live) */
+const FB = {
+  async init() {
+    const base = `https://www.gstatic.com/firebasejs/${FB_VER}/`;
+    await loadScript(base + 'firebase-app-compat.js'); await Promise.all([loadScript(base + 'firebase-auth-compat.js'), loadScript(base + 'firebase-database-compat.js')]);
+    firebase.initializeApp(FIREBASE_CONFIG); this.auth = firebase.auth(); this.db = firebase.database();
+    try { await this.auth.getRedirectResult(); } catch (e) {}
+    this.auth.onAuthStateChanged(u => netAuthed(u ? { uid: u.uid, email: u.email || '', verified: !!u.emailVerified, name: u.displayName || '' } : null));
+    this.db.ref('presence').on('child_added', s => netPeer(s.key, s.val())); this.db.ref('presence').on('child_changed', s => netPeer(s.key, s.val())); this.db.ref('presence').on('child_removed', s => netPeer(s.key, null));
+  },
+  async google() { const p = new firebase.auth.GoogleAuthProvider(); try { await this.auth.signInWithPopup(p); } catch (e) { if (/popup|cancel/i.test(e.code || '')) return this.auth.signInWithRedirect(p); throw e; } },
+  emailIn(e, p) { return this.auth.signInWithEmailAndPassword(e, p); },
+  emailUp(e, p) { return this.auth.createUserWithEmailAndPassword(e, p); },
+  reset(e) { return this.auth.sendPasswordResetEmail(e); },
+  out() { const u = NET.user; if (u) this.db.ref('presence/' + u.uid).remove(); return this.auth.signOut(); },
+  online(uid) { const r = this.db.ref('presence/' + uid); r.onDisconnect().remove(); this.db.ref('users/' + uid + '/lastSeen').onDisconnect().set(firebase.database.ServerValue.TIMESTAMP); },
+  presence(uid, v) { return this.db.ref('presence/' + uid).set(v); },
+  profile(uid, v) { return this.db.ref('users/' + uid).update(v); },
+  async getProfile(uid) { return (await this.db.ref('users/' + uid).once('value')).val(); },
+  async users() { return (await this.db.ref('users').once('value')).val() || {}; }
+};
+/* driver: local (two tabs on one device; used for testing with ?mp=local) */
+const LOCALNET = {
+  init() {
+    this.ch = new BroadcastChannel('bookout-mp'); this.id = 'L' + Math.random().toString(36).slice(2, 8);
+    this.ch.onmessage = e => { const m = e.data; if (m.t === 'p') netPeer(m.uid, m.v); if (m.t === 'hello' && NET.user && this.last) this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: this.last }); };
+    window.addEventListener('pagehide', () => NET.user && this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: null }));
+    const u = store('bookout:mpuser' + SLOT); setTimeout(() => netAuthed(u || null), 0);
+  },
+  _in(email) { const u = { uid: this.id, email, verified: true, name: '' }; store('bookout:mpuser' + SLOT, u); netAuthed(u); },
+  async google() { this._in('google.' + this.id + '@test.local'); }, async emailIn(e) { this._in(e); }, async emailUp(e) { this._in(e); }, async reset() {},
+  async out() { this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: null }); localStorage.removeItem('bookout:mpuser' + SLOT); netAuthed(null); },
+  online() { this.ch.postMessage({ t: 'hello' }); },
+  presence(uid, v) { this.last = v; this.ch.postMessage({ t: 'p', uid, v }); },
+  profile(uid, v) { const all = store('bookout:mpusers') || {}; all[uid] = Object.assign(all[uid] || {}, v); store('bookout:mpusers', all); },
+  async getProfile(uid) { return (store('bookout:mpusers') || {})[uid] || null; },
+  async users() { return store('bookout:mpusers') || {}; }
+};
+NET.drv = null;
+async function netInit() {
+  const local = /[?&]mp=local/.test(location.search);
+  if (!FIREBASE_CONFIG && !local) return;
+  NET.drv = local ? LOCALNET : FB; NET.mode = local ? 'local' : 'live';
+  try { await NET.drv.init(); NET.ready = true; } catch (e) { NET.mode = 'off'; console.warn('BOOKOUT online unavailable', e); }
+  NET.emit();
+  setInterval(() => { netPresence(true); }, 20000);
+  setInterval(netStats, 60000);
+}
+async function netAuthed(u) {
+  NET.user = u; NET.emit();
+  if (!u) { renderAuthChip(); return; }
+  NET.drv.online(u.uid);
+  const prof = await NET.drv.getProfile(u.uid).catch(() => null);
+  if (prof && prof.name && (!S.flags.mpUid || S.flags.mpUid !== u.uid)) { S.name = prof.name; if (prof.look && prof.look.gender) S.avatar = prof.look; }
+  S.flags.mpUid = u.uid; save();
+  const needsSetup = !(prof && prof.name) && !(S.avatar && S.avatar.gender && S.name !== 'Reader');
+  if (needsSetup) { if (u.name && S.name === 'Reader') S.name = u.name.split(' ')[0].slice(0, 16); openPlayer('new', () => { netStats(true); netPresence(true); }); }
+  netStats(true); netPresence(true); renderAuthChip(); if (view !== 'session' && !$('#modal-root').innerHTML) render();
+}
+function netPeer(uid, v) {
+  if (NET.user && uid === NET.user.uid) return;
+  if (!v || Date.now() - (v.t || 0) > 120000) NET.others.delete(uid);
+  else {
+    const o = NET.others.get(uid) || { uid, x: v.x, y: v.y, dir: 'down', phase: 0, seed: hash(uid) % 100, bubble: null, remote: 1 };
+    Object.assign(o, { name: String(v.name || 'Reader').slice(0, 16), look: v.look && v.look.gender ? v.look : lookOf(v.name || uid), tx: +v.x || 0, ty: +v.y || 0, dir: v.dir || o.dir, mv: !!v.mv, reading: v.reading ? String(v.reading).slice(0, 40) : '', room: v.room || '' });
+    if (v.say && v.say.t > (o.sayT || 0) && Date.now() - v.say.t < 8000) { o.sayT = v.say.t; say(o, String(v.say.text).slice(0, 60), 4); try { sfx('blip'); } catch (e) {} }
+    NET.others.set(uid, o);
+  }
+  NET.online = NET.others.size + (NET.user ? 1 : 0); updOnline();
+}
+const ME_POS = { x: 320, y: 548, dir: 'down', mv: false };
+function netPresence(force, extra) {
+  const u = NET.user; if (!u || !NET.drv) return;
+  const now = Date.now(); if (!force && now - NET.lastSend < 180) return;
+  const reading = view === 'session' && sess && sess.book ? sess.book.title : '';
+  const v = { name: S.name, look: S.avatar && S.avatar.gender ? S.avatar : null, x: Math.round(ME_POS.x), y: Math.round(ME_POS.y), dir: ME_POS.dir, mv: ME_POS.mv, reading, room: view === 'session' && sess ? sess.venue : '', t: now };
+  if (NET.say) v.say = NET.say;
+  if (extra) Object.assign(v, extra);
+  const key = JSON.stringify([v.x, v.y, v.dir, v.mv, v.reading, v.name, v.say && v.say.t]);
+  if (!force && key === NET.lastSent) return;
+  NET.lastSent = key; NET.lastSend = now; NET.drv.presence(u.uid, v);
+}
+function netSay(text) { if (!NET.user) return; NET.say = { text, t: Date.now() }; netPresence(true); }
+function netStats(first) {
+  const u = NET.user; if (!u || !NET.drv) return;
+  const L = levelInfo(S.xp), v = { name: S.name, look: S.avatar && S.avatar.gender ? S.avatar : null, email: u.email || '', xp: S.xp, level: L.lv || L.level || 1, points: S.points, minutes: S.minutes, sessions: S.sessions, streak: S.streak, badges: Object.keys(S.badges || {}).length, lastSeen: Date.now(), reading: (S.recent[0] || {}).title || '' };
+  if (first) v.since = S.since;
+  NET.drv.profile(u.uid, v);
+}
+function updOnline() { $$('.mp-online').forEach(e => e.textContent = NET.online); }
+function renderAuthChip() {
+  $$('.mp-chip').forEach(el => {
+    if (NET.mode === 'off') { el.hidden = true; return; } el.hidden = false;
+    el.innerHTML = NET.user ? `<span class="mp-dot"></span><b class="mp-online">${NET.online || 1}</b> online` : `<span class="mp-dot off"></span>Sign in to play together`;
+    el.onclick = () => NET.user ? openOnline() : openAuth();
+  });
+}
+NET.listeners.add(renderAuthChip);
+function openAuth(after) {
+  if (NET.mode === 'off') return toast('Online play is not switched on yet');
+  sfx('tap');
+  modal(`<span class="cap">Play together</span><h2 class="disp sl-h">Join Jalan Buku</h2><p class="sl-muted">Sign in to see other readers on the street, wave and greet each other, and keep your name and look.</p>
+    <button class="btn btn-ghost mp-g" id="mp-google"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h6a5 5 0 0 1-2.2 3.3v2.7h3.5c2.1-1.9 3.3-4.7 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.5-2.7c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.7 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.1-3.1A11 11 0 0 0 2.1 7.1l3.6 2.8C6.6 7.4 9.1 5.4 12 5.4z"/></svg>Continue with Google</button>
+    <div class="mp-or"><span>or use email</span></div>
+    <form class="mp-form" id="mp-form" novalidate><label class="sl-field">Email<input id="mp-email" type="email" autocomplete="email" required></label>
+    <label class="sl-field">Password<input id="mp-pass" type="password" autocomplete="current-password" minlength="6" required></label>
+    <p class="mp-err" id="mp-err" role="alert"></p>
+    <div class="sl-acts"><button type="button" class="sl-btn sec" id="mp-up">Create account</button><button class="sl-btn" id="mp-in">Sign in</button></div>
+    <button type="button" class="mp-link" id="mp-reset">Forgot password?</button></form>
+    <p class="mp-fine">By joining you agree to the <button class="mp-link" data-mgo="terms">Terms</button> and <button class="mp-link" data-mgo="privacy">Privacy policy</button>. Others see only your player name, look and what you are reading.</p>`, m => {
+    const err = t => { $('#mp-err', m).textContent = t || ''; };
+    const nice = e => ({ 'auth/invalid-email': 'That email does not look right.', 'auth/user-not-found': 'No account with that email. Tap Create account.', 'auth/wrong-password': 'Wrong password.', 'auth/invalid-credential': 'Email or password is wrong.', 'auth/email-already-in-use': 'That email already has an account. Tap Sign in.', 'auth/weak-password': 'Use at least 6 characters.', 'auth/too-many-requests': 'Too many tries. Wait a minute.', 'auth/network-request-failed': 'No connection. Try again.' })[e && e.code] || (e && e.message) || 'Something went wrong.';
+    const run = f => async () => { err(); try { await f(); closeModal(true); toast('👋 Welcome to Jalan Buku'); after && after(); } catch (e) { err(nice(e)); } };
+    const ep = () => { const e = $('#mp-email', m).value.trim(), p = $('#mp-pass', m).value; if (!/^\S+@\S+\.\S+$/.test(e)) throw { message: 'Enter your email.' }; if (p.length < 6) throw { message: 'Password needs 6+ characters.' }; return [e, p]; };
+    $('#mp-google', m).onclick = run(() => NET.drv.google());
+    $('#mp-form', m).onsubmit = ev => { ev.preventDefault(); run(() => NET.drv.emailIn(...ep()))(); };
+    $('#mp-up', m).onclick = run(() => NET.drv.emailUp(...ep()));
+    $('#mp-reset', m).onclick = async () => { const e = $('#mp-email', m).value.trim(); if (!e) return err('Type your email first.'); try { await NET.drv.reset(e); err('Reset link sent. Check your inbox.'); } catch (x) { err(nice(x)); } };
+    $$('[data-mgo]', m).forEach(b => b.onclick = () => { closeModal(true); go(b.dataset.mgo); });
+  }, 'sl mp-modal');
+}
+function openOnline() {
+  const list = [...NET.others.values()];
+  modal(`<span class="cap">Online now</span><h2 class="disp sl-h">${list.length ? `${list.length + 1} readers on Jalan Buku` : 'Just you for now'}</h2>
+    <div class="hq">${[{ name: S.name + ' (you)', look: S.avatar, reading: view === 'session' && sess && sess.book ? sess.book.title : '' }, ...list].map((o, i) => `<div class="hq-r" style="--d:${i}"><canvas class="mp-av" data-i="${i}" width="80" height="80"></canvas><div><b>${esc(o.name)}</b><small>${o.reading ? '📖 Reading ' + esc(o.reading) : '🚶 On the street'}</small></div></div>`).join('')}</div>
+    ${list.length ? '' : '<p class="sl-muted">Share the link with friends so they can walk with you.</p>'}
+    <div class="sl-acts"><button class="sl-btn sec" id="mp-share">Share link</button>${NET.isAdmin() ? '<button class="sl-btn sec" id="mp-admin">Admin</button>' : ''}<button class="sl-btn sec" id="mp-out">Sign out</button><button class="sl-btn" data-close>Done</button></div>`, m => {
+    const all = [{ look: S.avatar }, ...list];
+    $$('canvas.mp-av', m).forEach(cv => portrait(cv, (all[+cv.dataset.i] || {}).look || DEFAULT_LOOK.male, .9, .95));
+    $('#mp-out', m).onclick = async () => { await NET.drv.out(); NET.others.clear(); closeModal(true); toast('Signed out'); render(); };
+    const ad = $('#mp-admin', m); if (ad) ad.onclick = () => { closeModal(true); go('admin'); };
+    $('#mp-share', m).onclick = async () => { const url = location.origin + location.pathname; try { if (navigator.share) await navigator.share({ title: 'BOOKOUT', text: 'Read with me on Jalan Buku 📚', url }); else { await navigator.clipboard.writeText(url); toast('🔗 Link copied'); } } catch (e) {} };
+  }, 'sl');
+}
+function quickChat(onPick) {
+  return `<div class="mp-quick" role="group" aria-label="Quick chat">${QUICK_LINES.map((t, i) => `<button data-q="${i}">${esc(t)}</button>`).join('')}</div>`;
+}
+/* admin page */
+async function renderAdmin(el) {
+  if (!NET.isAdmin()) { el.innerHTML = `<article class="info"><header class="info-hero">${MOTIF}<span class="cap cas">Admin</span><h1 class="cas" style="--d:1">Admins only</h1></header><div class="info-body card"><p>${NET.mode === 'off' ? 'Online play is not switched on yet.' : NET.user ? 'This account is not an admin.' : 'Sign in with the admin account to see players.'}</p>${NET.user || NET.mode === 'off' ? '' : '<button class="btn btn-primary" id="ad-in">Sign in</button>'}</div></article>`; const b = $('#ad-in', el); if (b) b.onclick = () => openAuth(() => go('admin')); return; }
+  el.innerHTML = `<article class="info"><header class="info-hero">${MOTIF}<span class="cap cas">Admin</span><h1 class="cas" style="--d:1">Players</h1></header><div class="card ad-wrap"><p class="sl-muted">Loading players…</p></div></article>`;
+  let users = {}; try { users = await NET.drv.users(); } catch (e) { $('.ad-wrap', el).innerHTML = `<p class="mp-err">Could not load players: ${esc(e.message || e)}. Check the database rules.</p>`; return; }
+  const rows = Object.entries(users).map(([uid, u]) => Object.assign({ uid, on: NET.others.has(uid) || (NET.user && uid === NET.user.uid) }, u)).sort((a, b) => (b.on - a.on) || ((b.lastSeen || 0) - (a.lastSeen || 0)));
+  const sum = k => rows.reduce((t, r) => t + (+r[k] || 0), 0), ago = t => { if (!t) return '–'; const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'now' : m < 60 ? m + 'm ago' : m < 1440 ? Math.round(m / 60) + 'h ago' : Math.round(m / 1440) + 'd ago'; };
+  const wrap = $('.ad-wrap', el);
+  const draw = q => {
+    const f = rows.filter(r => !q || (r.name + ' ' + (r.email || '')).toLowerCase().includes(q.toLowerCase()));
+    wrap.innerHTML = `<div class="ad-kpi">${[['Players', rows.length], ['Online now', rows.filter(r => r.on).length], ['Active 7 days', rows.filter(r => Date.now() - (r.lastSeen || 0) < 6048e5).length], ['Minutes read', sum('minutes')], ['Sessions', sum('sessions')]].map(([l, v], i) => `<div class="cas-fan" style="--d:${i}"><b>${v.toLocaleString()}</b><span>${l}</span></div>`).join('')}</div>
+      <div class="ad-tools"><input id="ad-q" type="search" placeholder="Search name or email" value="${esc(q || '')}" aria-label="Search players"><button class="btn btn-ghost btn-sm" id="ad-csv">Export CSV</button></div>
+      <div class="ad-tbl" role="table"><div class="ad-h" role="row"><span>Player</span><span>Level</span><span>Minutes</span><span>Sessions</span><span>Streak</span><span>Last seen</span></div>
+      ${f.map(r => `<div class="ad-r" role="row"><span class="ad-n"><i class="mp-dot ${r.on ? '' : 'off'}"></i><span><b>${esc(r.name || '–')}</b><small>${esc(r.email || '')}${r.reading ? ' · 📖 ' + esc(r.reading) : ''}</small></span></span><span data-l="Level">${+r.level || 1}</span><span data-l="Minutes">${+r.minutes || 0}</span><span data-l="Sessions">${+r.sessions || 0}</span><span data-l="Streak">${+r.streak || 0}🔥</span><span data-l="Last seen">${r.on ? 'online' : ago(r.lastSeen)}</span></div>`).join('') || '<p class="sl-muted">No players match.</p>'}</div>`;
+    const qi = $('#ad-q', wrap); qi.oninput = () => { const pos = qi.selectionStart; draw(qi.value); const n = $('#ad-q', wrap); n.focus(); n.setSelectionRange(pos, pos); };
+    $('#ad-csv', wrap).onclick = () => { const cols = ['name', 'email', 'level', 'xp', 'points', 'minutes', 'sessions', 'streak', 'badges', 'since', 'lastSeen']; const csv = [cols.join(',')].concat(rows.map(r => cols.map(c => `"${String(c === 'lastSeen' && r[c] ? new Date(r[c]).toISOString() : r[c] ?? '').replace(/"/g, '""')}"`).join(','))).join('\n'); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' })); a.download = 'bookout-players.csv'; a.click(); };
+  };
+  draw('');
 }
 
 /* =============== home =============== */
@@ -4378,7 +4592,8 @@ function renderPassport(el) {
 }
 
 if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
-render(); showSplash();
+if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth });
+render(); showSplash(); netInit();
 })();
 </script>
 </body>
