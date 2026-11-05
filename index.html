@@ -528,6 +528,7 @@ body.splash-on{overflow:hidden}
 @keyframes twinkle{to{opacity:.5}}
 .splash.night .sp-sub,.splash.night .sp-tip{color:#fff}
 @media (prefers-reduced-motion:reduce){.sp-fx,.sp-kids canvas,.sp-kids .wave,.sp-garland i,.sp-music{animation:none}}
+.jn-modal .sl-field{margin-top:6px}.jn-tiles{margin-top:14px}.jn-tiles .pl-tile b{font-size:18px}.jn-fine{font-size:12px;align-self:center}
 .sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
@@ -1367,7 +1368,7 @@ function healToggle(id, force) {
   const want = force ?? !HEAL.on[id];
   if (want && !HEAL.on[id]) { if (!S.settings.sound) { S.settings.sound = true; save(); try { renderChips(); } catch (e) {} } if (!ac()) return; HEAL.on[id] = healLayer(id); }
   else if (!want && HEAL.on[id]) { const l = HEAL.on[id]; delete HEAL.on[id]; l.stop(); }
-  healSave(); healBadge();
+  healSave(); healBadge(); musicSync();
 }
 function healStopAll() { Object.keys(HEAL.on).forEach(k => healToggle(k, false)); }
 function healPause() { Object.values(HEAL.on).forEach(l => l.stop()); const ids = Object.keys(HEAL.on); HEAL.on = {}; HEAL.want = ids; healBadge(); }
@@ -1394,6 +1395,7 @@ function unlockAudio() {
   const c = ac(); if (!c) return;
   try { c.resume(); const b = c.createBuffer(1, 1, 22050), s = c.createBufferSource(); s.buffer = b; s.connect(c.destination); s.start(0); } catch (e) {}
   if (!AU.unlocked) { AU.unlocked = true; try { const a = new Audio(SILENT_WAV); a.setAttribute('playsinline', ''); a.play().catch(() => {}); } catch (e) {} }
+  if (!JINGLE.on) setTimeout(musicSync, 20);
 }
 ['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, unlockAudio, { capture: true, passive: true }));
 document.addEventListener('pointerdown', () => ac(), { once: true });
@@ -1875,7 +1877,7 @@ function render() {
   ({ home: renderHome, setup: renderSetup, session: renderSession, passport: renderPassport, season: renderSeason, landing: renderLanding, places: renderPlaces, hub: renderHub, map: renderMap, admin: renderAdmin, info: e => renderInfo(e, infoKey) })[view](el);
   if (view !== 'session') app.insertAdjacentHTML('beforeend', footerHTML());
   document.body.dataset.view = view; renderTabbar();
-  renderAuthChip(); netPresence(true);
+  renderAuthChip(); netPresence(true); musicSync();
   const pp = $('#pp-pt'); if (pp) portrait(pp, S.avatar, 2.6, .9);
 }
 function renderChips() {
@@ -1884,7 +1886,7 @@ function renderChips() {
     <span class="chip" title="Points to spend">🪙 <span class="tab">${S.points}</span> <small>pts</small></span>
     <span class="chip" title="${esc(L.title)}">⭐ <small>Lv</small> ${L.lvl}</span>
     <button class="chip" id="snd" aria-label="${S.settings.sound ? 'Mute sound' : 'Turn sound on'}">${S.settings.sound ? '🔊' : '🔇'}</button>`;
-  $('#snd').onclick = () => { S.settings.sound = !S.settings.sound; save(); renderChips(); if (!S.settings.sound) { stopAmbient(); healPause(); try { speechSynthesis.cancel(); } catch (e) {} } else { healResume(); } if (S.settings.sound) if (view === 'setup' || view === 'session') ambient((sess || setup).venue); };
+  $('#snd').onclick = () => { S.settings.sound = !S.settings.sound; save(); renderChips(); musicSync(); if (!S.settings.sound) { stopAmbient(); healPause(); try { speechSynthesis.cancel(); } catch (e) {} } else { healResume(); } if (S.settings.sound) if (view === 'setup' || view === 'session') ambient((sess || setup).venue); };
 }
 
 /* =============== scene art =============== */
@@ -3430,7 +3432,7 @@ function enterVenue(id) {
   openPOV(id);
 }
 function closePOV(keepAmbient) {
-  if (!POV) return; cancelAnimationFrame(POV.raf); POV.el.remove(); document.body.classList.remove('pov-on'); POV = null;
+  if (!POV) return; cancelAnimationFrame(POV.raf); POV.el.remove(); document.body.classList.remove('pov-on'); POV = null; musicSync();
   if (setup) setup.pov = null; if (!keepAmbient) stopAmbient();
 }
 function openPOV(id) {
@@ -3438,7 +3440,7 @@ function openPOV(id) {
   const v = VENUES[id], st = venueStatus(v), desk = !!v.lengths, isLib = id === 'library';
   setup = { venue: id, item: null, length: null, book: null, orderNo: null };
   const full = $('.street.full'); if (full) { full.classList.remove('full'); document.body.classList.remove('st-lock'); }
-  document.body.classList.add('pov-on');
+  document.body.classList.add('pov-on'); musicSync();
   const el = document.createElement('div'); el.className = `pov pov-${id}${isNight() ? ' night' : ''}`; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', `Inside ${v.name}`);
   const opts = desk ? v.lengths.map(m => ({ k: m, em: isLib ? '🎫' : v.itemEm, name: m < 60 ? `${m} min` : `${m / 60} ${m === 60 ? 'hour' : 'hours'}`, sub: isLib ? 'day pass' : m === 25 && id === 'office' ? 'one pomodoro' : v.passSub, ok: m <= st.minsLeft }))
     : v.menu.map(it => ({ k: it.id, em: it.emoji, name: it.name, sub: `${it.min} min${it.bites ? ' · ' + it.bites.length + ' bites' : ''}`, ok: true }));
@@ -3840,33 +3842,97 @@ function festNow(d = new Date()) {
 }
 const festLook = (f, who) => Object.assign({}, FEST_BASE[who], f ? f[who] : {});
 
-/* ---- welcome music: an upbeat little jingle made live with WebAudio ---- */
+/* ---- background music: made live with WebAudio, a different style for each festival ---- */
 const JINGLE = { on: false, timer: 0, out: null };
+const MAJ = [72, 74, 76, 77, 79, 81, 83], PENT = [72, 74, 76, 79, 81], HIJAZ = [72, 73, 76, 77, 79, 80, 82], BHAIRAV = [72, 73, 76, 77, 79, 80, 83];
+const CH = { C: [60, 64, 67], F: [53, 57, 60], G: [55, 59, 62], Am: [57, 60, 64], Dm: [62, 65, 69], Em: [52, 55, 59] };
+const MUSIC = {
+  pop: { name: 'BOOKOUT theme', bpm: 124, prog: ['C', 'G', 'Am', 'F'], scale: MAJ, lead: 'tri', drums: 'pop', bass: 1, chords: 1,
+    tune: [4, -1, 4, 5, 7, -1, 5, 4, 2, -1, 2, 4, 5, -1, 4, 2, 0, -1, 0, 2, 4, -1, 2, 0, 1, -1, 2, 4, 7, -1, -1, -1] },
+  raya: { name: 'Raya joget with kompang', bpm: 112, prog: ['C', 'F', 'G', 'C'], scale: MAJ, lead: 'acc', drums: 'kompang', bass: 1, chords: 1,
+    tune: [4, -1, 5, 4, 2, -1, 0, -1, 1, 2, 4, -1, 2, -1, -1, -1, 4, -1, 5, 7, 8, -1, 7, 5, 4, 5, 4, 2, 1, -1, 0, -1] },
+  calm: { name: 'Calm Ramadan nights', bpm: 70, prog: ['C', 'C', 'F', 'C'], scale: HIJAZ, lead: 'flute', drums: 'frame', pad: 1, len: 4,
+    tune: [0, -1, -1, -1, 1, -1, 2, -1, 3, -1, -1, -1, 2, -1, 1, -1, 2, -1, -1, -1, 4, -1, 3, -1, 2, -1, 1, -1, 0, -1, -1, -1] },
+  cny: { name: 'Lion dance drums and guzheng', bpm: 128, prog: ['C', 'Am', 'F', 'G'], scale: PENT, lead: 'pluck', drums: 'lion', bass: 1,
+    tune: [0, -1, 2, -1, 3, 2, 1, -1, 0, -1, 1, 2, 4, -1, 3, -1, 5, -1, 4, 3, 2, -1, 1, -1, 2, 3, 2, 1, 0, -1, -1, -1] },
+  moon: { name: 'Lantern night flute', bpm: 84, prog: ['C', 'Am', 'F', 'G'], scale: PENT, lead: 'flute', drums: 'wood', pad: 1, arp: 1, len: 3,
+    tune: [2, -1, -1, 4, 3, -1, 2, -1, 0, -1, -1, -1, 1, -1, 2, -1, 4, -1, -1, 5, 4, -1, 3, -1, 2, -1, -1, -1, -1, -1, -1, -1] },
+  raga: { name: 'Sitar, tabla and tanpura', bpm: 104, prog: ['C', 'C', 'C', 'C'], scale: BHAIRAV, lead: 'sitar', drums: 'tabla', drone: 1, len: 2.4,
+    tune: [0, -1, 1, -1, 2, 3, 4, -1, 5, -1, 4, 3, 2, -1, 1, -1, 2, 3, 4, 5, 6, -1, 7, -1, 6, 5, 4, -1, 2, 1, 0, -1] },
+  bells: { name: 'Sleigh bells', bpm: 120, prog: ['C', 'F', 'G', 'C'], scale: MAJ, lead: 'bell', drums: 'sleigh', bass: 1, chords: 1,
+    tune: [7, -1, 4, -1, 5, -1, 7, -1, 9, -1, 7, 5, 4, -1, -1, -1, 5, -1, 2, -1, 4, -1, 5, -1, 7, -1, 5, 4, 2, -1, -1, -1] },
+  dance: { name: 'Countdown party', bpm: 128, prog: ['Am', 'F', 'C', 'G'], scale: MAJ, lead: 'sq', drums: 'dance', bass: 1, arp: 1,
+    tune: [5, -1, 5, -1, 4, -1, 5, 7, -1, 7, -1, 5, 4, -1, 2, -1, 0, -1, 0, -1, 2, -1, 4, 5, -1, 4, -1, 2, 4, -1, -1, -1] },
+  march: { name: 'Merdeka march', bpm: 116, prog: ['C', 'F', 'G', 'C'], scale: MAJ, lead: 'brass', drums: 'march', bass: 1, chords: 1,
+    tune: [0, -1, -1, 0, 2, -1, 4, -1, 7, -1, -1, -1, 4, -1, -1, -1, 5, -1, -1, 5, 4, -1, 2, -1, 1, -1, 2, -1, 4, -1, -1, -1] }
+};
+const FEST_MUSIC = { raya: 'raya', adha: 'raya', ramadan: 'calm', cny: 'cny', mooncake: 'moon', deepavali: 'raga', christmas: 'bells', newyear: 'dance', merdeka: 'march', bookday: 'pop' };
+const musicFor = f => MUSIC[(f && FEST_MUSIC[f.id]) || 'pop'];
+const musicLevel = () => document.body.classList.contains('splash-on') ? .55 : .26;
+function jingleLevel(fade = 1.2) { const c = AU.ctx, o = JINGLE.out; if (!c || !o || !JINGLE.on) return; o.gain.cancelScheduledValues(c.currentTime); o.gain.setValueAtTime(o.gain.value, c.currentTime); o.gain.linearRampToValueAtTime(musicLevel(), c.currentTime + fade); }
 function jingleStart(f) {
   if (JINGLE.on || !S.settings.sound) return; const c = ac(); if (!c) return;
-  if (c.state !== 'running') { if (!JINGLE.waiting) { JINGLE.waiting = true; c.resume().then(() => { JINGLE.waiting = false; if (c.state === 'running') jingleStart(f); }).catch(() => { JINGLE.waiting = false; }); } return; }
-  JINGLE.on = true; const out = JINGLE.out = c.createGain(); out.gain.value = 0; out.gain.linearRampToValueAtTime(.55, c.currentTime + .6); out.connect(AU.master);
-  const bpm = 124, st = 60 / bpm / 4, mtof = m => 440 * Math.pow(2, (m - 69) / 12);
-  const prog = [[60, 64, 67], [55, 59, 62], [57, 60, 64], [53, 57, 60]]; // C G Am F
-  const pent = [72, 74, 76, 79, 81, 84], maj = [72, 74, 76, 77, 79, 81, 83, 84];
-  const tune = f && f.scale === 'penta'
-    ? [0, -1, 2, -1, 3, 2, 1, -1, 0, -1, 1, 2, 4, -1, 3, -1, 5, -1, 4, 3, 2, -1, 1, -1, 2, 3, 2, 1, 0, -1, -1, -1]
-    : [4, -1, 4, 5, 7, -1, 5, 4, 2, -1, 2, 4, 5, -1, 4, 2, 0, -1, 0, 2, 4, -1, 2, 0, 1, -1, 2, 4, 7, -1, -1, -1];
-  const scale = f && f.scale === 'penta' ? pent : maj;
+  if (c.state !== 'running') { if (!JINGLE.waiting) { JINGLE.waiting = true; c.resume().then(() => { JINGLE.waiting = false; if (c.state === 'running' && musicWant()) jingleStart(f); }).catch(() => { JINGLE.waiting = false; }); } return; }
+  const M = musicFor(f); JINGLE.on = true; JINGLE.style = M.name;
+  const out = JINGLE.out = c.createGain(); out.gain.value = 0; out.gain.linearRampToValueAtTime(musicLevel(), c.currentTime + .8); out.connect(AU.master);
+  const st = 60 / M.bpm / 4, mtof = m => 440 * Math.pow(2, (m - 69) / 12), L = M.scale.length, deg = n => M.scale[n % L] + 12 * Math.floor(n / L);
   const nz = (t, dur, o) => burst(t, dur, Object.assign({ dest: out }, o));
-  const voice = (m, t, dur, type, vol, cut) => { const o = c.createOscillator(), g = c.createGain(), fl = c.createBiquadFilter(); o.type = type; o.frequency.value = mtof(m); fl.type = 'lowpass'; fl.frequency.value = cut || 3000; g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(vol, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + dur); o.connect(fl); fl.connect(g); g.connect(out); o.start(t); o.stop(t + dur + .05); };
+  // one note: attack, hold, release, with optional vibrato, slide-in and filter
+  const note = (m, t, dur, o = {}) => {
+    const osc = c.createOscillator(), g = c.createGain(), fl = c.createBiquadFilter(), f0 = mtof(m), v = o.vol || .1, rel = o.rel || .25;
+    osc.type = o.type || 'sine'; if (o.detune) osc.detune.value = o.detune;
+    if (o.slide) { osc.frequency.setValueAtTime(f0 * Math.pow(2, o.slide / 12), t); osc.frequency.exponentialRampToValueAtTime(f0, t + (o.slideT || .06)); } else osc.frequency.setValueAtTime(f0, t);
+    if (o.vib) { const l = c.createOscillator(), lg = c.createGain(); l.frequency.value = 5.2; lg.gain.setValueAtTime(0, t); lg.gain.linearRampToValueAtTime(f0 * .012 * o.vib, t + Math.min(dur, .35)); l.connect(lg); lg.connect(osc.frequency); l.start(t); l.stop(t + dur + rel + .05); }
+    fl.type = o.ft || 'lowpass'; fl.frequency.value = o.cut || 3500; fl.Q.value = o.q || .7;
+    if (o.fenv) { fl.frequency.setValueAtTime(o.cut * .4, t); fl.frequency.linearRampToValueAtTime(o.cut * 1.6, t + .05); fl.frequency.linearRampToValueAtTime(o.cut, t + .2); }
+    g.gain.setValueAtTime(0, t); g.gain.linearRampToValueAtTime(v, t + (o.att || .01));
+    if (o.pluck) g.gain.exponentialRampToValueAtTime(.0001, t + rel); else { g.gain.setValueAtTime(v, t + Math.max(o.att || .01, dur)); g.gain.exponentialRampToValueAtTime(.0001, t + dur + rel); }
+    osc.connect(fl); fl.connect(g); g.connect(o.dest || out); osc.start(t); osc.stop(t + dur + rel + .1);
+  };
+  const drum = (t, f1, f2, dur, vol) => { const k = c.createOscillator(), g = c.createGain(); k.frequency.setValueAtTime(f1, t); k.frequency.exponentialRampToValueAtTime(f2, t + dur * .8); g.gain.setValueAtTime(vol, t); g.gain.exponentialRampToValueAtTime(.001, t + dur); k.connect(g); g.connect(out); k.start(t); k.stop(t + dur + .05); };
+  const kick = (t, v = .5) => drum(t, 150, 45, .16, v);
+  const LEAD = {
+    tri: (m, t, d) => note(m, t, d * .7, { type: 'triangle', vol: .13, rel: .2 }),
+    sq: (m, t, d) => { note(m, t, d * .6, { type: 'square', vol: .04, cut: 2600, rel: .12 }); note(m + 12, t, d * .6, { type: 'triangle', vol: .04, rel: .1 }); },
+    acc: (m, t, d) => { note(m, t, d * .85, { type: 'sawtooth', vol: .035, cut: 2200, att: .025, rel: .08, detune: -7, vib: .3 }); note(m, t, d * .85, { type: 'sawtooth', vol: .035, cut: 2200, att: .025, rel: .08, detune: 7 }); note(m - 12, t, d * .85, { type: 'square', vol: .015, cut: 1200, att: .025, rel: .08 }); },
+    flute: (m, t, d) => { note(m, t, d, { type: 'sine', vol: .12, att: .07, rel: .3, vib: 1 }); note(m + 12, t, d, { type: 'sine', vol: .015, att: .08, rel: .2 }); nz(t, .12, { freq: 2600, q: 1.5, vol: .025 }); },
+    pluck: (m, t) => { note(m, t, .01, { type: 'triangle', vol: .16, pluck: 1, rel: .9, slide: .4, slideT: .04 }); note(m + 12, t, .01, { type: 'sine', vol: .05, pluck: 1, rel: .5 }); },
+    sitar: (m, t) => { note(m, t, .01, { type: 'sawtooth', vol: .12, pluck: 1, rel: 1.1, slide: -1, slideT: .09, ft: 'bandpass', cut: mtof(m) * 3, q: 3 }); note(m + 12, t, .01, { type: 'sawtooth', vol: .02, pluck: 1, rel: .7, ft: 'bandpass', cut: mtof(m) * 6, q: 5 }); },
+    bell: (m, t) => { note(m + 12, t, .01, { type: 'sine', vol: .1, pluck: 1, rel: 1.2 }); note(m + 12, t, .01, { type: 'sine', vol: .03, pluck: 1, rel: .4, detune: 1760 }); },
+    brass: (m, t, d) => { note(m, t, d * .8, { type: 'sawtooth', vol: .06, cut: 1500, fenv: 1, att: .03, rel: .1 }); note(m - 12, t, d * .8, { type: 'sawtooth', vol: .03, cut: 900, att: .03, rel: .1 }); }
+  };
+  const DRUMS = {
+    pop: (s, t) => { if (s % 4 === 0) kick(t); if (s === 4 || s === 12) nz(t, .12, { freq: 1800, q: .8, vol: .22 }); if (s % 2) nz(t, .03, { type: 'highpass', freq: 8000, vol: .06 }); },
+    // kompang: low "bung" and sharp "pak" slaps, plus a tambourine
+    kompang: (s, t) => { if ([0, 6, 8].includes(s)) { drum(t, 220, 140, .14, .32); nz(t, .05, { freq: 700, q: 2, vol: .12 }); }
+      if ([3, 4, 10, 12, 14].includes(s)) nz(t, .06, { freq: 1500, q: 3, vol: s === 4 || s === 12 ? .28 : .16 }); if (s % 2) nz(t, .05, { type: 'highpass', freq: 7000, vol: .07 }); },
+    frame: (s, t) => { if (s === 0) drum(t, 110, 70, .4, .14); if (s === 10) nz(t, .08, { freq: 900, q: 2, vol: .05 }); },
+    // lion dance: big drum, crash cymbal and a gong every two bars
+    lion: (s, t, bar) => { if (s % 4 === 0 || s === 6 || s === 14) drum(t, 120, 60, .2, .45); if (s === 7 || s === 15) drum(t, 140, 70, .1, .2);
+      if (s === 0 || s === 8) nz(t, .45, { type: 'highpass', freq: 4500, vol: .1 }); if (s % 4 === 2) nz(t, .1, { type: 'highpass', freq: 6000, vol: .06 });
+      if (s === 0 && bar % 2 === 0) { note(41, t, .01, { type: 'sine', vol: .18, pluck: 1, rel: 2.2 }); note(41, t, .01, { type: 'triangle', vol: .04, pluck: 1, rel: 1.6, detune: 1250 }); } },
+    wood: (s, t) => { if (s === 0 || s === 8) note(91, t, .01, { type: 'sine', vol: .06, pluck: 1, rel: .07 }); if (s === 12) note(86, t, .01, { type: 'sine', vol: .04, pluck: 1, rel: .07 }); },
+    // tabla: deep "dha/ge" and bright "na/tin", plus little manjira cymbals
+    tabla: (s, t) => { const bayan = [0, 3, 4, 7, 8, 12, 15], dayan = [0, 1, 2, 3, 5, 6, 8, 9, 10, 11, 13, 14];
+      if (bayan.includes(s)) drum(t, 95, 150, .28, s % 8 === 0 ? .32 : .2); if (dayan.includes(s)) note(76 + (s % 4 === 1 ? 2 : 0), t, .01, { type: 'sine', vol: s % 4 === 0 ? .09 : .05, pluck: 1, rel: .12 });
+      if (s === 0 || s === 8) nz(t, .3, { type: 'highpass', freq: 7500, vol: .05 }); },
+    sleigh: (s, t) => { if (s % 4 === 0) kick(t, .32); if (s === 4 || s === 12) nz(t, .1, { freq: 1800, vol: .14 }); if (s % 2 === 0) nz(t, .09, { type: 'highpass', freq: 7000, vol: .1 }); if (s % 2) nz(t, .04, { type: 'highpass', freq: 9000, vol: .05 }); },
+    dance: (s, t) => { if (s % 4 === 0) kick(t, .55); if (s === 4 || s === 12) { nz(t, .05, { freq: 1500, vol: .2 }); nz(t + .012, .06, { freq: 1500, vol: .18 }); nz(t + .024, .1, { freq: 1500, vol: .2 }); } if (s % 4 === 2) nz(t, .1, { type: 'highpass', freq: 7000, vol: .1 }); },
+    // marching band: snare with rolls, bass drum on the beat
+    march: (s, t, bar) => { if (s === 0 || s === 8) drum(t, 100, 50, .22, .45); if (s % 2 === 0 || (bar % 2 && s > 11)) nz(t, .08, { freq: 2200, q: .6, vol: s % 4 === 0 ? .2 : .1 }); if (s === 4 || s === 12) nz(t, .3, { type: 'highpass', freq: 5000, vol: .05 }); }
+  };
   let step = 0, next = c.currentTime + .08;
   const tick = () => {
     if (!JINGLE.on) return;
     while (next < c.currentTime + .15) {
-      const bar = Math.floor(step / 16) % 4, s16 = step % 16, ch = prog[bar], t = next;
-      if (s16 % 4 === 0) { const k = c.createOscillator(), g = c.createGain(); k.frequency.setValueAtTime(150, t); k.frequency.exponentialRampToValueAtTime(45, t + .12); g.gain.setValueAtTime(.5, t); g.gain.exponentialRampToValueAtTime(.001, t + .16); k.connect(g); g.connect(out); k.start(t); k.stop(t + .2); }
-      if (s16 === 4 || s16 === 12) nz(t, .12, { freq: 1800, q: .8, vol: .22 });
-      if (s16 % 2 === 1) nz(t, .03, { type: 'highpass', freq: 8000, vol: f && f.bells ? .12 : .06 });
-      if (f && f.bells && s16 % 2 === 0) voice(96 + (s16 % 4 ? 0 : 3), t, .12, 'sine', .03);
-      if (s16 % 4 === 0 || s16 === 10) voice(ch[0] - 24, t, st * 3, 'triangle', .22, 900);
-      if (s16 === 2 || s16 === 6 || s16 === 10 || s16 === 14) ch.forEach(m => voice(m, t, st * 1.6, 'square', .028, 1800));
-      const n = tune[step % 32]; if (n >= 0) voice(scale[n % scale.length], t, st * 2.2, 'triangle', .13, 4000);
+      const bar = Math.floor(step / 16) % 4, s = step % 16, ch = CH[M.prog[bar]], t = next;
+      DRUMS[M.drums](s, t, bar);
+      if (M.bass && (s % 4 === 0 || s === 10)) note(ch[0] - 24, t, st * 2.2, { type: 'triangle', vol: .2, cut: 900, rel: .1 });
+      if (M.chords && (s === 2 || s === 6 || s === 10 || s === 14)) ch.forEach(m => note(m, t, st * 1.2, { type: 'square', vol: .024, cut: 1800, rel: .1 }));
+      if (M.pad && s === 0) ch.forEach((m, i) => note(m - (i ? 0 : 12), t, st * 15, { type: 'sine', vol: .045, att: .5, rel: .8 }));
+      if (M.arp && s % 2 === 0) note(ch[(s / 2) % 3] + 12, t, .01, { type: M.drums === 'dance' ? 'sawtooth' : 'triangle', vol: M.drums === 'dance' ? .025 : .04, pluck: 1, rel: .25, cut: 2400 });
+      if (M.drone && s % 4 === 0) note([55, 60, 60, 48][s / 4], t, .01, { type: 'sawtooth', vol: .05, pluck: 1, rel: 1.8, cut: 1100 });
+      const n = M.tune[step % 32]; if (n >= 0) LEAD[M.lead](deg(n), t, st * (M.len || 2.2));
       step++; next += st;
     }
   };
@@ -3878,7 +3944,32 @@ function jingleStop(fade = .8) {
   const c = AU.ctx, o = JINGLE.out; if (c && o) { o.gain.cancelScheduledValues(c.currentTime); o.gain.setValueAtTime(o.gain.value, c.currentTime); o.gain.linearRampToValueAtTime(0, c.currentTime + fade); setTimeout(() => o.disconnect(), fade * 1000 + 600); }
   $$('.sp-music').forEach(b => { b.classList.remove('on'); b.textContent = '🎵 Play music'; });
 }
+/* music plays on the start screen and softly around the game, but not while reading, inside a place, or with healing sounds on */
+function musicWant() { return !!(S.settings.sound && S.settings.music !== false && view !== 'session' && view !== 'setup' && !Object.keys(HEAL.on).length && !document.body.classList.contains('pov-on')); }
+function musicSync() { try { if (musicWant()) { if (!JINGLE.on) jingleStart(festNow()); else jingleLevel(); } else if (JINGLE.on) jingleStop(.8); } catch (e) {} }
 
+/* ---- quick join: nickname and boy or girl, straight after Start ---- */
+const needsJoin = () => !S.avatar.gender || !S.name || S.name === 'Reader';
+function openJoin(done) {
+  let g = S.avatar.gender || '', raf = 0;
+  const m = modal(`<span class="cap">Before you start</span><h2 class="disp sl-h">Who's reading today?</h2>
+    <label class="sl-field">Nickname<input id="jn-name" maxlength="16" placeholder="e.g. Aiman or Aisyah" autocomplete="nickname" value="${esc(S.name === 'Reader' ? '' : S.name)}"></label>
+    <p class="sl-muted" id="jn-err" style="margin-top:6px">Other readers on the street will see this name. Please don't use your full real name.</p>
+    <div class="pl-tiles jn-tiles">${['male', 'female'].map((k, i) => `<button type="button" class="pl-tile ${g === k ? 'on side-' + (i ? 'b' : 'a') : ''}" data-g="${k}" aria-pressed="${g === k}"><canvas data-look="${k}" width="220" height="220"></canvas><b>${k === 'male' ? 'Boy' : 'Girl'}</b></button>`).join('')}</div>
+    <div class="sl-acts"><span class="sl-muted jn-fine">You can change your look any time.</span><button class="sl-btn" id="jn-go">Let's read</button></div>`, null, 'sl pl-modal jn-modal');
+  const anim = () => { $$('canvas[data-look]', m).forEach(cv => portrait(cv, DEFAULT_LOOK[cv.dataset.look], 2.6)); if (m.isConnected) raf = requestAnimationFrame(anim); }; anim();
+  const inp = $('#jn-name', m), err = $('#jn-err', m), fail = t => { err.textContent = t; err.style.color = '#FF4D5E'; sfx('tap'); };
+  $$('[data-g]', m).forEach((b, i) => b.onclick = () => { g = b.dataset.g; sfx('tap'); err.textContent = 'Nice! Now tap the green button.'; err.style.color = ''; $$('[data-g]', m).forEach((x, j) => { const on = x === b; x.classList.toggle('on', on); x.classList.remove('side-a', 'side-b'); if (on) x.classList.add(j ? 'side-b' : 'side-a'); x.setAttribute('aria-pressed', on); }); });
+  inp.onkeydown = e => { if (e.key === 'Enter') $('#jn-go', m).click(); };
+  $('#jn-go', m).onclick = () => {
+    const n = inp.value.trim();
+    if (n.length < 2) { inp.focus(); return fail('Type a nickname with at least 2 characters.'); }
+    if (!g) return fail('Pick boy or girl.');
+    S.avatar = S.avatar.gender === g ? S.avatar : Object.assign({}, DEFAULT_LOOK[g]); S.name = n; save();
+    cancelAnimationFrame(raf); closeModal(true); netStats(); netPresence(true); sfx('chime'); toast(`👋 Welcome, <b>${esc(n)}</b>`); render(); done && done();
+  };
+  setTimeout(() => { try { if (!inp.value) inp.focus(); } catch (e) {} }, 300);
+}
 /* ---- splash ---- */
 const TIPS = ['Tip: favourite a place with the heart and it moves to the top.', 'Tip: take the breaks the staff suggest. They raise your Wellbeing score.', 'Tip: talk to readers with a 💬 to earn the Book Buddy badge.', 'Tip: three lost pages hide on the street every day.', 'Tip: a 60+ stage score wins the round.'];
 function showSplash() {
@@ -3895,15 +3986,16 @@ function showSplash() {
   document.body.append(el); document.body.classList.add('splash-on');
   const boy = $('#sp-boy', el), girl = $('#sp-girl', el), lb = festLook(F, 'boy'), lg = festLook(F, 'girl');
   const an = () => { if (!boy.isConnected) return; portrait(boy, lb, 3, .93); portrait(girl, lg, 3, .93); requestAnimationFrame(an); }; an();
-  const mb = $('.sp-music', el); let userOff = false;
-  mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { userOff = true; jingleStop(.3); } else { userOff = false; if (!S.settings.sound) { S.settings.sound = true; save(); } unlockAudio(); jingleStart(F); } };
-  const kick = e => { if (e.target.closest('#sp-go,.sp-music') || el.classList.contains('out')) return; if (!userOff && !JINGLE.on) { unlockAudio(); jingleStart(F); } }; el.addEventListener('touchend', kick, { passive: true }); el.addEventListener('click', kick);
-  setTimeout(() => jingleStart(F), 300);
+  const mb = $('.sp-music', el);
+  mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { S.settings.music = false; save(); jingleStop(.3); } else { S.settings.music = true; if (!S.settings.sound) S.settings.sound = true; save(); renderChips(); unlockAudio(); musicSync(); } };
+  const kick = e => { if (e.target.closest('#sp-go,.sp-music') || el.classList.contains('out')) return; if (!JINGLE.on) { unlockAudio(); musicSync(); } }; el.addEventListener('touchend', kick, { passive: true }); el.addEventListener('click', kick);
+  setTimeout(musicSync, 300);
   const t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 200 : 1400;
   const fill = now => { const k = Math.min(1, (now - t0) / dur), pct = Math.round(k * 100); $('#sp-bar', el).style.width = pct + '%'; $('#sp-pct', el).textContent = pct + '%';
     if (k < 1) requestAnimationFrame(fill); else { const b = $('#sp-go', el); b.disabled = false; b.textContent = S.flags.landed ? 'Start reading' : 'Start adventure'; b.classList.add('ready'); } };
   requestAnimationFrame(fill);
-  $('#sp-go', el).onclick = () => { try { sessionStorage.setItem('bookout:splash', '1'); } catch (e) {} jingleStop(1.4); sfx('whoosh'); el.classList.add('out'); document.body.classList.remove('splash-on'); setTimeout(() => el.remove(), 450); };
+  $('#sp-go', el).onclick = () => { try { sessionStorage.setItem('bookout:splash', '1'); } catch (e) {} sfx('whoosh'); el.classList.add('out'); document.body.classList.remove('splash-on'); musicSync(); setTimeout(() => el.remove(), 450);
+    if (needsJoin()) setTimeout(() => openJoin(), 380); };
 }
 /* ---- world map ---- */
 const ISLES = [
@@ -4433,7 +4525,7 @@ function renderSession(el) {
   $('#leave', el).onclick = () => confirmLeave(() => finish(false));
   $('#snap', el).onclick = () => openPhoto(false);
   $('#heal-hud', el).onclick = openHeal; healBadge();
-  $('#mute', el).onclick = () => { S.settings.sound = !S.settings.sound; save(); $('#mute').textContent = S.settings.sound ? '🔊' : '🔇'; renderChips(); S.settings.sound ? (ambient(sess.venue), healResume()) : (stopAmbient(), healPause()); };
+  $('#mute', el).onclick = () => { S.settings.sound = !S.settings.sound; save(); $('#mute').textContent = S.settings.sound ? '🔊' : '🔇'; renderChips(); musicSync(); S.settings.sound ? (ambient(sess.venue), healResume()) : (stopAmbient(), healPause()); };
   $('#fsdown', el).onclick = () => setFs(-1); $('#fsup', el).onclick = () => setFs(1);
   bindGestures($('#book', el));
   ambient(v.id);
@@ -4701,6 +4793,7 @@ function renderPassport(el) {
         <h3 style="font-size:20px;margin-bottom:8px">Settings</h3>
         <form id="nf" class="field"><label for="nm">Your name (the staff will greet you)</label><div class="search"><input id="nm" value="${esc(S.name)}" maxlength="24"><button class="btn btn-ghost">Save</button></div></form>
         <label class="toggle" for="t-sound"><span>Sound effects</span><input type="checkbox" id="t-sound" ${S.settings.sound ? 'checked' : ''}></label>
+        <label class="toggle" for="t-music"><span>Background music (changes with festivals)</span><input type="checkbox" id="t-music" ${S.settings.music !== false ? 'checked' : ''}></label>
         <label class="toggle" for="t-amb"><span>Venue background sound</span><input type="checkbox" id="t-amb" ${S.settings.ambient ? 'checked' : ''}></label>
         <label class="toggle" for="t-voice"><span>Staff speak out loud</span><input type="checkbox" id="t-voice" ${S.settings.voice ? 'checked' : ''}></label>
         <label class="toggle" for="t-pov"><span>First-person counter when you walk in</span><input type="checkbox" id="t-pov" ${S.settings.pov !== false ? 'checked' : ''}></label>
@@ -4719,7 +4812,7 @@ function renderPassport(el) {
   </div>`;
   $('#nf', el).onsubmit = e => { e.preventDefault(); S.name = $('#nm', el).value.trim() || 'Reader'; save(); toast('Name saved'); render(); };
   const tg = (id, fn) => $(id, el).onchange = e => { fn(e.target.checked); save(); renderChips(); };
-  tg('#t-sound', v => S.settings.sound = v); tg('#t-amb', v => S.settings.ambient = v);
+  tg('#t-sound', v => { S.settings.sound = v; musicSync(); }); tg('#t-music', v => { S.settings.music = v; musicSync(); }); tg('#t-amb', v => S.settings.ambient = v);
   tg('#t-voice', v => { S.settings.voice = v; if (v) speak(`Hello ${S.name}! I will read out what the staff say.`, 'Aina'); });
   tg('#t-hours', v => S.settings.hours = v); tg('#t-games', v => S.settings.games = v); tg('#t-pov', v => S.settings.pov = v); tg('#t-demo', v => S.settings.speed = v ? 30 : 1);
   $('#reset', el).onclick = () => modal(`<div class="em">🧹</div><h2>Reset everything?</h2><p class="muted" style="margin-top:8px">Points, badges, streaks, borrowed books and photos on this device will be erased. This cannot be undone.</p><div class="acts"><button class="btn btn-ghost" data-close>Cancel</button><button class="btn btn-danger" id="ok">Erase my progress</button></div>`,
@@ -4727,7 +4820,7 @@ function renderPassport(el) {
 }
 
 if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
-if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth, JINGLE, festNow });
+if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth, JINGLE, festNow, openJoin, musicSync, MUSIC, AU });
 render(); showSplash(); netInit();
 })();
 </script>
