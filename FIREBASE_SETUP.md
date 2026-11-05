@@ -3,7 +3,7 @@
 BOOKOUT plays solo until a Firebase project is connected. Setup takes about 5 minutes and stays on the free Spark plan.
 
 1. Go to https://console.firebase.google.com, click **Create a project**, name it `bookout`, and skip Google Analytics.
-2. **Build → Authentication → Get started.** Enable **Google** (choose your support email) and **Email/Password**.
+2. **Build → Authentication → Get started.** Enable **Anonymous**, which lets players join with just a nickname. Also enable **Google**, which is only for your admin login.
 3. **Authentication → Settings → Authorized domains → Add domain:** `yushabdullah.github.io`.
 4. **Build → Realtime Database → Create database.** Pick the region closest to you (Singapore, `asia-southeast1`) and start in **locked mode**.
 5. **Realtime Database → Rules:** paste the contents of `database.rules.json` from this repo and click **Publish**.
@@ -23,4 +23,4 @@ Open two tabs in the same browser:
 - `index.html?mp=local&slot=a`
 - `index.html?mp=local&slot=b`
 
-Sign in with any email in each tab. The two players will see each other.
+Each tab joins automatically and the two players see each other. For the admin page, sign in with the admin email (any password).
