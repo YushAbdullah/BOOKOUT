@@ -3599,10 +3599,10 @@ const PAGES = {
       <li><b>Books that lead.</b> Put inspiring, leadership, business and innovation classics on the shelf next to great stories, so readers grow at work and in life.</li>
       <li><b>Reading is social.</b> Make it normal to recommend, debate and share books with the people around you.</li>
       <li><b>Healthy reading.</b> Build breaks, water and stretching into every session.</li>
-      <li><b>Privacy first.</b> Play alone with no account at all. If you sign in to read with others, we keep only what the game needs, with no ads and no tracking.</li></ol>` },
+      <li><b>Privacy first.</b> No accounts, no ads and no tracking. You only choose a nickname.</li></ol>` },
   privacy: { cap: 'Privacy policy', title: 'Privacy policy', body: `
     <p class="upd">Last updated 5 November 2026</p>
-    <h2>The short version</h2><p>BOOKOUT has no ads and no analytics. You can play alone with no account, and your progress stays on your device. If you sign in to play together, a small player profile is stored with Google Firebase so other readers can see you on the street.</p>
+    <h2>The short version</h2><p>BOOKOUT has no ads and no analytics. There are no accounts: you only pick a nickname and a look. Your full progress stays on your device. To let readers see each other on the street, a small anonymous player profile is stored with Google Firebase.</p>
     <h2>What is stored, and where</h2><ul><li><b>On your device only (browser storage):</b> your player name and look, points, XP, streaks, badges, season results, quests, bookmarks, favourite places, notes from book talks and settings.</li>
       <li><b>EPUB files you add</b> are unpacked and stored in your browser's IndexedDB on this device. They are never uploaded.</li>
       <li><b>Reading photos</b> you take stay in your browser storage.</li></ul>
@@ -3610,18 +3610,17 @@ const PAGES = {
       <li>Fonts load from Google Fonts, which can see your IP address.</li>
       <li>If you search for a book that is not stored with the app, BOOKOUT asks Gutendex and Project Gutenberg for it. If those are slow, it may try public helper services (allorigins.win, corsproxy.io, codetabs.com) that pass the request along. Only the book address is sent.</li>
       <li>Voice lines use your browser's built-in speech feature, which may use your device's or browser maker's voice service.</li></ul>
-    <h2>If you sign in to play together</h2><ul><li><b>Sign-in:</b> handled by Google Firebase Authentication, using your Google account or an email and password. BOOKOUT never sees your password.</li>
-      <li><b>What other players see:</b> your player name, your look, where you are on the street, what you are reading, and the quick-chat lines you send.</li>
-      <li><b>What the admin sees:</b> the BOOKOUT admin (Yusri) can see your player name, email, level, points, reading minutes, sessions, streak and when you were last online, to run and improve the game.</li>
-      <li><b>Where it lives:</b> Google Firebase Realtime Database. Your live street position is deleted when you leave.</li>
-      <li><b>Deleting your account:</b> open an issue on GitHub or contact the admin, and your profile will be removed.</li></ul>
+    <h2>Playing together</h2><ul><li><b>No sign-up:</b> your browser gets a random anonymous ID from Google Firebase. We do not ask for your email, phone or real name.</li>
+      <li><b>What other players see:</b> your nickname, your look, where you are on the street, what you are reading, and the quick-chat lines you send.</li>
+      <li><b>What the admin sees:</b> the BOOKOUT admin (Yusri) can see each nickname with its level, points, reading minutes, sessions, streak and when it was last online, to run and improve the game.</li>
+      <li><b>Where it lives:</b> Google Firebase Realtime Database. Your live street position is deleted when you leave. Clearing your browser data gives you a new anonymous ID.</li></ul>
     <h2>Your choices</h2><p>You can erase everything at any time in Passport → Settings → Reset all progress, or by clearing this site's data in your browser. Turning off sound and voice stops audio features.</p>
-    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, Playing alone collects nothing. Children under 13 should only sign in to play together with a parent's permission.</p>
+    <h2>Children</h2><p>BOOKOUT does not knowingly collect personal information from anyone, including children, Playing alone collects nothing. Playing together only uses a nickname, so please don't use your full real name as your nickname.</p>
     <h2>Contact</h2><p>Questions about privacy: open an issue on <a href="https://github.com/YushAbdullah/BOOKOUT/issues" target="_blank" rel="noopener">GitHub</a>.</p>` },
   terms: { cap: 'Terms and conditions', title: 'Terms and conditions', body: `
     <p class="upd">Last updated 5 November 2026</p>
     <h2>1. Using BOOKOUT</h2><p>BOOKOUT is free to use for personal reading. By using it you agree to these terms. If you do not agree, please do not use the app.</p>
-    <h2>Accounts and playing together</h2><p>Signing in is optional. If you sign in, keep your login safe and use a player name that is not offensive or pretending to be someone else. Be kind in quick chat. The admin may remove players who misuse the game.</p>
+    <h2>Nicknames and playing together</h2><p>Pick a nickname that is not offensive and does not pretend to be someone else. Be kind in quick chat. The admin may remove players who misuse the game.</p>
     <h2>2. Books</h2><p>Built-in books are public domain texts from Project Gutenberg, provided as is. "Project Gutenberg" is a trademark of the Project Gutenberg Literary Archive Foundation, and BOOKOUT is not affiliated with it. Public domain status can differ by country, so check the law where you live.</p>
     <h2>3. Your EPUB files</h2><p>Only add EPUB files you have the right to read. They stay on your device. BOOKOUT does not check, copy or share them, and you are responsible for them.</p>
     <h2>4. Points, badges and seasons</h2><p>Points, XP, ranks and badges are for fun. They have no cash value, cannot be bought or sold, and may change or reset as the game improves.</p>
@@ -3643,7 +3642,7 @@ function footerHTML() {
     <div class="fs-brand"><button class="logo" data-go="landing" aria-label="BOOKOUT home"><span class="dots" aria-hidden="true"><i></i><i></i></span><span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span></button><p>Free reading, real places, real habits.</p></div>
     <div class="fs-col"><b>Play</b><button data-go="home">Street</button><button data-go="places">Places</button><button data-go="season">Season</button><button data-go="passport">Passport</button></div>
     <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
-    <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button></div>
+    <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button><button data-go="admin">Admin</button></div>
   </div><p class="fs-note">© 2026 BOOKOUT · Books from Project Gutenberg · No ads, no tracking</p></footer>`;
 }
 
@@ -3708,7 +3707,7 @@ function hubAct(k, v, chestReady) {
     <p class="sl-muted" style="margin-top:12px">Finish them all to unlock the daily chest on the hub.</p><div class="sl-acts"><span></span><button class="sl-btn" data-close>Let's go</button></div>`, null, 'sl');
   if (k === 'mail') { const list = mailList(), read = S.flags.mailRead || []; S.flags.mailRead = list.map(m => m.id); save();
     return modal(`<span class="cap">Inbox</span><h2 class="disp sl-h">Mail</h2><div class="hq">${list.map((m, i) => `<div class="hq-r ${read.includes(m.id) ? '' : 'new'}" style="--d:${i}"><span class="ck">${m.em}</span><div><b>${esc(m.t)}</b><small>${esc(m.from)} · ${esc(m.d)}</small></div>${read.includes(m.id) ? '' : '<span class="pts">New</span>'}</div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, () => render(), 'sl'); }
-  if (k === 'friend' && NET.mode !== 'off') return NET.user ? openOnline() : openAuth();
+  if (k === 'friend' && NET.mode !== 'off') return openOnline();
   if (k === 'friend') { const t = S.talks || [];
     return modal(`<span class="cap">Book buddies</span><h2 class="disp sl-h">People you talked to</h2>${t.length ? `<div class="hq">${t.slice(0, 12).map((x, i) => `<div class="hq-r" style="--d:${i}"><span class="ck">${(STANCES[x.stance] || {}).em || '💬'}</span><div><b>${esc(x.name)}</b><small>${esc(x.title)}${x.note ? ` · “${esc(x.note)}”` : ''}</small></div><span class="pts">${esc(x.day.slice(5))}</span></div>`).join('')}</div>` : '<p class="sl-muted" style="margin-top:8px">Nobody yet. Walk the street and tap a reader with a 💬 to talk books.</p>'}<div class="sl-acts"><span></span><button class="sl-btn" data-go="home">Walk the street</button></div>`, m => $$('[data-go]', m).forEach(b => b.addEventListener('click', () => closeModal(true))), 'sl'); }
   if (k === 'event') return modal(`<span class="cap">Live now</span><h2 class="disp sl-h">Events</h2><div class="hq">${eventList().map((e, i) => `<div class="hq-r ${e.on ? 'new' : 'done'}" style="--d:${i}"><span class="ck">${e.em}</span><div><b>${esc(e.t)}</b><small>${esc(e.d)}</small></div><span class="pts">${e.on ? 'Live' : 'Done'}</span></div>`).join('')}</div><div class="sl-acts"><span></span><button class="sl-btn" data-close>Close</button></div>`, null, 'sl');
@@ -3819,7 +3818,7 @@ function renderTabbar() {
   let hf = $('#heal-fab'); if (!hf) { hf = document.createElement('button'); hf.id = 'heal-fab'; hf.className = 'heal-btn heal-fab'; hf.setAttribute('aria-label', 'Healing sounds'); hf.title = 'Healing sounds'; hf.innerHTML = '<span>🎧</span><em>Sounds</em>'; hf.onclick = openHeal; document.body.append(hf); }
   hf.hidden = ['session', 'landing', 'info', 'places', 'passport'].includes(view); healBadge();
   $$('[data-tab]', tb).forEach(b => b.onclick = () => { sfx('tap'); const k = b.dataset.tab; if (k !== 'more') return go(k);
-    modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings'], ...(NET.mode === 'off' ? [] : NET.user ? [['online', '🟢', 'Online & account']] : [['signin', '🔑', 'Sign in']]), ...(NET.isAdmin() ? [['admin', '🛡️', 'Admin']] : [])].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
+    modal(`<span class="cap">More</span><h2 class="disp sl-h">Menu</h2><div class="more-g">${[['places', '📍', 'Places'], ['season', '🏟️', 'Season'], ['landing', '🏡', 'Welcome page'], ['about', '🙋', 'About me'], ['vision', '🎯', 'Vision & mission'], ['privacy', '🔒', 'Privacy'], ['terms', '📄', 'Terms'], ['passport', '⚙️', 'Settings'], ...(NET.mode === 'off' ? [] : [['online', '🟢', "Who's online"]]), ...(NET.isAdmin() ? [['admin', '🛡️', 'Admin']] : [])].map(([g, e, l], i) => `<button class="more-b" data-mgo="${g}" style="--d:${i}"><span>${e}</span>${l}</button>`).join('')}</div>`,
       m => $$('[data-mgo]', m).forEach(x => x.onclick = () => { closeModal(true); const g = x.dataset.mgo; g === 'online' ? openOnline() : g === 'signin' ? openAuth() : go(g); }), 'sl');
   });
 }
@@ -3843,7 +3842,7 @@ const FB = {
     await loadScript(base + 'firebase-app-compat.js'); await Promise.all([loadScript(base + 'firebase-auth-compat.js'), loadScript(base + 'firebase-database-compat.js')]);
     firebase.initializeApp(FIREBASE_CONFIG); this.auth = firebase.auth(); this.db = firebase.database();
     try { await this.auth.getRedirectResult(); } catch (e) {}
-    this.auth.onAuthStateChanged(u => netAuthed(u ? { uid: u.uid, email: u.email || '', verified: !!u.emailVerified, name: u.displayName || '' } : null));
+    this.auth.onAuthStateChanged(u => { if (!u) { this.auth.signInAnonymously().catch(e => console.warn('anon sign-in', e)); return netAuthed(null); } netAuthed({ uid: u.uid, email: u.email || '', verified: !!u.emailVerified, name: u.displayName || '', anon: !!u.isAnonymous }); });
     this.db.ref('presence').on('child_added', s => netPeer(s.key, s.val())); this.db.ref('presence').on('child_changed', s => netPeer(s.key, s.val())); this.db.ref('presence').on('child_removed', s => netPeer(s.key, null));
   },
   async google() { const p = new firebase.auth.GoogleAuthProvider(); try { await this.auth.signInWithPopup(p); } catch (e) { if (/popup|cancel/i.test(e.code || '')) return this.auth.signInWithRedirect(p); throw e; } },
@@ -3863,11 +3862,11 @@ const LOCALNET = {
     this.ch = new BroadcastChannel('bookout-mp'); this.id = 'L' + Math.random().toString(36).slice(2, 8);
     this.ch.onmessage = e => { const m = e.data; if (m.t === 'p') netPeer(m.uid, m.v); if (m.t === 'hello' && NET.user && this.last) this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: this.last }); };
     window.addEventListener('pagehide', () => NET.user && this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: null }));
-    const u = store('bookout:mpuser' + SLOT); setTimeout(() => netAuthed(u || null), 0);
+    let u = store('bookout:mpuser' + SLOT); if (!u) { u = { uid: this.id, email: '', verified: false, anon: true }; store('bookout:mpuser' + SLOT, u); } setTimeout(() => netAuthed(u), 0);
   },
-  _in(email) { const u = { uid: this.id, email, verified: true, name: '' }; store('bookout:mpuser' + SLOT, u); netAuthed(u); },
+  _in(email) { const u = { uid: (NET.user && NET.user.uid) || this.id, email, verified: true, name: '', anon: false }; store('bookout:mpuser' + SLOT, u); netAuthed(u); },
   async google() { this._in('google.' + this.id + '@test.local'); }, async emailIn(e) { this._in(e); }, async emailUp(e) { this._in(e); }, async reset() {},
-  async out() { this.ch.postMessage({ t: 'p', uid: NET.user.uid, v: null }); localStorage.removeItem('bookout:mpuser' + SLOT); netAuthed(null); },
+  async out() { const u = Object.assign({}, NET.user, { email: '', verified: false, anon: true }); store('bookout:mpuser' + SLOT, u); netAuthed(u); },
   online() { this.ch.postMessage({ t: 'hello' }); },
   presence(uid, v) { this.last = v; this.ch.postMessage({ t: 'p', uid, v }); },
   profile(uid, v) { const all = store('bookout:mpusers') || {}; all[uid] = Object.assign(all[uid] || {}, v); store('bookout:mpusers', all); },
@@ -3891,8 +3890,6 @@ async function netAuthed(u) {
   const prof = await NET.drv.getProfile(u.uid).catch(() => null);
   if (prof && prof.name && (!S.flags.mpUid || S.flags.mpUid !== u.uid)) { S.name = prof.name; if (prof.look && prof.look.gender) S.avatar = prof.look; }
   S.flags.mpUid = u.uid; save();
-  const needsSetup = !(prof && prof.name) && !(S.avatar && S.avatar.gender && S.name !== 'Reader');
-  if (needsSetup) { if (u.name && S.name === 'Reader') S.name = u.name.split(' ')[0].slice(0, 16); openPlayer('new', () => { netStats(true); netPresence(true); }); }
   netStats(true); netPresence(true); renderAuthChip(); if (view !== 'session' && !$('#modal-root').innerHTML) render();
 }
 function netPeer(uid, v) {
@@ -3908,7 +3905,7 @@ function netPeer(uid, v) {
 }
 const ME_POS = { x: 320, y: 548, dir: 'down', mv: false };
 function netPresence(force, extra) {
-  const u = NET.user; if (!u || !NET.drv) return;
+  const u = NET.user; if (!u || !NET.drv || !netReady()) return;
   const now = Date.now(); if (!force && now - NET.lastSend < 180) return;
   const reading = view === 'session' && sess && sess.book ? sess.book.title : '';
   const v = { name: S.name, look: S.avatar && S.avatar.gender ? S.avatar : null, x: Math.round(ME_POS.x), y: Math.round(ME_POS.y), dir: ME_POS.dir, mv: ME_POS.mv, reading, room: view === 'session' && sess ? sess.venue : '', t: now };
@@ -3919,8 +3916,9 @@ function netPresence(force, extra) {
   NET.lastSent = key; NET.lastSend = now; NET.drv.presence(u.uid, v);
 }
 function netSay(text) { if (!NET.user) return; NET.say = { text, t: Date.now() }; netPresence(true); }
+const netReady = () => S.name && S.name !== 'Reader' && S.avatar && S.avatar.gender;
 function netStats(first) {
-  const u = NET.user; if (!u || !NET.drv) return;
+  const u = NET.user; if (!u || !NET.drv || !netReady()) return;
   const L = levelInfo(S.xp), v = { name: S.name, look: S.avatar && S.avatar.gender ? S.avatar : null, email: u.email || '', xp: S.xp, level: L.lv || L.level || 1, points: S.points, minutes: S.minutes, sessions: S.sessions, streak: S.streak, badges: Object.keys(S.badges || {}).length, lastSeen: Date.now(), reading: (S.recent[0] || {}).title || '' };
   if (first) v.since = S.since;
   NET.drv.profile(u.uid, v);
@@ -3929,30 +3927,28 @@ function updOnline() { $$('.mp-online').forEach(e => e.textContent = NET.online)
 function renderAuthChip() {
   $$('.mp-chip').forEach(el => {
     if (NET.mode === 'off') { el.hidden = true; return; } el.hidden = false;
-    el.innerHTML = NET.user ? `<span class="mp-dot"></span><b class="mp-online">${NET.online || 1}</b> online` : `<span class="mp-dot off"></span>Sign in to play together`;
-    el.onclick = () => NET.user ? openOnline() : openAuth();
+    el.innerHTML = NET.user ? `<span class="mp-dot"></span><b class="mp-online">${NET.online || 1}</b> online` : `<span class="mp-dot off"></span>Connecting…`;
+    el.onclick = () => openOnline();
   });
 }
 NET.listeners.add(renderAuthChip);
 function openAuth(after) {
   if (NET.mode === 'off') return toast('Online play is not switched on yet');
   sfx('tap');
-  modal(`<span class="cap">Play together</span><h2 class="disp sl-h">Join Jalan Buku</h2><p class="sl-muted">Sign in to see other readers on the street, wave and greet each other, and keep your name and look.</p>
+  modal(`<span class="cap">Admin</span><h2 class="disp sl-h">Admin sign-in</h2><p class="sl-muted">Players don't need this. They join with a nickname. This is only for the BOOKOUT admin.</p>
     <button class="btn btn-ghost mp-g" id="mp-google"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M22.6 12.2c0-.8-.1-1.5-.2-2.2H12v4.2h6a5 5 0 0 1-2.2 3.3v2.7h3.5c2.1-1.9 3.3-4.7 3.3-8z"/><path fill="#34A853" d="M12 23c3 0 5.5-1 7.3-2.7l-3.5-2.7c-1 .7-2.3 1.1-3.8 1.1-2.9 0-5.4-2-6.3-4.6H2.1v2.8A11 11 0 0 0 12 23z"/><path fill="#FBBC05" d="M5.7 14.1a6.6 6.6 0 0 1 0-4.2V7.1H2.1a11 11 0 0 0 0 9.8z"/><path fill="#EA4335" d="M12 5.4c1.6 0 3.1.6 4.2 1.7l3.1-3.1A11 11 0 0 0 2.1 7.1l3.6 2.8C6.6 7.4 9.1 5.4 12 5.4z"/></svg>Continue with Google</button>
     <div class="mp-or"><span>or use email</span></div>
     <form class="mp-form" id="mp-form" novalidate><label class="sl-field">Email<input id="mp-email" type="email" autocomplete="email" required></label>
     <label class="sl-field">Password<input id="mp-pass" type="password" autocomplete="current-password" minlength="6" required></label>
     <p class="mp-err" id="mp-err" role="alert"></p>
-    <div class="sl-acts"><button type="button" class="sl-btn sec" id="mp-up">Create account</button><button class="sl-btn" id="mp-in">Sign in</button></div>
-    <button type="button" class="mp-link" id="mp-reset">Forgot password?</button></form>
-    <p class="mp-fine">By joining you agree to the <button class="mp-link" data-mgo="terms">Terms</button> and <button class="mp-link" data-mgo="privacy">Privacy policy</button>. Others see only your player name, look and what you are reading.</p>`, m => {
+    <div class="sl-acts"><button class="sl-btn" id="mp-in">Sign in</button></div>
+    <button type="button" class="mp-link" id="mp-reset">Forgot password?</button></form>`, m => {
     const err = t => { $('#mp-err', m).textContent = t || ''; };
     const nice = e => ({ 'auth/invalid-email': 'That email does not look right.', 'auth/user-not-found': 'No account with that email. Tap Create account.', 'auth/wrong-password': 'Wrong password.', 'auth/invalid-credential': 'Email or password is wrong.', 'auth/email-already-in-use': 'That email already has an account. Tap Sign in.', 'auth/weak-password': 'Use at least 6 characters.', 'auth/too-many-requests': 'Too many tries. Wait a minute.', 'auth/network-request-failed': 'No connection. Try again.' })[e && e.code] || (e && e.message) || 'Something went wrong.';
-    const run = f => async () => { err(); try { await f(); closeModal(true); toast('👋 Welcome to Jalan Buku'); after && after(); } catch (e) { err(nice(e)); } };
+    const run = f => async () => { err(); try { await f(); closeModal(true); toast('🛡️ Signed in'); after && after(); } catch (e) { err(nice(e)); } };
     const ep = () => { const e = $('#mp-email', m).value.trim(), p = $('#mp-pass', m).value; if (!/^\S+@\S+\.\S+$/.test(e)) throw { message: 'Enter your email.' }; if (p.length < 6) throw { message: 'Password needs 6+ characters.' }; return [e, p]; };
     $('#mp-google', m).onclick = run(() => NET.drv.google());
     $('#mp-form', m).onsubmit = ev => { ev.preventDefault(); run(() => NET.drv.emailIn(...ep()))(); };
-    $('#mp-up', m).onclick = run(() => NET.drv.emailUp(...ep()));
     $('#mp-reset', m).onclick = async () => { const e = $('#mp-email', m).value.trim(); if (!e) return err('Type your email first.'); try { await NET.drv.reset(e); err('Reset link sent. Check your inbox.'); } catch (x) { err(nice(x)); } };
     $$('[data-mgo]', m).forEach(b => b.onclick = () => { closeModal(true); go(b.dataset.mgo); });
   }, 'sl mp-modal');
@@ -3962,10 +3958,11 @@ function openOnline() {
   modal(`<span class="cap">Online now</span><h2 class="disp sl-h">${list.length ? `${list.length + 1} readers on Jalan Buku` : 'Just you for now'}</h2>
     <div class="hq">${[{ name: S.name + ' (you)', look: S.avatar, reading: view === 'session' && sess && sess.book ? sess.book.title : '' }, ...list].map((o, i) => `<div class="hq-r" style="--d:${i}"><canvas class="mp-av" data-i="${i}" width="80" height="80"></canvas><div><b>${esc(o.name)}</b><small>${o.reading ? '📖 Reading ' + esc(o.reading) : '🚶 On the street'}</small></div></div>`).join('')}</div>
     ${list.length ? '' : '<p class="sl-muted">Share the link with friends so they can walk with you.</p>'}
-    <div class="sl-acts"><button class="sl-btn sec" id="mp-share">Share link</button>${NET.isAdmin() ? '<button class="sl-btn sec" id="mp-admin">Admin</button>' : ''}<button class="sl-btn sec" id="mp-out">Sign out</button><button class="sl-btn" data-close>Done</button></div>`, m => {
+    <div class="sl-acts"><button class="sl-btn sec" id="mp-share">Share link</button><button class="sl-btn sec" id="mp-nick">Change nickname</button>${NET.isAdmin() ? '<button class="sl-btn sec" id="mp-admin">Admin</button>' : ''}${NET.user && !NET.user.anon ? '<button class="sl-btn sec" id="mp-out">Admin sign out</button>' : ''}<button class="sl-btn" data-close>Done</button></div>`, m => {
     const all = [{ look: S.avatar }, ...list];
     $$('canvas.mp-av', m).forEach(cv => portrait(cv, (all[+cv.dataset.i] || {}).look || DEFAULT_LOOK.male, .9, .95));
-    $('#mp-out', m).onclick = async () => { await NET.drv.out(); NET.others.clear(); closeModal(true); toast('Signed out'); render(); };
+    const ob = $('#mp-out', m); if (ob) ob.onclick = async () => { await NET.drv.out(); closeModal(true); toast('Signed out of admin'); render(); };
+    $('#mp-nick', m).onclick = () => { closeModal(true); openLook(); };
     const ad = $('#mp-admin', m); if (ad) ad.onclick = () => { closeModal(true); go('admin'); };
     $('#mp-share', m).onclick = async () => { const url = location.origin + location.pathname; try { if (navigator.share) await navigator.share({ title: 'BOOKOUT', text: 'Read with me on Jalan Buku 📚', url }); else { await navigator.clipboard.writeText(url); toast('🔗 Link copied'); } } catch (e) {} };
   }, 'sl');
@@ -3975,16 +3972,16 @@ function quickChat(onPick) {
 }
 /* admin page */
 async function renderAdmin(el) {
-  if (!NET.isAdmin()) { el.innerHTML = `<article class="info"><header class="info-hero">${MOTIF}<span class="cap cas">Admin</span><h1 class="cas" style="--d:1">Admins only</h1></header><div class="info-body card"><p>${NET.mode === 'off' ? 'Online play is not switched on yet.' : NET.user ? 'This account is not an admin.' : 'Sign in with the admin account to see players.'}</p>${NET.user || NET.mode === 'off' ? '' : '<button class="btn btn-primary" id="ad-in">Sign in</button>'}</div></article>`; const b = $('#ad-in', el); if (b) b.onclick = () => openAuth(() => go('admin')); return; }
+  if (!NET.isAdmin()) { el.innerHTML = `<article class="info"><header class="info-hero">${MOTIF}<span class="cap cas">Admin</span><h1 class="cas" style="--d:1">Admins only</h1></header><div class="info-body card"><p>${NET.mode === 'off' ? 'Online play is not switched on yet.' : NET.user && !NET.user.anon ? 'This account is not an admin.' : 'Sign in with the admin account to see players.'}</p>${NET.mode === 'off' || (NET.user && !NET.user.anon) ? '' : '<button class="btn btn-primary" id="ad-in">Admin sign-in</button>'}</div></article>`; const b = $('#ad-in', el); if (b) b.onclick = () => openAuth(() => go('admin')); return; }
   el.innerHTML = `<article class="info"><header class="info-hero">${MOTIF}<span class="cap cas">Admin</span><h1 class="cas" style="--d:1">Players</h1></header><div class="card ad-wrap"><p class="sl-muted">Loading players…</p></div></article>`;
   let users = {}; try { users = await NET.drv.users(); } catch (e) { $('.ad-wrap', el).innerHTML = `<p class="mp-err">Could not load players: ${esc(e.message || e)}. Check the database rules.</p>`; return; }
-  const rows = Object.entries(users).map(([uid, u]) => Object.assign({ uid, on: NET.others.has(uid) || (NET.user && uid === NET.user.uid) }, u)).sort((a, b) => (b.on - a.on) || ((b.lastSeen || 0) - (a.lastSeen || 0)));
+  const rows = Object.entries(users).filter(([, u]) => u && u.name).map(([uid, u]) => Object.assign({ uid, on: NET.others.has(uid) || (NET.user && uid === NET.user.uid) }, u)).sort((a, b) => (b.on - a.on) || ((b.lastSeen || 0) - (a.lastSeen || 0)));
   const sum = k => rows.reduce((t, r) => t + (+r[k] || 0), 0), ago = t => { if (!t) return '–'; const m = Math.round((Date.now() - t) / 60000); return m < 1 ? 'now' : m < 60 ? m + 'm ago' : m < 1440 ? Math.round(m / 60) + 'h ago' : Math.round(m / 1440) + 'd ago'; };
   const wrap = $('.ad-wrap', el);
   const draw = q => {
     const f = rows.filter(r => !q || (r.name + ' ' + (r.email || '')).toLowerCase().includes(q.toLowerCase()));
     wrap.innerHTML = `<div class="ad-kpi">${[['Players', rows.length], ['Online now', rows.filter(r => r.on).length], ['Active 7 days', rows.filter(r => Date.now() - (r.lastSeen || 0) < 6048e5).length], ['Minutes read', sum('minutes')], ['Sessions', sum('sessions')]].map(([l, v], i) => `<div class="cas-fan" style="--d:${i}"><b>${v.toLocaleString()}</b><span>${l}</span></div>`).join('')}</div>
-      <div class="ad-tools"><input id="ad-q" type="search" placeholder="Search name or email" value="${esc(q || '')}" aria-label="Search players"><button class="btn btn-ghost btn-sm" id="ad-csv">Export CSV</button></div>
+      <div class="ad-tools"><input id="ad-q" type="search" placeholder="Search nickname" value="${esc(q || '')}" aria-label="Search players"><button class="btn btn-ghost btn-sm" id="ad-csv">Export CSV</button></div>
       <div class="ad-tbl" role="table"><div class="ad-h" role="row"><span>Player</span><span>Level</span><span>Minutes</span><span>Sessions</span><span>Streak</span><span>Last seen</span></div>
       ${f.map(r => `<div class="ad-r" role="row"><span class="ad-n"><i class="mp-dot ${r.on ? '' : 'off'}"></i><span><b>${esc(r.name || '–')}</b><small>${esc(r.email || '')}${r.reading ? ' · 📖 ' + esc(r.reading) : ''}</small></span></span><span data-l="Level">${+r.level || 1}</span><span data-l="Minutes">${+r.minutes || 0}</span><span data-l="Sessions">${+r.sessions || 0}</span><span data-l="Streak">${+r.streak || 0}🔥</span><span data-l="Last seen">${r.on ? 'online' : ago(r.lastSeen)}</span></div>`).join('') || '<p class="sl-muted">No players match.</p>'}</div>`;
     const qi = $('#ad-q', wrap); qi.oninput = () => { const pos = qi.selectionStart; draw(qi.value); const n = $('#ad-q', wrap); n.focus(); n.setSelectionRange(pos, pos); };
