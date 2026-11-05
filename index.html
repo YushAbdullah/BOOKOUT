@@ -529,6 +529,12 @@ body.splash-on{overflow:hidden}
 .splash.night .sp-sub,.splash.night .sp-tip{color:#fff}
 @media (prefers-reduced-motion:reduce){.sp-fx,.sp-kids canvas,.sp-kids .wave,.sp-garland i,.sp-music{animation:none}}
 .jn-modal .sl-field{margin-top:6px}.jn-tiles{margin-top:14px}.jn-tiles .pl-tile b{font-size:18px}.jn-fine{font-size:12px;align-self:center}
+.sp-enter{position:absolute;inset:0;z-index:20;border:0;padding:0;margin:0;background:rgba(15,26,18,.38);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);display:grid;place-items:center;cursor:pointer;transition:opacity .4s}
+.sp-enter.out{opacity:0;pointer-events:none}
+.sp-enter-in{display:grid;justify-items:center;gap:6px;background:#fff;border-radius:999px;padding:18px 34px;box-shadow:0 14px 40px rgba(16,40,20,.3),inset 0 -5px 0 #6BE683;animation:enter-pulse 1.4s ease-in-out infinite}
+.sp-enter-in b{font:800 clamp(22px,6vw,30px)/1 Outfit,sans-serif;color:#262828}.sp-enter-in small{font:600 13px/1.2 Outfit,sans-serif;color:#4E544F}
+@keyframes enter-pulse{50%{transform:scale(1.06)}}
+@media (prefers-reduced-motion:reduce){.sp-enter-in{animation:none}}
 .sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
@@ -3990,6 +3996,12 @@ function showSplash() {
   mb.onclick = e => { e.stopPropagation(); if (JINGLE.on) { S.settings.music = false; save(); jingleStop(.3); } else { S.settings.music = true; if (!S.settings.sound) S.settings.sound = true; save(); renderChips(); unlockAudio(); musicSync(); } };
   const kick = e => { if (e.target.closest('#sp-go,.sp-music') || el.classList.contains('out')) return; if (!JINGLE.on) { unlockAudio(); musicSync(); } }; el.addEventListener('touchend', kick, { passive: true }); el.addEventListener('click', kick);
   setTimeout(musicSync, 300);
+  if (S.settings.sound && S.settings.music !== false && !(AU.ctx && AU.ctx.state === 'running')) {
+    const cov = document.createElement('button'); cov.type = 'button'; cov.className = 'sp-enter'; cov.setAttribute('aria-label', 'Tap to enter BOOKOUT with music');
+    cov.innerHTML = `<span class="sp-enter-in"><b>${F ? esc(F.fx[0]) + ' ' : ''}Tap to enter</b><small>🎵 with ${F ? esc(F.name) + ' ' : ''}music</small></span>`;
+    const enter = e => { e.preventDefault(); e.stopPropagation(); unlockAudio(); musicSync(); cov.classList.add('out'); setTimeout(() => cov.remove(), 420); };
+    cov.addEventListener('click', enter); el.append(cov);
+  }
   const t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 200 : 1400;
   const fill = now => { const k = Math.min(1, (now - t0) / dur), pct = Math.round(k * 100); $('#sp-bar', el).style.width = pct + '%'; $('#sp-pct', el).textContent = pct + '%';
     if (k < 1) requestAnimationFrame(fill); else { const b = $('#sp-go', el); b.disabled = false; b.textContent = S.flags.landed ? 'Start reading' : 'Start adventure'; b.classList.add('ready'); } };
