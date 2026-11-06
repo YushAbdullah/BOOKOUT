@@ -51,12 +51,10 @@ p{margin:0}
 nav.top{display:flex;align-items:center;gap:16px;padding-block:16px;flex-wrap:wrap}
 body.reading nav.top{display:none}
 .logo{display:flex;align-items:center;gap:10px;background:none;border:0;padding:0}
-.logo .dots{position:relative;width:34px;height:22px}
-.logo .dots i{position:absolute;top:0;width:22px;height:22px;border-radius:50%}
-.logo .dots i:first-child{left:0;background:var(--primary)}
-.logo .dots i:last-child{left:12px;background:var(--ink);mix-blend-mode:multiply}
-.wordmark{font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
-.wordmark .b{color:var(--accent)} .wordmark .o{color:var(--ink)}
+.wordmark{display:inline-flex;align-items:center;font-weight:800;font-size:26px;letter-spacing:-.02em;line-height:1}
+.wordmark .b{color:var(--primary)} .wordmark .o{color:var(--ink)}
+.specs{height:.74em;width:auto;margin:0 .03em;flex:none;overflow:visible}
+.specs circle{fill:none;stroke:currentColor;stroke-width:9}.specs path{fill:none;stroke:var(--ink);stroke-width:6;stroke-linecap:round}
 .navlinks{display:flex;gap:24px;margin-left:24px}
 .navlinks button{background:none;border:0;padding:8px 0;color:var(--text-muted);font-weight:500;font-size:15px}
 .navlinks button[aria-current="page"]{color:var(--text);font-weight:600}
@@ -532,9 +530,9 @@ body.splash-on{overflow:hidden}
 .sp-logo{position:relative;z-index:2;display:grid;justify-items:center;text-align:center;animation:logodrop .8s cubic-bezier(.34,1.56,.64,1) both}
 @keyframes logodrop{from{transform:translateY(-60px) scale(.7);opacity:0}}
 .sp-badge{width:84px;height:84px;border-radius:24px;background:#fff;box-shadow:0 6px 0 #1CBB6C,0 16px 30px rgba(16,40,20,.2);display:grid;place-items:center;margin-bottom:-14px;z-index:1;position:relative}
-.sp-badge .dots{position:relative;width:52px;height:34px}.sp-badge .dots i{position:absolute;top:0;width:34px;height:34px;border-radius:50%}.sp-badge .dots i:first-child{left:0;background:var(--primary)}.sp-badge .dots i:last-child{left:18px;background:var(--ink);mix-blend-mode:multiply}
-.sp-logo h1{font:900 clamp(52px,14vw,92px)/1 var(--font);letter-spacing:-.03em;background:#fff;padding:18px 26px 12px;border-radius:28px;box-shadow:0 8px 0 #DDEBDF,0 20px 40px rgba(16,40,20,.18);transform:rotate(-2deg)}
-.sp-logo h1 .b{color:#1CBB6C}.sp-logo h1 .o{color:var(--ink)}
+.sp-badge .specs{height:34px;color:var(--primary)}
+.sp-logo h1{display:flex;align-items:center;font:900 clamp(52px,14vw,92px)/1 var(--font);letter-spacing:-.03em;background:#fff;padding:18px 26px 12px;border-radius:28px;box-shadow:0 8px 0 #DDEBDF,0 20px 40px rgba(16,40,20,.18);transform:rotate(-2deg)}
+.sp-logo h1 .b{color:var(--primary)}.sp-logo h1 .o{color:var(--ink)}
 .sp-rib{margin-top:-10px;background:var(--ink);color:#fff;font:700 13px var(--font);letter-spacing:.14em;text-transform:uppercase;padding:8px 18px;border-radius:10px;transform:rotate(2deg);box-shadow:0 4px 0 #000}
 .sp-pl{position:relative;z-index:2;align-self:end;width:min(240px,56vw);height:auto;animation:cas-up .7s .4s var(--ease) both}
 .sp-bottom{position:relative;z-index:2;display:grid;justify-items:center;gap:10px;width:min(420px,100%)}
@@ -1183,8 +1181,7 @@ body.pov-on{overflow:hidden}
 <div class="wrap">
   <nav class="top" aria-label="Main">
     <button class="logo" data-go="hub" aria-label="BOOKOUT home">
-      <span class="dots" aria-hidden="true"><i></i><i></i></span>
-      <span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span>
+      <span class="wordmark"><span class="b">B</span><svg class="specs b" viewBox="0 0 96 50" aria-hidden="true"><circle cx="24" cy="26" r="18"/><circle cx="72" cy="26" r="18"/><path d="M42 23q6-5 12 0"/></svg><span class="b">K</span><span class="o">OUT</span></span>
     </button>
     <div class="navlinks">
       <button data-go="hub" id="nav-hub">Home</button>
@@ -3688,7 +3685,7 @@ function renderInfo(el, key) {
 }
 function footerHTML() {
   return `<footer class="foot-site"><div class="fs-in">
-    <div class="fs-brand"><button class="logo" data-go="landing" aria-label="BOOKOUT home"><span class="dots" aria-hidden="true"><i></i><i></i></span><span class="wordmark"><span class="b">BOOK</span><span class="o">OUT</span></span></button><p>Free reading, real places, real habits.</p></div>
+    <div class="fs-brand"><button class="logo" data-go="landing" aria-label="BOOKOUT home"><span class="wordmark"><span class="b">B</span><svg class="specs b" viewBox="0 0 96 50" aria-hidden="true"><circle cx="24" cy="26" r="18"/><circle cx="72" cy="26" r="18"/><path d="M42 23q6-5 12 0"/></svg><span class="b">K</span><span class="o">OUT</span></span></button><p>Free reading, real places, real habits.</p></div>
     <div class="fs-col"><b>Play</b><button data-go="home">Street</button><button data-go="places">Places</button><button data-go="season">Season</button><button data-go="passport">Passport</button></div>
     <div class="fs-col"><b>BOOKOUT</b><button data-go="about">About me</button><button data-go="vision">Vision & mission</button><a href="https://github.com/YushAbdullah/BOOKOUT" target="_blank" rel="noopener">GitHub</a></div>
     <div class="fs-col"><b>Legal</b><button data-go="privacy">Privacy policy</button><button data-go="terms">Terms & conditions</button><button data-go="admin">Admin</button></div>
@@ -3980,7 +3977,7 @@ function showSplash() {
   if (F) { el.style.setProperty('--sky1', F.sky[0]); el.style.setProperty('--sky2', F.sky[1]); }
   el.innerHTML = `<div class="sp-sky"><i class="sun"></i><i class="cl c1"></i><i class="cl c2"></i>${F && F.night ? '<i class="stars"></i>' : ''}</div>${F ? `<div class="sp-fx" aria-hidden="true">${Array.from({ length: 16 }, (_, i) => `<span style="left:${(i * 6.3 + (i % 3) * 2.1) % 100}%;animation-delay:${(i * .73) % 6}s;animation-duration:${6 + (i % 5)}s;font-size:${16 + (i % 4) * 5}px">${F.fx[i % F.fx.length]}</span>`).join('')}</div><div class="sp-garland" aria-hidden="true">${Array.from({ length: 22 }, (_, i) => `<i style="--c:${F.flags[i % F.flags.length]};--d:${i}"></i>`).join('')}</div>` : ''}<button class="sp-music" type="button">🎵 Play music</button>
     <div class="sp-town" aria-hidden="true"><div class="bd b1"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">☕</span><span class="lbl">KOPI</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b2"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="ped"></span><span class="cols"></span><span class="sign">🏛️</span><span class="lbl">LIBRARY</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b3"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">📚</span><span class="lbl">PENA</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="bd b4"><div class="cube"><i class="fc left"></i><i class="fc side"></i><i class="fc top"></i><i class="fc front"><span class="awn"></span><span class="win"></span><span class="sign">🍔</span><span class="lbl">BUN</span><span class="door"></span></i></div><i class="shadow"></i></div><div class="road"></div></div>
-    <div class="sp-logo"><div class="sp-badge"><span class="dots" aria-hidden="true"><i></i><i></i></span></div><h1><span class="b">BOOK</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div>${F ? `<div class="sp-fest"><b>${esc(F.fx[0])} ${esc(F.greet)}</b><span>${esc(F.sub)}</span></div>` : ''}</div>
+    <div class="sp-logo"><div class="sp-badge"><svg class="specs" viewBox="0 0 96 50" aria-hidden="true"><circle cx="24" cy="26" r="18"/><circle cx="72" cy="26" r="18"/><path d="M42 23q6-5 12 0"/></svg></div><h1 aria-label="BOOKOUT"><span class="b">B</span><svg class="specs b" viewBox="0 0 96 50" aria-hidden="true"><circle cx="24" cy="26" r="18"/><circle cx="72" cy="26" r="18"/><path d="M42 23q6-5 12 0"/></svg><span class="b">K</span><span class="o">OUT</span></h1><div class="sp-rib">Read · Play · Level up</div>${F ? `<div class="sp-fest"><b>${esc(F.fx[0])} ${esc(F.greet)}</b><span>${esc(F.sub)}</span></div>` : ''}</div>
     <div class="sp-kids" aria-hidden="true"><div class="kid boy"><canvas id="sp-boy" width="220" height="260"></canvas><span class="wave">👋</span></div><div class="kid girl"><canvas id="sp-girl" width="220" height="260"></canvas><span class="wave">👋</span></div></div>
     <div class="sp-bottom"><button class="hub-claim" id="sp-go" disabled>Loading…</button><p class="sp-sub">Walk • Read • Collect</p><div class="sp-bar"><i id="sp-bar"></i><b id="sp-pct">0%</b></div><p class="sp-tip">${esc(TIPS[Math.floor(Math.random() * TIPS.length)])}</p></div>`;
   document.body.append(el); document.body.classList.add('splash-on');
@@ -4767,7 +4764,20 @@ function drawPolaroid(cv, s, img) {
   }
   c.textAlign = 'left'; c.fillStyle = '#0F1A12'; c.font = '600 26px Outfit, sans-serif'; c.fillText(v.name, 40, 650);
   c.fillStyle = '#5F655F'; c.font = '400 18px Outfit, sans-serif'; c.fillText(`${s.book.title.slice(0, 40)} · ${new Date().toLocaleDateString()}`, 40, 684);
-  c.textAlign = 'right'; c.font = '800 22px Outfit, sans-serif'; const ow = c.measureText('OUT').width; c.fillStyle = '#1CBB6C'; c.fillText('BOOK', 560 - ow, 728); c.fillStyle = '#262828'; c.fillText('OUT', 560, 728);
+  drawLogo(c, 560, 728, 22);
+}
+/* BOOKOUT logo on a canvas: B + reading-glasses OO + K in green, OUT in ink. Right-aligned at x, baseline y. */
+function drawLogo(c, x, y, size) {
+  c.save(); c.font = `900 ${size}px Outfit, sans-serif`; c.textAlign = 'left';
+  const wB = c.measureText('B').width, wK = c.measureText('K').width, wO = c.measureText('OUT').width;
+  const gh = size * .74, gw = gh * 96 / 50, gap = size * .03, total = wB + gap + gw + gap + wK + wO;
+  let cx = x - total; const top = y - size * .7 + (size * .7 - gh) / 2;
+  c.fillStyle = '#6BE683'; c.fillText('B', cx, y); cx += wB + gap;
+  const k = gh / 50; c.lineWidth = 9 * k; c.strokeStyle = '#6BE683';
+  for (const ox of [24, 72]) { c.beginPath(); c.arc(cx + ox * k, top + 26 * k, 18 * k, 0, Math.PI * 2); c.stroke(); }
+  c.beginPath(); c.lineWidth = 6 * k; c.lineCap = 'round'; c.strokeStyle = '#262828'; c.moveTo(cx + 42 * k, top + 23 * k); c.quadraticCurveTo(cx + 48 * k, top + 18 * k, cx + 54 * k, top + 23 * k); c.stroke();
+  cx += gw + gap; c.fillStyle = '#6BE683'; c.fillText('K', cx, y); cx += wK;
+  c.fillStyle = '#262828'; c.fillText('OUT', cx, y); c.restore();
 }
 function wrapText(c, text, x, y, maxW, lh, maxLines) {
   const words = text.split(' '); let line = '', n = 0;
