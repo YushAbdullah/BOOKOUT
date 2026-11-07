@@ -7,7 +7,7 @@
     "title": "Treasure Island",
     "author": "Robert Louis Stevenson",
     "aud": [
-     "general"
+     "children"
     ]
    },
    {
@@ -40,6 +40,40 @@
     "author": "Alexandre Dumas",
     "aud": [
      "general"
+    ]
+   },
+   {
+    "id": 15,
+    "title": "Moby-Dick; or, The Whale",
+    "author": "Herman Melville",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 16,
+    "title": "Peter Pan",
+    "author": "J. M. (James Matthew) Barrie",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 55,
+    "title": "The Wonderful Wizard of Oz",
+    "author": "L. Frank (Lyman Frank) Baum",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 57,
+    "title": "Aladdin and the Magic Lamp",
+    "author": "Unknown",
+    "aud": [
+     "children"
     ]
    }
   ],
@@ -88,6 +122,38 @@
     "id": 863,
     "title": "The Mysterious Affair at Styles",
     "author": "Agatha Christie",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 108,
+    "title": "The Return of Sherlock Holmes",
+    "author": "Arthur Conan Doyle",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 170,
+    "title": "The Haunted Hotel: A Mystery of Modern Venice",
+    "author": "Wilkie Collins",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 172,
+    "title": "The Haunted Bookshop",
+    "author": "Christopher Morley",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 173,
+    "title": "The Insidious Dr. Fu Manchu",
+    "author": "Sax Rohmer",
     "aud": [
      "general"
     ]
@@ -141,6 +207,38 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 27,
+    "title": "Far from the Madding Crowd",
+    "author": "Thomas Hardy",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 82,
+    "title": "Ivanhoe: A Romance",
+    "author": "Walter Scott",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 95,
+    "title": "The prisoner of Zenda",
+    "author": "Anthony Hope",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 107,
+    "title": "Far from the Madding Crowd",
+    "author": "Thomas Hardy",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "scifi": [
@@ -191,6 +289,38 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 42,
+    "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 43,
+    "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 62,
+    "title": "A princess of Mars",
+    "author": "Edgar Rice Burroughs",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 64,
+    "title": "The gods of Mars",
+    "author": "Edgar Rice Burroughs",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "fantasy": [
@@ -199,7 +329,8 @@
     "title": "Alice's Adventures in Wonderland",
     "author": "Lewis Carroll",
     "aud": [
-     "general"
+     "children",
+     "teens"
     ]
    },
    {
@@ -207,7 +338,8 @@
     "title": "The Wonderful Wizard of Oz",
     "author": "L. Frank Baum",
     "aud": [
-     "general"
+     "children",
+     "teens"
     ]
    },
    {
@@ -215,7 +347,8 @@
     "title": "Peter Pan",
     "author": "J. M. Barrie",
     "aud": [
-     "general"
+     "children",
+     "teens"
     ]
    },
    {
@@ -223,7 +356,8 @@
     "title": "Through the Looking-Glass",
     "author": "Lewis Carroll",
     "aud": [
-     "general"
+     "children",
+     "teens"
     ]
    },
    {
@@ -231,7 +365,8 @@
     "title": "Grimms' Fairy Tales",
     "author": "Jacob and Wilhelm Grimm",
     "aud": [
-     "general"
+     "children",
+     "teens"
     ]
    },
    {
@@ -239,7 +374,41 @@
     "title": "Andersen's Fairy Tales",
     "author": "Hans Christian Andersen",
     "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 32,
+    "title": "Herland",
+    "author": "Charlotte Perkins Gilman",
+    "aud": [
      "general"
+    ]
+   },
+   {
+    "id": 35,
+    "title": "The Time Machine",
+    "author": "H. G. (Herbert George) Wells",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 36,
+    "title": "The war of the worlds",
+    "author": "H. G. (Herbert George) Wells",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 54,
+    "title": "The Marvelous Land of Oz",
+    "author": "L. Frank (Lyman Frank) Baum, John R. (John Rea) Neill",
+    "aud": [
+     "children",
+     "teens"
     ]
    }
   ],
@@ -265,7 +434,7 @@
     "title": "The Turn of the Screw",
     "author": "Henry James",
     "aud": [
-     "general"
+     "children"
     ]
    },
    {
@@ -280,6 +449,46 @@
     "id": 932,
     "title": "The Fall of the House of Usher",
     "author": "Edgar Allan Poe",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 42,
+    "title": "The strange case of Dr. Jekyll and Mr. Hyde",
+    "author": "Robert Louis Stevenson",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 84,
+    "title": "Frankenstein; or, The modern Prometheus",
+    "author": "Mary Wollstonecraft Shelley",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 121,
+    "title": "Northanger Abbey",
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 175,
+    "title": "The Phantom of the Opera",
+    "author": "Gaston Leroux",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 355,
+    "title": "The Parasite: A Story",
+    "author": "Arthur Conan Doyle",
     "aud": [
      "general"
     ]
@@ -325,6 +534,46 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 13,
+    "title": "The Hunting of the Snark: An Agony in Eight Fits",
+    "author": "Lewis Carroll",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 19,
+    "title": "The Song of Hiawatha",
+    "author": "Henry Wadsworth Longfellow, Woodrow W. [Editor] Morris",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 20,
+    "title": "Paradise Lost",
+    "author": "John Milton",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 26,
+    "title": "Paradise Lost",
+    "author": "John Milton",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 58,
+    "title": "Paradise Regained",
+    "author": "John Milton",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "philosophy": [
@@ -361,6 +610,46 @@
     ]
    },
    {
+    "id": 1,
+    "title": "The Declaration of Independence of the United States of America",
+    "author": "Thomas Jefferson",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 59,
+    "title": "Discourse on the Method of Rightly Conducting One's Reason and of Seeking Truth in the Sciences",
+    "author": "René Descartes, John Veitch",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 61,
+    "title": "The Communist Manifesto",
+    "author": "Karl Marx, Friedrich Engels",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 70,
+    "title": "What Is Man? and Other Essays",
+    "author": "Mark Twain",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 71,
+    "title": "On the Duty of Civil Disobedience",
+    "author": "Henry David Thoreau",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": "w-stoicism",
     "title": "Stoicism",
     "author": "Wikipedia contributors",
@@ -392,7 +681,7 @@
     ]
    },
    {
-    "id": 2009,
+    "id": 1228,
     "title": "On the Origin of Species",
     "author": "Charles Darwin",
     "aud": [
@@ -414,6 +703,46 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 1,
+    "title": "The Declaration of Independence of the United States of America",
+    "author": "Thomas Jefferson",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 2,
+    "title": "The United States Bill of Rights",
+    "author": "United States",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 3,
+    "title": "John F. Kennedy's Inaugural Address",
+    "author": "John F. (John Fitzgerald) Kennedy",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 4,
+    "title": "Lincoln's Gettysburg Address",
+    "author": "Abraham Lincoln",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 5,
+    "title": "The United States Constitution",
+    "author": "United States",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "children": [
@@ -430,7 +759,8 @@
     "title": "The Secret Garden",
     "author": "Frances Hodgson Burnett",
     "aud": [
-     "children"
+     "children",
+     "teens"
     ]
    },
    {
@@ -438,7 +768,8 @@
     "title": "The Jungle Book",
     "author": "Rudyard Kipling",
     "aud": [
-     "children"
+     "children",
+     "teens"
     ]
    },
    {
@@ -446,7 +777,8 @@
     "title": "Anne of Green Gables",
     "author": "L. M. Montgomery",
     "aud": [
-     "children"
+     "children",
+     "teens"
     ]
    },
    {
@@ -462,7 +794,43 @@
     "title": "A Little Princess",
     "author": "Frances Hodgson Burnett",
     "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 11,
+    "title": "Alice's Adventures in Wonderland",
+    "author": "Lewis Carroll",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 12,
+    "title": "Through the Looking-Glass",
+    "author": "Lewis Carroll",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 13,
+    "title": "The Hunting of the Snark: An Agony in Eight Fits",
+    "author": "Lewis Carroll",
+    "aud": [
      "children"
+    ]
+   },
+   {
+    "id": 16,
+    "title": "Peter Pan",
+    "author": "J. M. (James Matthew) Barrie",
+    "aud": [
+     "children",
+     "teens"
     ]
    },
    {
@@ -486,7 +854,7 @@
     "title": "Adventures of Huckleberry Finn",
     "author": "Mark Twain",
     "aud": [
-     "general"
+     "children"
     ]
    },
    {
@@ -517,6 +885,46 @@
     "id": 46,
     "title": "A Christmas Carol",
     "author": "Charles Dickens",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 32,
+    "title": "Herland",
+    "author": "Charlotte Perkins Gilman",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 38,
+    "title": "The Jargon File, Version 2.9.10, 01 Jul 1992",
+    "author": "Eric S. Raymond, Guy L. Steele",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 74,
+    "title": "The Adventures of Tom Sawyer, Complete",
+    "author": "Mark Twain",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 119,
+    "title": "A Tramp Abroad",
+    "author": "Mark Twain",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 142,
+    "title": "The $30,000 Bequest, and Other Stories",
+    "author": "Mark Twain",
     "aud": [
      "general"
     ]
@@ -562,6 +970,49 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 54,
+    "title": "The Marvelous Land of Oz",
+    "author": "L. Frank (Lyman Frank) Baum, John R. (John Rea) Neill",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 174,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 293,
+    "title": "Paul Prescott's Charge",
+    "author": "Jr. Horatio Alger",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 399,
+    "title": "Cast Upon the Breakers",
+    "author": "Jr. Horatio Alger",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 436,
+    "title": "The Master Key",
+    "author": "L. Frank (Lyman Frank) Baum",
+    "aud": [
+     "children",
+     "teens"
+    ]
    }
   ],
   "inspiration": [
@@ -601,6 +1052,30 @@
     "id": 2274,
     "title": "How to Live on 24 Hours a Day",
     "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 59844,
+    "title": "The Science of Getting Rich",
+    "author": "W. D. (Wallace Delois) Wattles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 21291,
+    "title": "Pushing to the Front",
+    "author": "Orison Swett Marden",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 58821,
+    "title": "The Strenuous Life",
+    "author": "Theodore Roosevelt",
     "aud": [
      "general"
     ]
@@ -717,6 +1192,63 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 21959,
+    "title": "Letters from a Self-Made Merchant to His Son",
+    "author": "George Horace Lorimer",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 17976,
+    "title": "Autobiography of Andrew Carnegie",
+    "author": "Andrew Carnegie, John C. Van Dyke",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 154,
+    "title": "The Rise of Silas Lapham",
+    "author": "William Dean Howells",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 412,
+    "title": "John Jacob Astor",
+    "author": "Elbert Hubbard",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 453,
+    "title": "Emma McChesney and Co.",
+    "author": "Edna Ferber",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 659,
+    "title": "Paul the Peddler; Or, The Fortunes of a Young Street Merchant",
+    "author": "Jr. Horatio Alger",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 821,
+    "title": "Dombey and Son",
+    "author": "Charles Dickens",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "innovation": [
@@ -743,11 +1275,69 @@
     ]
    },
    {
-    "id": 2009,
+    "id": 57532,
+    "title": "Passages from the Life of a Philosopher",
+    "author": "Charles Babbage",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 25420,
+    "title": "The Early History of the Airplane",
+    "author": "Orville Wright, Wilbur Wright",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1228,
     "title": "On the Origin of Species",
     "author": "Charles Darwin",
     "aud": [
      "general"
+    ]
+   },
+   {
+    "id": 2900,
+    "title": "The Age of Invention: A Chronicle of Mechanical Conquest",
+    "author": "Holland Thompson",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 4635,
+    "title": "Tom Swift and His Great Searchlight; or, on the border for Uncle Sam",
+    "author": "Victor Appleton",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 6139,
+    "title": "Marvels of Modern Science",
+    "author": "Paul Severing, Theodore Waters",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 11368,
+    "title": "Stories of Inventors: The Adventures of Inventors and Engineers",
+    "author": "Russell Doubleday",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 19533,
+    "title": "Stories of Great Inventors",
+    "author": "Hattie E. Macomber",
+    "aud": [
+     "children",
+     "teens"
     ]
    },
    {
@@ -819,6 +1409,46 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 2541,
+    "title": "Character",
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 2704,
+    "title": "Washington and His Comrades in Arms: A Chronicle of the War of Independence",
+    "author": "George McKinnon Wrong, Allen Johnson",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 7973,
+    "title": "Napoleon's Campaign in Russia, Anno 1812; Medico-Historical",
+    "author": "Achilles Rose",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 15299,
+    "title": "Drake, Nelson and Napoleon",
+    "author": "Baron Walter Runciman Runciman",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 21730,
+    "title": "Erling the Bold",
+    "author": "R. M. (Robert Michael) Ballantyne",
+    "aud": [
+     "children"
+    ]
    }
   ],
   "people": [
@@ -826,6 +1456,14 @@
     "id": 16317,
     "title": "The Art of Public Speaking",
     "author": "Dale Carnegie and J. Berg Esenwein",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 16256,
+    "title": "The Psychology of Management",
+    "author": "Lillian Moller Gilbreth",
     "aud": [
      "general"
     ]
@@ -842,6 +1480,57 @@
     "id": 2274,
     "title": "How to Live on 24 Hours a Day",
     "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 54,
+    "title": "The Marvelous Land of Oz",
+    "author": "L. Frank (Lyman Frank) Baum, John R. (John Rea) Neill",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 174,
+    "title": "The Picture of Dorian Gray",
+    "author": "Oscar Wilde",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 293,
+    "title": "Paul Prescott's Charge",
+    "author": "Jr. Horatio Alger",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 399,
+    "title": "Cast Upon the Breakers",
+    "author": "Jr. Horatio Alger",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 436,
+    "title": "The Master Key",
+    "author": "L. Frank (Lyman Frank) Baum",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 455,
+    "title": "The University of Hard Knocks",
+    "author": "Ralph Albert Parlette",
     "aud": [
      "general"
     ]
@@ -865,6 +1554,14 @@
     ]
    },
    {
+    "id": 14418,
+    "title": "Thrift",
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": 3300,
     "title": "The Wealth of Nations",
     "author": "Adam Smith",
@@ -876,6 +1573,47 @@
     "id": 59844,
     "title": "The Science of Getting Rich",
     "author": "W. D. (Wallace Delois) Wattles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1179,
+    "title": "On Revenues",
+    "author": "Xenophon, Henry Graham Dakyns",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 4087,
+    "title": "An Essay Upon Projects",
+    "author": "Daniel Defoe",
+    "aud": [
+     "education",
+     "general"
+    ]
+   },
+   {
+    "id": 4359,
+    "title": "Lombard Street: A Description of the Money Market",
+    "author": "Walter Bagehot",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 4916,
+    "title": "Undertow",
+    "author": "Kathleen Thompson Norris",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 6949,
+    "title": "Fiat Money Inflation in France: How it Came, What it Brought, and How it Ended",
+    "author": "Andrew Dickson White",
     "aud": [
      "general"
     ]
@@ -891,9 +1629,33 @@
     ]
    },
    {
+    "id": 6464,
+    "title": "Shop Management",
+    "author": "Frederick Winslow Taylor",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1319,
+    "title": "Increasing Human Efficiency in Business",
+    "author": "Walter Dill Scott",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": 132,
     "title": "The Art of War",
     "author": "Sun Tzu",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 16256,
+    "title": "The Psychology of Management",
+    "author": "Lillian Moller Gilbreth",
     "aud": [
      "general"
     ]
@@ -915,6 +1677,70 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 21959,
+    "title": "Letters from a Self-Made Merchant to His Son",
+    "author": "George Horace Lorimer",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 805,
+    "title": "This Side of Paradise",
+    "author": "F. Scott (Francis Scott) Fitzgerald",
+    "aud": [
+     "children"
+    ]
+   },
+   {
+    "id": 7309,
+    "title": "Business Correspondence, Vol. 1: How to Write a Business Letter",
+    "author": "Anonymous",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 21675,
+    "title": "The Olden Time Series, Vol. 4: Quaint and Curious Advertisements",
+    "author": "Henry M. (Henry Mason) Brooks",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 22351,
+    "title": "Publisher's Advertising (1872)",
+    "author": "Harper & Brothers [Editor]",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 23960,
+    "title": "...After a Few Words...",
+    "author": "Randall Garrett",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 24019,
+    "title": "\"Excelsior\"",
+    "author": "Bret Harte",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 27533,
+    "title": "The Struggles of Brown, Jones, and Robinson",
+    "author": "Anthony Trollope",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "geography": [
@@ -922,6 +1748,14 @@
     "id": 2530,
     "title": "The Malay Archipelago",
     "author": "Alfred Russel Wallace",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 3412,
+    "title": "The Golden Chersonese",
+    "author": "Isabella L. (Isabella Lucy) Bird",
     "aud": [
      "general"
     ]
@@ -935,9 +1769,61 @@
     ]
    },
    {
+    "id": 10636,
+    "title": "The Travels of Marco Polo",
+    "author": "Marco Polo, da Pisa Rusticiano, Henri Cordier, Sir Henry Yule",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": 5199,
     "title": "South! The Story of Shackleton's Last Expedition",
     "author": "Ernest Shackleton",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 5891,
+    "title": "Travels in West Africa",
+    "author": "Mary Henrietta Kingsley",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 12228,
+    "title": "Home Geography for Primary Grades",
+    "author": "C. C. Long",
+    "aud": [
+     "children",
+     "education",
+     "teens"
+    ]
+   },
+   {
+    "id": 43833,
+    "title": "Our Little Japanese Cousin",
+    "author": "Mary Hazelton Blanchard Wade, L. J. (Lewis Jesse) Bridgman",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 43320,
+    "title": "The Wonder Book of Volcanoes and Earthquakes",
+    "author": "Edwin J. (Edwin James) Houston",
+    "aud": [
+     "children",
+     "education"
+    ]
+   },
+   {
+    "id": 14,
+    "title": "The 1990 CIA World Factbook",
+    "author": "United States. Central Intelligence Agency",
     "aud": [
      "general"
     ]
@@ -1071,6 +1957,88 @@
   ],
   "cooking": [
    {
+    "id": 65061,
+    "title": "The Boston Cooking-School Cook Book",
+    "author": "Fannie Merritt Farmer",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 24407,
+    "title": "The Italian Cook Book",
+    "author": "Maria Gentile",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 16514,
+    "title": "A Little Cook Book for a Little Girl",
+    "author": "Caroline French Benton",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 12238,
+    "title": "Science in the Kitchen",
+    "author": "E. E. (Ella Ervilla) Kellogg",
+    "aud": [
+     "education",
+     "general"
+    ]
+   },
+   {
+    "id": 8542,
+    "title": "Things Mother Used to Make",
+    "author": "Lydia Maria Gurney",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 13177,
+    "title": "Chocolate and Cocoa Recipes",
+    "author": "Maria Parloa, Janet McKenzie Hill",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 14293,
+    "title": "The Complete Book of Cheese",
+    "author": "Bob Brown",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 930,
+    "title": "The Cook's Decameron",
+    "author": "Mrs. W. G. Waters",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1084,
+    "title": "Recipes Tried and True",
+    "author": "Ohio). Ladies' Aid Society First Presbyterian Church (Marion",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1979,
+    "title": "The Perdue Chicken Cookbook",
+    "author": "Mitzi Perdue",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": "w-nasi-lemak",
     "title": "Nasi lemak",
     "author": "Wikipedia contributors",
@@ -1142,8 +2110,77 @@
     "title": "The Story of Mankind",
     "author": "Hendrik Willem van Loon",
     "aud": [
+     "children",
      "education",
      "teens"
+    ]
+   },
+   {
+    "id": 35461,
+    "title": "A Short History of the World",
+    "author": "H. G. (Herbert George) Wells",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 2456,
+    "title": "The History of Herodotus",
+    "author": "Herodotus, G. C. (George Campbell) Macaulay",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 7142,
+    "title": "The History of the Peloponnesian War",
+    "author": "Thucydides, Richard Crawley",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 23495,
+    "title": "The Story of the Greeks",
+    "author": "H. A. (Hélène Adeline) Guerber",
+    "aud": [
+     "children",
+     "education",
+     "teens"
+    ]
+   },
+   {
+    "id": 699,
+    "title": "A Child's History of England",
+    "author": "Charles Dickens, F. H. (Frederick Henry) Townsend",
+    "aud": [
+     "children",
+     "teens"
+    ]
+   },
+   {
+    "id": 9991,
+    "title": "Ancient Man",
+    "author": "Hendrik Willem Van Loon",
+    "aud": [
+     "children",
+     "education"
+    ]
+   },
+   {
+    "id": 2073,
+    "title": "The Valet's Tragedy, and Other Studies",
+    "author": "Andrew Lang",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 6804,
+    "title": "General History for Colleges and High Schools",
+    "author": "P. V. N. (Philip Van Ness) Myers",
+    "aud": [
+     "children"
     ]
    },
    {
@@ -1285,6 +2322,14 @@
     ]
    },
    {
+    "id": 21291,
+    "title": "Pushing to the Front",
+    "author": "Orison Swett Marden",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": 368,
     "title": "Acres of Diamonds",
     "author": "Russell H. Conwell",
@@ -1293,9 +2338,41 @@
     ]
    },
    {
+    "id": 9944,
+    "title": "The Conquest of Fear",
+    "author": "Basil King, Henry C. (Henry Charles) Link",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 2541,
+    "title": "Character",
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
     "id": 2274,
     "title": "How to Live on 24 Hours a Day",
     "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 161,
+    "title": "Sense and Sensibility",
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 455,
+    "title": "The University of Hard Knocks",
+    "author": "Ralph Albert Parlette",
     "aud": [
      "general"
     ]
@@ -1397,6 +2474,38 @@
     "lic": "MIT licence"
    },
    {
+    "id": 59112,
+    "title": "R.U.R. (Rossum's Universal Robots)",
+    "author": "Karel Čapek, Nigel Playfair, Paul Selver",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 1906,
+    "title": "Erewhon",
+    "author": "Samuel Butler",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 57532,
+    "title": "Passages from the Life of a Philosopher",
+    "author": "Charles Babbage",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 7506,
+    "title": "The Steam Man of the Prairies",
+    "author": "Edward Sylvester Ellis",
+    "aud": [
+     "children"
+    ]
+   },
+   {
     "id": 84,
     "title": "Frankenstein",
     "author": "Mary Shelley",
@@ -1489,7 +2598,180 @@
     "lic": "CC BY-SA 4.0"
    }
   ],
-  "magazines": [],
+  "magazines": [
+   {
+    "id": 8643,
+    "title": "Punch, or the London Charivari, Volume 153, July 4, 1917",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 10143,
+    "title": "Punch, or the London Charivari, Volume 153, July 11, 1917",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 10450,
+    "title": "Punch, or the London Charivari, Volume 153, August 22, 1917",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 8195,
+    "title": "Scientific American Supplement, No. 275, April 9, 1881",
+    "author": "Various",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 8296,
+    "title": "Scientific American Supplement, No. 303, October 22, 1881",
+    "author": "Various",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 43391,
+    "title": "Appletons' Popular Science Monthly, December 1898",
+    "author": "Various, William Jay Youmans",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 43695,
+    "title": "Appletons' Popular Science Monthly, February 1899",
+    "author": "Various, William Jay Youmans",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 16123,
+    "title": "St. Nicholas Magazine for Boys and Girls, Vol. 5, No. 08, June 1878",
+    "author": "Various, Mary Mapes Dodge",
+    "aud": [
+     "children",
+     "teens"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 16173,
+    "title": "St. Nicholas Magazine for Boys and Girls, Vol. 5, No. 07, May 1878",
+    "author": "Various, Mary Mapes Dodge",
+    "aud": [
+     "children",
+     "teens"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 28185,
+    "title": "Harper's Young People, November 4, 1879",
+    "author": "Various",
+    "aud": [
+     "children",
+     "teens"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 28186,
+    "title": "Harper's Young People, November 11, 1879",
+    "author": "Various",
+    "aud": [
+     "children",
+     "teens"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 8498,
+    "title": "The Atlantic Monthly, Volume 01, No. 01, November, 1857",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 8903,
+    "title": "The Atlantic Monthly, Volume 02, No. 08, June 1858",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 25874,
+    "title": "Birds, Illustrated by Color Photography, Vol. 1, No. 4",
+    "author": "Various",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 25983,
+    "title": "Birds, Illustrated by Color Photography, Vol. 1, No. 5",
+    "author": "Various",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 13865,
+    "title": "Chambers's Edinburgh Journal, No. 418",
+    "author": "Various, Robert Chambers, William Chambers",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 14502,
+    "title": "Chambers's Edinburgh Journal, No. 419",
+    "author": "Various, Robert Chambers, William Chambers",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   },
+   {
+    "id": 9992,
+    "title": "Blackwood's Edinburgh Magazine — Volume 53, No. 327, January, 1843",
+    "author": "Various",
+    "aud": [
+     "general"
+    ],
+    "kind": "magazine"
+   }
+  ],
   "articles": [
    {
     "id": "w-artificial-intelligence",
