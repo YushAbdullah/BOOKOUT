@@ -1,495 +1,847 @@
 {
- "generated": "2026-11-04",
+ "generated": "2026-11-07",
  "cats": {
   "adventure": [
    {
     "id": 120,
     "title": "Treasure Island",
-    "author": "Robert Louis Stevenson"
+    "author": "Robert Louis Stevenson",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 164,
     "title": "Twenty Thousand Leagues under the Sea",
-    "author": "Jules Verne"
+    "author": "Jules Verne",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 103,
     "title": "Around the World in Eighty Days",
-    "author": "Jules Verne"
+    "author": "Jules Verne",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2701,
     "title": "Moby Dick",
-    "author": "Herman Melville"
+    "author": "Herman Melville",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1257,
     "title": "The Three Musketeers",
-    "author": "Alexandre Dumas"
+    "author": "Alexandre Dumas",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "mystery": [
    {
     "id": 1661,
     "title": "The Adventures of Sherlock Holmes",
-    "author": "Arthur Conan Doyle"
+    "author": "Arthur Conan Doyle",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2852,
     "title": "The Hound of the Baskervilles",
-    "author": "Arthur Conan Doyle"
+    "author": "Arthur Conan Doyle",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 244,
     "title": "A Study in Scarlet",
-    "author": "Arthur Conan Doyle"
+    "author": "Arthur Conan Doyle",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 155,
     "title": "The Moonstone",
-    "author": "Wilkie Collins"
+    "author": "Wilkie Collins",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 583,
     "title": "The Woman in White",
-    "author": "Wilkie Collins"
+    "author": "Wilkie Collins",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 863,
     "title": "The Mysterious Affair at Styles",
-    "author": "Agatha Christie"
+    "author": "Agatha Christie",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "romance": [
    {
     "id": 1342,
     "title": "Pride and Prejudice",
-    "author": "Jane Austen"
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1260,
     "title": "Jane Eyre",
-    "author": "Charlotte Brontë"
+    "author": "Charlotte Brontë",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 768,
     "title": "Wuthering Heights",
-    "author": "Emily Brontë"
+    "author": "Emily Brontë",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 161,
     "title": "Sense and Sensibility",
-    "author": "Jane Austen"
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 158,
     "title": "Emma",
-    "author": "Jane Austen"
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 105,
     "title": "Persuasion",
-    "author": "Jane Austen"
+    "author": "Jane Austen",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "scifi": [
    {
     "id": 84,
     "title": "Frankenstein",
-    "author": "Mary Shelley"
+    "author": "Mary Shelley",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 36,
     "title": "The War of the Worlds",
-    "author": "H. G. Wells"
+    "author": "H. G. Wells",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 35,
     "title": "The Time Machine",
-    "author": "H. G. Wells"
+    "author": "H. G. Wells",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 5230,
     "title": "The Invisible Man",
-    "author": "H. G. Wells"
+    "author": "H. G. Wells",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 83,
     "title": "From the Earth to the Moon",
-    "author": "Jules Verne"
+    "author": "Jules Verne",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 159,
     "title": "The Island of Doctor Moreau",
-    "author": "H. G. Wells"
+    "author": "H. G. Wells",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "fantasy": [
    {
     "id": 11,
     "title": "Alice's Adventures in Wonderland",
-    "author": "Lewis Carroll"
+    "author": "Lewis Carroll",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 55,
     "title": "The Wonderful Wizard of Oz",
-    "author": "L. Frank Baum"
+    "author": "L. Frank Baum",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 16,
     "title": "Peter Pan",
-    "author": "J. M. Barrie"
+    "author": "J. M. Barrie",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 12,
     "title": "Through the Looking-Glass",
-    "author": "Lewis Carroll"
+    "author": "Lewis Carroll",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2591,
     "title": "Grimms' Fairy Tales",
-    "author": "Jacob and Wilhelm Grimm"
+    "author": "Jacob and Wilhelm Grimm",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1597,
     "title": "Andersen's Fairy Tales",
-    "author": "Hans Christian Andersen"
+    "author": "Hans Christian Andersen",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "horror": [
    {
     "id": 345,
     "title": "Dracula",
-    "author": "Bram Stoker"
+    "author": "Bram Stoker",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 43,
     "title": "The Strange Case of Dr Jekyll and Mr Hyde",
-    "author": "Robert Louis Stevenson"
+    "author": "Robert Louis Stevenson",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 209,
     "title": "The Turn of the Screw",
-    "author": "Henry James"
+    "author": "Henry James",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 174,
     "title": "The Picture of Dorian Gray",
-    "author": "Oscar Wilde"
+    "author": "Oscar Wilde",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 932,
     "title": "The Fall of the House of Usher",
-    "author": "Edgar Allan Poe"
+    "author": "Edgar Allan Poe",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "poetry": [
    {
     "id": 1065,
     "title": "The Raven",
-    "author": "Edgar Allan Poe"
+    "author": "Edgar Allan Poe",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1322,
     "title": "Leaves of Grass",
-    "author": "Walt Whitman"
+    "author": "Walt Whitman",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 12242,
     "title": "Poems by Emily Dickinson",
-    "author": "Emily Dickinson"
+    "author": "Emily Dickinson",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 8800,
     "title": "The Divine Comedy",
-    "author": "Dante Alighieri"
+    "author": "Dante Alighieri",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1041,
     "title": "Shakespeare's Sonnets",
-    "author": "William Shakespeare"
+    "author": "William Shakespeare",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "philosophy": [
    {
     "id": 1497,
     "title": "The Republic",
-    "author": "Plato"
+    "author": "Plato",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2680,
     "title": "Meditations",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 4363,
     "title": "Beyond Good and Evil",
-    "author": "Friedrich Nietzsche"
+    "author": "Friedrich Nietzsche",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 5827,
     "title": "The Problems of Philosophy",
-    "author": "Bertrand Russell"
+    "author": "Bertrand Russell",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "history": [
    {
     "id": 1232,
     "title": "The Prince",
-    "author": "Niccolò Machiavelli"
+    "author": "Niccolò Machiavelli",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 132,
     "title": "The Art of War",
-    "author": "Sun Tzu"
+    "author": "Sun Tzu",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2009,
     "title": "On the Origin of Species",
-    "author": "Charles Darwin"
+    "author": "Charles Darwin",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 3300,
     "title": "The Wealth of Nations",
-    "author": "Adam Smith"
+    "author": "Adam Smith",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 147,
     "title": "Common Sense",
-    "author": "Thomas Paine"
+    "author": "Thomas Paine",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "children": [
    {
     "id": 74,
     "title": "The Adventures of Tom Sawyer",
-    "author": "Mark Twain"
+    "author": "Mark Twain",
+    "aud": [
+     "children"
+    ]
    },
    {
     "id": 113,
     "title": "The Secret Garden",
-    "author": "Frances Hodgson Burnett"
+    "author": "Frances Hodgson Burnett",
+    "aud": [
+     "children"
+    ]
    },
    {
     "id": 236,
     "title": "The Jungle Book",
-    "author": "Rudyard Kipling"
+    "author": "Rudyard Kipling",
+    "aud": [
+     "children"
+    ]
    },
    {
     "id": 45,
     "title": "Anne of Green Gables",
-    "author": "L. M. Montgomery"
+    "author": "L. M. Montgomery",
+    "aud": [
+     "children"
+    ]
    },
    {
     "id": 514,
     "title": "Little Women",
-    "author": "Louisa May Alcott"
+    "author": "Louisa May Alcott",
+    "aud": [
+     "children"
+    ]
    },
    {
     "id": 146,
     "title": "A Little Princess",
-    "author": "Frances Hodgson Burnett"
+    "author": "Frances Hodgson Burnett",
+    "aud": [
+     "children"
+    ]
    }
   ],
   "humor": [
    {
     "id": 76,
     "title": "Adventures of Huckleberry Finn",
-    "author": "Mark Twain"
+    "author": "Mark Twain",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 844,
     "title": "The Importance of Being Earnest",
-    "author": "Oscar Wilde"
+    "author": "Oscar Wilde",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 308,
     "title": "Three Men in a Boat",
-    "author": "Jerome K. Jerome"
+    "author": "Jerome K. Jerome",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1080,
     "title": "A Modest Proposal",
-    "author": "Jonathan Swift"
+    "author": "Jonathan Swift",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 46,
     "title": "A Christmas Carol",
-    "author": "Charles Dickens"
+    "author": "Charles Dickens",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "growth": [
    {
     "id": 2680,
     "title": "Meditations",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 205,
     "title": "Walden",
-    "author": "Henry David Thoreau"
+    "author": "Henry David Thoreau",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2500,
     "title": "Siddhartha",
-    "author": "Hermann Hesse"
+    "author": "Hermann Hesse",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 132,
     "title": "The Art of War",
-    "author": "Sun Tzu"
+    "author": "Sun Tzu",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1497,
     "title": "The Republic",
-    "author": "Plato"
+    "author": "Plato",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "inspiration": [
    {
     "id": 4507,
     "title": "As a Man Thinketh",
-    "author": "James Allen"
+    "author": "James Allen",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 935,
     "title": "Self-Help",
-    "author": "Samuel Smiles"
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 368,
     "title": "Acres of Diamonds",
-    "author": "Russell H. Conwell"
+    "author": "Russell H. Conwell",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2376,
     "title": "Up from Slavery",
-    "author": "Booker T. Washington"
+    "author": "Booker T. Washington",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2274,
     "title": "How to Live on 24 Hours a Day",
-    "author": "Arnold Bennett"
+    "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "business": [
    {
     "id": 8581,
     "title": "The Art of Money Getting",
-    "author": "P. T. Barnum"
+    "author": "P. T. Barnum",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 20203,
     "title": "Autobiography of Benjamin Franklin",
-    "author": "Benjamin Franklin"
+    "author": "Benjamin Franklin",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 24518,
     "title": "Extraordinary Popular Delusions and the Madness of Crowds",
-    "author": "Charles Mackay"
+    "author": "Charles Mackay",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "innovation": [
    {
+    "id": "ms-ai-beginners",
+    "title": "Artificial Intelligence for Beginners",
+    "author": "Microsoft Cloud Advocates",
+    "src": "open",
+    "kind": "book",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://raw.githubusercontent.com/microsoft/AI-For-Beginners/main/lessons/sketchnotes/ai-overview.png",
+    "page": "https://github.com/microsoft/AI-For-Beginners",
+    "lic": "MIT licence"
+   },
+   {
     "id": 820,
     "title": "Edison, His Life and Inventions",
-    "author": "Frank Lewis Dyer and T. C. Martin"
+    "author": "Frank Lewis Dyer and T. C. Martin",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2009,
     "title": "On the Origin of Species",
-    "author": "Charles Darwin"
+    "author": "Charles Darwin",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "leadership": [
    {
     "id": 132,
     "title": "The Art of War",
-    "author": "Sun Tzu"
+    "author": "Sun Tzu",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 1232,
     "title": "The Prince",
-    "author": "Niccolò Machiavelli"
+    "author": "Niccolò Machiavelli",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 16317,
     "title": "The Art of Public Speaking",
-    "author": "Dale Carnegie and J. Berg Esenwein"
+    "author": "Dale Carnegie and J. Berg Esenwein",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2944,
     "title": "Essays, First Series",
-    "author": "Ralph Waldo Emerson"
+    "author": "Ralph Waldo Emerson",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2680,
     "title": "Meditations",
-    "author": "Marcus Aurelius"
+    "author": "Marcus Aurelius",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "people": [
    {
     "id": 16317,
     "title": "The Art of Public Speaking",
-    "author": "Dale Carnegie and J. Berg Esenwein"
+    "author": "Dale Carnegie and J. Berg Esenwein",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 935,
     "title": "Self-Help",
-    "author": "Samuel Smiles"
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 2274,
     "title": "How to Live on 24 Hours a Day",
-    "author": "Arnold Bennett"
+    "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "finance": [
    {
     "id": 8581,
     "title": "The Art of Money Getting",
-    "author": "P. T. Barnum"
+    "author": "P. T. Barnum",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 24518,
     "title": "Extraordinary Popular Delusions and the Madness of Crowds",
-    "author": "Charles Mackay"
+    "author": "Charles Mackay",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 3300,
     "title": "The Wealth of Nations",
-    "author": "Adam Smith"
-   },
-   {
-    "id": 59844,
-    "title": "The Science of Getting Rich",
-    "author": "W. D. (Wallace Delois) Wattles"
+    "author": "Adam Smith",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "ops": [
    {
     "id": 6435,
     "title": "The Principles of Scientific Management",
-    "author": "Frederick Winslow Taylor"
+    "author": "Frederick Winslow Taylor",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 132,
     "title": "The Art of War",
-    "author": "Sun Tzu"
+    "author": "Sun Tzu",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "sales": [
    {
     "id": 8581,
     "title": "The Art of Money Getting",
-    "author": "P. T. Barnum"
+    "author": "P. T. Barnum",
+    "aud": [
+     "general"
+    ]
    },
    {
     "id": 16317,
     "title": "The Art of Public Speaking",
-    "author": "Dale Carnegie and J. Berg Esenwein"
+    "author": "Dale Carnegie and J. Berg Esenwein",
+    "aud": [
+     "general"
+    ]
    }
-  ]
+  ],
+  "geography": [],
+  "cooking": [],
+  "worldhistory": [],
+  "motivation": [
+   {
+    "id": 4507,
+    "title": "As a Man Thinketh",
+    "author": "James Allen",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 935,
+    "title": "Self-Help",
+    "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 368,
+    "title": "Acres of Diamonds",
+    "author": "Russell H. Conwell",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 2274,
+    "title": "How to Live on 24 Hours a Day",
+    "author": "Arnold Bennett",
+    "aud": [
+     "general"
+    ]
+   }
+  ],
+  "ai": [
+   {
+    "id": "ms-ml-beginners",
+    "title": "Machine Learning for Beginners",
+    "author": "Microsoft Cloud Advocates",
+    "src": "open",
+    "kind": "book",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://raw.githubusercontent.com/microsoft/ML-For-Beginners/main/images/ml-for-beginners.png",
+    "page": "https://github.com/microsoft/ML-For-Beginners",
+    "lic": "MIT licence"
+   },
+   {
+    "id": "ms-ai-beginners",
+    "title": "Artificial Intelligence for Beginners",
+    "author": "Microsoft Cloud Advocates",
+    "src": "open",
+    "kind": "book",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://raw.githubusercontent.com/microsoft/AI-For-Beginners/main/lessons/sketchnotes/ai-overview.png",
+    "page": "https://github.com/microsoft/AI-For-Beginners",
+    "lic": "MIT licence"
+   },
+   {
+    "id": 84,
+    "title": "Frankenstein",
+    "author": "Mary Shelley",
+    "aud": [
+     "general"
+    ]
+   }
+  ],
+  "magazines": []
  }
 }

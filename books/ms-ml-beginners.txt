@@ -1,0 +1,1268 @@
+MACHINE LEARNING FOR BEGINNERS
+
+By Microsoft Cloud Advocates. Lessons from the free "ML For Beginners" curriculum, published by Microsoft under the MIT licence at github.com/microsoft/ML-For-Beginners. Code samples, quizzes and pictures are left out so the lessons read like a book.
+
+
+CHAPTER 1. Introduction to machine learning
+
+Welcome to this course on classical machine learning for beginners! Whether you're completely new to this topic, or an experienced ML practitioner looking to brush up on an area, we're happy to have you join us! We want to create a friendly launching spot for your ML study and would be happy to evaluate, respond to, and incorporate your feedback.
+
+GETTING STARTED WITH MACHINE LEARNING
+
+Before starting with this curriculum, you need to have your computer set up and ready to run notebooks locally.
+
+• Learn Python. It's also recommended to have a basic understanding of Python, a programming language useful for data scientists that we use in this course.
+
+• Learn Node.js and JavaScript. We also use JavaScript a few times in this course when building web apps, so you will need to have node and npm installed, as well as Visual Studio Code available for both Python and JavaScript development.
+
+• Create a GitHub account. Since you found us here on GitHub, you might already have an account, but if not, create one and then fork this curriculum to use on your own. (Feel free to give us a star, too 😊)
+
+• Explore Scikit-learn. Familiarize yourself with Scikit-learn, a set of ML libraries that we reference in these lessons.
+
+WHAT IS MACHINE LEARNING
+
+The term 'machine learning' is one of the most popular and frequently used terms of today. There is a nontrivial possibility that you have heard this term at least once if you have some sort of familiarity with technology, no matter what domain you work in. The mechanics of machine learning, however, are a mystery to most people. For a machine learning beginner, the subject can sometimes feel overwhelming. Therefore, it is important to understand what machine learning actually is, and to learn about it step by step, through practical examples.
+
+THE HYPE CURVE
+
+Google Trends shows the recent 'hype curve' of the term 'machine learning'
+
+A MYSTERIOUS UNIVERSE
+
+We live in a universe full of fascinating mysteries. Great scientists such as Stephen Hawking, Albert Einstein, and many more have devoted their lives to searching for meaningful information that uncovers the mysteries of the world around us. This is the human condition of learning: a human child learns new things and uncovers the structure of their world year by year as they grow to adulthood.
+
+THE CHILD'S BRAIN
+
+A child's brain and senses perceive the facts of their surroundings and gradually learn the hidden patterns of life which help the child to craft logical rules to identify learned patterns. The learning process of the human brain makes humans the most sophisticated living creature of this world. Learning continuously by discovering hidden patterns and then innovating on those patterns enables us to make ourselves better and better throughout our lifetime. This learning capacity and evolving capability is related to a concept called brain plasticity. Superficially, we can draw some motivational similarities between the learning process of the human brain and the concepts of machine learning.
+
+THE HUMAN BRAIN
+
+The human brain perceives things from the real world, processes the perceived information, makes rational decisions, and performs certain actions based on circumstances. This is what we called behaving intelligently. When we program a facsimile of the intelligent behavioral process to a machine, it is called artificial intelligence (AI).
+
+SOME TERMINOLOGY
+
+Although the terms can be confused, machine learning (ML) is an important subset of artificial intelligence. ML is concerned with using specialized algorithms to uncover meaningful information and find hidden patterns from perceived data to corroborate the rational decision-making process.
+
+AI, ML, DEEP LEARNING
+
+A diagram showing the relationships between AI, ML, deep learning, and data science. Infographic by Jen Looper inspired by this graphic
+
+CONCEPTS TO COVER
+
+In this curriculum, we are going to cover only the core concepts of machine learning that a beginner must know. We cover what we call 'classical machine learning' primarily using Scikit-learn, an excellent library many students use to learn the basics. To understand broader concepts of artificial intelligence or deep learning, a strong fundamental knowledge of machine learning is indispensable, and so we would like to offer it here.
+
+IN THIS COURSE YOU WILL LEARN:
+
+• core concepts of machine learning
+
+• the history of ML
+
+• ML and fairness
+
+• regression ML techniques
+
+• classification ML techniques
+
+• clustering ML techniques
+
+• natural language processing ML techniques
+
+• time series forecasting ML techniques
+
+• reinforcement learning
+
+• real-world applications for ML
+
+WHAT WE WILL NOT COVER
+
+• deep learning
+
+• neural networks
+
+• AI
+
+To make for a better learning experience, we will avoid the complexities of neural networks, 'deep learning' - many-layered model-building using neural networks - and AI, which we will discuss in a different curriculum. We also will offer a forthcoming data science curriculum to focus on that aspect of this larger field.
+
+WHY STUDY MACHINE LEARNING
+
+Machine learning, from a systems perspective, is defined as the creation of automated systems that can learn hidden patterns from data to aid in making intelligent decisions.
+
+This motivation is loosely inspired by how the human brain learns certain things based on the data it perceives from the outside world.
+
+✅ Think for a minute why a business would want to try to use machine learning strategies vs. creating a hard-coded rules-based engine.
+
+WHY DATA QUALITY MATTERS
+
+High-quality data improves model performance. Poor or noisy data can lead to inaccurate predictions, even when using advanced machine learning algorithms.
+
+APPLICATIONS OF MACHINE LEARNING
+
+Applications of machine learning are now almost everywhere, and are as ubiquitous as the data that is flowing around our societies, generated by our smart phones, connected devices, and other systems. Considering the immense potential of state-of-the-art machine learning algorithms, researchers have been exploring their capability to solve multi-dimensional and multi-disciplinary real-life problems with great positive outcomes.
+
+EXAMPLES OF APPLIED ML
+
+You can use machine learning in many ways:
+
+• To predict the likelihood of disease from a patient's medical history or reports.
+
+• To leverage weather data to predict weather events.
+
+• To understand the sentiment of a text.
+
+• To detect fake news to stop the spread of propaganda.
+
+Finance, economics, earth science, space exploration, biomedical engineering, cognitive science, and even fields in the humanities have adapted machine learning to solve the arduous, data-processing heavy problems of their domain.
+
+CONCLUSION
+
+Machine learning automates the process of pattern-discovery by finding meaningful insights from real-world or generated data. It has proven itself to be highly valuable in business, health, and financial applications, among others.
+
+In the near future, understanding the basics of machine learning is going to be a must for people from any domain due to its widespread adoption.
+
+CHALLENGE
+
+Sketch, on paper or using an online app like Excalidraw, your understanding of the differences between AI, ML, deep learning, and data science. Add some ideas of problems that each of these techniques are good at solving.
+
+REVIEW & SELF STUDY
+
+To learn more about how you can work with ML algorithms in the cloud, follow this Learning Path.
+
+Take a Learning Path about the basics of ML.
+
+
+CHAPTER 2. History of machine learning
+
+In this lesson, we will walk through the major milestones in the history of machine learning and artificial intelligence.
+
+The history of artificial intelligence (AI) as a field is intertwined with the history of machine learning, as the algorithms and computational advances that underpin ML fed into the development of AI. It is useful to remember that, while these fields as distinct areas of inquiry began to crystallize in the 1950s, important algorithmic, statistical, mathematical, computational and technical discoveries predated and overlapped this era. In fact, people have been thinking about these questions for hundreds of years: this article discusses the historical intellectual underpinnings of the idea of a 'thinking machine.'
+
+NOTABLE DISCOVERIES
+
+• 1763, 1812 Bayes Theorem and its predecessors. This theorem and its applications underlie inference, describing the probability of an event occurring based on prior knowledge.
+
+• 1805 Least Square Theory by French mathematician Adrien-Marie Legendre. This theory, which you will learn about in our Regression unit, helps in data fitting.
+
+• 1913 Markov Chains, named after Russian mathematician Andrey Markov, is used to describe a sequence of possible events based on a previous state.
+
+• 1957 Perceptron is a type of linear classifier invented by American psychologist Frank Rosenblatt that underlies advances in deep learning.
+
+• 1967 Nearest Neighbor is an algorithm originally designed to map routes. In an ML context it is used to detect patterns.
+
+• 1970 Backpropagation is used to train feedforward neural networks.
+
+• 1982 Recurrent Neural Networks are artificial neural networks derived from feedforward neural networks that create temporal graphs.
+
+✅ Do a little research. What other dates stand out as pivotal in the history of ML and AI?
+
+1950: MACHINES THAT THINK
+
+Alan Turing, a truly remarkable person who was voted by the public in 2019 as the greatest scientist of the 20th century, is credited as helping to lay the foundation for the concept of a 'machine that can think.' He grappled with naysayers and his own need for empirical evidence of this concept in part by creating the Turing Test, which you will explore in our NLP lessons.
+
+1956: DARTMOUTH SUMMER RESEARCH PROJECT
+
+"The Dartmouth Summer Research Project on artificial intelligence was a seminal event for artificial intelligence as a field," and it was here that the term 'artificial intelligence' was coined (source).
+
+Every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it.
+
+The lead researcher, mathematics professor John McCarthy, hoped "to proceed on the basis of the conjecture that every aspect of learning or any other feature of intelligence can in principle be so precisely described that a machine can be made to simulate it." The participants included another luminary in the field, Marvin Minsky.
+
+The workshop is credited with having initiated and encouraged several discussions including "the rise of symbolic methods, systems focussed on limited domains (early expert systems), and deductive systems versus inductive systems." (source).
+
+1956 - 1974: THE GOLDEN YEARS
+
+From the 1950s through the mid '70s, optimism ran high in the hope that AI could solve many problems. In 1967, Marvin Minsky stated confidently that "Within a generation ... the problem of creating 'artificial intelligence' will substantially be solved." (Minsky, Marvin (1967), Computation: Finite and Infinite Machines, Englewood Cliffs, N.J.: Prentice-Hall)
+
+Natural language processing research flourished, search was refined and made more powerful, and the concept of 'micro-worlds' was created, where simple tasks were completed using plain language instructions.
+
+Research was well funded by government agencies, advances were made in computation and algorithms, and prototypes of intelligent machines were built. Some of these machines include:
+
+• Shakey the robot, who could maneuver and decide how to perform tasks 'intelligently'.
+
+Shakey in 1972
+
+• Eliza, an early 'chatterbot', could converse with people and act as a primitive 'therapist'. You'll learn more about Eliza in the NLP lessons.
+
+A version of Eliza, a chatbot
+
+• "Blocks world" was an example of a micro-world where blocks could be stacked and sorted, and experiments in teaching machines to make decisions could be tested. Advances built with libraries such as SHRDLU helped propel language processing forward.
+
+1974 - 1980: AI WINTER
+
+By the mid 1970s, it had become apparent that the complexity of making 'intelligent machines' had been understated and that its promise, given the available compute power, had been overblown. Funding dried up and confidence in the field slowed. Some issues that impacted confidence included:
+
+• Limitations. Compute power was too limited.
+
+• Combinatorial explosion. The amount of parameters needed to be trained grew exponentially as more was asked of computers, without a parallel evolution of compute power and capability.
+
+• Paucity of data. There was a paucity of data that hindered the process of testing, developing, and refining algorithms.
+
+• Are we asking the right questions?. The very questions that were being asked began to be questioned. Researchers began to field criticism about their approaches:
+
+• Turing tests came into question by means, among other ideas, of the 'chinese room theory' which posited that, "programming a digital computer may make it appear to understand language but could not produce real understanding." (source)
+
+• The ethics of introducing artificial intelligences such as the "therapist" ELIZA into society was challenged.
+
+At the same time, various AI schools of thought began to form. A dichotomy was established between "scruffy" vs. "neat AI" practices. _Scruffy_ labs tweaked programs for hours until they had the desired results. _Neat_ labs "focused on logic and formal problem solving". ELIZA and SHRDLU were well-known _scruffy_ systems. In the 1980s, as demand emerged to make ML systems reproducible, the _neat_ approach gradually took the forefront as its results are more explainable.
+
+1980S EXPERT SYSTEMS
+
+As the field grew, its benefit to business became clearer, and in the 1980s so did the proliferation of 'expert systems'. "Expert systems were among the first truly successful forms of artificial intelligence (AI) software." (source).
+
+This type of system is actually _hybrid_, consisting partially of a rules engine defining business requirements, and an inference engine that leveraged the rules system to deduce new facts.
+
+This era also saw increasing attention paid to neural networks.
+
+1987 - 1993: AI 'CHILL'
+
+The proliferation of specialized expert systems hardware had the unfortunate effect of becoming too specialized. The rise of personal computers also competed with these large, specialized, centralized systems. The democratization of computing had begun, and it eventually paved the way for the modern explosion of big data.
+
+1993 - 2011
+
+This epoch saw a new era for ML and AI to be able to solve some of the problems that had been caused earlier by the lack of data and compute power. The amount of data began to rapidly increase and become more widely available, for better and for worse, especially with the advent of the smartphone around 2007. Compute power expanded exponentially, and algorithms evolved alongside. The field began to gain maturity as the freewheeling days of the past began to crystallize into a true discipline.
+
+NOW
+
+Today machine learning and AI touch almost every part of our lives. This era calls for careful understanding of the risks and potentials effects of these algorithms on human lives. As Microsoft's Brad Smith has stated, "Information technology raises issues that go to the heart of fundamental human-rights protections like privacy and freedom of expression. These issues heighten responsibility for tech companies that create these products. In our view, they also call for thoughtful government regulation and for the development of norms around acceptable uses" (source).
+
+It remains to be seen what the future holds, but it is important to understand these computer systems and the software and algorithms that they run. We hope that this curriculum will help you to gain a better understanding so that you can decide for yourself.
+
+CHALLENGE
+
+Dig into one of these historical moments and learn more about the people behind them. There are fascinating characters, and no scientific discovery was ever created in a cultural vacuum. What do you discover?
+
+REVIEW & SELF STUDY
+
+Here are items to watch and listen to:
+
+This podcast where Amy Boyd discusses the evolution of AI
+
+
+CHAPTER 3. Building Machine Learning solutions with responsible AI
+
+INTRODUCTION
+
+In this curriculum, you will start to discover how machine learning can and is impacting our everyday lives. Even now, systems and models are involved in daily decision-making tasks, such as health care diagnoses, loan approvals or detecting fraud. So, it is important that these models work well to provide outcomes that are trustworthy. Just as any software application, AI systems are going to miss expectations or have an undesirable outcome. That is why it is essential to be able to understand and explain the behavior of an AI model.
+
+Imagine what can happen when the data you are using to build these models lacks certain demographics, such as race, gender, political view, religion, or disproportionally represents such demographics. What about when the model’s output is interpreted to favor some demographic? What is the consequence for the application? In addition, what happens when the model has an adverse outcome and is harmful to people? Who is accountable for the AI systems behavior? These are some questions we will explore in this curriculum.
+
+In this lesson, you will:
+
+• Raise your awareness of the importance of fairness in machine learning and fairness-related harms.
+
+• Become familiar with the practice of exploring outliers and unusual scenarios to ensure reliability and safety
+
+• Gain understanding on the need to empower everyone by designing inclusive systems
+
+• Explore how vital it is to protect privacy and security of data and people
+
+• See the importance of having a glass box approach to explain the behavior of AI models
+
+• Be mindful of how accountability is essential to build trust in AI systems
+
+PREREQUISITE
+
+As a prerequisite, please take the "Responsible AI Principles" Learn Path and watch the video below on the topic:
+
+Learn more about Responsible AI by following this Learning Path
+
+FAIRNESS
+
+AI systems should treat everyone fairly and avoid affecting similar groups of people in different ways. For example, when AI systems provide guidance on medical treatment, loan applications, or employment, they should make the same recommendations to everyone with similar symptoms, financial circumstances, or professional qualifications. Each of us as humans carries around inherited biases that affect our decisions and actions. These biases can be evident in the data that we use to train AI systems. Such manipulation can sometimes happen unintentionally. It is often difficult to consciously know when you are introducing bias in data.
+
+“Unfairness” encompasses negative impacts, or “harms”, for a group of people, such as those defined in terms of race, gender, age, or disability status. The main fairness-related harms can be classified as:
+
+• Allocation, if a gender or ethnicity for example is favored over another.
+
+• Quality of service. If you train the data for one specific scenario but reality is much more complex, it leads to a poor performing service. For instance, a hand soap dispenser that could not seem to be able to sense people with dark skin. Reference
+
+• Denigration. To unfairly criticize and label something or someone. For example, an image labeling technology infamously mislabeled images of dark-skinned people as gorillas.
+
+• Over- or under- representation. The idea is that a certain group is not seen in a certain profession, and any service or function that keeps promoting that is contributing to harm.
+
+• Stereotyping. Associating a given group with pre-assigned attributes. For example, a language translation system between English and Turkish may have inaccuracies due to words with stereotypical associations to gender.
+
+translation to Turkish
+
+translation back to English
+
+When designing and testing AI systems, we need to ensure that AI is fair and not programmed to make biased or discriminatory decisions, which human beings are also prohibited from making. Guaranteeing fairness in AI and machine learning remains a complex sociotechnical challenge.
+
+RELIABILITY AND SAFETY
+
+To build trust, AI systems need to be reliable, safe, and consistent under normal and unexpected conditions. It is important to know how AI systems will behavior in a variety of situations, especially when they are outliers. When building AI solutions, there needs to be a substantial amount of focus on how to handle a wide variety of circumstances that the AI solutions would encounter. For example, a self-driving car needs to put people's safety as a top priority. As a result, the AI powering the car need to consider all the possible scenarios that the car could come across such as night, thunderstorms or blizzards, kids running across the street, pets, road constructions etc. How well an AI system can handle a wild range of conditions reliably and safely reflects the level of anticipation the data scientist or AI developer considered during the design or testing of the system.
+
+INCLUSIVENESS
+
+AI systems should be designed to engage and empower everyone. When designing and implementing AI systems data scientists and AI developers identify and address potential barriers in the system that could unintentionally exclude people. For example, there are 1 billion people with disabilities around the world. With the advancement of AI, they can access a wide range of information and opportunities more easily in their daily lives. By addressing the barriers, it creates opportunities to innovate and develop AI products with better experiences that benefit everyone.
+
+SECURITY AND PRIVACY
+
+AI systems should be safe and respect people’s privacy. People have less trust in systems that put their privacy, information, or lives at risk. When training machine learning models, we rely on data to produce the best results. In doing so, the origin of the data and integrity must be considered. For example, was the data user submitted or publicly available? Next, while working with the data, it is crucial to develop AI systems that can protect confidential information and resist attacks. As AI becomes more prevalent, protecting privacy and securing important personal and business information is becoming more critical and complex. Privacy and data security issues require especially close attention for AI because access to data is essential for AI systems to make accurate and informed predictions and decisions about people.
+
+• As an industry we have made significant advancements in Privacy & security, fueled significantly by regulations like the GDPR (General Data Protection Regulation).
+
+• Yet with AI systems we must acknowledge the tension between the need for more personal data to make systems more personal and effective – and privacy.
+
+• Just like with the birth of connected computers with the internet, we are also seeing a huge uptick in the number of security issues related to AI.
+
+• At the same time, we have seen AI being used to improve security. As an example, most modern anti-virus scanners are driven by AI heuristics today.
+
+• We need to ensure that our Data Science processes blend harmoniously with the latest privacy and security practices.
+
+TRANSPARENCY
+
+AI systems should be understandable. A crucial part of transparency is explaining the behavior of AI systems and their components. Improving the understanding of AI systems requires that stakeholders comprehend how and why they function so that they can identify potential performance issues, safety and privacy concerns, biases, exclusionary practices, or unintended outcomes. We also believe that those who use AI systems should be honest and forthcoming about when, why, and how they choose to deploy them. As well as the limitations of the systems they use. For example, if a bank uses an AI system to support its consumer lending decisions, it is important to examine the outcomes and understand which data influences the system’s recommendations. Governments are starting to regulate AI across industries, so data scientists and organizations must explain if an AI system meets regulatory requirements, especially when there is an undesirable outcome.
+
+• Because AI systems are so complex, it is hard to understand how they work and interpret the results.
+
+• This lack of understanding affects the way these systems are managed, operationalized, and documented.
+
+• This lack of understanding more importantly affects the decisions made using the results these systems produce.
+
+ACCOUNTABILITY
+
+The people who design and deploy AI systems must be accountable for how their systems operate. The need for accountability is particularly crucial with sensitive use technologies like facial recognition. Recently, there has been a growing demand for facial recognition technology, especially from law enforcement organizations who see the potential of the technology in uses like finding missing children. However, these technologies could potentially be used by a government to put their citizens’ fundamental freedoms at risk by, for example, enabling continuous surveillance of specific individuals. Hence, data scientists and organizations need to be responsible for how their AI system impacts individuals or society.
+
+Ultimately one of the biggest questions for our generation, as the first generation that is bringing AI to society, is how to ensure that computers will remain accountable to people and how to ensure that the people that design computers remain accountable to everyone else.
+
+IMPACT ASSESSMENT
+
+Before training a machine learning model, it is important to conduct an impact assessment to understand the purpose of the AI system; what the intended use is; where it will be deployed; and who will be interacting with the system. These are helpful for reviewer(s) or testers evaluating the system to know what factors to take into consideration when identifying potential risks and expected consequences.
+
+The following are areas of focus when conducting an impact assessment:
+
+• Adverse impact on individuals. Being aware of any restriction or requirements, unsupported use or any known limitations hindering the system's performance is vital to ensure that the system is not used in a way that could cause harm to individuals.
+
+• Data requirements. Gaining an understanding of how and where the system will use data enables reviewers to explore any data requirements you would need to be mindful of (e.g., GDPR or HIPAA data regulations). In addition, examine whether the source or quantity of data is substantial for training.
+
+• Summary of impact. Gather a list of potential harms that could arise from using the system. Throughout the ML lifecycle, review if the issues identified are mitigated or addressed.
+
+• Applicable goals for each of the six core principles. Assess if the goals from each of the principles are met and if there are any gaps.
+
+DEBUGGING WITH RESPONSIBLE AI
+
+Similar to debugging a software application, debugging an AI system is a necessary process of identifying and resolving issues in the system. There are many factors that would affect a model not performing as expected or responsibly. Most traditional model performance metrics are quantitative aggregates of a model's performance, which are not sufficient to analyze how a model violates the responsible AI principles. Furthermore, a machine learning model is a black box that makes it difficult to understand what drives its outcome or provide explanation when it makes a mistake. Later in this course, we will learn how to use the Responsible AI dashboard to help debug AI systems. The dashboard provides a holistic tool for data scientists and AI developers to perform:
+
+• Error analysis. To identify the error distribution of the model that can affect the system's fairness or reliability.
+
+• Model overview. To discover where there are disparities in the model's performance across data cohorts.
+
+• Data analysis. To understand the data distribution and identify any potential bias in the data that could lead to fairness, inclusiveness, and reliability issues.
+
+• Model interpretability. To understand what affects or influences the model's predictions. This helps in explaining the model's behavior, which is important for transparency and accountability.
+
+CHALLENGE
+
+To prevent harms from being introduced in the first place, we should:
+
+• have a diversity of backgrounds and perspectives among the people working on systems
+
+• invest in datasets that reflect the diversity of our society
+
+• develop better methods throughout the machine learning lifecycle for detecting and correcting irresponsible AI when it occurs
+
+Think about real-life scenarios where a model's untrustworthiness is evident in model-building and usage. What else should we consider?
+
+REVIEW & SELF STUDY
+
+In this lesson, you have learned some basics of the concepts of fairness and unfairness in machine learning.
+
+Watch this workshop to dive deeper into the topics:
+
+• In pursuit of responsible AI: Bringing principles to practice by Besmira Nushi, Mehrnoosh Sameki and Amit Sharma
+
+Also, read:
+
+• Microsoft’s RAI resource center: Responsible AI Resources – Microsoft AI
+
+• Microsoft’s FATE research group: FATE: Fairness, Accountability, Transparency, and Ethics in AI - Microsoft Research
+
+RAI Toolbox:
+
+• Responsible AI Toolbox GitHub repository
+
+Read about Azure Machine Learning's tools to ensure fairness:
+
+• Azure Machine Learning
+
+
+CHAPTER 4. Techniques of Machine Learning
+
+The process of building, using, and maintaining machine learning models and the data they use is a very different process from many other development workflows. In this lesson, we will demystify the process, and outline the main techniques you need to know. You will:
+
+• Understand the processes underpinning machine learning at a high level.
+
+• Explore base concepts such as 'models', 'predictions', and 'training data'.
+
+INTRODUCTION
+
+On a high level, the craft of creating machine learning (ML) processes is comprised of a number of steps:
+
+• Decide on the question. Most ML processes start by asking a question that cannot be answered by a simple conditional program or rules-based engine. These questions often revolve around predictions based on a collection of data.
+
+• Collect and prepare data. To be able to answer your question, you need data. The quality and, sometimes, quantity of your data will determine how well you can answer your initial question. Visualizing data is an important aspect of this phase. This phase also includes splitting the data into a training and testing group to build a model.
+
+• Choose a training method. Depending on your question and the nature of your data, you need to choose how you want to train a model to best reflect your data and make accurate predictions against it. This is the part of your ML process that requires specific expertise and, often, a considerable amount of experimentation.
+
+• Train the model. Using your training data, you'll use various algorithms to train a model to recognize patterns in the data. The model might leverage internal weights that can be adjusted to privilege certain parts of the data over others to build a better model.
+
+• Evaluate the model. You use never before seen data (your testing data) from your collected set to see how the model is performing.
+
+• Parameter tuning. Based on the performance of your model, you can redo the process using different parameters, or variables, that control the behavior of the algorithms used to train the model.
+
+• Predict. Use new inputs to test the accuracy of your model.
+
+WHAT QUESTION TO ASK
+
+Computers are particularly skilled at discovering hidden patterns in data. This utility is very helpful for researchers who have questions about a given domain that cannot be easily answered by creating a conditionally-based rules engine. Given an actuarial task, for example, a data scientist might be able to construct handcrafted rules around the mortality of smokers vs non-smokers.
+
+When many other variables are brought into the equation, however, a ML model might prove more efficient to predict future mortality rates based on past health history. A more cheerful example might be making weather predictions for the month of April in a given location based on data that includes latitude, longitude, climate change, proximity to the ocean, patterns of the jet stream, and more.
+
+✅ This slide deck on weather models offers a historical perspective for using ML in weather analysis.
+
+PRE-BUILDING TASKS
+
+Before starting to build your model, there are several tasks you need to complete. To test your question and form a hypothesis based on a model's predictions, you need to identify and configure several elements.
+
+DATA
+
+To be able to answer your question with any kind of certainty, you need a good amount of data of the right type. There are two things you need to do at this point:
+
+• Collect data. Keeping in mind the previous lesson on fairness in data analysis, collect your data with care. Be aware of the sources of this data, any inherent biases it might have, and document its origin.
+
+• Prepare data. There are several steps in the data preparation process. You might need to collate data and normalize it if it comes from diverse sources. You can improve the data's quality and quantity through various methods such as converting strings to numbers (as we do in Clustering). You might also generate new data, based on the original (as we do in Classification). You can clean and edit the data (as we will prior to the Web App lesson). Finally, you might also need to randomize it and shuffle it, depending on your training techniques.
+
+✅ After collecting and processing your data, take a moment to see if its shape will allow you to address your intended question. It may be that the data will not perform well in your given task, as we discover in our Clustering lessons!
+
+FEATURES AND TARGET
+
+A feature is a measurable property of your data. In many datasets it is expressed as a column heading like 'date' 'size' or 'color'. Your feature variable, usually represented as X in code, represents the input variable which will be used to train a model.
+
+A target is a thing you are trying to predict. Target, usually represented as y in code, represents the answer to the question you are trying to ask of your data: in December, what color pumpkins will be cheapest? in San Francisco, what neighborhoods will have the best real estate price? Sometimes target is also referred to as a label attribute.
+
+SELECTING YOUR FEATURE VARIABLE
+
+🎓 Feature Selection and Feature Extraction How do you know which variable to choose when building a model? You'll probably go through a process of feature selection or feature extraction to choose the right variables for the most performant model. They're not the same thing, however: "Feature extraction creates new features from functions of the original features, whereas feature selection returns a subset of the features." (source)
+
+VISUALIZE YOUR DATA
+
+An important aspect of the data scientist's toolkit is the power to visualize data using several excellent libraries such as Seaborn or MatPlotLib. Representing your data visually might allow you to uncover hidden correlations that you can leverage. Your visualizations might also help you to uncover bias or unbalanced data (as we discover in Classification).
+
+SPLIT YOUR DATASET
+
+Prior to training, you need to split your dataset into two or more parts of unequal size that still represent the data well.
+
+• Training. This part of the dataset is fit to your model to train it. This set constitutes the majority of the original dataset.
+
+• Testing. A test dataset is an independent group of data, often gathered from the original data, that you use to confirm the performance of the built model.
+
+• Validating. A validation set is a smaller independent group of examples that you use to tune the model's hyperparameters, or architecture, to improve the model. Depending on your data's size and the question you are asking, you might not need to build this third set (as we note in Time Series Forecasting).
+
+BUILDING A MODEL
+
+Using your training data, your goal is to build a model, or a statistical representation of your data, using various algorithms to train it. Training a model exposes it to data and allows it to make assumptions about perceived patterns it discovers, validates, and accepts or rejects.
+
+DECIDE ON A TRAINING METHOD
+
+Depending on your question and the nature of your data, you will choose a method to train it. Stepping through Scikit-learn's documentation - which we use in this course - you can explore many ways to train a model. Depending on your experience, you might have to try several different methods to build the best model. You are likely to go through a process whereby data scientists evaluate the performance of a model by feeding it unseen data, checking for accuracy, bias, and other quality-degrading issues, and selecting the most appropriate training method for the task at hand.
+
+TRAIN A MODEL
+
+Armed with your training data, you are ready to 'fit' it to create a model. You will notice that in many ML libraries you will find the code 'model.fit' - it is at this time that you send in your feature variable as an array of values (usually 'X') and a target variable (usually 'y').
+
+EVALUATE THE MODEL
+
+Once the training process is complete (it can take many iterations, or 'epochs', to train a large model), you will be able to evaluate the model's quality by using test data to gauge its performance. This data is a subset of the original data that the model has not previously analyzed. You can print out a table of metrics about your model's quality.
+
+🎓 Model fitting
+
+In the context of machine learning, model fitting refers to the accuracy of the model's underlying function as it attempts to analyze data with which it is not familiar.
+
+🎓 Underfitting and overfitting are common problems that degrade the quality of the model, as the model fits either not well enough or too well. This causes the model to make predictions either too closely aligned or too loosely aligned with its training data. An overfit model predicts training data too well because it has learned the data's details and noise too well. An underfit model is not accurate as it can neither accurately analyze its training data nor data it has not yet 'seen'.
+
+Infographic by Jen Looper
+
+PARAMETER TUNING
+
+Once your initial training is complete, observe the quality of the model and consider improving it by tweaking its 'hyperparameters'. Read more about the process in the documentation.
+
+PREDICTION
+
+This is the moment where you can use completely new data to test your model's accuracy. In an 'applied' ML setting, where you are building web assets to use the model in production, this process might involve gathering user input (a button press, for example) to set a variable and send it to the model for inference, or evaluation.
+
+In these lessons, you will discover how to use these steps to prepare, build, test, evaluate, and predict - all the gestures of a data scientist and more, as you progress in your journey to become a 'full stack' ML engineer.
+
+CHALLENGE
+
+Draw a flow chart reflecting the steps of a ML practitioner. Where do you see yourself right now in the process? Where do you predict you will find difficulty? What seems easy to you?
+
+REVIEW & SELF STUDY
+
+
+CHAPTER 5. Introduction to classification
+
+In these four lessons, you will explore a fundamental focus of classic machine learning - _classification_. We will walk through using various classification algorithms with a dataset about all the brilliant cuisines of Asia and India. Hope you're hungry!
+
+Classification is a form of supervised learning that bears a lot in common with regression techniques. If machine learning is all about predicting values or names to things by using datasets, then classification generally falls into two groups: _binary classification_ and _multiclass classification_.
+
+Remember:
+
+• Linear regression helped you predict relationships between variables and make accurate predictions on where a new datapoint would fall in relationship to that line. So, you could predict _what price a pumpkin would be in September vs. December_, for example.
+
+• Logistic regression helped you discover "binary categories": at this price point, _is this pumpkin orange or not-orange_?
+
+Classification uses various algorithms to determine other ways of determining a data point's label or class. Let's work with this cuisine data to see whether, by observing a group of ingredients, we can determine its cuisine of origin.
+
+### This lesson is available in R!
+
+INTRODUCTION
+
+Classification is one of the fundamental activities of the machine learning researcher and data scientist. From basic classification of a binary value ("is this email spam or not?"), to complex image classification and segmentation using computer vision, it's always useful to be able to sort data into classes and ask questions of it.
+
+To state the process in a more scientific way, your classification method creates a predictive model that enables you to map the relationship between input variables to output variables.
+
+Binary vs. multiclass problems for classification algorithms to handle. Infographic by Jen Looper
+
+Before starting the process of cleaning our data, visualizing it, and prepping it for our ML tasks, let's learn a bit about the various ways machine learning can be leveraged to classify data.
+
+Derived from statistics, classification using classic machine learning uses features, such as smoker, weight, and age to determine _likelihood of developing X disease_. As a supervised learning technique similar to the regression exercises you performed earlier, your data is labeled and the ML algorithms use those labels to classify and predict classes (or 'features') of a dataset and assign them to a group or outcome.
+
+✅ Take a moment to imagine a dataset about cuisines. What would a multiclass model be able to answer? What would a binary model be able to answer? What if you wanted to determine whether a given cuisine was likely to use fenugreek? What if you wanted to see if, given a present of a grocery bag full of star anise, artichokes, cauliflower, and horseradish, you could create a typical Indian dish?
+
+HELLO 'CLASSIFIER'
+
+The question we want to ask of this cuisine dataset is actually a multiclass question, as we have several potential national cuisines to work with. Given a batch of ingredients, which of these many classes will the data fit?
+
+Scikit-learn offers several different algorithms to use to classify data, depending on the kind of problem you want to solve. In the next two lessons, you'll learn about several of these algorithms.
+
+EXERCISE - CLEAN AND BALANCE YOUR DATA
+
+The first task at hand, before starting this project, is to clean and balance your data to get better results. Start with the blank _notebook.ipynb_ file in the root of this folder.
+
+The first thing to install is imblearn. This is a Scikit-learn package that will allow you to better balance the data (you will learn more about this task in a minute).
+
+• To install imblearn, run pip install, like so:
+
+• Import the packages you need to import your data and visualize it, also import SMOTE from imblearn.
+
+Now you are set up to read import the data next.
+
+• The next task will be to import the data:
+
+Using read_csv() will read the content of the csv file _cusines.csv_ and place it in the variable df.
+
+• Check the data's shape:
+
+The first five rows look like this:
+
+• Get info about this data by calling info():
+
+Your out resembles:
+
+EXERCISE - LEARNING ABOUT CUISINES
+
+Now the work starts to become more interesting. Let's discover the distribution of data, per cuisine
+
+• Plot the data as bars by calling barh():
+
+There are a finite number of cuisines, but the distribution of data is uneven. You can fix that! Before doing so, explore a little more.
+
+• Find out how much data is available per cuisine and print it out:
+
+the output looks like so:
+
+DISCOVERING INGREDIENTS
+
+Now you can dig deeper into the data and learn what are the typical ingredients per cuisine. You should clean out recurrent data that creates confusion between cuisines, so let's learn about this problem.
+
+• Create a function create_ingredient() in Python to create an ingredient dataframe. This function will start by dropping an unhelpful column and sort through ingredients by their count:
+
+Now you can use that function to get an idea of top ten most popular ingredients by cuisine.
+
+• Call create_ingredient() and plot it calling barh():
+
+• Do the same for the japanese data:
+
+• Now for the chinese ingredients:
+
+• Plot the indian ingredients:
+
+• Finally, plot the korean ingredients:
+
+• Now, drop the most common ingredients that create confusion between distinct cuisines, by calling drop():
+
+Everyone loves rice, garlic and ginger!
+
+BALANCE THE DATASET
+
+Now that you have cleaned the data, use SMOTE - "Synthetic Minority Over-sampling Technique" - to balance it.
+
+• Call fit_resample(), this strategy generates new samples by interpolation.
+
+By balancing your data, you'll have better results when classifying it. Think about a binary classification. If most of your data is one class, a ML model is going to predict that class more frequently, just because there is more data for it. Balancing the data takes any skewed data and helps remove this imbalance.
+
+• Now you can check the numbers of labels per ingredient:
+
+Your output looks like so:
+
+The data is nice and clean, balanced, and very delicious!
+
+• The last step is to save your balanced data, including labels and features, into a new dataframe that can be exported into a file:
+
+• You can take one more look at the data using transformed_df.head() and transformed_df.info(). Save a copy of this data for use in future lessons:
+
+This fresh CSV can now be found in the root data folder.
+
+CHALLENGE
+
+This curriculum contains several interesting datasets. Dig through the data folders and see if any contain datasets that would be appropriate for binary or multi-class classification? What questions would you ask of this dataset?
+
+REVIEW & SELF STUDY
+
+Explore SMOTE's API. What use cases is it best used for? What problems does it solve?
+
+
+CHAPTER 6. Introduction to clustering
+
+Clustering is a type of Unsupervised Learning that presumes that a dataset is unlabelled or that its inputs are not matched with predefined outputs. It uses various algorithms to sort through unlabeled data and provide groupings according to patterns it discerns in the data.
+
+INTRODUCTION
+
+Clustering is very useful for data exploration. Let's see if it can help discover trends and patterns in the way Nigerian audiences consume music.
+
+✅ Take a minute to think about the uses of clustering. In real life, clustering happens whenever you have a pile of laundry and need to sort out your family members' clothes 🧦👕👖🩲. In data science, clustering happens when trying to analyze a user's preferences, or determine the characteristics of any unlabeled dataset. Clustering, in a way, helps make sense of chaos, like a sock drawer.
+
+In a professional setting, clustering can be used to determine things like market segmentation, determining what age groups buy what items, for example. Another use would be anomaly detection, perhaps to detect fraud from a dataset of credit card transactions. Or you might use clustering to determine tumors in a batch of medical scans.
+
+✅ Think a minute about how you might have encountered clustering 'in the wild', in a banking, e-commerce, or business setting.
+
+🎓 Interestingly, cluster analysis originated in the fields of Anthropology and Psychology in the 1930s. Can you imagine how it might have been used?
+
+Alternately, you could use it for grouping search results - by shopping links, images, or reviews, for example. Clustering is useful when you have a large dataset that you want to reduce and on which you want to perform more granular analysis, so the technique can be used to learn about data before other models are constructed.
+
+✅ Once your data is organized in clusters, you assign it a cluster Id, and this technique can be useful when preserving a dataset's privacy; you can instead refer to a data point by its cluster id, rather than by more revealing identifiable data. Can you think of other reasons why you'd refer to a cluster Id rather than other elements of the cluster to identify it?
+
+Deepen your understanding of clustering techniques in this Learn module
+
+GETTING STARTED WITH CLUSTERING
+
+Scikit-learn offers a large array of methods to perform clustering. The type you choose will depend on your use case. According to the documentation, each method has various benefits. Here is a simplified table of the methods supported by Scikit-learn and their appropriate use cases:
+
+Method name — Use case
+
+K-Means — general purpose, inductive
+
+Affinity propagation — many, uneven clusters, inductive
+
+Mean-shift — many, uneven clusters, inductive
+
+Spectral clustering — few, even clusters, transductive
+
+Ward hierarchical clustering — many, constrained clusters, transductive
+
+Agglomerative clustering — many, constrained, non Euclidean distances, transductive
+
+DBSCAN — non-flat geometry, uneven clusters, transductive
+
+OPTICS — non-flat geometry, uneven clusters with variable density, transductive
+
+Gaussian mixtures — flat geometry, inductive
+
+BIRCH — large dataset with outliers, inductive
+
+🎓 How we create clusters has a lot to do with how we gather up the data points into groups. Let's unpack some vocabulary:
+
+🎓 'Transductive' vs. 'inductive')
+
+Transductive inference is derived from observed training cases that map to specific test cases. Inductive inference is derived from training cases that map to general rules which are only then applied to test cases.
+
+An example: Imagine you have a dataset that is only partially labelled. Some things are 'records', some 'cds', and some are blank. Your job is to provide labels for the blanks. If you choose an inductive approach, you'd train a model looking for 'records' and 'cds', and apply those labels to your unlabeled data. This approach will have trouble classifying things that are actually 'cassettes'. A transductive approach, on the other hand, handles this unknown data more effectively as it works to group similar items together and then applies a label to a group. In this case, clusters might reflect 'round musical things' and 'square musical things'.
+
+🎓 'Non-flat' vs. 'flat' geometry
+
+Derived from mathematical terminology, non-flat vs. flat geometry refers to the measure of distances between points by either 'flat' (Euclidean) or 'non-flat' (non-Euclidean) geometrical methods.
+
+'Flat' in this context refers to Euclidean geometry (parts of which are taught as 'plane' geometry), and non-flat refers to non-Euclidean geometry. What does geometry have to do with machine learning? Well, as two fields that are rooted in mathematics, there must be a common way to measure distances between points in clusters, and that can be done in a 'flat' or 'non-flat' way, depending on the nature of the data. Euclidean distances are measured as the length of a line segment between two points. Non-Euclidean distances are measured along a curve. If your data, visualized, seems to not exist on a plane, you might need to use a specialized algorithm to handle it.
+
+Infographic by Dasani Madipalli
+
+🎓 'Distances'
+
+Clusters are defined by their distance matrix, e.g. the distances between points. This distance can be measured in a few ways. Euclidean clusters are defined by the average of the point values, and contain a 'centroid' or center point. Distances are thus measured by the distance to that centroid. Non-Euclidean distances refer to 'clustroids', the point closest to other points. Clustroids in turn can be defined in various ways.
+
+🎓 'Constrained'
+
+Constrained Clustering introduces 'semi-supervised' learning into this unsupervised method. The relationships between points are flagged as 'cannot link' or 'must-link' so some rules are forced on the dataset.
+
+An example: If an algorithm is set free on a batch of unlabelled or semi-labelled data, the clusters it produces may be of poor quality. In the example above, the clusters might group 'round music things' and 'square music things' and 'triangular things' and 'cookies'. If given some constraints, or rules to follow ("the item must be made of plastic", "the item needs to be able to produce music") this can help 'constrain' the algorithm to make better choices.
+
+🎓 'Density'
+
+Data that is 'noisy' is considered to be 'dense'. The distances between points in each of its clusters may prove, on examination, to be more or less dense, or 'crowded' and thus this data needs to be analyzed with the appropriate clustering method. This article demonstrates the difference between using K-Means clustering vs. HDBSCAN algorithms to explore a noisy dataset with uneven cluster density.
+
+CLUSTERING ALGORITHMS
+
+There are over 100 clustering algorithms, and their use depends on the nature of the data at hand. Let's discuss some of the major ones:
+
+• Hierarchical clustering. If an object is classified by its proximity to a nearby object, rather than to one farther away, clusters are formed based on their members' distance to and from other objects. Scikit-learn's agglomerative clustering is hierarchical.
+
+Infographic by Dasani Madipalli
+
+• Centroid clustering. This popular algorithm requires the choice of 'k', or the number of clusters to form, after which the algorithm determines the center point of a cluster and gathers data around that point. K-means clustering is a popular version of centroid clustering. The center is determined by the nearest mean, thus the name. The squared distance from the cluster is minimized.
+
+Infographic by Dasani Madipalli
+
+• Distribution-based clustering. Based in statistical modeling, distribution-based clustering centers on determining the probability that a data point belongs to a cluster, and assigning it accordingly. Gaussian mixture methods belong to this type.
+
+• Density-based clustering. Data points are assigned to clusters based on their density, or their grouping around each other. Data points far from the group are considered outliers or noise. DBSCAN, Mean-shift and OPTICS belong to this type of clustering.
+
+• Grid-based clustering. For multi-dimensional datasets, a grid is created and the data is divided amongst the grid's cells, thereby creating clusters.
+
+EXERCISE - CLUSTER YOUR DATA
+
+Clustering as a technique is greatly aided by proper visualization, so let's get started by visualizing our music data. This exercise will help us decide which of the methods of clustering we should most effectively use for the nature of this data.
+
+• Open the _notebook.ipynb_ file in this folder.
+
+• Import the Seaborn package for good data visualization.
+
+• Append the song data from _nigerian-songs.csv_. Load up a dataframe with some data about the songs. Get ready to explore this data by importing the libraries and dumping out the data:
+
+Check the first few lines of data:
+
+name — album — artist — artist_top_genre — release_date — length — popularity — danceability — acousticness — energy — instrumentalness — liveness — loudness — speechiness — tempo — time_signature
+
+0 — Sparky — Mandy & The Jungle — Cruel Santino — alternative r&b — 2019 — 144000 — 48 — 0.666 — 0.851 — 0.42 — 0.534 — 0.11 — -6.699 — 0.0829 — 133.015 — 5
+
+1 — shuga rush — EVERYTHING YOU HEARD IS TRUE — Odunsi (The Engine) — afropop — 2020 — 89488 — 30 — 0.71 — 0.0822 — 0.683 — 0.000169 — 0.101 — -5.64 — 0.36 — 129.993 — 3
+
+2 — LITT! — LITT! — AYLØ — indie r&b — 2018 — 207758 — 40 — 0.836 — 0.272 — 0.564 — 0.000537 — 0.11 — -7.127 — 0.0424 — 130.005 — 4
+
+3 — Confident / Feeling Cool — Enjoy Your Life — Lady Donli — nigerian pop — 2019 — 175135 — 14 — 0.894 — 0.798 — 0.611 — 0.000187 — 0.0964 — -4.961 — 0.113 — 111.087 — 4
+
+4 — wanted you — rare. — Odunsi (The Engine) — afropop — 2018 — 152049 — 25 — 0.702 — 0.116 — 0.833 — 0.91 — 0.348 — -6.044 — 0.0447 — 105.115 — 4
+
+• Get some information about the dataframe, calling info():
+
+The output looking like so:
+
+• Double-check for null values, by calling isnull() and verifying the sum being 0:
+
+Looking good:
+
+• Describe the data:
+
+release_date — length — popularity — danceability — acousticness — energy — instrumentalness — liveness — loudness — speechiness — tempo — time_signature
+
+count — 530 — 530 — 530 — 530 — 530 — 530 — 530 — 530 — 530 — 530 — 530 — 530
+
+mean — 2015.390566 — 222298.1698 — 17.507547 — 0.741619 — 0.265412 — 0.760623 — 0.016305 — 0.147308 — -4.953011 — 0.130748 — 116.487864 — 3.986792
+
+std — 3.131688 — 39696.82226 — 18.992212 — 0.117522 — 0.208342 — 0.148533 — 0.090321 — 0.123588 — 2.464186 — 0.092939 — 23.518601 — 0.333701
+
+min — 1998 — 89488 — 0 — 0.255 — 0.000665 — 0.111 — 0 — 0.0283 — -19.362 — 0.0278 — 61.695 — 3
+
+25% — 2014 — 199305 — 0 — 0.681 — 0.089525 — 0.669 — 0 — 0.07565 — -6.29875 — 0.0591 — 102.96125 — 4
+
+50% — 2016 — 218509 — 13 — 0.761 — 0.2205 — 0.7845 — 0.000004 — 0.1035 — -4.5585 — 0.09795 — 112.7145 — 4
+
+75% — 2017 — 242098.5 — 31 — 0.8295 — 0.403 — 0.87575 — 0.000234 — 0.164 — -3.331 — 0.177 — 125.03925 — 4
+
+max — 2020 — 511738 — 73 — 0.966 — 0.954 — 0.995 — 0.91 — 0.811 — 0.582 — 0.514 — 206.007 — 5
+
+🤔 If we are working with clustering, an unsupervised method that does not require labeled data, why are we showing this data with labels? In the data exploration phase, they come in handy, but they are not necessary for the clustering algorithms to work. You could just as well remove the column headers and refer to the data by column number.
+
+Look at the general values of the data. Note that popularity can be '0', which show songs that have no ranking. Let's remove those shortly.
+
+• Use a barplot to find out the most popular genres:
+
+✅ If you'd like to see more top values, change the top [:5] to a bigger value, or remove it to see all.
+
+Note, when the top genre is described as 'Missing', that means that Spotify did not classify it, so let's get rid of it.
+
+• Get rid of missing data by filtering it out
+
+Now recheck the genres:
+
+• By far, the top three genres dominate this dataset. Let's concentrate on afro dancehall, afropop, and nigerian pop, additionally filter the dataset to remove anything with a 0 popularity value (meaning it was not classified with a popularity in the dataset and can be considered noise for our purposes):
+
+• Do a quick test to see if the data correlates in any particularly strong way:
+
+The only strong correlation is between energy and loudness, which is not too surprising, given that loud music is usually pretty energetic. Otherwise, the correlations are relatively weak. It will be interesting to see what a clustering algorithm can make of this data.
+
+🎓 Note that correlation does not imply causation! We have proof of correlation but no proof of causation. An amusing web site has some visuals that emphasize this point.
+
+Is there any convergence in this dataset around a song's perceived popularity and danceability? A FacetGrid shows that there are concentric circles that line up, regardless of genre. Could it be that Nigerian tastes converge at a certain level of danceability for this genre?
+
+✅ Try different datapoints (energy, loudness, speechiness) and more or different musical genres. What can you discover? Take a look at the df.describe() table to see the general spread of the data points.
+
+EXERCISE - DATA DISTRIBUTION
+
+Are these three genres significantly different in the perception of their danceability, based on their popularity?
+
+• Examine our top three genres data distribution for popularity and danceability along a given x and y axis.
+
+You can discover concentric circles around a general point of convergence, showing the distribution of points.
+
+🎓 Note that this example uses a KDE (Kernel Density Estimate) graph that represents the data using a continuous probability density curve. This allows us to interpret data when working with multiple distributions.
+
+In general, the three genres align loosely in terms of their popularity and danceability. Determining clusters in this loosely-aligned data will be a challenge:
+
+• Create a scatter plot:
+
+A scatterplot of the same axes shows a similar pattern of convergence
+
+In general, for clustering, you can use scatterplots to show clusters of data, so mastering this type of visualization is very useful. In the next lesson, we will take this filtered data and use k-means clustering to discover groups in this data that seem to overlap in interesting ways.
+
+CHALLENGE
+
+In preparation for the next lesson, make a chart about the various clustering algorithms you might discover and use in a production environment. What kinds of problems is the clustering trying to address?
+
+REVIEW & SELF STUDY
+
+Before you apply clustering algorithms, as we have learned, it's a good idea to understand the nature of your dataset. Read more on this topic here
+
+This helpful article walks you through the different ways that various clustering algorithms behave, given different data shapes.
+
+
+CHAPTER 7. Introduction to natural language processing
+
+This lesson covers a brief history and important concepts of natural language processing, a subfield of computational linguistics.
+
+INTRODUCTION
+
+NLP, as it is commonly known, is one of the best-known areas where machine learning has been applied and used in production software.
+
+✅ Can you think of software that you use every day that probably has some NLP embedded? What about your word processing programs or mobile apps that you use regularly?
+
+You will learn about:
+
+• The idea of languages. How languages developed and what the major areas of study have been.
+
+• Definition and concepts. You will also learn definitions and concepts about how computers process text, including parsing, grammar, and identifying nouns and verbs. There are some coding tasks in this lesson, and several important concepts are introduced that you will learn to code later on in the next lessons.
+
+COMPUTATIONAL LINGUISTICS
+
+Computational linguistics is an area of research and development over many decades that studies how computers can work with, and even understand, translate, and communicate with languages. Natural language processing (NLP) is a related field focused on how computers can process 'natural', or human, languages.
+
+EXAMPLE - PHONE DICTATION
+
+If you have ever dictated to your phone instead of typing or asked a virtual assistant a question, your speech was converted into a text form and then processed or parsed from the language you spoke. The detected keywords were then processed into a format that the phone or assistant could understand and act on.
+
+HOW IS THIS TECHNOLOGY MADE POSSIBLE
+
+This is possible because someone wrote a computer program to do this. A few decades ago, some science fiction writers predicted that people would mostly speak to their computers, and the computers would always understand exactly what they meant. Sadly, it turned out to be a harder problem that many imagined, and while it is a much better understood problem today, there are significant challenges in achieving 'perfect' natural language processing when it comes to understanding the meaning of a sentence. This is a particularly hard problem when it comes to understanding humour or detecting emotions such as sarcasm in a sentence.
+
+At this point, you may be remembering school classes where the teacher covered the parts of grammar in a sentence. In some countries, students are taught grammar and linguistics as a dedicated subject, but in many, these topics are included as part of learning a language: either your first language in primary school (learning to read and write) and perhaps a second language in post-primary, or high school. Don't worry if you are not an expert at differentiating nouns from verbs or adverbs from adjectives!
+
+If you struggle with the difference between the simple present and present progressive, you are not alone. This is a challenging thing for many people, even native speakers of a language. The good news is that computers are really good at applying formal rules, and you will learn to write code that can parse a sentence as well as a human. The greater challenge you will examine later is understanding the meaning, and sentiment, of a sentence.
+
+PREREQUISITES
+
+For this lesson, the main prerequisite is being able to read and understand the language of this lesson. There are no math problems or equations to solve. While the original author wrote this lesson in English, it is also translated into other languages, so you could be reading a translation. There are examples where a number of different languages are used (to compare the different grammar rules of different languages). These are not translated, but the explanatory text is, so the meaning should be clear.
+
+For the coding tasks, you will use Python and the examples are using Python 3.8.
+
+In this section, you will need, and use:
+
+• Python 3 comprehension. Programming language comprehension in Python 3, this lesson uses input, loops, file reading, arrays.
+
+• Visual Studio Code + extension. We will use Visual Studio Code and its Python extension. You can also use a Python IDE of your choice.
+
+• TextBlob. TextBlob is a simplified text processing library for Python. Follow the instructions on the TextBlob site to install it on your system (install the corpora as well, as shown below):
+
+💡 Tip: You can run Python directly in VS Code environments. Check the docs for more information.
+
+TALKING TO MACHINES
+
+The history of trying to make computers understand human language goes back decades, and one of the earliest scientists to consider natural language processing was Alan Turing.
+
+THE 'TURING TEST'
+
+When Turing was researching artificial intelligence in the 1950's, he considered if a conversational test could be given to a human and computer (via typed correspondence) where the human in the conversation was not sure if they were conversing with another human or a computer.
+
+If, after a certain length of conversation, the human could not determine that the answers were from a computer or not, then could the computer be said to be thinking?
+
+THE INSPIRATION - 'THE IMITATION GAME'
+
+The idea for this came from a party game called The Imitation Game where an interrogator is alone in a room and tasked with determining which of two people (in another room) are male and female respectively. The interrogator can send notes, and must try to think of questions where the written answers reveal the gender of the mystery person. Of course, the players in the other room are trying to trick the interrogator by answering questions in such as way as to mislead or confuse the interrogator, whilst also giving the appearance of answering honestly.
+
+DEVELOPING ELIZA
+
+In the 1960's an MIT scientist called Joseph Weizenbaum developed Eliza, a computer 'therapist' that would ask the human questions and give the appearance of understanding their answers. However, while Eliza could parse a sentence and identify certain grammatical constructs and keywords so as to give a reasonable answer, it could not be said to understand the sentence. If Eliza was presented with a sentence following the format "I am sad" it might rearrange and substitute words in the sentence to form the response "How long have you been sad".
+
+This gave the impression that Eliza understood the statement and was asking a follow-on question, whereas in reality, it was changing the tense and adding some words. If Eliza could not identify a keyword that it had a response for, it would instead give a random response that could be applicable to many different statements. Eliza could be easily tricked, for instance if a user wrote "You are a bicycle" it might respond with "How long have I been a bicycle?", instead of a more reasoned response.
+
+Note: You can read the original description of Eliza published in 1966 if you have an ACM account. Alternately, read about Eliza on wikipedia
+
+EXERCISE - CODING A BASIC CONVERSATIONAL BOT
+
+A conversational bot, like Eliza, is a program that elicits user input and seems to understand and respond intelligently. Unlike Eliza, our bot will not have several rules giving it the appearance of having an intelligent conversation. Instead, our bot will have one ability only, to keep the conversation going with random responses that might work in almost any trivial conversation.
+
+THE PLAN
+
+Your steps when building a conversational bot:
+
+• Print instructions advising the user how to interact with the bot
+
+• Start a loop
+
+• Accept user input
+
+• If user has asked to exit, then exit
+
+• Process user input and determine response (in this case, the response is a random choice from a list of possible generic responses)
+
+• Print response
+
+• loop back to step 2
+
+BUILDING THE BOT
+
+Let's create the bot next. We'll start by defining some phrases.
+
+• Create this bot yourself in Python with the following random responses:
+
+Here is some sample output to guide you (user input is on the lines starting with >):
+
+One possible solution to the task is here
+
+✅ Stop and consider
+
+• Do you think the random responses would 'trick' someone into thinking that the bot actually understood them?
+
+• What features would the bot need to be more effective?
+
+• If a bot could really 'understand' the meaning of a sentence, would it need to 'remember' the meaning of previous sentences in a conversation too?
+
+CHALLENGE
+
+Choose one of the "stop and consider" elements above and either try to implement them in code or write a solution on paper using pseudocode.
+
+In the next lesson, you'll learn about a number of other approaches to parsing natural language and machine learning.
+
+REVIEW & SELF STUDY
+
+Take a look at the references below as further reading opportunities.
+
+REFERENCES
+
+• Schubert, Lenhart, "Computational Linguistics", The Stanford Encyclopedia of Philosophy (Spring 2020 Edition), Edward N. Zalta (ed.), URL = .
+
+• Princeton University "About WordNet." WordNet. Princeton University. 2010.
+
+
+CHAPTER 8. Introduction to Reinforcement Learning and Q-Learning
+
+Reinforcement learning involves three important concepts: the agent, some states, and a set of actions per state. By executing an action in a specified state, the agent is given a reward. Again imagine the computer game Super Mario. You are Mario, you are in a game level, standing next to a cliff edge. Above you is a coin. You being Mario, in a game level, at a specific position ... that's your state. Moving one step to the right (an action) will take you over the edge, and that would give you a low numerical score. However, pressing the jump button would let you score a point and you would stay alive. That's a positive outcome and that should award you a positive numerical score.
+
+By using reinforcement learning and a simulator (the game), you can learn how to play the game to maximize the reward which is staying alive and scoring as many points as possible.
+
+PREREQUISITES AND SETUP
+
+In this lesson, we will be experimenting with some code in Python. You should be able to run the Jupyter Notebook code from this lesson, either on your computer or somewhere in the cloud.
+
+You can open the lesson notebook and walk through this lesson to build.
+
+Note: If you are opening this code from the cloud, you also need to fetch the rlboard.py file, which is used in the notebook code. Add it to the same directory as the notebook.
+
+INTRODUCTION
+
+In this lesson, we will explore the world of Peter and the Wolf, inspired by a musical fairy tale by a Russian composer, Sergei Prokofiev. We will use Reinforcement Learning to let Peter explore his environment, collect tasty apples and avoid meeting the wolf.
+
+Reinforcement Learning (RL) is a learning technique that allows us to learn an optimal behavior of an agent in some environment by running many experiments. An agent in this environment should have some goal, defined by a reward function.
+
+THE ENVIRONMENT
+
+For simplicity, let's consider Peter's world to be a square board of size width x height, like this:
+
+Each cell in this board can either be:
+
+• ground, on which Peter and other creatures can walk.
+
+• water, on which you obviously cannot walk.
+
+• a tree or grass, a place where you can rest.
+
+• an apple, which represents something Peter would be glad to find in order to feed himself.
+
+• a wolf, which is dangerous and should be avoided.
+
+There is a separate Python module, rlboard.py, which contains the code to work with this environment. Because this code is not important for understanding our concepts, we will import the module and use it to create the sample board (code block 1):
+
+This code should print a picture of the environment similar to the one above.
+
+ACTIONS AND POLICY
+
+In our example, Peter's goal would be able to find an apple, while avoiding the wolf and other obstacles. To do this, he can essentially walk around until he finds an apple.
+
+Therefore, at any position, he can choose between one of the following actions: up, down, left and right.
+
+We will define those actions as a dictionary, and map them to pairs of corresponding coordinate changes. For example, moving right (R) would correspond to a pair (1,0). (code block 2):
+
+To sum up, the strategy and goal of this scenario are as follows:
+
+• The strategy, of our agent (Peter) is defined by a so-called policy. A policy is a function that returns the action at any given state. In our case, the state of the problem is represented by the board, including the current position of the player.
+
+• The goal, of reinforcement learning is to eventually learn a good policy that will allow us to solve the problem efficiently. However, as a baseline, let's consider the simplest policy called random walk.
+
+RANDOM WALK
+
+Let's first solve our problem by implementing a random walk strategy. With random walk, we will randomly choose the next action from the allowed actions, until we reach the apple (code block 3).
+
+• Implement the random walk with the below code:
+
+The call to walk should return the length of the corresponding path, which can vary from one run to another.
+
+• Run the walk experiment a number of times (say, 100), and print the resulting statistics (code block 4):
+
+Note that the average length of a path is around 30-40 steps, which is quite a lot, given the fact that the average distance to the nearest apple is around 5-6 steps.
+
+You can also see what Peter's movement looks like during the random walk:
+
+REWARD FUNCTION
+
+To make our policy more intelligent, we need to understand which moves are "better" than others. To do this, we need to define our goal.
+
+The goal can be defined in terms of a reward function, which will return some score value for each state. The higher the number, the better the reward function. (code block 5)
+
+An interesting thing about reward functions is that in most cases, we are only given a substantial reward at the end of the game. This means that our algorithm should somehow remember "good" steps that lead to a positive reward at the end, and increase their importance. Similarly, all moves that lead to bad results should be discouraged.
+
+Q-LEARNING
+
+An algorithm that we will discuss here is called Q-Learning. In this algorithm, the policy is defined by a function (or a data structure) called a Q-Table. It records the "goodness" of each of the actions in a given state.
+
+It is called a Q-Table because it is often convenient to represent it as a table, or multi-dimensional array. Since our board has dimensions width x height, we can represent the Q-Table using a numpy array with shape width x height x len(actions): (code block 6)
+
+Notice that we initialize all the values of the Q-Table with an equal value, in our case - 0.25. This corresponds to the "random walk" policy, because all moves in each state are equally good. We can pass the Q-Table to the plot function in order to visualize the table on the board: m.plot(Q).
+
+In the center of each cell there is an "arrow" that indicates the preferred direction of movement. Since all directions are equal, a dot is displayed.
+
+Now we need to run the simulation, explore our environment, and learn a better distribution of Q-Table values, which will allow us to find the path to the apple much faster.
+
+ESSENCE OF Q-LEARNING: BELLMAN EQUATION
+
+Once we start moving, each action will have a corresponding reward, i.e. we can theoretically select the next action based on the highest immediate reward. However, in most states, the move will not achieve our goal of reaching the apple, and thus we cannot immediately decide which direction is better.
+
+Remember that it is not the immediate result that matters, but rather the final result, which we will obtain at the end of the simulation.
+
+In order to account for this delayed reward, we need to use the principles of dynamic programming, which allow us to think about out problem recursively.
+
+Suppose we are now at the state s, and we want to move to the next state s'. By doing so, we will receive the immediate reward r(s,a), defined by the reward function, plus some future reward. If we suppose that our Q-Table correctly reflects the "attractiveness" of each action, then at state s' we will chose an action a that corresponds to maximum value of Q(s',a'). Thus, the best possible future reward we could get at state s will be defined as maxa'Q(s',a') (maximum here is computed over all possible actions a' at state s').
+
+This gives the Bellman formula for calculating the value of the Q-Table at state s, given action a:
+
+Here γ is the so-called discount factor that determines to which extent you should prefer the current reward over the future reward and vice versa.
+
+LEARNING ALGORITHM
+
+Given the equation above, we can now write pseudo-code for our learning algorithm:
+
+• Initialize Q-Table Q with equal numbers for all states and actions
+
+• Set learning rate α ← 1
+
+• Repeat simulation many times
+
+• Start at random position
+
+• Repeat
+
+• Select an action a at state s
+
+• Execute action by moving to a new state s'
+
+• If we encounter end-of-game condition, or total reward is too small - exit simulation
+
+• Compute reward r at the new state
+
+• Update Q-Function according to Bellman equation: Q(s,a) ← (1-α)Q(s,a)+α(r+γ maxa'Q(s',a'))
+
+• s ← s'
+
+• Update the total reward and decrease α.
+
+EXPLOIT VS EXPLORE
+
+In the algorithm above, we did not specify how exactly we should choose an action at step 2.1. If we are choosing the action randomly, we will randomly explore the environment, and we are quite likely to die often as well as explore areas where we would not normally go. An alternative approach would be to exploit the Q-Table values that we already know, and thus to choose the best action (with higher Q-Table value) at state s. This, however, will prevent us from exploring other states, and it's likely we might not find the optimal solution.
+
+Thus, the best approach is to strike a balance between exploration and exploitation. This can be done by choosing the action at state s with probabilities proportional to values in the Q-Table. In the beginning, when Q-Table values are all the same, it would correspond to a random selection, but as we learn more about our environment, we would be more likely to follow the optimal route while allowing the agent to choose the unexplored path once in a while.
+
+PYTHON IMPLEMENTATION
+
+We are now ready to implement the learning algorithm. Before we do that, we also need some function that will convert arbitrary numbers in the Q-Table into a vector of probabilities for corresponding actions.
+
+• Create a function probs():
+
+We add a few eps to the original vector in order to avoid division by 0 in the initial case, when all components of the vector are identical.
+
+Run them learning algorithm through 5000 experiments, also called epochs: (code block 8)
+
+After executing this algorithm, the Q-Table should be updated with values that define the attractiveness of different actions at each step. We can try to visualize the Q-Table by plotting a vector at each cell that will point in the desired direction of movement. For simplicity, we draw a small circle instead of an arrow head.
+
+CHECKING THE POLICY
+
+Since the Q-Table lists the "attractiveness" of each action at each state, it is quite easy to use it to define the efficient navigation in our world. In the simplest case, we can select the action corresponding to the highest Q-Table value: (code block 9)
+
+If you try the code above several times, you may notice that sometimes it "hangs", and you need to press the STOP button in the notebook to interrupt it. This happens because there could be situations when two states "point" to each other in terms of optimal Q-Value, in which case the agents ends up moving between those states indefinitely.
+
+CHALLENGE
+
+Task 1: Modify the walk function to limit the maximum length of path by a certain number of steps (say, 100), and watch the code above return this value from time to time.
+
+Task 2: Modify the walk function so that it does not go back to the places where it has already been previously. This will prevent walk from looping, however, the agent can still end up being "trapped" in a location from which it is unable to escape.
+
+NAVIGATION
+
+A better navigation policy would be the one that we used during training, which combines exploitation and exploration. In this policy, we will select each action with a certain probability, proportional to the values in the Q-Table. This strategy may still result in the agent returning back to a position it has already explored, but, as you can see from the code below, it results in a very short average path to the desired location (remember that print_statistics runs the simulation 100 times): (code block 10)
+
+After running this code, you should get a much smaller average path length than before, in the range of 3-6.
+
+INVESTIGATING THE LEARNING PROCESS
+
+As we have mentioned, the learning process is a balance between exploration and exploration of gained knowledge about the structure of problem space. We have seen that the results of learning (the ability to help an agent to find a short path to the goal) has improved, but it is also interesting to observe how the average path length behaves during the learning process:
+
+The learnings can be summarized as:
+
+• Average path length increases. What we see here is that at first, the average path length increases. This is probably due to the fact that when we know nothing about the environment, we are likely to get trapped in bad states, water or wolf. As we learn more and start using this knowledge, we can explore the environment for longer, but we still do not know where the apples are very well.
+
+• Path length decrease, as we learn more. Once we learn enough, it becomes easier for the agent to achieve the goal, and the path length starts to decrease. However, we are still open to exploration, so we often diverge away from the best path, and explore new options, making the path longer than optimal.
+
+• Length increase abruptly. What we also observe on this graph is that at some point, the length increased abruptly. This indicates the stochastic nature of the process, and that we can at some point "spoil" the Q-Table coefficients by overwriting them with new values. This ideally should be minimized by decreasing learning rate (for example, towards the end of training, we only adjust Q-Table values by a small value).
+
+Overall, it is important to remember that the success and quality of the learning process significantly depends on parameters, such as learning rate, learning rate decay, and discount factor. Those are often called hyperparameters, to distinguish them from parameters, which we optimize during training (for example, Q-Table coefficients). The process of finding the best hyperparameter values is called hyperparameter optimization, and it deserves a separate topic.
+
+
+CHAPTER 9. Postscript: Machine learning in the real world
+
+In this curriculum, you have learned many ways to prepare data for training and create machine learning models. You built a series of classic regression, clustering, classification, natural language processing, and time series models. Congratulations! Now, you might be wondering what it's all for... what are the real world applications for these models?
+
+While a lot of interest in industry has been garnered by AI, which usually leverages deep learning, there are still valuable applications for classical machine learning models. You might even use some of these applications today! In this lesson, you'll explore how eight different industries and subject-matter domains use these types of models to make their applications more performant, reliable, intelligent, and valuable to users.
+
+FINANCE
+
+The finance sector offers many opportunities for machine learning. Many problems in this area lend themselves to be modeled and solved by using ML.
+
+CREDIT CARD FRAUD DETECTION
+
+We learned about k-means clustering earlier in the course, but how can it be used to solve problems related to credit card fraud?
+
+K-means clustering comes in handy during a credit card fraud detection technique called outlier detection. Outliers, or deviations in observations about a set of data, can tell us if a credit card is being used in a normal capacity or if something unusual is going on. As shown in the paper linked below, you can sort credit card data using a k-means clustering algorithm and assign each transaction to a cluster based on how much of an outlier it appears to be. Then, you can evaluate the riskiest clusters for fraudulent versus legitimate transactions.
+Reference
+
+WEALTH MANAGEMENT
+
+In wealth management, an individual or firm handles investments on behalf of their clients. Their job is to sustain and grow wealth in the long-term, so it is essential to choose investments that perform well.
+
+One way to evaluate how a particular investment performs is through statistical regression. Linear regression is a valuable tool for understanding how a fund performs relative to some benchmark. We can also deduce whether or not the results of the regression are statistically significant, or how much they would affect a client's investments. You could even further expand your analysis using multiple regression, where additional risk factors can be taken into account. For an example of how this would work for a specific fund, check out the paper below on evaluating fund performance using regression.
+Reference
+
+EDUCATION
+
+The educational sector is also a very interesting area where ML can be applied. There are interesting problems to be tackled such as detecting cheating on tests or essays or managing bias, unintentional or not, in the correction process.
+
+PREDICTING STUDENT BEHAVIOR
+
+Coursera, an online open course provider, has a great tech blog where they discuss many engineering decisions. In this case study, they plotted a regression line to try to explore any correlation between a low NPS (Net Promoter Score) rating and course retention or drop-off.
+Reference
+
+MITIGATING BIAS
+
+Grammarly, a writing assistant that checks for spelling and grammar errors, uses sophisticated natural language processing systems throughout its products. They published an interesting case study in their tech blog about how they dealt with gender bias in machine learning, which you learned about in our introductory fairness lesson.
+Reference
+
+RETAIL
+
+The retail sector can definitely benefit from the use of ML, with everything from creating a better customer journey to stocking inventory in an optimal way.
+
+PERSONALIZING THE CUSTOMER JOURNEY
+
+At Wayfair, a company that sells home goods like furniture, helping customers find the right products for their taste and needs is paramount. In this article, engineers from the company describe how they use ML and NLP to "surface the right results for customers". Notably, their Query Intent Engine has been built to use entity extraction, classifier training, asset and opinion extraction, and sentiment tagging on customer reviews. This is a classic use case of how NLP works in online retail.
+Reference
+
+INVENTORY MANAGEMENT
+
+Innovative, nimble companies like StitchFix, a box service that ships clothing to consumers, rely heavily on ML for recommendations and inventory management. Their styling teams work together with their merchandising teams, in fact: "one of our data scientists tinkered with a genetic algorithm and applied it to apparel to predict what would be a successful piece of clothing that doesn't exist today. We brought that to the merchandise team and now they can use that as a tool."
+Reference
+
+HEALTH CARE
+
+The health care sector can leverage ML to optimize research tasks and also logistic problems like readmitting patients or stopping diseases from spreading.
+
+MANAGING CLINICAL TRIALS
+
+Toxicity in clinical trials is a major concern to drug makers. How much toxicity is tolerable? In this study, analyzing various clinical trial methods led to the development of a new approach for predicting the odds of clinical trial outcomes. Specifically, they were able to use random forest to produce a classifier that is able to distinguish between groups of drugs.
+Reference
+
+HOSPITAL READMISSION MANAGEMENT
+
+Hospital care is costly, especially when patients have to be readmitted. This paper discusses a company that uses ML to predict readmission potential using clustering algorithms. These clusters help analysts to "discover groups of readmissions that may share a common cause".
+Reference
+
+DISEASE MANAGEMENT
+
+The recent pandemic has shone a bright light on the ways that machine learning can aid in stopping the spread of disease. In this article, you'll recognize the use of ARIMA, logistic curves, linear regression, and SARIMA. "This work is an attempt to calculate the rate of spread of this virus and thus to predict the deaths, recoveries, and confirmed cases, so that it may help us to prepare better and survive."
+Reference
+
+ECOLOGY AND GREEN TECH
+
+Nature and ecology consists of many sensitive systems where the interplay between animals and nature come into focus. It's important to be able to measure these systems accurately and act appropriately if something happens, like a forest fire or a drop in the animal population.
+
+FOREST MANAGEMENT
+
+You learned about Reinforcement Learning in previous lessons. It can be very useful when trying to predict patterns in nature. In particular, it can be used to track ecological problems like forest fires and the spread of invasive species. In Canada, a group of researchers used Reinforcement Learning to build forest wildfire dynamics models from satellite images. Using an innovative "spatially spreading process (SSP)", they envisioned a forest fire as "the agent at any cell in the landscape." "The set of actions the fire can take from a location at any point in time includes spreading north, south, east, or west or not spreading.
+
+This approach inverts the usual RL setup since the dynamics of the corresponding Markov Decision Process (MDP) is a known function for immediate wildfire spread." Read more about the classic algorithms used by this group at the link below.
+Reference
+
+MOTION SENSING OF ANIMALS
+
+While deep learning has created a revolution in visually tracking animal movements (you can build your own polar bear tracker here), classic ML still has a place in this task.
+
+Sensors to track movements of farm animals and IoT make use of this type of visual processing, but more basic ML techniques are useful to preprocess data. For example, in this paper, sheep postures were monitored and analyzed using various classifier algorithms. You might recognize the ROC curve on page 335.
+Reference
+
+ENERGY MANAGEMENT
+
+In our lessons on time series forecasting, we invoked the concept of smart parking meters to generate revenue for a town based on understanding supply and demand. This article discusses in detail how clustering, regression and time series forecasting combined to help predict future energy use in Ireland, based off of smart metering.
+Reference
+
+INSURANCE
+
+The insurance sector is another sector that uses ML to construct and optimize viable financial and actuarial models.
+
+VOLATILITY MANAGEMENT
+
+MetLife, a life insurance provider, is forthcoming with the way they analyze and mitigate volatility in their financial models. In this article you'll notice binary and ordinal classification visualizations. You'll also discover forecasting visualizations.
+Reference
+
+ARTS, CULTURE, AND LITERATURE
+
+In the arts, for example in journalism, there are many interesting problems. Detecting fake news is a huge problem as it has been proven to influence the opinion of people and even to topple democracies. Museums can also benefit from using ML in everything from finding links between artifacts to resource planning.
+
+FAKE NEWS DETECTION
+
+Detecting fake news has become a game of cat and mouse in today's media. In this article, researchers suggest that a system combining several of the ML techniques we have studied can be tested and the best model deployed: "This system is based on natural language processing to extract features from the data and then these features are used for the training of machine learning classifiers such as Naive Bayes, Support Vector Machine (SVM), Random Forest (RF), Stochastic Gradient Descent (SGD), and Logistic Regression(LR)."
+Reference
+
+This article shows how combining different ML domains can produce interesting results that can help stop fake news from spreading and creating real damage; in this case, the impetus was the spread of rumors about COVID treatments that incited mob violence.
+
+MUSEUM ML
+
+Museums are at the cusp of an AI revolution in which cataloging and digitizing collections and finding links between artifacts is becoming easier as technology advances. Projects such as In Codice Ratio are helping unlock the mysteries of inaccessible collections such as the Vatican Archives. But, the business aspect of museums benefits from ML models as well.
+
+For example, the Art Institute of Chicago built models to predict what audiences are interested in and when they will attend expositions. The goal is to create individualized and optimized visitor experiences each time the user visits the museum. "During fiscal 2017, the model predicted attendance and admissions within 1 percent of accuracy, says Andrew Simnick, senior vice president at the Art Institute."
+Reference
+
+MARKETING
+
+CUSTOMER SEGMENTATION
+
+The most effective marketing strategies target customers in different ways based on various groupings. In this article, the uses of Clustering algorithms are discussed to support differentiated marketing. Differentiated marketing helps companies improve brand recognition, reach more customers, and make more money.
+Reference
+
+CHALLENGE
+
+Identify another sector that benefits from some of the techniques you learned in this curriculum, and discover how it uses ML.
+
+REVIEW & SELF STUDY

@@ -387,6 +387,20 @@
   },
   {
    "find": "The Strenuous Life|Roosevelt"
+  },
+  {
+   "id": 2397,
+   "title": "The Story of My Life",
+   "author": "Helen Keller",
+   "aud": [
+    "children",
+    "general"
+   ]
+  },
+  {
+   "id": 23,
+   "title": "Narrative of the Life of Frederick Douglass",
+   "author": "Frederick Douglass"
   }
  ],
  "business": [
@@ -548,6 +562,252 @@
   },
   {
    "find": "Letters from a Self-Made Merchant to His Son|Lorimer"
+  }
+ ],
+ "geography": [
+  {
+   "id": 2530,
+   "title": "The Malay Archipelago",
+   "author": "Alfred Russel Wallace"
+  },
+  {
+   "find": "The Golden Chersonese|Isabella L. Bird"
+  },
+  {
+   "id": 944,
+   "title": "The Voyage of the Beagle",
+   "author": "Charles Darwin"
+  },
+  {
+   "find": "The Travels of Marco Polo|Marco Polo"
+  },
+  {
+   "id": 5199,
+   "title": "South! The Story of Shackleton's Last Expedition",
+   "author": "Ernest Shackleton"
+  },
+  {
+   "find": "Travels in West Africa|Mary H. Kingsley"
+  },
+  {
+   "find": "Home Geography for Primary Grades|C. C. Long",
+   "aud": [
+    "children",
+    "education"
+   ]
+  },
+  {
+   "find": "Our Little Japanese Cousin|Mary Hazelton Wade",
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "find": "The Wonder Book of Volcanoes and Earthquakes|Edwin J. Houston",
+   "aud": [
+    "children",
+    "education"
+   ]
+  }
+ ],
+ "cooking": [
+  {
+   "find": "The Boston Cooking-School Cook Book|Fannie Merritt Farmer"
+  },
+  {
+   "find": "The Italian Cook Book|Maria Gentile"
+  },
+  {
+   "find": "A Little Cook Book for a Little Girl|Caroline French Benton",
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "find": "The Chinese Cook Book|Shiu Wong Chan"
+  },
+  {
+   "find": "Science in the Kitchen|Ella Eaton Kellogg",
+   "aud": [
+    "education"
+   ]
+  },
+  {
+   "find": "Things Mother Used to Make|Lydia Maria Gurney"
+  },
+  {
+   "find": "Chocolate and Cocoa Recipes|Maria Parloa"
+  },
+  {
+   "find": "The Complete Book of Cheese|Robert Carlton Brown"
+  }
+ ],
+ "worldhistory": [
+  {
+   "id": 754,
+   "title": "The Story of Mankind",
+   "author": "Hendrik Willem van Loon",
+   "aud": [
+    "teens",
+    "education"
+   ]
+  },
+  {
+   "find": "A Short History of the World|H. G. Wells"
+  },
+  {
+   "find": "The History of Herodotus|Herodotus"
+  },
+  {
+   "find": "The History of the Peloponnesian War|Thucydides"
+  },
+  {
+   "find": "The History of the Decline and Fall of the Roman Empire|Edward Gibbon"
+  },
+  {
+   "find": "The Story of the Greeks|H. A. Guerber",
+   "aud": [
+    "children",
+    "education"
+   ]
+  },
+  {
+   "find": "A Child's History of England|Charles Dickens",
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "find": "Ancient Man|Hendrik Willem van Loon",
+   "aud": [
+    "children",
+    "education"
+   ]
+  },
+  {
+   "find": "British Malaya|Frank Swettenham"
+  }
+ ],
+ "motivation": [
+  {
+   "id": 4507,
+   "title": "As a Man Thinketh",
+   "author": "James Allen"
+  },
+  {
+   "id": 935,
+   "title": "Self-Help",
+   "author": "Samuel Smiles"
+  },
+  {
+   "find": "The Science of Getting Rich|Wallace D. Wattles"
+  },
+  {
+   "find": "Pushing to the Front|Orison Swett Marden"
+  },
+  {
+   "id": 368,
+   "title": "Acres of Diamonds",
+   "author": "Russell H. Conwell"
+  },
+  {
+   "find": "The Power of Concentration|Theron Q. Dumont"
+  },
+  {
+   "find": "The Conquest of Fear|Basil King"
+  },
+  {
+   "find": "Character|Samuel Smiles"
+  },
+  {
+   "id": 2274,
+   "title": "How to Live on 24 Hours a Day",
+   "author": "Arnold Bennett"
+  }
+ ],
+ "ai": [
+  {
+   "find": "R.U.R. (Rossum's Universal Robots)|Karel Čapek"
+  },
+  {
+   "find": "Erewhon|Samuel Butler"
+  },
+  {
+   "find": "Passages from the Life of a Philosopher|Charles Babbage"
+  },
+  {
+   "find": "The Machine Stops|E. M. Forster"
+  },
+  {
+   "find": "An Investigation of the Laws of Thought|George Boole",
+   "aud": [
+    "education"
+   ]
+  },
+  {
+   "find": "The Steam Man of the Prairies|Edward S. Ellis",
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "id": 84,
+   "title": "Frankenstein",
+   "author": "Mary Shelley"
+  }
+ ],
+ "magazines": [
+  {
+   "series": "Punch, or the London Charivari",
+   "n": 3
+  },
+  {
+   "series": "Scientific American",
+   "n": 2,
+   "aud": [
+    "education"
+   ]
+  },
+  {
+   "series": "Popular Science Monthly",
+   "n": 2,
+   "aud": [
+    "education"
+   ]
+  },
+  {
+   "series": "St. Nicholas Magazine for Boys and Girls",
+   "n": 2,
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "series": "Harper's Young People",
+   "n": 2,
+   "aud": [
+    "children"
+   ]
+  },
+  {
+   "series": "The Atlantic Monthly",
+   "n": 2
+  },
+  {
+   "series": "Birds, Illustrated by Color Photography",
+   "n": 2,
+   "aud": [
+    "children",
+    "education"
+   ]
+  },
+  {
+   "series": "Chambers's Edinburgh Journal",
+   "n": 2
+  },
+  {
+   "series": "Blackwood's Edinburgh Magazine",
+   "n": 1
   }
  ]
 }

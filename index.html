@@ -243,6 +243,16 @@ body.reading main{padding-block:8px 24px}
 .case{background:linear-gradient(180deg,#6B4426,#5A3820);border-radius:20px;padding:16px;box-shadow:var(--e3)}
 .plates{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;scrollbar-width:thin}
 .plate{flex:none;border:0;border-radius:6px;padding:7px 12px;background:linear-gradient(180deg,#E9C46A,#C9A227);color:#3a2a00;font-weight:600;font-size:13px;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2),0 2px 4px rgba(0,0,0,.25)}
+.auds{display:flex;gap:6px;overflow-x:auto;padding:2px 0 8px;scrollbar-width:thin;align-items:center}
+.aud{flex:none;border:1px solid rgba(245,233,200,.35);border-radius:999px;padding:5px 11px;background:rgba(245,233,200,.08);color:#F5E9C8;font-weight:600;font-size:12.5px}
+.aud[aria-pressed="true"]{background:#F5E9C8;color:#3a2a00;border-color:#F5E9C8}
+.spine.faceout{width:116px;height:158px;flex:none;writing-mode:horizontal-tb;border-radius:3px;position:relative;overflow:hidden;padding:10px 8px;display:flex;align-items:flex-start;justify-content:center;background:linear-gradient(160deg,rgba(255,255,255,.14),transparent 40%),var(--c);box-shadow:0 6px 12px rgba(0,0,0,.45);transform-origin:bottom center;transform:rotate(-2deg)}
+.spine.faceout:nth-child(even){transform:rotate(1.5deg)}
+.spine.faceout img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.spine.faceout .fo-t{writing-mode:horizontal-tb;transform:none;font:600 12px/1.25 var(--book);color:#F5E9C8;text-align:center;display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;white-space:normal;max-height:none}
+.spine.faceout em{position:absolute;left:0;right:0;bottom:0;z-index:1;font:600 10px/1 var(--font,sans-serif);font-style:normal;letter-spacing:.08em;text-transform:uppercase;padding:5px 0;background:rgba(20,14,6,.72);color:#F5E9C8;text-align:center}
+.spine.faceout.article{background:linear-gradient(180deg,#FBF7EC,#EDE4CF)}
+.spine.faceout.article .fo-t{color:#2a2418}
 .plate[aria-pressed="true"]{background:linear-gradient(180deg,#FFF1C2,#F6D365);outline:2px solid #FFF1C2;outline-offset:2px}
 .case .search{display:flex;gap:8px;margin:10px 0 4px}
 .case .search input{flex:1;min-width:0;height:44px;border-radius:8px;border:0;padding:0 14px;background:#FFF8E6}
@@ -305,6 +315,23 @@ body.reading main{padding-block:8px 24px}
 .leaf .cover-face b{font:600 clamp(20px,3vw,32px)/1.2 var(--book)}
 .leaf .cover-face span{font-size:14px;opacity:.85}
 .leaf .cover-face::before{content:"";position:absolute;inset:7% 7% 7% 10%;border:2px solid rgba(245,233,200,.55);border-radius:2px}
+.leaf .cover-face{position:relative;overflow:hidden}
+.leaf .cover-face .realcover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0}
+.leaf .cover-face .realcover~b,.leaf .cover-face .realcover~span{display:none}
+.leaf3{position:absolute;top:0;width:var(--pw);height:var(--ph);transform-style:preserve-3d;z-index:6;pointer-events:none}
+.leaf3 .strip{position:absolute;top:0;height:100%;width:calc(var(--pw) / 12);transform-style:preserve-3d;will-change:transform}
+.leaf3.fwd .strip{transform-origin:0 50%}
+.leaf3.bwd .strip{transform-origin:100% 50%}
+.leaf3 .sf{position:absolute;top:0;left:0;height:100%;width:calc(100% + 1px);overflow:hidden;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.leaf3 .sf.b{transform:rotateY(180deg)}
+.leaf3 .sf>.pg{position:absolute;top:0;width:var(--pw);height:var(--ph);cursor:inherit;box-shadow:none}
+.leaf3 .sf::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,rgba(40,28,8,var(--f0,0)),rgba(40,28,8,var(--f1,0)))}
+.leaf3 .sf.b::after{background:linear-gradient(90deg,rgba(40,28,8,var(--b0,0)),rgba(40,28,8,var(--b1,0)))}
+.pulled .info a{color:inherit;text-decoration:underline}
+.leaf3 .pg.blank{background-image:radial-gradient(ellipse at 50% 40%,rgba(255,255,255,.5),rgba(180,150,100,.1) 75%,rgba(150,120,70,.18))}
+.flipshadow{position:absolute;top:0;left:0;height:var(--ph);width:100%;pointer-events:none;z-index:5}
+.flipgutter{position:absolute;top:0;left:calc(var(--pw) - 30px);width:60px;height:var(--ph);pointer-events:none;z-index:5;background:linear-gradient(90deg,transparent,rgba(40,25,5,.22) 50%,transparent);opacity:0}
+.flipgutter.solo{left:0;width:26px;background:linear-gradient(90deg,rgba(40,25,5,.28),transparent)}
 .leaf .endpaper{width:100%;height:100%;background:repeating-linear-gradient(45deg,#E8DCC0 0 6px,#EFE4CB 6px 12px);display:grid;place-items:center}
 .bookplate{background:var(--paper);border:1.5px solid #B9A77F;border-radius:6px;padding:16px 20px;text-align:center;font:italic 14px/1.4 var(--book);color:#5a4d33;max-width:80%}
 .booknav{display:flex;align-items:center;gap:12px;margin-top:16px;width:100%;max-width:1100px;z-index:1;position:relative}
@@ -1260,7 +1287,10 @@ const SFX = {
   coin: t => { tone(988, t, .07, { type: 'square', vol: .04 }); tone(1319, t + .07, .25, { type: 'square', vol: .04 }); },
   chime: t => { tone(660, t, .5, { vol: .1 }); tone(880, t + .12, .6, { vol: .1 }); },
   win: t => [523, 659, 784, 1047].forEach((f, i) => tone(f, t + i * .11, .55, { vol: .09, type: 'triangle' })),
-  flip: t => { burst(t, .32, { freq: 900, sweep: 4200, q: .6, vol: .22, att: .03 }); burst(t + .16, .2, { freq: 2500, q: .4, vol: .1 }); },
+  flip: t => { const r = .85 + Math.random() * .3; burst(t, .26, { freq: 1500 * r, sweep: 5200 * r, q: .5, vol: .17, att: .025 }); burst(t + .1, .22, { freq: 4200 * r, q: .8, vol: .08, type: 'highpass', att: .02 });
+    for (let i = 0; i < 4; i++) burst(t + .04 + Math.random() * .22, .018, { freq: 3500 + Math.random() * 3000, q: 3, vol: .05 + Math.random() * .04 }); },
+  rustle: t => { burst(t, .3, { freq: 2600, sweep: 1400, q: .4, vol: .07, att: .06 }); burst(t + .05, .012, { freq: 5200, q: 4, vol: .05 }); },
+  settle: t => { burst(t, .1, { freq: 420, vol: .1, type: 'lowpass', att: .008 }); burst(t + .01, .07, { freq: 2200, q: .6, vol: .035 }); },
   thump: t => { burst(t, .16, { freq: 350, vol: .4, type: 'lowpass' }); tone(95, t, .14, { vol: .22 }); },
   open: t => { burst(t, .5, { freq: 500, sweep: 2500, q: .5, vol: .2, att: .05 }); burst(t + .35, .15, { freq: 300, vol: .3, type: 'lowpass' }); },
   whoosh: t => { burst(t, .45, { freq: 300, sweep: 5000, q: .7, vol: .12, att: .05 }); tone(110, t + .3, .3, { vol: .08, slide: 60 }); },
@@ -1442,7 +1472,7 @@ const VENUES = {
       { id: 'photo', emoji: '📸', title: 'Aesthetic photo', line: 'The light by the window is perfect right now. Take a photo of your book and drink!', min: 1, pts: 5 }
     ],
     sounds: { order: 'register', prep: ['pour', 'steam'], serve: 'clink' },
-    shelf: ['inspiration', 'business', 'innovation'], shelfName: 'Window shelf'
+    shelf: ['inspiration', 'magazines', 'cooking', 'business', 'innovation'], shelfName: 'Window shelf'
   },
   library: {
     id: 'library', name: 'The Commons Library', kind: 'Public library', emoji: '🏛️', open: 8, close: 22, timer: 'clock', cover: '#1F4E3D',
@@ -1464,7 +1494,7 @@ const VENUES = {
       { id: 'canteen', emoji: '🍜', title: 'Canteen time', line: 'The canteen downstairs is serving nasi lemak. Take a proper meal break, your seat is saved.', min: 15, pts: 6 }
     ],
     sounds: { order: 'stamp', prep: ['printer'], serve: 'beep' },
-    shelf: ['leadership', 'history', 'philosophy', 'growth'], shelfName: 'Library stacks'
+    shelf: ['worldhistory', 'geography', 'ai', 'articles', 'children', 'leadership', 'history', 'philosophy', 'growth'], shelfName: 'Library stacks'
   },
   diner: {
     id: 'diner', name: 'Bun & Chapter', kind: 'Burger joint', emoji: '🍔', open: 0, close: 24, timer: 'tray', cover: '#8A2A22',
@@ -1492,7 +1522,7 @@ const VENUES = {
       { id: 'photo', emoji: '📸', title: 'Tray-and-book photo', line: 'Your tray and book look great together. Snap a photo!', min: 1, pts: 5 }
     ],
     sounds: { order: 'register', prep: ['sizzle'], serve: 'bell' },
-    shelf: ['adventure', 'mystery', 'humor', 'scifi'], shelfName: 'Book rack'
+    shelf: ['magazines', 'cooking', 'adventure', 'mystery', 'humor', 'scifi'], shelfName: 'Book rack'
   },
   office: {
     id: 'office', name: 'Menara Ilham', kind: 'Office tower', emoji: '🏢', open: 8, close: 19, timer: 'clock', cover: '#2F4B7C',
@@ -1514,7 +1544,7 @@ const VENUES = {
       { id: 'water', emoji: '💧', title: 'Water break', line: 'The air-cond dries you out. Have some water.', min: 1, pts: 3 }
     ],
     sounds: { order: 'beep', prep: ['printer'], serve: 'chime' },
-    shelf: ['leadership', 'people', 'finance', 'ops', 'sales', 'innovation'], shelfName: 'Department shelves'
+    shelf: ['ai', 'motivation', 'leadership', 'people', 'finance', 'ops', 'sales', 'innovation', 'articles'], shelfName: 'Department shelves'
   },
   bookstore: {
     id: 'bookstore', name: 'Pena Bookstore', kind: 'Bookshop', emoji: '📚', open: 10, close: 22, timer: 'clock', cover: '#7A3E65',
@@ -1536,7 +1566,7 @@ const VENUES = {
       { id: 'photo', emoji: '📸', title: 'Shelfie', line: 'Take a photo of your book against the shelf wall. It looks great in this light.', min: 1, pts: 5 }
     ],
     sounds: { order: 'register', prep: ['printer'], serve: 'chime' },
-    shelf: ['inspiration', 'romance', 'fantasy', 'poetry', 'children'], shelfName: 'New arrivals table'
+    shelf: ['inspiration', 'motivation', 'magazines', 'geography', 'romance', 'fantasy', 'poetry', 'children'], shelfName: 'New arrivals table'
   },
   lounge: {
     id: 'lounge', name: 'The Loft Lounge', kind: 'Hotel lounge', emoji: '🛋️', open: 6, close: 24, timer: 'cup', cover: '#34495E',
@@ -1565,7 +1595,7 @@ const VENUES = {
       { id: 'photo', emoji: '📸', title: 'Armchair photo', line: 'Book, teapot, armchair. That photo is worth taking.', min: 1, pts: 5 }
     ],
     sounds: { order: 'register', prep: ['pour'], serve: 'clink' },
-    shelf: ['leadership', 'business', 'philosophy', 'history'], shelfName: 'Library wall'
+    shelf: ['magazines', 'worldhistory', 'articles', 'leadership', 'business', 'philosophy', 'history'], shelfName: 'Library wall'
   },
   park: {
     id: 'park', name: 'Taman Bacaan', kind: 'Park pavilion', emoji: '🌳', open: 7, close: 19, timer: 'clock', cover: '#3F7D4E',
@@ -1587,10 +1617,17 @@ const VENUES = {
       { id: 'birds', emoji: '🐦', title: 'Spot a bird', line: 'Put the book down and find one bird. Just watch it for a minute.', min: 1, pts: 4 }
     ],
     sounds: { order: 'chime', prep: ['open'], serve: 'chime' },
-    shelf: ['growth', 'poetry', 'philosophy', 'inspiration'], shelfName: 'Little free library'
+    shelf: ['geography', 'children', 'motivation', 'growth', 'poetry', 'philosophy', 'inspiration'], shelfName: 'Little free library'
   }
 };
 const CATS = [
+  { id: 'magazines', label: 'Magazines', topic: 'periodicals', em: '📰', kind: 'magazine' },
+  { id: 'articles', label: 'Articles', topic: 'essays', em: '📝', kind: 'article', nowider: 1 },
+  { id: 'geography', label: 'Geography & travel', topic: 'geography', em: '🌍' },
+  { id: 'cooking', label: 'Cooking & food', topic: 'cooking', em: '🍳' },
+  { id: 'worldhistory', label: 'World history', topic: 'world history', em: '🏛️' },
+  { id: 'motivation', label: 'Motivation', topic: 'success', em: '💪' },
+  { id: 'ai', label: 'AI & computing', topic: 'computers', em: '🤖' },
   { id: 'adventure', label: 'Adventure', topic: 'adventure', em: '🧭' },
   { id: 'mystery', label: 'Mystery', topic: 'detective', em: '🕵️' },
   { id: 'romance', label: 'Romance', topic: 'love stories', em: '💌' },
@@ -1599,7 +1636,7 @@ const CATS = [
   { id: 'horror', label: 'Horror', topic: 'horror', em: '🕯️' },
   { id: 'poetry', label: 'Poetry', topic: 'poetry', em: '🪶' },
   { id: 'philosophy', label: 'Philosophy', topic: 'philosophy', em: '🦉' },
-  { id: 'history', label: 'History & ideas', topic: 'history', em: '🏺' },
+  { id: 'history', label: 'Big ideas', topic: 'history', em: '🏺' },
   { id: 'children', label: 'Kids & YA', topic: 'children', em: '🧸' },
   { id: 'humor', label: 'Humor', topic: 'humor', em: '😂' },
   { id: 'growth', label: 'Self-growth', topic: 'conduct of life', em: '🌱' },
@@ -1612,6 +1649,8 @@ const CATS = [
   { id: 'ops', label: 'Operations', topic: 'industrial management', em: '⚙️', dept: 1 },
   { id: 'sales', label: 'Sales & marketing', topic: 'advertising', em: '📣', dept: 1 }
 ];
+// Who a shelf item suits. Tags come from books/catalog.json (Gutenberg's own bookshelves plus hand tags).
+const AUDS = [{ id: 'all', em: '📚', label: 'Everyone' }, { id: 'children', em: '🧒', label: 'Children' }, { id: 'teens', em: '🎒', label: 'Teens' }, { id: 'education', em: '🎓', label: 'Education' }, { id: 'general', em: '☕', label: 'Adults' }];
 // Hand-picked Project Gutenberg classics so every shelf is full instantly.
 const CURATED = {
   adventure: [[120,'Treasure Island','Robert Louis Stevenson'],[164,'Twenty Thousand Leagues under the Sea','Jules Verne'],[103,'Around the World in Eighty Days','Jules Verne'],[2701,'Moby Dick','Herman Melville'],[1184,'The Count of Monte Cristo','Alexandre Dumas'],[1257,'The Three Musketeers','Alexandre Dumas']],
@@ -1820,7 +1859,7 @@ async function loadBlocks(book) {
   const ck = 'bookout:text:' + book.key;
   let text = null; try { text = localStorage.getItem(ck); } catch (e) {}
   const fromCache = !!text;
-  if (!text && book.src === 'gutenberg') {
+  if (!text && (book.src === 'gutenberg' || book.src === 'open')) {
     try { // the site's own library copy: same origin, fast, no proxy
       const c = new AbortController(); const t = setTimeout(() => c.abort(), 20000);
       const r = await fetch(`books/${book.id}.txt`, { signal: c.signal }); clearTimeout(t);
@@ -1828,6 +1867,7 @@ async function loadBlocks(book) {
     } catch (e) {}
   }
   if (!text) {
+    if (book.src === 'open') throw new Error(`${book.title} did not load. Check your connection and try again.`);
     text = cleanText(await race(book.txt, 'text', 45000));
   }
   if (!fromCache) try { Object.keys(localStorage).filter(k => k.startsWith('bookout:text:')).forEach(k => localStorage.removeItem(k)); localStorage.setItem(ck, text); } catch (e) {}
@@ -1836,18 +1876,28 @@ async function loadBlocks(book) {
 let CATALOG = null; // books/catalog.json, written by the "Fetch books" GitHub Action
 const catalogReady = fetch('books/catalog.json', { cache: 'no-cache' }).then(r => r.ok ? r.json() : null).then(j => { if (j && j.cats) CATALOG = j; }).catch(() => {});
 const LOCAL_IDS = () => new Set(CATALOG ? Object.values(CATALOG.cats).flat().map(b => b.id) : []);
+// one catalog entry -> a readable shelf item (Gutenberg book, magazine issue, open lesson book or Wikipedia article)
+function entryBook(e, cat) {
+  const k = (CATS.find(c => c.id === cat) || {}).kind;
+  const b = e.src === 'open' ? { key: 'o:' + e.id, src: 'open', id: e.id, title: e.title, author: e.author, cat, cover: e.cover || '', txt: `books/${e.id}.txt`, page: e.page } : gbook(e.id, e.title, e.author, cat);
+  b.kind = e.kind || k || 'book'; b.aud = e.aud && e.aud.length ? e.aud : cat === 'children' ? ['children'] : ['general'];
+  if (e.lic) b.lic = e.lic;
+  return b;
+}
+const fromCurated = ([id, title, author]) => ({ id, title, author });
 function shelfFor(cat) {
-  const list = CATALOG && CATALOG.cats[cat] && CATALOG.cats[cat].length ? CATALOG.cats[cat].map(b => [b.id, b.title, b.author]) : (CURATED[cat] || []);
-  return list.map(([id, t, a]) => gbook(id, t, a, cat));
+  const list = CATALOG && CATALOG.cats[cat] && CATALOG.cats[cat].length ? CATALOG.cats[cat] : (CURATED[cat] || []).map(fromCurated);
+  return list.map(e => entryBook(e, cat));
 }
 function localSearch(q) {
   const n = q.toLowerCase(), out = [], seen = new Set();
-  const all = CATALOG ? Object.entries(CATALOG.cats).flatMap(([c, l]) => l.map(b => [c, b.id, b.title, b.author])) : Object.entries(CURATED).flatMap(([c, l]) => l.map(x => [c, ...x]));
-  all.forEach(([c, id, t, a]) => { if (!seen.has(id) && (t + ' ' + a).toLowerCase().includes(n)) { seen.add(id); out.push(gbook(id, t, a, c)); } });
+  const all = CATALOG ? Object.entries(CATALOG.cats).flatMap(([c, l]) => l.map(e => [c, e])) : Object.entries(CURATED).flatMap(([c, l]) => l.map(x => [c, fromCurated(x)]));
+  all.forEach(([c, e]) => { if (!seen.has(e.id) && (e.title + ' ' + e.author).toLowerCase().includes(n)) { seen.add(e.id); out.push(entryBook(e, c)); } });
   return out;
 }
+const forAud = (list, aud) => aud === 'all' ? list : list.filter(b => (b.aud || ['general']).includes(aud));
 function rememberBook(b) {
-  const lite = { key: b.key, src: b.src, id: b.id, title: b.title, author: b.author, cat: b.cat, cover: b.cover, txt: b.txt, page: b.page };
+  const lite = { key: b.key, src: b.src, id: b.id, title: b.title, author: b.author, cat: b.cat, cover: b.cover, txt: b.txt, page: b.page, kind: b.kind, aud: b.aud, lic: b.lic };
   S.recent = [lite, ...S.recent.filter(x => x.key !== b.key)].slice(0, 8);
   if (b.cat && CATS.find(c => c.id === b.cat) && !S.genres.includes(b.cat)) S.genres.push(b.cat);
   save();
@@ -2217,8 +2267,8 @@ function buildTown() {
   item(790, c => { rr(c, 1463, 740, 4, 60, 2, '#8a5a36', OUTL, 1.5); c.beginPath(); c.moveTo(1420, 752); c.quadraticCurveTo(1465, 708, 1510, 752); c.closePath(); c.fillStyle = '#6BE683'; c.fill(); c.lineWidth = 2.5; c.strokeStyle = OUTL; c.stroke(); c.beginPath(); c.moveTo(1450, 752); c.quadraticCurveTo(1465, 716, 1480, 752); c.fillStyle = '#fff6e4'; c.fill(); c.stroke(); });
   const cart = person({ name: 'Pak Mat', x: 1465, y: 806, room: 'cart', staff: 1, look: { skin: 2, hair: 'cap', hc: 0, shirt: 1, pants: '#4b3a2e' }, lines: ['Buku free! Free!', 'Classic semua ada', 'Jom, pilih satu'] });
   zones.push({ id: 'cart', x: 1410, y: 848, w: 110, h: 50, icon: '📚', label: () => 'Ask Pak Mat for a book tip', act: () => {
-    const cat = CATS[Math.floor(Math.random() * CATS.length)], b = (CURATED[cat.id] || [])[Math.floor(Math.random() * (CURATED[cat.id] || []).length)];
-    if (b) say(cart, `Try ${b[1]} lah! Best for ${cat.label.toLowerCase()} ${cat.em}`, 6); sfx('chime');
+    const cat = CATS[Math.floor(Math.random() * CATS.length)], list = shelfFor(cat.id), b = list[Math.floor(Math.random() * list.length)];
+    if (b) say(cart, `Try ${b.title} lah! Best for ${cat.label.toLowerCase()} ${cat.em}`, 6); sfx('chime');
   } });
   /* office tower */
   const of = R.office;
@@ -4346,7 +4396,7 @@ function chooseBook(b) {
     const lim = TIERS[S.member].limit;
     if (S.borrowed.length >= lim) { toast(`Your ${TIERS[S.member].name} card holds ${lim} book${lim > 1 ? 's' : ''}. Return one at the desk or upgrade.`, 5000); sfx('stamp'); return false; }
     const d = new Date(); d.setDate(d.getDate() + 7);
-    S.borrowed.push({ key: b.key, src: b.src, id: b.id, title: b.title, author: b.author, cat: b.cat, cover: b.cover, txt: b.txt, due: dayKey(d) }); sfx('beep');
+    S.borrowed.push({ key: b.key, src: b.src, id: b.id, title: b.title, author: b.author, cat: b.cat, cover: b.cover, txt: b.txt, page: b.page, kind: b.kind, lic: b.lic, due: dayKey(d) }); sfx('beep');
   } else sfx('thump');
   setup.book = b; rememberBook(b); setup.said = v.lines.book(b); if (setup.pov) setup.pov(b); else rerenderKeepTalk(); return true;
 }
@@ -4354,19 +4404,26 @@ function chooseBook(b) {
 /* =============== the shelves =============== */
 function openShelves() {
   const pref = (setup && VENUES[setup.venue] && VENUES[setup.venue].shelf) || [];
-  let cat = S.recent[0] && pref.includes(S.recent[0].cat) ? S.recent[0].cat : pref[0] || (S.recent[0] && CURATED[S.recent[0].cat] ? S.recent[0].cat : 'adventure'), q = '', pool = {};
+  let cat = S.recent[0] && pref.includes(S.recent[0].cat) ? S.recent[0].cat : pref[0] || (S.recent[0] && CATS.find(c => c.id === S.recent[0].cat) ? S.recent[0].cat : 'adventure'), q = '', pool = {};
+  let aud = store('bookout:aud') || 'all'; if (!AUDS.find(a => a.id === aud)) aud = 'all';
   modal(`<div class="case">
     <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;color:#F5E9C8;margin-bottom:10px"><h2 style="font-size:22px">The shelves</h2><button class="btn btn-ghost btn-sm" data-close>Close</button></div>
     <div class="plates" role="group" aria-label="Categories">${shelfPlates(pref, cat)}</div>
+    <div class="auds" role="group" aria-label="Who is reading"><span class="plate-h">For</span>${AUDS.map(a => `<button class="aud" data-aud="${a.id}" aria-pressed="${a.id === aud}">${a.em} ${esc(a.label)}</button>`).join('')}</div>
     <form class="search" id="sf"><input id="pick-q" type="search" placeholder="Ask for a title or author, e.g. Austen" aria-label="Search books"><button class="btn btn-primary">Ask</button></form>
     <div id="res"></div><div id="pulled"></div>
-    <p style="color:#F5E9C8;opacity:.7;font-size:12px;margin-top:10px">Free public-domain books from Project Gutenberg. Tap a spine to pull it out.</p></div>`, m => {
+    <p style="color:#F5E9C8;opacity:.7;font-size:12px;margin-top:10px">All free: public-domain books and magazines from Project Gutenberg, open AI lessons from Microsoft (MIT licence) and Wikipedia articles (CC BY-SA 4.0). Tap a spine or a cover to pull it out.</p></div>`, m => {
     const res = $('#res', m), pulled = $('#pulled', m);
-    const spines = list => list.map(b => { pool[b.key] = b; const h = hash(b.title); return `<button class="spine" data-book="${esc(b.key)}" data-sfx="1" style="--c:${clothOf(b)};--w:${30 + h % 16}px;--h:${158 + (h >> 4) % 44}px" title="${esc(b.title)} · ${esc(b.author)}"><span>${esc(b.title)}</span></button>`; }).join('');
+    // books stand spine-out; magazines and articles face out like on a rack, showing their real cover
+    const spines = list => list.map(b => { pool[b.key] = b; const h = hash(b.title);
+      if (b.kind === 'magazine' || b.kind === 'article') return `<button class="spine faceout ${b.kind}" data-book="${esc(b.key)}" data-sfx="1" style="--c:${clothOf(b)}" title="${esc(b.title)} · ${esc(b.author)}"><span class="fo-t">${esc(b.title)}</span>${b.cover ? `<img src="${esc(b.cover)}" alt="" loading="lazy" onerror="this.remove()">` : ''}<em>${b.kind === 'article' ? 'Article' : 'Magazine'}</em></button>`;
+      return `<button class="spine" data-book="${esc(b.key)}" data-sfx="1" style="--c:${clothOf(b)};--w:${30 + h % 16}px;--h:${158 + (h >> 4) % 44}px" title="${esc(b.title)} · ${esc(b.author)}"><span>${esc(b.title)}</span></button>`; }).join('');
     const bind = () => $$('.spine[data-book]', res).forEach(s => s.onclick = () => {
       $$('.spine.out', res).forEach(x => x.classList.remove('out')); s.classList.add('out'); sfx('thump');
       const b = pool[s.dataset.book], isLib = setup.venue === 'library', prog = S.progress[b.key];
+      const audTxt = (b.aud || []).map(a => (AUDS.find(x => x.id === a) || {}).label).filter(Boolean).join(' · ');
       pulled.innerHTML = `<div class="pulled">${cover(b, 110)}<div class="info"><h3>${esc(b.title)}</h3><span class="subtle">${esc(b.author)}${b.src === 'local' ? ' · works offline' : b.src === 'gutenberg' && CATALOG && !LOCAL_IDS().has(b.id) ? ' · online copy, may take a while to open' : ''}</span>
+        <span class="subtle">${b.kind === 'magazine' ? '📰 Magazine issue' : b.kind === 'article' ? '📝 Article' : '📖 Book'}${audTxt ? ' · for ' + esc(audTxt) : ''}${b.lic ? ` · ${esc(b.lic)}` : b.src === 'gutenberg' ? ' · public domain' : ''}${b.page ? ` · <a href="${esc(b.page)}" target="_blank" rel="noopener">source</a>` : ''}</span>
         ${prog && prog.pct ? `<span class="subtle">Your bookmark: ${Math.round(prog.pct * 100)}%</span>` : ''}
         <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px"><button class="btn btn-primary" id="take" data-sfx="1">${isLib ? 'Borrow this book' : 'Read this one'}</button><button class="btn btn-ghost" id="putback">Put it back</button></div></div></div>`;
       $('#take', pulled).onclick = () => { if (chooseBook(b) !== false) closeModal(); };
@@ -4376,12 +4433,14 @@ function openShelves() {
     const show = async () => {
       pulled.innerHTML = '';
       await catalogReady;
-      const ready = q ? localSearch(q) : cat === 'mine' ? (S.epubs || []) : cat === 'recs' ? (S.recs || []).map(r => gbook(r.id, r.title, r.author, r.cat)) : shelfFor(cat);
-      const head = q ? `Ready to read · “${esc(q)}”` : `${(CATS.find(c => c.id === cat) || { label: cat === 'mine' ? 'Your EPUBs' : 'Recommended by people you met' }).label} · ready to read`;
-      res.innerHTML = `<div class="shelf-label"><span>${head}</span><span>${CATALOG ? 'opens instantly' : ''}</span></div><div class="shelf">${spines(!q && cat === 'poetry' ? [POEMS, ...ready] : ready) || '<div class="fetching">Nothing on this shelf matches. Try the wider catalogue below.</div>'}</div><div class="shelf-board"></div>
+      const ready = forAud(q ? localSearch(q) : cat === 'mine' ? (S.epubs || []) : cat === 'recs' ? (S.recs || []).map(r => gbook(r.id, r.title, r.author, r.cat)) : shelfFor(cat), cat === 'mine' && !q ? 'all' : aud);
+      const audL = aud === 'all' ? '' : ' · for ' + AUDS.find(a => a.id === aud).label.toLowerCase();
+      const head = (q ? `Ready to read · “${esc(q)}”` : `${(CATS.find(c => c.id === cat) || { label: cat === 'mine' ? 'Your EPUBs' : 'Recommended by people you met' }).label} · ready to read`) + audL;
+      res.innerHTML = `<div class="shelf-label"><span>${head}</span><span>${CATALOG ? 'opens instantly' : ''}</span></div><div class="shelf">${spines(!q && cat === 'poetry' && aud === 'all' ? [POEMS, ...ready] : ready) || `<div class="fetching">${aud !== 'all' ? `Nothing here for ${esc(AUDS.find(a => a.id === aud).label.toLowerCase())} yet. Try Everyone, or another shelf.` : 'Nothing on this shelf matches. Try the wider catalogue below.'}</div>`}</div><div class="shelf-board"></div>
         <div class="shelf-label"><span>The wider Gutenberg catalogue</span><span>online · can be slow</span></div><div class="shelf" id="more" style="min-height:110px;align-items:center"><button class="btn btn-ghost btn-sm" id="wider">${q ? `Search all of Gutenberg for “${esc(q)}”` : 'Ask the librarian for more books'}</button></div><div class="shelf-board"></div>`;
       bind();
       if (cat === 'mine' && !q) { const mo = $('#more', m); mo.previousElementSibling.innerHTML = '<span>Add your own books</span><span>DRM-free EPUB · stays on this device</span>'; mo.innerHTML = '<button class="btn btn-primary btn-sm" id="addep">📱 Add an EPUB from this device</button>'; $('#addep', m).onclick = () => epubPicker(() => show()); return; }
+      if (!q && (CATS.find(c => c.id === cat) || {}).nowider) { const mo = $('#more', m); mo.previousElementSibling.innerHTML = '<span>More articles</span><span>Wikipedia · CC BY-SA 4.0</span>'; mo.innerHTML = '<a class="btn btn-ghost btn-sm" href="https://en.wikipedia.org/wiki/Special:Random" target="_blank" rel="noopener">Open a random Wikipedia article</a>'; return; }
       const want = q + '|' + cat;
       $('#wider', m).onclick = async () => {
         $('#more', m).innerHTML = `<div class="fetching"><i></i>The librarian is checking the catalogue…</div>`;
@@ -4397,6 +4456,7 @@ function openShelves() {
         bind();
       };
     };
+    $$('[data-aud]', m).forEach(b => b.onclick = () => { aud = b.dataset.aud; store('bookout:aud', aud); $$('[data-aud]', m).forEach(x => x.setAttribute('aria-pressed', x === b)); show(); });
     $$('[data-cat]', m).forEach(b => b.onclick = () => { cat = b.dataset.cat; q = ''; $('#pick-q', m).value = ''; $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', x === b)); show(); });
     $('#sf', m).onsubmit = e => { e.preventDefault(); q = $('#pick-q', m).value.trim(); if (q) { $$('[data-cat]', m).forEach(x => x.setAttribute('aria-pressed', 'false')); show(); } };
     show();
@@ -4590,54 +4650,142 @@ function paintView(vw, only) {
   $('#prev').disabled = s.pos.b === 0 && s.pos.w === 0; $('#next').disabled = vw.end;
   S.progress[s.book.key] = { b: s.pos.b, w: s.pos.w, pct: s.pos.b / Math.max(1, s.blocks.length) }; save();
 }
-let flipping = false;
-function turn(dir) {
-  const s = sess; if (!s || flipping || !s.view) return;
-  const spread = isSpread(), old = s.view;
-  if (dir > 0) { if (old.end) return; s.hist.push(s.pos); s.pos = old.next; }
+let flipping = false, FL = null;
+const FN = 12; // the turning page is cut into strips that bend, so it curls like paper
+const easeIO = k => k < .5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2, easeOut = k => 1 - Math.pow(1 - k, 3);
+const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches;
+function planTurn(dir) {
+  const s = sess; if (!s || !s.view) return null;
+  const spread = isSpread(), old = s.view; let pos;
+  if (dir > 0) { if (old.end) return null; pos = old.next; }
   else {
-    if (s.pos.b === 0 && s.pos.w === 0) return;
-    if (s.hist.length) s.pos = s.hist.pop();
-    else { const want = old.L.html.length * (spread ? 2 : 1); let b = s.pos.b, acc = 0; while (b > 0 && acc < want) { b--; acc += s.blocks[b].t.length; } s.pos = { b, w: 0 }; }
+    if (s.pos.b === 0 && s.pos.w === 0) return null;
+    if (s.hist.length) pos = s.hist[s.hist.length - 1];
+    else { const want = old.L.html.length * (spread ? 2 : 1); let b = s.pos.b, acc = 0; while (b > 0 && acc < want) { b--; acc += s.blocks[b].t.length; } pos = { b, w: 0 }; }
   }
-  const nv = computeView(s.pos); s.view = nv;
-  if (dir > 0 && !old.end) { snipPage(s, old); const n = spread ? 2 : 1; s.pagesRead += n; S.pages += n; checkBadges(); if (nv.end && !s.lastEnded) { s.lastEnded = true; earn(30, 'reached the last page'); } }
-  sfx('flip');
-  const book = $('#book');
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { paintView(nv); updHud(); return; }
-  flipping = true;
-  const leaf = document.createElement('div'); leaf.className = 'leaf';
-  const done = () => { leaf.remove(); paintView(nv); flipping = false; updHud(); };
-  if (spread) {
-    if (dir > 0) { leaf.style.left = 'var(--pw)'; leaf.style.transformOrigin = 'left center'; leaf.innerHTML = `<div class="face"><div class="pg r">${pageHTML(old.R, 'R')}</div></div><div class="face back"><div class="pg l">${pageHTML(nv.L, 'L')}</div></div>`; book.append(leaf); paintView(nv, 'R'); $('#pgL').innerHTML = pageHTML(old.L, 'L'); }
-    else { leaf.style.left = '0'; leaf.style.transformOrigin = 'right center'; leaf.innerHTML = `<div class="face"><div class="pg l">${pageHTML(old.L, 'L')}</div></div><div class="face back"><div class="pg r">${pageHTML(nv.R, 'R')}</div></div>`; book.append(leaf); paintView(nv, 'L'); $('#pgR').innerHTML = pageHTML(old.R, 'R'); }
-    requestAnimationFrame(() => requestAnimationFrame(() => { leaf.style.transform = `rotateY(${dir > 0 ? -180 : 180}deg)`; }));
+  return { dir, spread, old, pos, nv: computeView(pos) };
+}
+function commitTurn(T) {
+  const s = sess; if (!s) return;
+  if (T.dir > 0) s.hist.push(s.pos); else if (s.hist.length) s.hist.pop();
+  s.pos = T.pos; s.view = T.nv;
+  if (T.dir > 0) { snipPage(s, T.old); const n = T.spread ? 2 : 1; s.pagesRead += n; S.pages += n; checkBadges(); if (T.nv.end && !s.lastEnded) { s.lastEnded = true; earn(30, 'reached the last page'); } }
+  paintView(T.nv); updHud();
+  try { navigator.vibrate && navigator.vibrate(6); } catch (e) {}
+}
+function makeLeaf(fwd, front, back) {
+  const leaf = document.createElement('div'); leaf.className = 'leaf3 ' + (fwd ? 'fwd' : 'bwd');
+  const strips = []; let parent = leaf;
+  for (let i = 0; i < FN; i++) {
+    const st = document.createElement('div'); st.className = 'strip';
+    st.style.left = i ? (fwd ? '100%' : '-100%') : (fwd ? '0px' : `calc(var(--pw) * ${(FN - 1) / FN})`);
+    const fo = fwd ? i : FN - 1 - i, bo = fwd ? FN - 1 - i : i;
+    st.innerHTML = `<div class="sf"><div class="pg ${front[1]}" style="left:calc(var(--pw) * ${-fo / FN})">${front[0]}</div></div><div class="sf b"><div class="pg ${back[1]}" style="left:calc(var(--pw) * ${-bo / FN})">${back[0]}</div></div>`;
+    parent.append(st); strips.push(st); parent = st;
+  }
+  return { leaf, strips, fwd };
+}
+// p: 0 = flat where it started, 1 = landed on the other side
+function poseLeaf(F, p) {
+  const sg = F.fwd ? -1 : 1, base = 180 * p, tot = FN * (FN - 1) / 2, sw = F.pw / FN;
+  let T = 64 * Math.sin(Math.PI * p) * (1 - 1.45 * p) * (F.dragging ? 1.25 : 1); // the free edge leads on the lift, trails on the fall
+  T = Math.max(-base, Math.min(180 - base, T));
+  const A = []; let cum = 0, x = 0;
+  for (let i = 0; i < FN; i++) { cum += i; A.push(base + T * cum / tot); }
+  // light falls off as the paper turns away; shade is blended across strip edges so the bend looks smooth, not folded
+  const cosAt = k => Math.cos((k <= 0 ? A[0] : k >= FN ? A[FN - 1] : (A[k - 1] + A[k]) / 2) * Math.PI / 180);
+  const shF = c => (.34 * (1 - c)).toFixed(3), shB = c => (.34 * (1 + c)).toFixed(3);
+  for (let i = 0; i < FN; i++) {
+    const st = F.strips[i].style, h = cosAt(i), e = cosAt(i + 1);
+    st.transform = `rotateY(${(sg * (A[i] - (i ? A[i - 1] : 0))).toFixed(2)}deg)`;
+    if (F.fwd) { st.setProperty('--f0', shF(h)); st.setProperty('--f1', shF(e)); st.setProperty('--b0', shB(e)); st.setProperty('--b1', shB(h)); }
+    else { st.setProperty('--f0', shF(e)); st.setProperty('--f1', shF(h)); st.setProperty('--b0', shB(h)); st.setProperty('--b1', shB(e)); }
+    x += sw * Math.cos(A[i] * Math.PI / 180);
+  }
+  if (F.solo) F.leaf.style.opacity = p > .5 ? Math.max(0, 1 - (p - .5) / .42).toFixed(3) : '1';
+  // the shadow the lifted page throws on the paper underneath
+  const s = Math.sin(Math.PI * Math.min(1, p * 1.1)), al = (.42 * s).toFixed(3), W = 14 + 60 * s, hinge = F.solo ? 0 : F.pw;
+  const X = F.fwd ? hinge + x : hinge - x, toRight = F.fwd ? x >= 0 : x < 0;
+  F.shade.style.background = toRight ? `linear-gradient(90deg,transparent ${X}px,rgba(30,20,5,${al}) ${X}px,rgba(30,20,5,0) ${X + W}px)` : `linear-gradient(90deg,rgba(30,20,5,0) ${X - W}px,rgba(30,20,5,${al}) ${X}px,transparent ${X}px)`;
+  F.gut.style.opacity = (s * .9).toFixed(3);
+}
+function beginFlip(dir) {
+  const T = planTurn(dir); if (!T) return null;
+  const book = $('#book'); let F;
+  if (T.spread) {
+    if (dir > 0) { F = makeLeaf(true, [pageHTML(T.old.R, 'R'), 'r'], [pageHTML(T.nv.L, 'L'), 'l']); F.leaf.style.left = 'var(--pw)'; $('#pgR').innerHTML = pageHTML(T.nv.R, 'R'); }
+    else { F = makeLeaf(false, [pageHTML(T.old.L, 'L'), 'l'], [pageHTML(T.nv.R, 'R'), 'r']); F.leaf.style.left = '0px'; $('#pgL').innerHTML = pageHTML(T.nv.L, 'L'); }
+    F.p0 = 0; F.p1 = 1;
   } else {
-    leaf.style.left = '0'; leaf.style.transformOrigin = 'left center';
-    if (dir > 0) { leaf.innerHTML = `<div class="face"><div class="pg solo">${pageHTML(old.L, 'L')}</div></div>`; book.append(leaf); paintView(nv);
-      requestAnimationFrame(() => requestAnimationFrame(() => { leaf.style.transform = 'rotateY(-165deg)'; leaf.style.opacity = '0'; })); }
-    else { leaf.innerHTML = `<div class="face"><div class="pg solo">${pageHTML(nv.L, 'L')}</div></div>`; leaf.style.transition = 'none'; leaf.style.transform = 'rotateY(-165deg)'; leaf.style.opacity = '0'; book.append(leaf);
-      requestAnimationFrame(() => requestAnimationFrame(() => { leaf.style.transition = ''; leaf.style.transform = 'rotateY(0)'; leaf.style.opacity = '1'; })); }
+    if (dir > 0) { F = makeLeaf(true, [pageHTML(T.old.L, 'L'), 'solo'], [pageShell(), 'solo blank']); $('#pgL').innerHTML = pageHTML(T.nv.L, 'L'); F.p0 = 0; F.p1 = 1; }
+    else { F = makeLeaf(true, [pageHTML(T.nv.L, 'L'), 'solo'], [pageShell(), 'solo blank']); F.p0 = 1; F.p1 = 0; }
+    F.leaf.style.left = '0px';
   }
-  setTimeout(done, 720);
+  Object.assign(F, { T, solo: !T.spread, pw: $('#pgL').offsetWidth, p: F.p0 });
+  F.shade = document.createElement('div'); F.shade.className = 'flipshadow';
+  F.gut = document.createElement('div'); F.gut.className = 'flipgutter' + (F.solo ? ' solo' : '');
+  book.append(F.shade, F.gut, F.leaf); poseLeaf(F, F.p0);
+  flipping = true; FL = F; return F;
+}
+function endFlip(F, commit) {
+  if (F.done) return; F.done = true; cancelAnimationFrame(F.raf);
+  F.leaf.remove(); F.shade.remove(); F.gut.remove(); if (FL === F) FL = null; flipping = false;
+  if (commit) commitTurn(F.T); else if (sess && sess.view) paintView(sess.view);
+}
+function animFlip(F, to, ms, ease, cb) {
+  const from = F.p, t0 = performance.now();
+  const step = now => { if (F.done) return; const k = Math.min(1, (now - t0) / ms); F.p = from + (to - from) * ease(k); poseLeaf(F, F.p); if (k < 1) F.raf = requestAnimationFrame(step); else cb(); };
+  F.raf = requestAnimationFrame(step);
+}
+function turn(dir) {
+  const s = sess; if (!s || !s.view) return;
+  if (FL) { if (FL.dragging) return; endFlip(FL, FL.goal === 'commit'); } // a quick second tap finishes the page in the air
+  else if (flipping) return;
+  if (reducedMotion()) { const T = planTurn(dir); if (T) { sfx('flip'); commitTurn(T); } return; }
+  const F = beginFlip(dir); if (!F) return;
+  sfx('flip'); F.goal = 'commit';
+  animFlip(F, F.p1, 680, easeIO, () => { endFlip(F, true); sfx('settle'); });
 }
 function openCover() {
-  const s = sess, book = $('#book'); if (!book || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const s = sess, book = $('#book'); if (!book || reducedMotion()) return;
   const spread = isSpread(); flipping = true;
   const leaf = document.createElement('div'); leaf.className = 'leaf'; leaf.style.left = spread ? 'var(--pw)' : '0'; leaf.style.transformOrigin = 'left center'; leaf.style.transition = 'transform 1.1s cubic-bezier(.5,.05,.25,1), opacity 1.1s';
-  leaf.innerHTML = `<div class="face"><div class="cover-face" style="--cover:${clothOf(s.book)}"><b>${esc(s.book.title)}</b><span>${esc(s.book.author)}</span></div></div><div class="face back"><div class="endpaper"><div class="bookplate">Ex libris<br><b>${esc(S.name)}</b><br>read at ${esc(VENUES[s.venue].name)}</div></div></div>`;
+  leaf.innerHTML = `<div class="face"><div class="cover-face" style="--cover:${clothOf(s.book)}">${s.book.cover ? `<img class="realcover" src="${esc(s.book.cover)}" alt="" onerror="this.remove()">` : ''}<b>${esc(s.book.title)}</b><span>${esc(s.book.author)}</span></div></div><div class="face back"><div class="endpaper"><div class="bookplate">Ex libris<br><b>${esc(S.name)}</b><br>read at ${esc(VENUES[s.venue].name)}</div></div></div>`;
   book.append(leaf); setTimeout(() => sfx('open'), 350);
-  setTimeout(() => { leaf.style.transform = `rotateY(${spread ? -180 : -165}deg)`; if (!spread) leaf.style.opacity = '0'; }, 500);
-  setTimeout(() => { leaf.remove(); flipping = false; }, 1700);
+  setTimeout(() => { leaf.style.transform = `rotateY(${spread ? -180 : -165}deg)`; if (!spread) leaf.style.opacity = '0'; }, 650);
+  setTimeout(() => { leaf.remove(); flipping = false; }, 1850);
 }
 function bindGestures(book) {
-  let x0 = null, y0 = 0, t0 = 0;
-  book.addEventListener('pointerdown', e => { x0 = e.clientX; y0 = e.clientY; t0 = Date.now(); });
-  book.addEventListener('pointerup', e => {
-    if (x0 == null) return; const dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
-    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { turn(dx < 0 ? 1 : -1); return; }
-    if (Math.abs(dx) < 8 && Math.abs(dy) < 8 && Date.now() - t0 < 400) { const r = book.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width; if (fx > .62) turn(1); else if (fx < .38) turn(-1); }
+  let x0 = null, y0 = 0, t0 = 0, pid = null, F = null, lastX = 0, lastT = 0, vel = 0;
+  book.addEventListener('pointerdown', e => { if (e.button > 0) return; x0 = e.clientX; y0 = e.clientY; t0 = Date.now(); pid = e.pointerId; F = null; vel = 0; lastX = e.clientX; lastT = performance.now(); });
+  book.addEventListener('pointermove', e => {
+    if (x0 == null || e.pointerId !== pid) return;
+    const dx = e.clientX - x0, dy = e.clientY - y0;
+    if (!F) {
+      if (Math.abs(dx) < 10 || Math.abs(dx) < Math.abs(dy) * 1.2 || reducedMotion()) return;
+      if (FL) { if (FL.dragging) return; endFlip(FL, FL.goal === 'commit'); } else if (flipping) return;
+      F = beginFlip(dx < 0 ? 1 : -1); if (!F) { x0 = null; return; }
+      F.dragging = true; F.prog = 0; sfx('rustle');
+      try { book.setPointerCapture(pid); } catch (err) {}
+    }
+    const now = performance.now(); vel = vel * .4 + .6 * (e.clientX - lastX) / Math.max(8, now - lastT); lastX = e.clientX; lastT = now;
+    const span = F.solo ? F.pw * 1.05 : F.pw * 1.75;
+    F.prog = Math.max(0, Math.min(1, (F.T.dir > 0 ? -dx : dx) / span)); F.p = F.p0 + (F.p1 - F.p0) * F.prog; poseLeaf(F, F.p);
   });
+  const release = (e, cancelled) => {
+    if (x0 == null || (e && e.pointerId !== pid)) return;
+    const dx = e.clientX - x0, dy = e.clientY - y0; x0 = null;
+    if (F) {
+      const f = F; F = null; f.dragging = false;
+      const fling = f.T.dir > 0 ? -vel : vel, go = !cancelled && (f.prog > .32 || fling > .45);
+      f.goal = go ? 'commit' : 'cancel'; if (go) sfx('flip');
+      animFlip(f, go ? f.p1 : f.p0, 160 + 420 * (go ? 1 - f.prog : f.prog), easeOut, () => { endFlip(f, go); if (go) sfx('settle'); });
+      return;
+    }
+    if (!cancelled && Math.abs(dx) < 8 && Math.abs(dy) < 8 && Date.now() - t0 < 400) { const r = book.getBoundingClientRect(), fx = (e.clientX - r.left) / r.width; if (fx > .62) turn(1); else if (fx < .38) turn(-1); }
+  };
+  book.addEventListener('pointerup', e => release(e, false));
+  book.addEventListener('pointercancel', e => release(e, true));
 }
 let rsz; window.addEventListener('resize', () => { clearTimeout(rsz); rsz = setTimeout(() => { if (view === 'session' && sess && !flipping) { sess.hist = []; layoutBook(); } }, 250); });
 function updHud() {
@@ -4830,6 +4978,7 @@ function renderPassport(el) {
 }
 
 if (/[?&]debug/.test(location.search)) Object.assign(window, { playModal, go, enterVenue });
+if (/[?&]debug/.test(location.search)) Object.assign(window, { openShelves, chooseBook, shelfFor, turn, closeModal, render, VENUES, CATS, dbg: () => ({ S, setup, sess, flipping, FL, save }) });
 if (/[?&]debug/.test(location.search)) Object.assign(window, { NET, openAuth, JINGLE, festNow, openJoin, musicSync, MUSIC, AU });
 render(); showSplash(); netInit();
 })();
