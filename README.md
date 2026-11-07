@@ -45,7 +45,7 @@ Game layer:
 - **Library card**: Visitor borrows 1 book, Silver (150 pts) 3, Gold (400 pts) 6 with 24-hour access. Books are due in 7 days; returning on time pays 15 points.
 - The timer pauses when you switch tabs, so points mean real reading.
 
-Books come from **Project Gutenberg**. Each of the 12 categories opens with hand-picked classics that show instantly, then more books load from the free **Gutendex** API, and you can search any title or author. Lists and the book you are reading are cached on your device. A small offline "Pocket Poems" book always works.
+Books come from **Project Gutenberg**, plus open-licence extras: Microsoft's MIT-licensed *AI for Beginners* and *ML for Beginners* lessons (as two books) and Wikipedia articles (CC BY-SA 4.0, credited on the first page). Shelves include Magazines (public-domain Punch, Scientific American, St. Nicholas and more), Articles, Geography & travel, Cooking & food, World history, Motivation, Inspiration and AI & computing, and a "For" filter picks Children, Teens, Education or Adults. Each category opens with hand-picked classics that show instantly, then more books load from the free **Gutendex** API, and you can search any title or author. Lists and the book you are reading are cached on your device. A small offline "Pocket Poems" book always works.
 
 ## Free stack
 
@@ -53,7 +53,7 @@ Books come from **Project Gutenberg**. Each of the 12 categories opens with hand
 - Progress is saved in the browser (`localStorage`).
 - Font: Outfit (Google Fonts, open licence), the free fallback for Gilroy in the design system.
 - Books: a free GitHub Action (**Fetch books**, `.github/workflows/fetch-books.yml`) copies about 100 public-domain books from Project Gutenberg into `books/` and writes `books/catalog.json`. Those open instantly from your own site. It reruns monthly, or when `books/picks.json` changes, or from the Actions tab → Fetch books → Run workflow.
-- To add a book to the shelves, add its Gutenberg ID to `books/picks.json`.
+- To add a book to the shelves, add its Gutenberg ID to `books/picks.json` (or `"find": "Title|Author"`, or `"series": "Magazine name", "n": 2` for magazine issues; `"aud": ["children"]` tags who it suits). Articles and the AI lesson books are listed in `books/open_sources.py`.
 - Searching the wider catalogue uses the free [Gutendex](https://gutendex.com) API; those books download through free CORS proxies and can be slow.
 
 ## Run it

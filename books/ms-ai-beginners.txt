@@ -1,0 +1,1038 @@
+ARTIFICIAL INTELLIGENCE FOR BEGINNERS
+
+By Microsoft Cloud Advocates. Lessons from the free "AI For Beginners" curriculum, published by Microsoft under the MIT licence at github.com/microsoft/AI-For-Beginners. Code samples, quizzes and pictures are left out so the lessons read like a book.
+
+
+CHAPTER 1. Introduction to AI
+
+Artificial Intelligence is an exciting scientific discipline that studies how we can make computers exhibit intelligent behavior, e.g. do those things that human beings are good at doing.
+
+Originally, computers were invented by Charles Babbage to operate on numbers following a well-defined procedure - an algorithm. Modern computers, even though significantly more advanced than the original model proposed in the 19th century, still follow the same idea of controlled computations. Thus it is possible to program a computer to do something if we know the exact sequence of steps that we need to do in order to achieve the goal.
+
+✅ Defining the age of a person from his or her photograph is a task that cannot be explicitly programmed, because we do not know how we come up with a number inside our head when we do it.
+
+There are some tasks, however, that we do not explicitly know how to solve. Consider determining the age of a person from his/her photograph. We somehow learn to do it, because we have seen many examples of people of different age, but we cannot explicitly explain how we do it, nor can we program the computer to do it. This is exactly the kind of task that are of interest to Artificial Intelligence (AI for short).
+
+✅ Think of some tasks that you could offload to a computer that would benefit from AI. Consider the fields of finance, medicine, and the arts - how are these fields benefiting today from AI?
+
+WEAK AI VS STRONG AI
+
+Weak AI — Strong AI
+
+Weak AI refers to AI systems that are designed and trained for a specific task or a narrow set of tasks. — Strong AI, or Artificial General Intelligence (AGI), refers to AI systems with human-level intelligence and understanding.
+
+These AI systems are not generally intelligent; they excel in performing a predefined task but lack true understanding or consciousness. — These AI systems have the ability to perform any intellectual task that a human being can do, adapt to different domains, and possess a form of consciousness or self-awareness.
+
+Examples of weak AI include virtual assistants like Siri or Alexa, recommendation algorithms used by streaming services, and chatbots that are designed for specific customer service tasks. — Achieving Strong AI is a long-term goal of AI research and would require the development of AI systems that can reason, learn, understand, and adapt across a wide range of tasks and contexts.
+
+Weak AI is highly specialized and does not possess human-like cognitive abilities or general problem-solving capabilities beyond its narrow domain. — Strong AI is currently a theoretical concept, and no AI system has reached this level of general intelligence.
+
+For more infomation refer to Artificial General Intelligence (AGI).
+
+THE DEFINITION OF INTELLIGENCE AND THE TURING TEST
+
+One of the problems when dealing with the term Intelligence is that there is no clear definition of this term. One can argue that intelligence is connected to abstract thinking, or to self-awareness, but we cannot properly define it.
+
+To see the ambiguity of a term intelligence, try answering a question: "Is a cat intelligent?". Different people tend to give different answers to this question, as there is no universally accepted test to prove the assertion is true or not. And if you think there is - try running your cat through an IQ test...
+
+✅ Think for a minute about how you define intelligence. Is a crow who can solve a maze and get at some food intelligent? Is a child intelligent?
+
+When speaking about AGI we need to have some way to tell if we have created a truly intelligent system. Alan Turing proposed a way called a Turing Test, which also acts like a definition of intelligence. The test compares a given system to something inherently intelligent - a real human being, and because any automatic comparison can be bypassed by a computer program, we use a human interrogator. So, if a human being is unable to distinguish between a real person and a computer system in text-based dialogue - the system is considered intelligent.
+
+A chat-bot called Eugene Goostman, developed in St.Petersburg, came close to passing the Turing test in 2014 by using a clever personality trick. It announced up front that it was a 13-year old Ukrainian boy, which would explain the lack of knowledge and some discrepancies in the text. The bot convinced 30% of the judges that it was human after a 5 minute dialogue, a metric that Turing believed a machine would be able to pass by 2000. However, one should understand that this does not indicate that we have created an intelligent system, or that a computer system has fooled the human interrogator - the system didn't fool the humans, but rather the bot creators did!
+
+✅ Have you ever been fooled by a chat bot into thinking that you are speaking to a human? How did it convince you?
+
+DIFFERENT APPROACHES TO AI
+
+If we want a computer to behave like a human, we need somehow to model inside a computer our way of thinking. Consequently, we need to try to understand what makes a human being intelligent.
+
+To be able to program intelligence into a machine, we need to understand how our own processes of making decisions work. If you do a little self-introspection, you will realize that there are some processes that happen subconsciously – eg. we can distinguish a cat from a dog without thinking about it - while some others involve reasoning.
+
+There are two possible approaches to this problem:
+
+Top-down Approach (Symbolic Reasoning) — Bottom-up Approach (Neural Networks)
+
+A top-down approach models the way a person reasons to solve a problem. It involves extracting knowledge from a human being, and representing it in a computer-readable form. We also need to develop a way to model reasoning inside a computer. — A bottom-up approach models the structure of a human brain, consisting of a huge number of simple units called neurons. Each neuron acts like a weighted average of its inputs, and we can train a network of neurons to solve useful problems by providing training data.
+
+There are also some other possible approaches to intelligence:
+
+• An Emergent, Synergetic or multi-agent approach are based on the fact that complex intelligent behaviour can be obtained by an interaction of a large number of simple agents. According to evolutionary cybernetics, intelligence can emerge from more simple, reactive behaviour in the process of metasystem transition.
+
+• An Evolutionary approach, or genetic algorithm is an optimization process based on the principles of evolution.
+
+We will consider those approaches later in the course, but right now we will focus on two main directions: top-down and bottom-up.
+
+THE TOP-DOWN APPROACH
+
+In a top-down approach, we try to model our reasoning. Because we can follow our thoughts when we reason, we can try to formalize this process and program it inside the computer. This is called symbolic reasoning.
+
+People tend to have some rules in their head that guide their decision making processes. For example, when a doctor is diagnosing a patient, he or she may realize that a person has a fever, and thus there might be some inflammation going on inside the body. By applying a large set of rules to a specific problem a doctor may be able to come up with the final diagnosis.
+
+This approach relies heavily on knowledge representation and reasoning. Extracting knowledge from a human expert might be the most difficult part, because a doctor in many cases would not know exactly why he or she is coming up with a particular diagnosis. Sometimes the solution just comes up in his or her head without explicit thinking. Some tasks, such as determining the age of a person from a photograph, cannot be at all reduced to manipulating knowledge.
+
+BOTTOM-UP APPROACH
+
+Alternately, we can try to model the simplest elements inside our brain – a neuron. We can construct a so-called artificial neural network inside a computer, and then try to teach it to solve problems by giving it examples. This process is similar to how a newborn child learns about his or her surroundings by making observations.
+
+✅ Do a little research on how babies learn. What are the basic elements of a baby's brain?
+
+| What about ML? | |
+|--------------|-----------|
+| Part of Artificial Intelligence that is based on computer learning to solve a problem based on some data is called Machine Learning. We will not consider classical machine learning in this course - we refer you to a separate Machine Learning for Beginners curriculum. | |
+
+A BRIEF HISTORY OF AI
+
+Artificial Intelligence was started as a field in the middle of the twentieth century. Initially, symbolic reasoning was a prevalent approach, and it led to a number of important successes, such as expert systems – computer programs that were able to act as an expert in some limited problem domains. However, it soon became clear that such approach does not scale well. Extracting the knowledge from an expert, representing it in a computer, and keeping that knowledgebase accurate turns out to be a very complex task, and too expensive to be practical in many cases. This led to so-called AI Winter in the 1970s.
+
+As time passed, computing resources became cheaper, and more data has become available, so neural network approaches started demonstrating great performance in competing with human beings in many areas, such as computer vision or speech understanding. In the last decade, the term Artificial Intelligence has been mostly used as a synonym for Neural Networks, because most of the AI successes that we hear about are based on them.
+
+We can observe how the approaches changed, for example, in creating a chess playing computer program:
+
+• Early chess programs were based on search – a program explicitly tried to estimate possible moves of an opponent for a given number of next moves, and selected an optimal move based on the optimal position that can be achieved in a few moves. It led to the development of the so-called alpha-beta pruning search algorithm.
+
+• Search strategies work well toward the end of the game, where the search space is limited by a small number of possible moves. However, at the beginning of the game, the search space is huge, and the algorithm can be improved by learning from existing matches between human players. Subsequent experiments employed so-called case-based reasoning, where the program looked for cases in the knowledge base very similar to the current position in the game.
+
+• Modern programs that win over human players are based on neural networks and reinforcement learning, where the programs learn to play solely by playing a long time against themselves and learning from their own mistakes – much like human beings do when learning to play chess. However, a computer program can play many more games in much less time, and thus can learn much faster.
+
+✅ Do a little research on other games that have been played by AI.
+
+Similarly, we can see how the approach towards creating “talking programs” (that might pass the Turing test) changed:
+
+• Early programs of this kind such as Eliza, were based on very simple grammatical rules and the re-formulation of the input sentence into a question.
+
+• Modern assistants, such as Cortana, Siri or Google Assistant are all hybrid systems that use Neural networks to convert speech into text and recognize our intent, and then employ some reasoning or explicit algorithms to perform required actions.
+
+• In the future, we may expect a complete neural-based model to handle dialogue by itself. The recent GPT and Turing-NLG family of neural networks show great success in this.
+
+RECENT AI RESEARCH
+
+The huge recent growth in neural network research started around 2010, when large public datasets started to become available. A huge collection of images called ImageNet, which contains around 14 million annotated images, gave birth to the ImageNet Large Scale Visual Recognition Challenge.
+
+In 2012, Convolutional Neural Networks were first used in image classification, which led to a significant drop in classification errors (from almost 30% to 16.4%). In 2015, ResNet architecture from Microsoft Research achieved human-level accuracy.
+
+Since then, Neural Networks demonstrated very successful behaviour in many tasks:
+
+Year — Human Parity achieved
+
+2015 — Image Classification
+
+2016 — Conversational Speech Recognition
+
+2018 — Automatic Machine Translation (Chinese-to-English)
+
+2020 — Image Captioning
+
+Over the past few years we have witnessed huge successes with large language models, such as BERT and GPT-3. This happened mostly due to the fact that there is a lot of general text data available that allows us to train models to capture the structure and meaning of texts, pre-train them on general text collections, and then specialize those models for more specific tasks. We will learn more about Natural Language Processing later in this course.
+
+CHALLENGE
+
+Do a tour of the internet to determine where, in your opinion, AI is most effectively used. Is it in a Mapping app, or some speech-to-text service or a video game? Research how the system was built.
+
+REVIEW & SELF STUDY
+
+Review the history of AI and ML by reading through this lesson. Take an element from the sketchnote at the top of that lesson or this one and research it in more depth to understand the cultural context informing its evolution.
+
+Assignment: Game Jam
+
+
+CHAPTER 2. Knowledge Representation and Expert Systems
+
+The quest for artificial intelligence is based on a search for knowledge, to make sense of the world similar to how humans do. But how can you go about doing this?
+
+In the early days of AI, the top-down approach to creating intelligent systems (discussed in the previous lesson) was popular. The idea was to extract the knowledge from people into some machine-readable form, and then use it to automatically solve problems. This approach was based on two big ideas:
+
+• Knowledge Representation
+
+• Reasoning
+
+KNOWLEDGE REPRESENTATION
+
+One of the important concepts in Symbolic AI is knowledge. It is important to differentiate knowledge from information or data. For example, one can say that books contain knowledge, because one can study books and become an expert. However, what books contain is actually called data, and by reading books and integrating this data into our world model we convert this data to knowledge.
+
+✅ Knowledge is something which is contained in our head and represents our understanding of the world. It is obtained by an active learning process, which integrates pieces of information that we receive into our active model of the world.
+
+Most often, we do not strictly define knowledge, but we align it with other related concepts using DIKW Pyramid. It contains the following concepts:
+
+• Data is something represented in physical media, such as written text or spoken words. Data exists independently of human beings and can be passed between people.
+
+• Information is how we interpret data in our head. For example, when we hear the word computer, we have some understanding of what it is.
+
+• Knowledge is information being integrated into our world model. For example, once we learn what a computer is, we start having some ideas about how it works, how much it costs, and what it can be used for. This network of interrelated concepts forms our knowledge.
+
+• Wisdom is yet one more level of our understanding of the world, and it represents meta-knowledge, eg. some notion on how and when the knowledge should be used.
+
+Thus, the problem of knowledge representation is to find some effective way to represent knowledge inside a computer in the form of data, to make it automatically usable. This can be seen as a spectrum:
+
+• On the left, there are very simple types of knowledge representations that can be effectively used by computers. The simplest one is algorithmic, when knowledge is represented by a computer program. This, however, is not the best way to represent knowledge, because it is not flexible. Knowledge inside our head is often non-algorithmic.
+
+• On the right, there are representations such as natural text. It is the most powerful, but cannot be used for automatic reasoning.
+
+✅ Think for a minute about how you represent knowledge in your head and convert it to notes. Is there a particular format that works well for you to aid in retention?
+
+CLASSIFYING COMPUTER KNOWLEDGE REPRESENTATIONS
+
+We can classify different computer knowledge representation methods in the following categories:
+
+• Network representations are based on the fact that we have a network of interrelated concepts inside our head. We can try to reproduce the same networks as a graph inside a computer - a so-called semantic network.
+
+• Object-Attribute-Value triplets or attribute-value pairs. Since a graph can be represented inside a computer as a list of nodes and edges, we can represent a semantic network by a list of triplets, containing objects, attributes, and values. For example, we build the following triplets about programming languages:
+
+Object — Attribute — Value
+
+Python — is — Untyped-Language
+
+Python — invented-by — Guido van Rossum
+
+Python — block-syntax — indentation
+
+Untyped-Language — doesn't have — type definitions
+
+✅ Think how triplets can be used to represent other types of knowledge.
+
+• Hierarchical representations emphasize the fact that we often create a hierarchy of objects inside our head. For example, we know that canary is a bird, and all birds have wings. We also have some idea about what colour a canary usually is, and what is their flight speed.
+
+• Frame representation is based on representing each object or class of objects as a frame which contains slots. Slots have possible default values, value restrictions, or stored procedures that can be called to obtain the value of a slot. All frames form a hierarchy similar to an object hierarchy in object-oriented programming languages.
+
+• Scenarios are special kind of frames that represent complex situations that can unfold in time.
+
+Python
+
+Slot — Value — Default value — Interval
+
+Name — Python
+
+Is-A — Untyped-Language
+
+Variable Case — CamelCase
+
+Program Length — 5-5000 lines
+
+Block Syntax — Indent
+
+• Procedural representations are based on representing knowledge by a list of actions that can be executed when a certain condition occurs.
+
+• Production rules are if-then statements that allow us to draw conclusions. For example, a doctor can have a rule saying that IF a patient has high fever OR high level of C-reactive protein in blood test THEN he has an inflammation. Once we encounter one of the conditions, we can make a conclusion about inflammation, and then use it in further reasoning.
+
+• Algorithms can be considered another form of procedural representation, although they are almost never used directly in knowledge-based systems.
+
+• Logic was originally proposed by Aristotle as a way to represent universal human knowledge.
+
+• Predicate Logic as a mathematical theory is too rich to be computable, therefore some subset of it is normally used, such as Horn clauses used in Prolog.
+
+• Descriptive Logic is a family of logical systems used to represent and reason about hierarchies of objects distributed knowledge representations such as semantic web.
+
+EXPERT SYSTEMS
+
+One of the early successes of symbolic AI were so-called expert systems - computer systems that were designed to act as an expert in some limited problem domain. They were based on a knowledge base extracted from one or more human experts, and they contained an inference engine that performed some reasoning on top of it.
+
+Simplified structure of a human neural system — Architecture of a knowledge-based system
+
+Expert systems are built like the human reasoning system, which contains short-term memory and long-term memory. Similarly, in knowledge-based systems we distinguish the following components:
+
+• Problem memory: contains the knowledge about the problem being currently solved, i.e. the temperature or blood pressure of a patient, whether he has inflammation or not, etc. This knowledge is also called static knowledge, because it contains a snapshot of what we currently know about the problem - the so-called problem state.
+
+• Knowledge base: represents long-term knowledge about a problem domain. It is extracted manually from human experts, and does not change from consultation to consultation. Because it allows us to navigate from one problem state to another, it is also called dynamic knowledge.
+
+• Inference engine: orchestrates the whole process of searching in the problem state space, asking questions of the user when necessary. It is also responsible for finding the right rules to be applied to each state.
+
+As an example, let's consider the following expert system of determining an animal based on its physical characteristics:
+
+This diagram is called an AND-OR tree, and it is a graphical representation of a set of production rules. Drawing a tree is useful at the beginning of extracting knowledge from the expert. To represent the knowledge inside the computer it is more convenient to use rules:
+
+You can notice that each condition on the left-hand-side of the rule and the action are essentially object-attribute-value (OAV) triplets. Working memory contains the set of OAV triplets that correspond to the problem currently being solved. A rules engine looks for rules for which a condition is satisfied and applies them, adding another triplet to the working memory.
+
+✅ Write your own AND-OR tree on a topic you like!
+
+FORWARD VS BACKWARD INFERENCE
+
+The process described above is called forward inference. It starts with some initial data about the problem available in the working memory, and then executes the following reasoning loop:
+
+• If the target attribute is present in the working memory - stop and give the result
+
+• Look for all the rules whose condition is currently satisfied - obtain conflict set of rules.
+
+• Perform conflict resolution - select one rule that will be executed on this step. There could be different conflict resolution strategies:
+
+• Select the first applicable rule in the knowledge base
+
+• Select a random rule
+
+• Select a more specific rule, i.e. the one meeting the most conditions in the "left-hand-side" (LHS)
+
+• Apply selected rule and insert new piece of knowledge into the problem state
+
+• Repeat from step 1.
+
+However, in some cases we might want to start with an empty knowledge about the problem, and ask questions that will help us arrive to the conclusion. For example, when doing medical diagnosis, we usually do not perform all medical analyses in advance before starting diagnosing the patient. We rather want to perform analyses when a decision needs to be made.
+
+This process can be modeled using backward inference. It is driven by the goal - the attribute value that we are looking to find:
+
+• Select all rules that can give us the value of a goal (i.e. with the goal on the RHS ("right-hand-side")) - a conflict set
+
+• If there are no rules for this attribute, or there is a rule saying that we should ask the value from the user - ask for it, otherwise:
+
+• Use conflict resolution strategy to select one rule that we will use as hypothesis - we will try to prove it
+
+• Recurrently repeat the process for all attributes in the LHS of the rule, trying to prove them as goals
+
+• If at any point the process fails - use another rule at step 3.
+
+✅ In which situations is forward inference more appropriate? How about backward inference?
+
+IMPLEMENTING EXPERT SYSTEMS
+
+Expert systems can be implemented using different tools:
+
+• Programming them directly in some high level programming language. This is not the best idea, because the main advantage of a knowledge-based system is that knowledge is separated from inference, and potentially a problem domain expert should be able to write rules without understanding the details of the inference process
+
+• Using expert systems shell, i.e. a system specifically designed to be populated by knowledge using some knowledge representation language.
+
+EXERCISE: ANIMAL INFERENCE
+
+See Animals.ipynb for an example of implementing forward and backward inference expert system.
+
+Note: This example is rather simple, and only gives the idea of how an expert system looks like. Once you start creating such a system, you will only notice some intelligent behaviour from it once you reach certain number of rules, around 200+. At some point, rules become too complex to keep all of them in mind, and at this point you may start wondering why a system makes certain decisions. However, the important characteristics of knowledge-based systems is that you can always explain exactly how any of the decisions were made.
+
+ONTOLOGIES AND THE SEMANTIC WEB
+
+At the end of 20th century there was an initiative to use knowledge representation to annotate Internet resources, so that it would be possible to find resources that correspond to very specific queries. This motion was called Semantic Web, and it relied on several concepts:
+
+• A special knowledge representation based on description logics (DL). It is similar to frame knowledge representation, because it builds a hierarchy of objects with properties, but it has formal logical semantics and inference. There is a whole family of DLs which balance between expressiveness and algorithmic complexity of inference.
+
+• Distributed knowledge representation, where all concepts are represented by a global URI identifier, making it possible to create knowledge hierarchies that span the internet.
+
+• A family of XML-based languages for knowledge description: RDF (Resource Description Framework), RDFS (RDF Schema), OWL (Ontology Web Language).
+
+A core concept in the Semantic Web is a concept of Ontology. It refers to a explicit specification of a problem domain using some formal knowledge representation. The simplest ontology can be just a hierarchy of objects in a problem domain, but more complex ontologies will include rules that can be used for inference.
+
+In the semantic web, all representations are based on triplets. Each object and each relation are uniquely identified by the URI. For example, if we want to state the fact that this AI Curriculum has been developed by Dmitry Soshnikov on Jan 1st, 2022 - here are the triplets we can use:
+
+✅ Here http://www.example.com/terms/creation-date and http://purl.org/dc/elements/1.1/creator are some well-known and universally accepted URIs to express the concepts of creator and creation date.
+
+In a more complex case, if we want to define a list of creators, we can use some data structures defined in RDF.
+
+Diagrams above by Dmitry Soshnikov
+
+The progress of building the Semantic Web was somehow slowed down by the success of search engines and natural language processing techniques, which allow extracting structured data from text. However, in some areas there are still significant efforts to maintain ontologies and knowledge bases. A few projects worth noting:
+
+• WikiData is a collection of machine readable knowledge bases associated with Wikipedia. Most of the data is mined from Wikipedia InfoBoxes, pieces of structured content inside Wikipedia pages. You can query wikidata in SPARQL, a special query language for Semantic Web. Here is a sample query that displays most popular eye colors among humans:
+
+• DBpedia is another effort similar to WikiData.
+
+✅ If you want to experiment with building your own ontologies, or opening existing ones, there is a great visual ontology editor called Protégé. Download it, or use it online.
+
+Web Protégé editor open with the Romanov Family ontology. Screenshot by Dmitry Soshnikov
+
+EXERCISE: A FAMILY ONTOLOGY
+
+See FamilyOntology.ipynb for an example of using Semantic Web techniques to reason about family relationships. We will take a family tree represented in common GEDCOM format and an ontology of family relationships and build a graph of all family relationships for given set of individuals.
+
+MICROSOFT CONCEPT GRAPH
+
+In most of the cases, ontologies are carefully created by hand. However, it is also possible to mine ontologies from unstructured data, for example, from natural language texts.
+
+One such attempt was done by Microsoft Research, and resulted in Microsoft Concept Graph.
+
+It is a large collection of entities grouped together using is-a inheritance relationship. It allows answering questions like "What is Microsoft?" - the answer being something like "a company with probability 0.87, and a brand with probability 0.75".
+
+The Graph is available either as REST API, or as a large downloadable text file that lists all entity pairs.
+
+EXERCISE: A CONCEPT GRAPH
+
+Try the MSConceptGraph.ipynb notebook to see how we can use Microsoft Concept Graph to group news articles into several categories.
+
+CONCLUSION
+
+Nowadays, AI is often considered to be a synonym for Machine Learning or Neural Networks. However, a human being also exhibits explicit reasoning, which is something currently not being handled by neural networks. In real world projects, explicit reasoning is still used to perform tasks that require explanations, or being able to modify the behavior of the system in a controlled way.
+
+CHALLENGE
+
+In the Family Ontology notebook associated to this lesson, there is an opportunity to experiment with other family relations. Try to discover new connections between people in the family tree.
+
+REVIEW & SELF STUDY
+
+Do some research on the internet to discover areas where humans have tried to quantify and codify knowledge. Take a look at Bloom's Taxonomy, and go back in history to learn how humans tried to make sense of their world. Explore the work of Linnaeus to create a taxonomy of organisms, and observe the way Dmitri Mendeleev created a way for chemical elements to be described and grouped. What other interesting examples can you find?
+
+Assignment: Build an Ontology
+
+
+CHAPTER 3. Introduction to Neural Networks
+
+As we discussed in the introduction, one of the ways to achieve intelligence is to train a computer model or an artificial brain. Since the middle of 20th century, researchers tried different mathematical models, until in recent years this direction proved to be hugely successful. Such mathematical models of the brain are called neural networks.
+
+Sometimes neural networks are called Artificial Neural Networks, ANNs, in order to indicate that we are talking about models, not real networks of neurons.
+
+MACHINE LEARNING
+
+Neural Networks are a part of a larger discipline called Machine Learning, whose goal is to use data to train computer models that are able to solve problems. Machine Learning constitutes a large part of Artificial Intelligence, however, we do not cover classical ML in this curriculum.
+
+Visit our separate Machine Learning for Beginners curriculum to learn more about classic Machine Learning.
+
+In Machine Learning, we assume that we have some dataset of examples X, and corresponding output values Y. Examples are often N-dimensional vectors that consist of features, and outputs are called labels.
+
+We will consider the two most common machine learning problems:
+
+• Classification, where we need to classify an input object into two or more classes.
+
+• Regression, where we need to predict a numerical number for each of the input samples.
+
+When representing inputs and outputs as tensors, the input dataset is a matrix of size M&times;N, where M is number of samples and N is the number of features. Output labels Y is the vector of size M.
+
+In this curriculum, we will only focus on neural network models.
+
+A MODEL OF A NEURON
+
+From biology, we know that our brain consists of neural cells (neurons), each of them having multiple "inputs" (dendrites) and a single "output" (axon). Both dendrites and axons can conduct electrical signals, and the connections between them — known as synapses — can exhibit varying degrees of conductivity, which are regulated by neurotransmitters.
+
+Thus, the simplest mathematical model of a neuron contains several inputs X1, ..., XN and an output Y, and a series of weights W1, ..., WN. An output is calculated as:
+
+where f is some non-linear activation function.
+
+Early models of neuron were described in the classical paper A logical calculus of the ideas immanent in nervous activity by Warren McCullock and Walter Pitts in 1943. Donald Hebb in his book "The Organization of Behavior: A Neuropsychological Theory" proposed the way those networks can be trained.
+
+IN THIS SECTION
+
+In this section we will learn about:
+
+• Perceptron, one of the earliest neural network models for two-class classification
+
+• Multi-layered networks with a paired notebook how to build our own framework
+
+• Neural Network Frameworks, with these notebooks: PyTorch and Keras/Tensorflow
+
+• Overfitting
+
+
+CHAPTER 4. Introduction to Neural Networks: Perceptron
+
+One of the first attempts to implement something similar to a modern neural network was done by Frank Rosenblatt from Cornell Aeronautical Laboratory in 1957. It was a hardware implementation called "Mark-1", designed to recognize primitive geometric figures, such as triangles, squares and circles.
+
+Images from Wikipedia
+
+An input image was represented by 20x20 photocell array, so the neural network had 400 inputs and one binary output. A simple network contained one neuron, also called a threshold logic unit. Neural network weights acted like potentiometers that required manual adjustment during the training phase.
+
+✅ A potentiometer is a device that allows the user to adjust the resistance of a circuit.
+
+The New York Times wrote about perceptron at that time: the embryo of an electronic computer that [the Navy] expects will be able to walk, talk, see, write, reproduce itself and be conscious of its existence.
+
+PERCEPTRON MODEL
+
+Suppose we have N features in our model, in which case the input vector would be a vector of size N. A perceptron is a binary classification model, i.e. it can distinguish between two classes of input data. We will assume that for each input vector x the output of our perceptron would be either +1 or -1, depending on the class. The output will be computed using the formula:
+
+y(x) = f(wTx)
+
+where f is a step activation function
+
+TRAINING THE PERCEPTRON
+
+To train a perceptron we need to find a weights vector w that classifies most of the values correctly, i.e. results in the smallest error. This error E is defined by perceptron criterion in the following manner:
+
+E(w) = -&sum;wTxiti
+
+where:
+
+• the sum is taken on those training data points i that result in the wrong classification
+
+• xi is the input data, and ti is either -1 or +1 for negative and positive examples accordingly.
+
+This criteria is considered as a function of weights w, and we need to minimize it. Often, a method called gradient descent is used, in which we start with some initial weights w(0), and then at each step update the weights according to the formula:
+
+w(t+1) = w(t) - &eta;&nabla;E(w)
+
+Here &eta; is the so-called learning rate, and &nabla;E(w) denotes the gradient of E. After we calculate the gradient, we end up with
+
+w(t+1) = w(t) + &sum;&eta;xiti
+
+The algorithm in Python looks like this:
+
+CONCLUSION
+
+In this lesson, you learned about a perceptron, which is a binary classification model, and how to train it by using a weights vector.
+
+CHALLENGE
+
+If you'd like to try to build your own perceptron, try this lab on Microsoft Learn which uses the Azure ML designer.
+
+REVIEW & SELF STUDY
+
+To see how we can use perceptron to solve a toy problem as well as real-life problems, and to continue learning - go to Perceptron notebook.
+
+Here's an interesting [article about perceptrons](https://towardsdatascience.com/what-is-a-perceptron-basics-of-neural-networks-c4cfea20c590
+) as well.
+
+
+CHAPTER 5. Introduction to Computer Vision
+
+Computer Vision is a discipline whose aim is to allow computers to gain high-level understanding of digital images. This is quite a broad definition, because understanding can mean many different things, including finding an object on a picture (object detection), understanding what is happening (event detection), describing a picture in text, or reconstructing a scene in 3D. There are also special tasks related to human images: age and emotion estimation, face detection and identification, and 3D pose estimation, to name a few.
+
+One of the simplest tasks of computer vision is image classification.
+
+Computer vision is often considered to be a branch of AI. Nowadays, most of computer vision tasks are solved using neural networks. We will learn more about the special type of neural networks used for computer vision, convolutional neural networks, throughout this section.
+
+However, before you pass the image to a neural network, in many cases it makes sense to use some algorithmic techniques to enhance the image.
+
+There are several Python libraries available for image processing:
+
+• imageio can be used for reading/writing different image formats. It also support ffmpeg, a useful tool to convert video frames to images.
+
+• Pillow (also known as PIL) is a bit more powerful, and also supports some image manipulation such as morphing, palette adjustments, and more.
+
+• OpenCV is a powerful image processing library written in C++, which has become the de facto standard for image processing. It has a convenient Python interface.
+
+• dlib is a C++ library that implements many machine learning algorithms, including some of the Computer Vision algorithms. It also has a Python interface, and can be used for challenging tasks such as face and facial landmark detection.
+
+OPENCV
+
+OpenCV is considered to be the de facto standard for image processing. It contains a lot of useful algorithms, implemented in C++. You can call OpenCV from Python as well.
+
+A good place to learn OpenCV is this Learn OpenCV course. In our curriculum, our goal is not to learn OpenCV, but to show you some examples when it can be used, and how.
+
+LOADING IMAGES
+
+Images in Python can be conveniently represented by NumPy arrays. For example, grayscale images with the size of 320x200 pixels would be stored in a 200x320 array, and color images of the same dimension would have shape of 200x320x3 (for 3 color channels). To load an image, you can use the following code:
+
+Traditionally, OpenCV uses BGR (Blue-Green-Red) encoding for color images, while the rest of Python tools use the more traditional RGB (Red-Green-Blue). For the image to look right, you need to convert it to the RGB color space, either by swapping dimensions in the NumPy array, or by calling an OpenCV function:
+
+The same cvtColor function can be used to perform other color space transformations such as converting an image to grayscale or to the HSV (Hue-Saturation-Value) color space.
+
+You can also use OpenCV to load video frame-by-frame - an example is given in the exercise OpenCV Notebook.
+
+IMAGE PROCESSING
+
+Before feeding an image to a neural network, you may want to apply several pre-processing steps. OpenCV can do many things, including:
+
+• Resizing the image using im = cv2.resize(im, (320,200),interpolation=cv2.INTER_LANCZOS)
+
+• Blurring the image using im = cv2.medianBlur(im,3) or im = cv2.GaussianBlur(im, (3,3), 0)
+
+• Changing the brightness and contrast of the image can be done by NumPy array manipulations, as described in this Stackoverflow note.
+
+• Using thresholding by calling cv2.threshold/cv2.adaptiveThreshold functions, which is often preferable to adjusting brightness or contrast.
+
+• Applying different transformations to the image:
+
+• Affine transformations can be useful if you need to combine rotation, resizing and skewing to the image and you know the source and destination location of three points in the image. Affine transformations keep parallel lines parallel.
+
+• Perspective transformations can be useful when you know the source and destination positions of 4 points in the image. For example, if you take a picture of a rectangular document via a smartphone camera from some angle, and you want to make a rectangular image of the document itself.
+
+EXAMPLES OF USING COMPUTER VISION
+
+In our OpenCV Notebook, we give some examples of when computer vision can be used to perform specific tasks:
+
+• Pre-processing a photograph of a Braille book. We focus on how we can use thresholding, feature detection, perspective transformation and NumPy manipulations to separate individual Braille symbols for further classification by a neural network.
+
+• Detecting motion in video using frame difference. If the camera is fixed, then frames from the camera feed should be pretty similar to each other. Since frames are represented as arrays, just by subtracting those arrays for two subsequent frames we will get the pixel difference, which should be low for static frames, and become higher once there is substantial motion in the image.
+
+• Detecting motion using Optical Flow. Optical flow allows us to understand how individual pixels on video frames move. There are two types of optical flow:
+
+• Dense Optical Flow computes the vector field that shows for each pixel where is it moving
+
+• Sparse Optical Flow is based on taking some distinctive features in the image (eg. edges), and building their trajectory from frame to frame.
+
+EXAMPLE NOTEBOOKS: OPENCV TRY OPENCV IN ACTION
+
+Let's do some experiments with OpenCV by exploring OpenCV Notebook
+
+CONCLUSION
+
+Sometimes, relatively complex tasks such as movement detection or fingertip detection can be solved purely by computer vision. Thus, it is very helpful to know the basic techniques of computer vision, and what libraries like OpenCV can do.
+
+CHALLENGE
+
+Watch this video from the AI show to learn about the Cortic Tigers project and how they built a block-based solution to democratize computer vision tasks via a robot. Do some research on other projects like this that help onboard new learners into the field.
+
+REVIEW & SELF STUDY
+
+Read more on optical flow in this great tutorial.
+
+
+CHAPTER 6. Natural Language Processing
+
+In this section, we will focus on using Neural Networks to handle tasks related to Natural Language Processing (NLP). There are many NLP problems that we want computers to be able to solve:
+
+• Text classification is a typical classification problem pertaining to text sequences. Examples include classifying e-mail messages as spam vs. no-spam, or categorizing articles as sport, business, politics, etc. Also, when developing chat bots, we often need to understand what a user wanted to say -- in this case we are dealing with intent classification. Often, in intent classification we need to deal with many categories.
+
+• Sentiment analysis is a typical regression problem, where we need to attribute a number (a sentiment) corresponding to how positive/negative the meaning of a sentence is. A more advanced version of sentiment analysis is aspect-based sentiment analysis (ABSA), where we attribute sentiment not to the whole sentence, but to different parts of it (aspects), eg. In this restaurant, I liked the cuisine, but the atmosphere was awful.
+
+• Named Entity Recognition (NER) refers to the problem of extracting certain entities from text. For example, we might need to understand that in the phrase I need to fly to Paris tomorrow the word tomorrow refers to DATE, and Paris is a LOCATION.
+
+• Keyword extraction is similar to NER, but we need to extract words important to the meaning of the sentence automatically, without pre-training for specific entity types.
+
+• Text clustering can be useful when we want to group together similar sentences, for example, similar requests in technical support conversations.
+
+• Question answering refers to the ability of a model to answer a specific question. The model receives a text passage and a question as inputs, and it needs to provide a place in the text where the answer to the question is contained (or, sometimes, to generate the answer text).
+
+• Text Generation is the ability of a model to generate new text. It can be considered as classification task that predicts next letter/word based on some text prompt. Advanced text generation models, such as GPT-3, are able to solve other NLP tasks such as classification using a technique called prompt programming or prompt engineering
+
+• Text summarization is a technique when we want a computer to "read" long text and summarize it in a few sentences.
+
+• Machine translation can be viewed as a combination of text understanding in one language, and text generation in another one.
+
+Initially, most of NLP tasks were solved using traditional methods such as grammars. For example, in machine translation parsers were used to transform initial sentence into a syntax tree, then higher level semantic structures were extracted to represent the meaning of the sentence, and based on this meaning and grammar of the target language the result was generated. Nowadays, many NLP tasks are more effectively solved using neural networks.
+
+Many classical NLP methods are implemented in Natural Language Processing Toolkit (NLTK) Python library. There is a great NLTK Book available online that covers how different NLP tasks can be solved using NLTK.
+
+In our course, we will mostly focus on using Neural Networks for NLP, and we will use NLTK where needed.
+
+We have already learned about using neural networks for dealing with tabular data and with images. The main difference between those types of data and text is that text is a sequence of variable length, while the input size in case of images is known in advance. While convolutional networks can extract patterns from input data, patterns in text are more complex. Eg., we can have negation being separated from the subject be arbitrary for many words (eg. I do not like oranges, vs. I do not like those big colorful tasty oranges), and that should still be interpreted as one pattern. Thus, to handle language we need to introduce new neural network types, such as recurrent networks and transformers.
+
+INSTALL LIBRARIES
+
+If you are using local Python installation to run this course, you may need to install all required libraries for NLP using the following commands:
+
+For PyTorch
+
+For TensorFlow
+
+You can try NLP with TensorFlow on Microsoft Learn
+
+GPU WARNING
+
+In this section, in some of the examples we will be training quite large models.
+
+• Use a GPU-Enabled Computer: It's advisable to run your notebooks on a GPU-enabled computer to reduce waiting times when working with large models.
+
+• GPU Memory Constraints: Running on a GPU may lead to situations where you run out of GPU memory, especially when training large models.
+
+• GPU Memory Consumption: The amount of GPU memory consumed during training depends on various factors, including the minibatch size.
+
+• Minimize Minibatch Size: If you encounter GPU memory issues, consider reducing the minibatch size in your code as a potential solution.
+
+• TensorFlow GPU Memory Release: Older versions of TensorFlow may not release GPU memory correctly when training multiple models within one Python kernel. To manage GPU memory usage effectively, you can configure TensorFlow to allocate GPU memory only as needed.
+
+• Code Inclusion: To set TensorFlow to grow GPU memory allocation only when required, include the following code in your notebooks:
+
+If you're interested in learning about NLP from a classic ML perspective, visit this suite of lessons
+
+IN THIS SECTION
+
+In this section we will learn about:
+
+• Representing text as tensors
+
+• Word Embeddings
+
+• Language Modeling
+
+• Recurrent Neural Networks
+
+• Generative Networks
+
+• Transformers
+
+
+CHAPTER 7. Representing Text as Tensors
+
+TEXT CLASSIFICATION
+
+Throughout the first part of this section, we will focus on text classification task. We will use the AG News Dataset, which contains news articles like the following:
+
+• Category: Sci/Tech
+
+• Title: Ky. Company Wins Grant to Study Peptides (AP)
+
+• Body: AP - A company founded by a chemistry researcher at the University of Louisville won a grant to develop...
+
+Our goal will be to classify the news item into one of the categories based on text.
+
+REPRESENTING TEXT
+
+If we want to solve Natural Language Processing (NLP) tasks with neural networks, we need some way to represent text as tensors. Computers already represent textual characters as numbers that map to fonts on your screen using encodings such as ASCII or UTF-8.
+
+As humans, we understand what each letter represents, and how all characters come together to form the words of a sentence. However, computers by themselves do not have such an understanding, and neural network has to learn the meaning during training.
+
+Therefore, we can use different approaches when representing text:
+
+• Character-level representation, when we represent text by treating each character as a number. Given that we have C different characters in our text corpus, the word Hello would be represented by 5x*C* tensor. Each letter would correspond to a tensor column in one-hot encoding.
+
+• Word-level representation, in which we create a vocabulary of all words in our text, and then represent words using one-hot encoding. This approach is somehow better, because each letter by itself does not have much meaning, and thus by using higher-level semantic concepts - words - we simplify the task for the neural network. However, given the large dictionary size, we need to deal with high-dimensional sparse tensors.
+
+Regardless of the representation, we first need to convert the text into a sequence of tokens, one token being either a character, a word, or sometimes even part of a word. Then, we convert the token into a number, typically using vocabulary, and this number can be fed into a neural network using one-hot encoding.
+
+N-GRAMS
+
+In natural language, precise meaning of words can only be determined in context. For example, meanings of neural network and fishing network are completely different. One of the ways to take this into account is to build our model on pairs of words, and considering word pairs as separate vocabulary tokens. In this way, the sentence I like to go fishing will be represented by the following sequence of tokens: I like, like to, to go, go fishing. The problem with this approach is that the dictionary size grows significantly, and combinations like go fishing and go shopping are presented by different tokens, which do not share any semantic similarity despite the same verb.
+
+In some cases, we may consider using tri-grams -- combinations of three words -- as well. Thus the approach is such is often called n-grams. Also, it makes sense to use n-grams with character-level representation, in which case n-grams will roughly correspond to different syllabi.
+
+BAG-OF-WORDS AND TFIDF
+
+When solving tasks like text classification, we need to be able to represent text by one fixed-size vector, which we will use as an input to final dense classifier. One of the simplest ways to do that is to combine all individual word representations, eg. by adding them. If we add one-hot encodings of each word, we will end up with a vector of frequencies, showing how many times each word appears inside the text. Such representation of text is called bag of words (BoW).
+
+A BoW essentially represents which words appear in text and in which quantities, which can indeed be a good indication of what the text is about. For example, news article on politics is likely to contains words such as president and country, while scientific publication would have something like collider, discovered, etc. Thus, word frequencies can in many cases be a good indicator of text content.
+
+The problem with BoW is that certain common words, such as and, is, etc. appear in most of the texts, and they have highest frequencies, masking out the words that are really important. We may lower the importance of those words by taking into account the frequency at which words occur in the whole document collection. This is the main idea behind TF/IDF approach, which is covered in more detail in the notebooks attached to this lesson.
+
+However, none of those approaches can fully take into account the semantics of text. We need more powerful neural networks models to do this, which we will discuss later in this section.
+
+EXERCISES: TEXT REPRESENTATION
+
+Continue your learning in the following notebooks:
+
+• Text Representation with PyTorch
+
+• Text Representation with TensorFlow
+
+CONCLUSION
+
+So far, we have studied techniques that can add frequency weight to different words. They are, however, unable to represent meaning or order. As the famous linguist J. R. Firth said in 1935, "The complete meaning of a word is always contextual, and no study of meaning apart from context can be taken seriously." We will learn later in the course how to capture contextual information from text using language modeling.
+
+CHALLENGE
+
+Try some other exercises using bag-of-words and different data models. You might be inspired by this competition on Kaggle
+
+REVIEW & SELF STUDY
+
+Practice your skills with text embeddings and bag-of-words techniques on Microsoft Learn
+
+
+CHAPTER 8. Attention Mechanisms and Transformers
+
+One of the most important problems in the NLP domain is machine translation, an essential task that underlies tools such as Google Translate. In this section, we will focus on machine translation, or, more generally, on any sequence-to-sequence task (which is also called sentence transduction).
+
+With RNNs, sequence-to-sequence is implemented by two recurrent networks, where one network, the encoder, collapses an input sequence into a hidden state, while another network, the decoder, unrolls this hidden state into a translated result. There are a couple of problems with this approach:
+
+• The final state of the encoder network has a hard time remembering the beginning of a sentence, thus causing poor quality of the model for long sentences
+
+• All words in a sequence have the same impact on the result. In reality, however, specific words in the input sequence often have more impact on sequential outputs than others.
+
+Attention Mechanisms provide a means of weighting the contextual impact of each input vector on each output prediction of the RNN. The way it is implemented is by creating shortcuts between intermediate states of the input RNN and the output RNN. In this manner, when generating output symbol yt, we will take into account all input hidden states hi, with different weight coefficients &alpha;t,i.
+
+The encoder-decoder model with additive attention mechanism in Bahdanau et al., 2015, cited from this blog post
+
+The attention matrix {&alpha;i,j} would represent the degree that certain input words play in the generation of a given word in the output sequence. Below is an example of such a matrix:
+
+Figure from Bahdanau et al., 2015 (Fig.3)
+
+Attention mechanisms are responsible for much of the current or near current state of the art in NLP. Adding attention however greatly increases the number of model parameters which led to scaling issues with RNNs. A key constraint of scaling RNNs is that the recurrent nature of the models makes it challenging to batch and parallelize training. In an RNN each element of a sequence needs to be processed in sequential order which means it cannot be easily parallelized.
+
+Figure from Google's Blog
+
+The adoption of attention mechanisms combined with this constraint led to the creation of the now State of the Art Transformer Models that we know and use today such as BERT to Open-GPT3.
+
+TRANSFORMER MODELS
+
+One of the main ideas behind transformers is to avoid sequential nature of RNNs and to create a model that is parallelizable during training. This is achieved by implementing two ideas:
+
+• positional encoding
+
+• using self-attention mechanism to capture patterns instead of RNNs (or CNNs) (that is why the paper that introduces transformers is called Attention is all you need
+
+POSITIONAL ENCODINGEMBEDDING
+
+The idea of positional encoding is the following.
+
+• When using RNNs, the relative position of the tokens is represented by the number of steps, and thus does not need to be explicitly represented.
+
+• However, once we switch to attention, we need to know the relative positions of tokens within a sequence.
+
+• To get positional encoding, we augment our sequence of tokens with a sequence of token positions in the sequence (i.e., a sequence of numbers 0,1, ...).
+
+• We then mix the token position with a token embedding vector. To transform the position (integer) into a vector, we can use different approaches:
+
+• Trainable embedding, similar to token embedding. This is the approach we consider here. We apply embedding layers on top of both tokens and their positions, resulting in embedding vectors of the same dimensions, which we then add together.
+
+• Fixed position encoding function, as proposed in the original paper.
+
+The result that we get with positional embedding embeds both the original token and its position within a sequence.
+
+MULTI-HEAD SELF-ATTENTION
+
+Next, we need to capture some patterns within our sequence. To do this, transformers use a self-attention mechanism, which is essentially attention applied to the same sequence as the input and output. Applying self-attention allows us to take into account context within the sentence, and see which words are inter-related. For example, it allows us to see which words are referred to by coreferences, such as it, and also take the context into account:
+
+In transformers, we use Multi-Head Attention in order to give the network the power to capture several different types of dependencies, eg. long-term vs. short-term word relations, co-reference vs. something else, etc.
+
+TensorFlow Notebook contains more detains on the implementation of transformer layers.
+
+ENCODER-DECODER ATTENTION
+
+In transformers, attention is used in two places:
+
+• To capture patterns within the input text using self-attention
+
+• To perform sequence translation - it is the attention layer between encoder and decoder.
+
+Encoder-decoder attention is very similar to the attention mechanism used in RNNs, as described in the beginning of this section. This animated diagram explains the role of encoder-decoder attention.
+
+Since each input position is mapped independently to each output position, transformers can parallelize better than RNNs, which enables much larger and more expressive language models. Each attention head can be used to learn different relationships between words that improves downstream Natural Language Processing tasks.
+
+BERT
+
+BERT (Bidirectional Encoder Representations from Transformers) is a very large multi layer transformer network with 12 layers for BERT-base, and 24 for BERT-large. The model is first pre-trained on a large corpus of text data (WikiPedia + books) using unsupervised training (predicting masked words in a sentence). During pre-training the model absorbs significant levels of language understanding which can then be leveraged with other datasets using fine tuning. This process is called transfer learning.
+
+EXERCISES: TRANSFORMERS
+
+Continue your learning in the following notebooks:
+
+• Transformers in PyTorch
+
+• Transformers in TensorFlow
+
+CONCLUSION
+
+In this lesson you learned about Transformers and Attention Mechanisms, all essential tools in the NLP toolbox. There are many variations of Transformer architectures including BERT, DistilBERT. BigBird, OpenGPT3 and more that can be fine tuned. The HuggingFace package provides repository for training many of these architectures with both PyTorch and TensorFlow.
+
+CHALLENGE
+
+REVIEW & SELF STUDY
+
+• Blog post, explaining the classical Attention is all you need paper on transformers.
+
+• A series of blog posts on transformers, explaining the architecture in detail.
+
+
+CHAPTER 9. Pre-Trained Large Language Models
+
+In all of our previous tasks, we were training a neural network to perform a certain task using labeled dataset. With large transformer models, such as BERT, we use language modelling in self-supervised fashion to build a language model, which is then specialized for specific downstream task with further domain-specific training. However, it has been demonstrated that large language models can also solve many tasks without ANY domain-specific training. A family of models capable of doing that is called GPT: Generative Pre-Trained Transformer.
+
+TEXT GENERATION AND PERPLEXITY
+
+The idea of a neural network being able to do general tasks without downstream training is presented in Language Models are Unsupervised Multitask Learners paper. The main idea is the many other tasks can be modeled using text generation, because understanding text essentially means being able to produce it. Because the model is trained on a huge amount of text that encompasses human knowledge, it also becomes knowledgeable about wide variety of subjects.
+
+Understanding and being able to produce text also entails knowing something about the world around us. People also learn by reading to the large extent, and GPT network is similar in this respect.
+
+Text generation networks work by predicting probability of the next word However, unconditional probability of the next word equals to the frequency of the this word in the text corpus. GPT is able to give us conditional probability of the next word, given the previous ones:
+
+You can read more about probabilities in our Data Science for Beginers Curriculum
+
+Quality of language generating model can be defined using perplexity. It is intrinsic metric that allows us to measure the model quality without any task-specific dataset. It is based on the notion of probability of a sentence - the model assigns high probability to a sentence that is likely to be real (i.e. the model is not perplexed by it), and low probability to sentences that make less sense (eg. Can it does what?). When we give our model sentences from real text corpus, we would expect them to have high probability, and low perplexity. Mathematically, it is defined as normalized inverse probability of the test set:
+
+You can experiment with text generation using GPT-powered text editor from Hugging Face. In this editor, you start writing your text, and pressing [TAB] will offer you several completion options. If they are too short, or you are not satisfied with them - press [TAB] again, and you will have more options, including longer pieces of text.
+
+GPT IS A FAMILY
+
+GPT is not a single model, but rather a collection of models developed and trained by OpenAI.
+
+Under the GPT models, we have:
+
+GPT-2 — GPT 3 — GPT-4
+
+-- — -- — --
+
+Language model with upto 1.5 billion parameters. — Language model with up to 175 billion parameters — 100T parameters and accepts both image and text inputs and outputs text.
+
+The GPT-3 and GPT-4 models are available as a cognitive service from Microsoft Azure, and as OpenAI API.
+
+PROMPT ENGINEERING
+
+Because GPT has been trained on a vast volumes of data to understand language and code, they provide outputs in response to inputs (prompts). Prompts are GPT inputs or queries whereby one provides instructions to models on tasks they next completed. To elicit a desired outcome, you need the most effective prompt which involves selecting the right words, formats, phrases or even symbols. This approach is Prompt Engineering
+
+This documentation provides you with more information on prompt engineering.
+
+EXAMPLE NOTEBOOK: PLAYING WITH OPENAI-GPT
+
+Continue your learning in the following notebooks:
+
+• Generating text with OpenAI-GPT and Hugging Face Transformers
+
+CONCLUSION
+
+New general pre-trained language models do not only model language structure, but also contain vast amount of natural language. Thus, they can be effectively used to solve some NLP tasks in zero-shop or few-shot settings.
+
+
+CHAPTER 10. Multi-Agent Systems
+
+One of the possible ways of achieving intelligence is so-called emergent (or synergetic) approach, which is based on the fact that the combined behavior of many relatively simple agents can result in the overall more complex (or intelligent) behavior of the system as a whole. Theoretically, this is based on the principles of Collective Intelligence, Emergentism and Evolutionary Cybernetics, which state that higher-level systems gain some sort of added value when being properly combined from lower-level systems (so-called principle of metasystem transition).
+
+The direction of Multi-Agent Systems has emerged in AI in 1990s as a response to growth of the Internet and distributed systems. On of the classical AI textbooks, Artificial Intelligence: A Modern Approach, focuses on the view of classical AI from the point of view of Multi-agent systems.
+
+Central to Multi-agent approach is the notion of Agent - an entity that lives in some environment, which it can perceive, and act upon. This is a very broad definition, and there could be many different types and classifications of agents:
+
+• By their ability to reason:
+
+• Reactive agents usually have simple request-response type of behavior
+
+• Deliberative agents employ some sort of logical reasoning and/or planning capabilities
+
+• By the place where agent execute its code:
+
+• Static agents work on a dedicated network node
+
+• Mobile agents can move their code between network nodes
+
+• By their behavior:
+
+• Passive agents do not have specific goals. Such agents can react to external stimuli, but will not initiate any actions themselves.
+
+• Active agents have some goals which they pursue
+
+• Cognitive agents involve complex planning and reasoning
+
+Multi-agent systems are nowadays used in a number of applications:
+
+• In games, many non-player characters employ some sort of AI, and can be considered to be intelligent agents
+
+• In video production, rendering complex 3D scenes that involve crowds is typically done using multi-agent simulation
+
+• In systems modeling, multi-agent approach is used to simulate the behavior of a complex model. For example, multi-agent approach has been successfully used to predict the spread of COVID-19 disease worldwide. Similar approach can be used to model traffic in the city, and see how it reacts to changes in traffic rules.
+
+• In complex automation systems, each device can act as an independent agent, which makes the whole system less monolith and more robust.
+
+We will not spend a lot of time going deep into multi-agent systems, but consider one example of Multi-Agent Modeling.
+
+NETLOGO
+
+NetLogo is a multi-agent modeling environment based on a modified version of the Logo) programming language. This language was developed for teaching programming concepts to kids, and it allows you to control an agent called turtle, which can move, leaving a trace behind. This allows creating complex geometric figures, which is a very visual way to understand the behavior of an agent.
+
+In NetLogo, we can create many turtles by using the create-turtles command. We can then command all turtles to do some actions (in the example below - more 10 point forward):
+
+Of course, it is not interesting when all turtles do the same thing, so we can ask groups of turtles, eg. those who are in the vicinity of a certain point. We can also create turtles of different breeds using breed [cats cat] command. Here cat is the name of a breed, and we need to specify both singular and plural word, because different commands use different forms for clarity.
+
+✅ We will not go into learning the NetLogo language itself - you can visit the brilliant Beginner's Interactive NetLogo Dictionary resource if you are interested in learning more.
+
+You can download and install NetLogo to try it.
+
+MODELS LIBRARY
+
+A great thing about NetLogo is that it contains a library of working models that you can try. Go to File &rightarrow; Models Library, and you have many categories of models to choose from.
+
+A screenshot of the models library by Dmitry Soshnikov
+
+You can open one of the models, for example Biology &rightarrow; Flocking.
+
+MAIN PRINCIPLES
+
+After opening the model, you are taken to the main NetLogo screen. Here is a sample model that describes the population of wolves and sheep, given finite resources (grass).
+
+Screenshot by Dmitry Soshnikov
+
+On this screen, you can see:
+
+• The Interface section which contains:
+
+• The main field, where all agents live
+
+• Different controls: buttons, sliders, etc.
+
+• Graphs that you can use to display parameters of the simulation
+
+• The Code tab which contains the editor, where you can type NetLogo program
+
+In most cases, the interface would have a Setup button, which initializes the simulation state, and a Go button that starts the execution. Those are handled by corresponding handlers in the code that look like this:
+
+NetLogo's world consists of the following objects:
+
+• Agents (turtles) that can move across the field and do something. You command agents by using ask turtles [...] syntax, and the code in brackets is executed by all agents in turtle mode.
+
+• Patches are square areas of the field, on which agents live. You can refer to all agents on the same patch, or you can change patch colors and some other properties. You can also ask patches to do something.
+
+• Observer is a unique agent that controls the world. All button handlers are executed in observer mode.
+
+✅ The beauty of a multi-agent environment is that the code that runs in turtle mode or in patch mode is executed at the same time by all agents in parallel. Thus, by writing a little code and programming the behavior of individual agent, you can create complex behavior of the simulation system as a whole.
+
+FLOCKING
+
+As an example of multi-agent behavior, let's consider Flocking). Flocking is a complex pattern that is very similar to how flocks of birds fly. Watching them fly you can think that they follow some kind of collective algorithm, or that they possess some form of collective intelligence. However, this complex behavior arises when each individual agent (in this case, a bird) only observes some other agents in a short distance from it, and follows three simple rules:
+
+• Alignment - it steers towards the average heading of neighboring agents
+
+• Cohesion - it tries to steer towards the average position of neighbors (long range attraction)
+
+• Separation - when getting too close to other birds, it tries to move away (short range repulsion)
+
+You can run the flocking example and observe the behavior. You can also adjust parameters, such as degree of separation, or the viewing range, which defines how far each bird can see. Note that if you decrease the viewing range to 0, all birds become blind, and flocking stops. If you decrease separation to 0, all birds gather into a straight line.
+
+✅ Switch to the Code tab and see where three rules of flocking (alignment, cohesion and separation) are implemented in code. Note how we refer only to those agents that are in sight.
+
+OTHER MODELS TO SEE
+
+There are a few more interesting models that you can experiment with:
+
+• Art &rightarrow; Fireworks shows how a firework can be considered a collective behavior of individual fire streams
+
+• Social Science &rightarrow; Traffic Basic and Social Science &rightarrow; Traffic Grid show the model of city traffic in 1D and 2D Grid with or without traffic lights. Each car in the simulation follows the following rules:
+
+• If the space in front of it is empty - accelerate (up to a certain max speed)
+
+• If it sees the obstacle in front - brake (and you can adjust how far a driver can see)
+
+• Social Science &rightarrow; Party shows how people group together during a cocktail party. You can find the combination of parameters that lead to the fastest increase of happiness of the group.
+
+As you can see from these examples, multi-agent simulations can be quite a useful way to understand the behavior of a complex system consisting of individuals that follow the same or similar logic. It can also be used to control virtual agents, such as NPCs in computer games, or agents in 3D animated worlds.
+
+DELIBERATIVE AGENTS
+
+The agents described above are very simple, reacting to changes in environment using some kind of algorithm. As such they are reactive agents. However, sometimes agents can reason and plan their action, in which case they are called deliberative.
+
+A typical example would be a personal agent that receives an instruction from a human to book a vacation tour. Suppose that there are many agents that live on the internet, who can help it. It should then contact other agents to see which flights are available, what are the hotel prices for different dates, and try to negotiate the best price. When the vacation plan is complete and confirmed by the owner, it can proceed with booking.
+
+In order to do that, agents need to communicate. For successful communication they need:
+
+• Some standard languages to exchange knowledge, such as Knowledge Interchange Format (KIF) and Knowledge Query and Manipulation Language (KQML). Those languages are designed based on Speech Act theory.
+
+• Those languages should also include some protocols for negotiations, based on different auction types.
+
+• A common ontology to use, so that they refer to the same concepts knowing their semantics
+
+• A way to discover what different agents can do, also based on some sort of ontology
+
+Deliberative agents are much more complex than reactive, because they do not only react to changes in environment, they should also be able to intiate actions. One of the proposed architectures for deliberative agents is the so-called Belief-Desire-Intention (BDI) agent:
+
+• Beliefs form a set of knowledge about an agent's environment. It can be structured as a knowledge base or set of rules that an agent can apply to a specific situation in the environment.
+
+• Desires define what an agent wants to do, i.e. its goals. For example, the goal of the personal assistant agent above is to book a tour, and the goal of a hotel agent is to maximize profit.
+
+• Intentions are specific actions that an agent plans to achieve its goals. Actions typically change the environment and cause communication with other agents.
+
+There are some platforms available for building multi-agent systems, such as JADE. This paper contains a review of multi-agent platforms, together with a brief history of multi-agent systems and their different usage scenarios.
+
+CONCLUSION
+
+Multi-Agent systems can take very different forms and be used in many different applications.
+They all tend to focus on the simpler behavior of an individual agent, and achieve more complex behavior of the overall system due to synergetic effect.
+
+CHALLENGE
+
+Take this lesson to the real world and try to conceptualize a multi-agent system that can solve a problem. What, for example, would a multi-agent system need to do to optimize a school bus route? How could it work in a bakery?
+
+REVIEW & SELF STUDY
+
+Review the use of this type of system in industry. Pick a domain such as manufacturing or the video game industry and discover how multi-agent systems can be used to solve unique problems.
+
+
+CHAPTER 11. Ethical and Responsible AI
+
+You have almost finished this course, and I hope that by now you clearly see that AI is based on a number of formal mathematical methods that allow us to find relationships in data and train models to replicate some aspects of human behavior. At this point in history, we consider AI to be a very powerful tool to extract patterns from data, and to apply those patterns to solve new problems.
+
+However, in science fiction we often see stories where AI presents a danger to humankind. Usually those stories are centered around some sort of AI rebellion, when AI decides to confront human beings. This implies that AI has some sort of emotion or can take decisions unforeseen by its developers.
+
+The kind of AI that we have learned about in this course is nothing more than large matrix arithmetic. It is a very powerful tool to help us solve our problems, and as any other powerful tool - it can be used for good and for bad purposes. Importantly, it can be misused.
+
+PRINCIPLES OF RESPONSIBLE AI
+
+To avoid this accidental or purposeful misuse of AI, Microsoft states the important Principles of Responsible AI. The following concepts underpin these principles:
+
+• Fairness is related to the important problem of model biases, which can be caused by using biased data for training. For example, when we try to predict the probability of getting a software developer job for a person, the model is likely to give higher preference to males - just because the training dataset was likely biased towards a male audience. We need to carefully balance training data and investigate the model to avoid biases, and make sure that the model takes into account more relevant features.
+
+• Reliability and Safety. By their nature, AI models can make mistakes. A neural network returns probabilities, and we need to take it into account when making decisions. Every model has some precision and recall, and we need to understand that to prevent harm that wrong advice can cause.
+
+• Privacy and Security have some AI-specific implications. For example, when we use some data for training a model, this data becomes somehow "integrated" into the model. On one hand, that increases security and privacy, on the other - we need to remember which data the model was trained on.
+
+• Inclusiveness means that we are not building AI to replace people, but rather to augment people and make our work more creative. It is also related to fairness, because when dealing with underrepresented communities, most of the datasets we collect are likely to be biased, and we need to make sure that those communities are included and correctly handled by AI.
+
+• Transparency. This includes making sure that we are always clear about AI being used. Also, wherever possible, we want to use AI systems that are interpretable.
+
+• Accountability. When AI models come up with some decisions, it is not always clear who is responsible for those decisions. We need to make sure that we understand where responsibility of AI decisions lies. In most cases we would want to include human beings into the loop of making important decisions, so that actual people are made accountable.
+
+TOOLS FOR RESPONSIBLE AI
+
+Microsoft has developed the Responsible AI Toolbox which contains a set of tools:
+
+• Interpretability Dashboard (InterpretML)
+
+• Fairness Dashboard (FairLearn)
+
+• Error Analysis Dashboard
+
+• Responsible AI Dashboard that includes
+
+• EconML - tool for Causal Analysis, which focuses on what-if questions
+
+• DiCE - tool for Counterfactual Analysis allows you to see which features need to be changed to affect the decision of the model
+
+For more information about AI Ethics, please visit this lesson on the Machine Learning Curriculum which includes assignments.
+
+REVIEW & SELF STUDY
+
+Take this Learn Path to learn more about responsible AI.
