@@ -359,6 +359,19 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": "w-stoicism",
+    "title": "Stoicism",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg/500px-Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Stoicism",
+    "lic": "CC BY-SA 4.0"
    }
   ],
   "history": [
@@ -451,6 +464,20 @@
     "aud": [
      "children"
     ]
+   },
+   {
+    "id": "w-dinosaur",
+    "title": "Dinosaur",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Sinosauropteryxfossil.jpg/500px-Sinosauropteryxfossil.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Dinosaur",
+    "lic": "CC BY-SA 4.0"
    }
   ],
   "humor": [
@@ -577,6 +604,93 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 2397,
+    "title": "The Story of My Life",
+    "author": "Helen Keller",
+    "aud": [
+     "children",
+     "general"
+    ]
+   },
+   {
+    "id": 23,
+    "title": "Narrative of the Life of Frederick Douglass",
+    "author": "Frederick Douglass",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": "w-ibn-battuta",
+    "title": "Ibn Battuta",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Handmade_oil_painting_reproduction_of_Ibn_Battuta_in_Egypt%2C_a_painting_by_Hippolyte_Leon_Benett..jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "page": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-tunku-abdul-rahman",
+    "title": "Tunku Abdul Rahman",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg/500px-Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-marie-curie",
+    "title": "Marie Curie",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/500px-Marie_Curie_c._1920s.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malala-yousafzai",
+    "title": "Malala Yousafzai",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "teens",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Malala_Yousafzai_2023_portrait_2x3.jpg/500px-Malala_Yousafzai_2023_portrait_2x3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malala_Yousafzai",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-helen-keller",
+    "title": "Helen Keller",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Helen_Keller_%28circa_1904%29.jpg/500px-Helen_Keller_%28circa_1904%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Helen_Keller",
+    "lic": "CC BY-SA 4.0"
    }
   ],
   "business": [
@@ -635,6 +749,34 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": "w-solar-system",
+    "title": "Solar System",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Solar_System_True_Color_EN.png/500px-Solar_System_True_Color_EN.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Solar_System",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-photosynthesis",
+    "title": "Photosynthesis",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Photosynthesis_en.svg/500px-Photosynthesis_en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "lic": "CC BY-SA 4.0"
    }
   ],
   "leadership": [
@@ -729,6 +871,14 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": 59844,
+    "title": "The Science of Getting Rich",
+    "author": "W. D. (Wallace Delois) Wattles",
+    "aud": [
+     "general"
+    ]
    }
   ],
   "ops": [
@@ -767,9 +917,348 @@
     ]
    }
   ],
-  "geography": [],
-  "cooking": [],
-  "worldhistory": [],
+  "geography": [
+   {
+    "id": 2530,
+    "title": "The Malay Archipelago",
+    "author": "Alfred Russel Wallace",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 944,
+    "title": "The Voyage of the Beagle",
+    "author": "Charles Darwin",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 5199,
+    "title": "South! The Story of Shackleton's Last Expedition",
+    "author": "Ernest Shackleton",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": "w-geography-of-malaysia",
+    "title": "Geography of Malaysia",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/My-map.png/500px-My-map.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Geography_of_Malaysia",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-mount-kinabalu",
+    "title": "Mount Kinabalu",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Kinabalu_Sabah_Borneo_Kampong_Kundasang_panorama_2.jpg/500px-Kinabalu_Sabah_Borneo_Kampong_Kundasang_panorama_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Mount_Kinabalu",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-strait-of-malacca",
+    "title": "Strait of Malacca",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Strait_of_Malacca_highlighted.png/500px-Strait_of_Malacca_highlighted.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-borneo",
+    "title": "Borneo",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Administrative_map_of_Borneo_%28Indonesian%29.png/500px-Administrative_map_of_Borneo_%28Indonesian%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Borneo",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-amazon-rainforest",
+    "title": "Amazon rainforest",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Amazon17_%285641020319%29.jpg/500px-Amazon17_%285641020319%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Amazon_rainforest",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-himalayas",
+    "title": "Himalayas",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders%2C_annotated_with_major_rivers.jpg/500px-Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders%2C_annotated_with_major_rivers.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Himalayas",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-sahara",
+    "title": "Sahara",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Sahara_real_color.jpg/500px-Sahara_real_color.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Sahara",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ibn-battuta",
+    "title": "Ibn Battuta",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Handmade_oil_painting_reproduction_of_Ibn_Battuta_in_Egypt%2C_a_painting_by_Hippolyte_Leon_Benett..jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "page": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-water-cycle",
+    "title": "Water cycle",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/USGS_WaterCycle_English_ONLINE_20221013.png/500px-USGS_WaterCycle_English_ONLINE_20221013.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Water_cycle",
+    "lic": "CC BY-SA 4.0"
+   }
+  ],
+  "cooking": [
+   {
+    "id": "w-nasi-lemak",
+    "title": "Nasi lemak",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg/500px-Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Nasi_lemak",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malaysian-cuisine",
+    "title": "Malaysian cuisine",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Nasi_Lemak_dengan_Ayam_Goreng_Krispy_dengan_Sos_chili.jpg/500px-Nasi_Lemak_dengan_Ayam_Goreng_Krispy_dengan_Sos_chili.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malaysian_cuisine",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-rendang",
+    "title": "Rendang",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Rendang_daging_sapi_asli_Padang.JPG/500px-Rendang_daging_sapi_asli_Padang.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Rendang",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-roti-canai",
+    "title": "Roti canai",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/YosriRotiCanai.jpg/500px-YosriRotiCanai.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Roti_canai",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-teh-tarik",
+    "title": "Teh tarik",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Teh_Tarik_at_the_Iskandar_Curry_House_at_One_Riverside_%28DSCF0286%29.jpg/500px-Teh_Tarik_at_the_Iskandar_Curry_House_at_One_Riverside_%28DSCF0286%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Teh_tarik",
+    "lic": "CC BY-SA 4.0"
+   }
+  ],
+  "worldhistory": [
+   {
+    "id": 754,
+    "title": "The Story of Mankind",
+    "author": "Hendrik Willem van Loon",
+    "aud": [
+     "education",
+     "teens"
+    ]
+   },
+   {
+    "id": "w-history-of-artificial-intelligence",
+    "title": "History of artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg/500px-Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/History_of_artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malacca-sultanate",
+    "title": "Malacca Sultanate",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Malacca_Sultanate_en.svg/500px-Malacca_Sultanate_en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malacca_Sultanate",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-silk-road",
+    "title": "Silk Road",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Silk_road_Kazakhstan.svg/500px-Silk_road_Kazakhstan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Silk_Road",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ancient-egypt",
+    "title": "Ancient Egypt",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Ancient_Egypt_map-en.svg/500px-Ancient_Egypt_map-en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-industrial-revolution",
+    "title": "Industrial Revolution",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Powerloom_weaving_in_1835.jpg/500px-Powerloom_weaving_in_1835.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-renaissance",
+    "title": "Renaissance",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/500px-Da_Vinci_Vitruve_Luc_Viatour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Renaissance",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ibn-battuta",
+    "title": "Ibn Battuta",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Handmade_oil_painting_reproduction_of_Ibn_Battuta_in_Egypt%2C_a_painting_by_Hippolyte_Leon_Benett..jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "page": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-tunku-abdul-rahman",
+    "title": "Tunku Abdul Rahman",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg/500px-Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman",
+    "lic": "CC BY-SA 4.0"
+   }
+  ],
   "motivation": [
    {
     "id": 4507,
@@ -783,6 +1272,14 @@
     "id": 935,
     "title": "Self-Help",
     "author": "Samuel Smiles",
+    "aud": [
+     "general"
+    ]
+   },
+   {
+    "id": 59844,
+    "title": "The Science of Getting Rich",
+    "author": "W. D. (Wallace Delois) Wattles",
     "aud": [
      "general"
     ]
@@ -802,6 +1299,72 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": "w-habit",
+    "title": "Habit",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Good_Habits_%28Abby_the_Pup%29.jpg/500px-Good_Habits_%28Abby_the_Pup%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Habit",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-grit-personality-trait",
+    "title": "Grit (personality trait)",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Grit_(personality_trait)",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-kaizen",
+    "title": "Kaizen",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Kaizen",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-pomodoro-technique",
+    "title": "Pomodoro Technique",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "teens",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Il_pomodoro.jpg/500px-Il_pomodoro.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Pomodoro_Technique",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-stoicism",
+    "title": "Stoicism",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg/500px-Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Stoicism",
+    "lic": "CC BY-SA 4.0"
    }
   ],
   "ai": [
@@ -840,8 +1403,603 @@
     "aud": [
      "general"
     ]
+   },
+   {
+    "id": "w-artificial-intelligence",
+    "title": "Artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-history-of-artificial-intelligence",
+    "title": "History of artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg/500px-Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/History_of_artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-machine-learning",
+    "title": "Machine learning",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Machine_learning",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-large-language-model",
+    "title": "Large language model",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/The_number_of_publications_about_Large_Language_Models_by_year.png/500px-The_number_of_publications_about_Large_Language_Models_by_year.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Large_language_model",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-turing-test",
+    "title": "Turing test",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Turing_test_diagram.png/500px-Turing_test_diagram.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Turing_test",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ethics-of-artificial-intelligence",
+    "title": "Ethics of artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Ethics_of_artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
    }
   ],
-  "magazines": []
+  "magazines": [],
+  "articles": [
+   {
+    "id": "w-artificial-intelligence",
+    "title": "Artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-history-of-artificial-intelligence",
+    "title": "History of artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d3/Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg/500px-Glen_Beck_and_Betty_Snyder_program_the_ENIAC_in_building_328_at_the_Ballistic_Research_Laboratory.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/History_of_artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-machine-learning",
+    "title": "Machine learning",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Machine_learning",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-large-language-model",
+    "title": "Large language model",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/81/The_number_of_publications_about_Large_Language_Models_by_year.png/500px-The_number_of_publications_about_Large_Language_Models_by_year.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Large_language_model",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-turing-test",
+    "title": "Turing test",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Turing_test_diagram.png/500px-Turing_test_diagram.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Turing_test",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ethics-of-artificial-intelligence",
+    "title": "Ethics of artificial intelligence",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Ethics_of_artificial_intelligence",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-geography-of-malaysia",
+    "title": "Geography of Malaysia",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/My-map.png/500px-My-map.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Geography_of_Malaysia",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-mount-kinabalu",
+    "title": "Mount Kinabalu",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/Kinabalu_Sabah_Borneo_Kampong_Kundasang_panorama_2.jpg/500px-Kinabalu_Sabah_Borneo_Kampong_Kundasang_panorama_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Mount_Kinabalu",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-strait-of-malacca",
+    "title": "Strait of Malacca",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Strait_of_Malacca_highlighted.png/500px-Strait_of_Malacca_highlighted.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Strait_of_Malacca",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-borneo",
+    "title": "Borneo",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/40/Administrative_map_of_Borneo_%28Indonesian%29.png/500px-Administrative_map_of_Borneo_%28Indonesian%29.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Borneo",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-amazon-rainforest",
+    "title": "Amazon rainforest",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Amazon17_%285641020319%29.jpg/500px-Amazon17_%285641020319%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Amazon_rainforest",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-himalayas",
+    "title": "Himalayas",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders%2C_annotated_with_major_rivers.jpg/500px-Himalayas_and_allied_ranges_NASA_Landsat_showing_the_eight_thousanders%2C_annotated_with_major_rivers.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Himalayas",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-sahara",
+    "title": "Sahara",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4a/Sahara_real_color.jpg/500px-Sahara_real_color.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Sahara",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-nasi-lemak",
+    "title": "Nasi lemak",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg/500px-Nasi_Lemak_dengan_Chili_Nasi_Lemak_dan_Sotong_Pedas%2C_di_Penang_Summer_Restaurant.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Nasi_lemak",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malaysian-cuisine",
+    "title": "Malaysian cuisine",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/57/Nasi_Lemak_dengan_Ayam_Goreng_Krispy_dengan_Sos_chili.jpg/500px-Nasi_Lemak_dengan_Ayam_Goreng_Krispy_dengan_Sos_chili.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malaysian_cuisine",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-rendang",
+    "title": "Rendang",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/70/Rendang_daging_sapi_asli_Padang.JPG/500px-Rendang_daging_sapi_asli_Padang.JPG?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Rendang",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-roti-canai",
+    "title": "Roti canai",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/19/YosriRotiCanai.jpg/500px-YosriRotiCanai.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Roti_canai",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-teh-tarik",
+    "title": "Teh tarik",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Teh_Tarik_at_the_Iskandar_Curry_House_at_One_Riverside_%28DSCF0286%29.jpg/500px-Teh_Tarik_at_the_Iskandar_Curry_House_at_One_Riverside_%28DSCF0286%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Teh_tarik",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malacca-sultanate",
+    "title": "Malacca Sultanate",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/85/Malacca_Sultanate_en.svg/500px-Malacca_Sultanate_en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malacca_Sultanate",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-silk-road",
+    "title": "Silk Road",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/49/Silk_road_Kazakhstan.svg/500px-Silk_road_Kazakhstan.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Silk_Road",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ancient-egypt",
+    "title": "Ancient Egypt",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "children"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/17/Ancient_Egypt_map-en.svg/500px-Ancient_Egypt_map-en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Ancient_Egypt",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-industrial-revolution",
+    "title": "Industrial Revolution",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/dc/Powerloom_weaving_in_1835.jpg/500px-Powerloom_weaving_in_1835.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Industrial_Revolution",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-renaissance",
+    "title": "Renaissance",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/22/Da_Vinci_Vitruve_Luc_Viatour.jpg/500px-Da_Vinci_Vitruve_Luc_Viatour.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Renaissance",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-ibn-battuta",
+    "title": "Ibn Battuta",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Handmade_oil_painting_reproduction_of_Ibn_Battuta_in_Egypt%2C_a_painting_by_Hippolyte_Leon_Benett..jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+    "page": "https://en.wikipedia.org/wiki/Ibn_Battuta",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-tunku-abdul-rahman",
+    "title": "Tunku Abdul Rahman",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg/500px-Tunku_abd_rahman_%28cropped%2C_4to3_port%2C_bypass%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Tunku_Abdul_Rahman",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-marie-curie",
+    "title": "Marie Curie",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "education",
+     "teens"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Marie_Curie_c._1920s.jpg/500px-Marie_Curie_c._1920s.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Marie_Curie",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-malala-yousafzai",
+    "title": "Malala Yousafzai",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "teens",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Malala_Yousafzai_2023_portrait_2x3.jpg/500px-Malala_Yousafzai_2023_portrait_2x3.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Malala_Yousafzai",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-helen-keller",
+    "title": "Helen Keller",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/Helen_Keller_%28circa_1904%29.jpg/500px-Helen_Keller_%28circa_1904%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Helen_Keller",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-habit",
+    "title": "Habit",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/02/Good_Habits_%28Abby_the_Pup%29.jpg/500px-Good_Habits_%28Abby_the_Pup%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Habit",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-grit-personality-trait",
+    "title": "Grit (personality trait)",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Grit_(personality_trait)",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-kaizen",
+    "title": "Kaizen",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "",
+    "page": "https://en.wikipedia.org/wiki/Kaizen",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-pomodoro-technique",
+    "title": "Pomodoro Technique",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "teens",
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/34/Il_pomodoro.jpg/500px-Il_pomodoro.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Pomodoro_Technique",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-stoicism",
+    "title": "Stoicism",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "general"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg/500px-Paolo_Monti_-_Servizio_fotografico_%28Napoli%2C_1969%29_-_BEIC_6353768.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Stoicism",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-solar-system",
+    "title": "Solar System",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/28/Solar_System_True_Color_EN.png/500px-Solar_System_True_Color_EN.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Solar_System",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-dinosaur",
+    "title": "Dinosaur",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c5/Sinosauropteryxfossil.jpg/500px-Sinosauropteryxfossil.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Dinosaur",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-water-cycle",
+    "title": "Water cycle",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/60/USGS_WaterCycle_English_ONLINE_20221013.png/500px-USGS_WaterCycle_English_ONLINE_20221013.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Water_cycle",
+    "lic": "CC BY-SA 4.0"
+   },
+   {
+    "id": "w-photosynthesis",
+    "title": "Photosynthesis",
+    "author": "Wikipedia contributors",
+    "src": "open",
+    "kind": "article",
+    "aud": [
+     "children",
+     "education"
+    ],
+    "cover": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/55/Photosynthesis_en.svg/500px-Photosynthesis_en.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+    "page": "https://en.wikipedia.org/wiki/Photosynthesis",
+    "lic": "CC BY-SA 4.0"
+   }
+  ]
  }
 }
