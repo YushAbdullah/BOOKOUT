@@ -6,7 +6,7 @@ so this script saves cleaned plain-text copies under books/<id>.txt and
 writes books/catalog.json for the shelves. Run by the "Fetch books"
 GitHub Action; you can also run it locally: python3 books/build.py
 """
-import json, os, re, sys, time, urllib.parse, urllib.request
+import csv, gzip, io, json, os, re, sys, time, urllib.parse, urllib.request
 
 import open_sources
 
@@ -38,6 +38,62 @@ def get(url, tries=2, timeout=30):
             print(f"  retry {i + 1} {url}: {e}", file=sys.stderr)
             time.sleep(2)
     return None
+
+
+GDX = {"fails": 0}
+PGCAT = None
+
+
+def pg_catalog():
+    """Project Gutenberg's own catalogue (CSV), used when the Gutendex API is down or slow."""
+    global PGCAT
+    if PGCAT is None:
+        PGCAT = {}
+        raw = get("https://www.gutenberg.org/cache/epub/feeds/pg_catalog.csv.gz", tries=2, timeout=180)
+        if raw:
+            for r in csv.DictReader(io.StringIO(gzip.decompress(raw).decode("utf-8", "replace"))):
+                if r.get("Type") != "Text" or "en" not in (r.get("Language") or "").split("; "):
+                    continue
+                try:
+                    bid = int(r["Text#"])
+                except ValueError:
+                    continue
+                split = lambda k: [x.strip() for x in (r.get(k) or "").split(";") if x.strip()]
+                PGCAT[bid] = {"id": bid, "title": (r.get("Title") or "").split("\n")[0].strip(), "copyright": False,
+                              "authors": [{"name": re.sub(r",\s*(\d|-|\?).*$", "", a).strip()} for a in split("Authors")],
+                              "subjects": split("Subjects"), "bookshelves": split("Bookshelves")}
+        print(f"  Gutenberg catalogue: {len(PGCAT)} English texts")
+    return PGCAT
+
+
+def query(ids=None, search=None, topic=None):
+    """Book records like Gutendex returns. Uses Gutendex while it answers, else Gutenberg's own catalogue."""
+    if GDX["fails"] < 2:
+        params = {"languages": "en"}
+        if ids:
+            params["ids"] = ",".join(map(str, ids))
+        if search:
+            params["search"] = search
+        if topic:
+            params.update(topic=topic, mime_type="text/plain")
+        raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode(params), tries=1, timeout=25)
+        if raw:
+            GDX["fails"] = 0
+            return json.loads(raw).get("results", [])
+        GDX["fails"] += 1
+        if GDX["fails"] >= 2:
+            print("  Gutendex is not answering; switching to Gutenberg's catalogue file")
+    cat = pg_catalog()
+    if ids:
+        return [cat[i] for i in ids if i in cat]
+    if search:
+        words = norm(search).split()
+        hits = [b for b in cat.values() if all(w in (norm(b["title"]) + " " + " ".join(norm(a["name"]) for a in b["authors"])).split() or w in norm(b["title"]) for w in words)]
+        return sorted(hits, key=lambda b: (not norm(b["title"]).startswith(" ".join(words[:2])), b["id"]))[:32]
+    if topic:
+        t = topic.lower()
+        return [b for b in sorted(cat.values(), key=lambda b: b["id"]) if any(t in x.lower() for x in b["subjects"] + b["bookshelves"])][:32]
+    return []
 
 
 def clean(text):
@@ -81,9 +137,8 @@ def audience(bid, extra=()):
 
 def series(name, n, author=""):
     """Several issues of a public-domain magazine (e.g. Punch), most read first."""
-    raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode({"search": name, "languages": "en", "mime_type": "text/plain"}), tries=1, timeout=25)
     out = []
-    for b in (json.loads(raw).get("results", []) if raw else []):
+    for b in query(search=name):
         if len(out) >= n:
             break
         if b.get("copyright") or norm(name)[:18] not in norm(b["title"]):
@@ -101,14 +156,12 @@ def resolve(picks):
     ids = sorted({b["id"] for s in picks.values() for b in s if b.get("id")})
     known = {}
     for i in range(0, len(ids), 30):
-        raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode({"ids": ",".join(map(str, ids[i:i + 30]))}), tries=1, timeout=25)
-        for b in (json.loads(raw).get("results", []) if raw else []):
+        for b in query(ids=ids[i:i + 30]):
             known[b["id"]] = b
             META[b["id"]] = b
 
     def search(title, author=""):
-        raw = get("https://gutendex.com/books/?" + urllib.parse.urlencode({"search": f"{title} {author}".strip(), "languages": "en"}), tries=1, timeout=25)
-        for b in (json.loads(raw).get("results", []) if raw else []):
+        for b in query(search=f"{title} {author.split()[-1] if author.split() else ''}".strip()):
             if not b.get("copyright") and norm(title)[:18] in norm(b["title"]):
                 META[b["id"]] = b
                 return b
@@ -150,9 +203,7 @@ def main():
             if b.get("id") and b["id"] not in {x["id"] for x in shelf}:
                 shelf.append(b)
         seen = {b["id"] for b in shelf}
-        q = urllib.parse.urlencode({"topic": topic, "languages": "en", "mime_type": "text/plain"})
-        raw = get(f"https://gutendex.com/books/?{q}", tries=1, timeout=25) if topic and time.time() < DEADLINE - 600 else None
-        for b in (json.loads(raw).get("results", []) if raw else []):
+        for b in (query(topic=topic) if topic and time.time() < DEADLINE - 600 else []):
             if len(shelf) >= PER_CAT:
                 break
             if b["id"] in seen or b.get("copyright"):
