@@ -19,7 +19,7 @@ TOPICS = {
     "children": "children", "humor": "humor", "growth": "conduct of life",
     "inspiration": "success", "business": "business", "innovation": "inventions", "leadership": "leadership",
     "people": "conduct of life", "finance": "finance", "ops": "industrial management", "sales": "advertising",
-    "geography": "geography", "cooking": "cooking", "worldhistory": "world history", "motivation": "success",
+    "geography": "geography", "cooking": "cooking", "worldhistory": "world history", "motivation": None,
     "ai": None, "magazines": None,  # hand-picked only: the topic search returns noise for these
 }
 KIND = {"magazines": "magazine"}
